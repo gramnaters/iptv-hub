@@ -39,7 +39,9 @@ if sys.stdout.encoding != 'utf-8':
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
-PLAYLISTS_DIR = "playlists"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PLAYLISTS_DIR = os.path.join(ROOT_DIR, "playlists")
+COMBINED_M3U = os.path.join(ROOT_DIR, "Combined.m3u")
 EPG_URL = "https://www.tsepg.cf/epg.xml.gz"
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
@@ -310,10 +312,9 @@ def main():
             master_lines.extend(block)
             master_lines.append("")
 
-    combined_m3u_file = os.path.join(PLAYLISTS_DIR, "Combined.m3u")
-    with open(combined_m3u_file, "w", encoding="utf-8") as f:
+    with open(COMBINED_M3U, "w", encoding="utf-8") as f:
         f.write("\n".join(master_lines))
-    print(f"✅ Created {combined_m3u_file} with {total_channels} channels ({os.path.getsize(combined_m3u_file)} bytes)")
+    print(f"✅ Created {COMBINED_M3U} with {total_channels} channels ({os.path.getsize(COMBINED_M3U)} bytes)")
 
     print("\n" + "=" * 60)
     print("🎉 All playlists updated successfully!")

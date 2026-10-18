@@ -27,13 +27,13 @@ jobs:
 
       - name: Run Master Updater & Aggregator
         run: |
-          python build_playlists.py
+          python scripts/merge.py
 
       - name: Commit and Push Updated Playlists
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add playlists/
+          git add Combined.m3u playlists/
           if git diff --staged --quiet; then
             echo "No changes in playlists."
           else

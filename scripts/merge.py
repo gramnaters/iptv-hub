@@ -297,7 +297,6 @@ def main():
         f'#EXTM3U x-tvg-url="{EPG_URL}"',
         f'#DATE:- {get_current_ist()}',
         f'# Total Channels: {total_channels}',
-        f'# Written and Maintained by GitHub Actions ⚡',
         ""
     ]
 

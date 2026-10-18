@@ -30,8 +30,6 @@ if sys.stdout.encoding != 'utf-8':
 IST = timezone(timedelta(hours=5, minutes=30))
 
 # ----------------- Configuration -----------------
-AUTHOR_NAME = "DOCTOR STRANGE"
-TELEGRAM_LINK = "https://t.me/jitendraunatti_github"
 OUTPUT_DIR = "data"
 OUTPUT_JSON = os.path.join(OUTPUT_DIR, "jiotv.json")
 OUTPUT_M3U = os.path.join(OUTPUT_DIR, "jiotv.m3u")
@@ -103,8 +101,6 @@ def extract_keys(channel):
 
 def build_jiotv_json(channels, cookie):
     result = {
-        "Author": AUTHOR_NAME,
-        "Telegram": TELEGRAM_LINK,
         "name": "JioTV Live Channels API",
         "last_updated": get_current_ist_str(),
         "total_channels": len(channels),
@@ -143,7 +139,6 @@ def build_jiotv_m3u(jiotv_json):
     lines = [
         "#EXTM3U",
         f"#DATE:- {jiotv_json['last_updated']}",
-        f"# Written and Directed by ✨ D O C T O R - S T R A N G E ✨",
         f"# Total Channels: {jiotv_json['total_channels']}"
     ]
 

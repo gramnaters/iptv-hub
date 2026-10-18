@@ -29,7 +29,6 @@ if sys.stdout.encoding != 'utf-8':
 IST = timezone(timedelta(hours=5, minutes=30))
 
 # ----------------- Configuration -----------------
-AUTHOR_NAME = "DOCTOR STRANGE"
 OUTPUT_DIR = "data"
 OUTPUT_JSON = os.path.join(OUTPUT_DIR, "zee5.json")
 OUTPUT_M3U = os.path.join(OUTPUT_DIR, "zee5.m3u")
@@ -154,7 +153,6 @@ def build_zee5_json(channels, matches, upcoming):
     status = "Online / Live" if matches else "Offline / No Matches"
 
     result = {
-        "Author": AUTHOR_NAME,
         "name": "ZEE5 Live API",
         "last_updated": time_str,
         "app_settings": {
@@ -180,7 +178,6 @@ def build_zee5_json(channels, matches, upcoming):
 def build_zee5_m3u(zee_data):
     lines = [
         "#EXTM3U",
-        f"#Written and Directed by ✨ D O C T O R - S T R A N G E ✨",
         f"#DATE:- {zee_data['last_updated']}"
     ]
 

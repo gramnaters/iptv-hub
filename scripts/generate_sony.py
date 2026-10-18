@@ -26,8 +26,6 @@ if sys.stdout.encoding != 'utf-8':
 IST = timezone(timedelta(hours=5, minutes=30))
 
 # ----------------- Configuration -----------------
-AUTHOR_NAME = "DOCTOR STRANGE"
-TELEGRAM_LINK = "https://t.me/jitendraunatti_github"
 OUTPUT_JSON = "data/sony.json"
 OUTPUT_M3U = "data/sony.m3u"
 
@@ -125,8 +123,6 @@ def generate_sony_json(catalog_data, active_token):
     time_str = get_current_ist_str()
     
     result = {
-        "Author": AUTHOR_NAME,
-        "Telegram": TELEGRAM_LINK,
         "name": "Sony Live Matches API",
         "last_updated": time_str,
         "app_settings": {
@@ -151,9 +147,7 @@ def generate_sony_json(catalog_data, active_token):
 def generate_sony_m3u(sony_json, active_token):
     lines = [
         "#EXTM3U",
-        f"#DATE:- {sony_json['last_updated']}",
-        f"# Written and Directed by ✨ D O C T O R - S T R A N G E ✨",
-        f"# Join us on Telegram: {sony_json['Telegram']}"
+        f"#DATE:- {sony_json['last_updated']}"
     ]
 
     session_id = f"sess_{int(time.time()*1000)}"

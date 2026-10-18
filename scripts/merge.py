@@ -86,6 +86,11 @@ SOURCES = {
         "url": "https://raw.githubusercontent.com/srhady/willow-event/refs/heads/main/primevideo_sports.m3u",
         "group": "Prime Video",
         "icon": "🎥"
+    },
+    "SunNXT": {
+        "url": "https://vk-playlist.pages.dev/sun.m3u",
+        "group": "SunNXT",
+        "icon": "☀️"
     }
 }
 
@@ -96,6 +101,7 @@ CATEGORY_ORDER = [
     "Football",
     "JioHotstar",
     "SonyLIV",
+    "SunNXT",
     "FanCode",
     "Willow",
     "Prime Video",

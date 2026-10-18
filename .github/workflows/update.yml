@@ -1,0 +1,42 @@
+name: Auto Refresh 24h Playlists
+
+on:
+  schedule:
+    # Runs every 6 hours (4 times a day) to keep 24h Akamai cookies fresh
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-playlists:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          pip install requests
+
+      - name: Run Master Updater & Aggregator
+        run: |
+          python build_playlists.py
+
+      - name: Commit and Push Updated Playlists
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add playlists/
+          if git diff --staged --quiet; then
+            echo "No changes in playlists."
+          else
+            git commit -m "📡 Auto-refreshed master playlist [$(date -u +'%Y-%m-%d %H:%M:%S UTC')]"
+            git push origin main
+          fi

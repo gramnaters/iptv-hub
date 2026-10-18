@@ -1,0 +1,221 @@
+#EXTM3U
+#DATE:- 19-10-2026 00:57:25 IST
+# Source: SonyLIV
+
+#EXTINF:-1 tvg-name="SET SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_HD.png" group-title="SonyLIV",SET SD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=041a2752e99f5c6c8d4835fe221e16de:73bc7d13c8beb7aa7f798e717544e005
+https://jiotvmblive.cdn.jio.com/bpk-tv/Sony_SD_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony SAB HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonySAB.png" group-title="SonyLIV",Sony SAB HD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=f223cf2122d7510da9fcec6e523ffba1:c55848470f58d3bd934fbfe844522b0e
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonySAB_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony SAB SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_SAB.png" group-title="SonyLIV",Sony SAB SD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=ba4d9b38517552de9654d3652d27933b:31e7cbf3d289d3116386457ed8bac3a2
+https://jiotvmblive.cdn.jio.com/bpk-tv/Sony_SAB_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Max HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyMAX.png" group-title="SonyLIV",Sony Max HD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=9d2bfb4c9aa45ac488bd92ec0e351217:c980b395f0be528c4233417ef6305274
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyMAX_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony MAX1" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyMAX1.png" group-title="SonyLIV",Sony MAX1
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=7d1893ecbbef5872a37dfadbbc304bb9:dcbcecbf01a838c3336d732a40296efb
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyMAX1_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony MAX2" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyMAX2.png" group-title="SonyLIV",Sony MAX2
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=18e4c354db7c506d996698caeced99d0:bba5064a2c162761bb92a15170c88b75
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyMAX2_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Pix HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyPIX.png" group-title="SonyLIV",Sony Pix HD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=1ff1fe6b2519562ca3a28602592cd547:d43132eca3cefc4e29ca8fe548a0638b
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyPIX_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Pal" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyPAL.png" group-title="SonyLIV",Sony Pal
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=5b5b4b88f3005b0489034d25478292eb:a401861fb99d6e41c9d9e309ca9837b3
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyPAL_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Wah" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyWAH.png" group-title="SonyLIV",Sony Wah
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=336eb0b114415971a745af85368c8a7c:4dc9974ddfec2c6da275acd6d617661b
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyWAH_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Marathi SD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyMarathi.png" group-title="SonyLIV",Sony Marathi SD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=70ce79e941ac5b308f3fd8fc171fa3f7:f20bf73b9339106ce55484c1d9822cfd
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyMarathi_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Aath" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyAATH.png" group-title="SonyLIV",Sony Aath
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=ea3ad98932fd5df5ab26e5e845e4b941:86b6dd76818b8fa7a0bbd0f6113d65b0
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyAATH_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony BBC Earth HD Hindi" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyBBCEarthHin.png" group-title="SonyLIV",Sony BBC Earth HD Hindi
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0d533dd92ca057ce85910fbb98be77d5:442690c7c5852ca7c63b63d483ab6bc3
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyBBCEarthHin_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony BBC Earth HD English" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyBBCEarthEng.png" group-title="SonyLIV",Sony BBC Earth HD English
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=1552919e6aab593486923334022a0adc:5365d8f2afcfbfeccfbff08db7f671fe
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyBBCEarthEng_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony BBC Earth HD Tamil" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyBBCEarthTam.png" group-title="SonyLIV",Sony BBC Earth HD Tamil
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=08855f130a055b2bbc9e6be66fd0f612:975ee9573958379452d7952377f687ff
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyBBCEarthTam_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony BBC Earth HD Telugu" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyBBCEarthTel.png" group-title="SonyLIV",Sony BBC Earth HD Telugu
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=a27b652e1c7d5dd2b752da161317168a:6c93d6b6fca86a51db17c05ddc800710
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyBBCEarthTel_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Yay Hindi" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYHin.png" group-title="SonyLIV",Sony Yay Hindi
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=271a8e6c5d9d5696a11c474a5c18371c:d6e2ece0c28b900dc6a868991cdf2517
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYHin_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Yay Tamil" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYTam.png" group-title="SonyLIV",Sony Yay Tamil
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=e28fc2f196045ad5a74c7eee8e4973f3:41e9517d0be1f231017a04ad93a866a1
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYTam_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Yay Telugu" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYTel.png" group-title="SonyLIV",Sony Yay Telugu
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=af022a63d90353d9974d5cc15ce709e1:0db40153e9e2fc30e3949101c87d2ecb
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYTel_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Yay Kannada" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYKan.png" group-title="SonyLIV",Sony Yay Kannada
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=d14599f9e4a7524b8b136e6b445207cb:1c9ef4ef5471195b57914dc566c51e64
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYKan_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Yay Malayalam" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYMal.png" group-title="SonyLIV",Sony Yay Malayalam
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=1a968e4de13756e489eb98388b1c502c: 114073cdb115690780b616e729ff9cd1
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYMal_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Yay Bengali" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYBen.png" group-title="SonyLIV",Sony Yay Bengali
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=d47f3928511059edaf93dd22bee23d37:f6adc793045dc831d82c2ea9f999bbc9
+https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYBen_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Animax" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Animax.png" group-title="SonyLIV",Animax
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=86e244777be6557495fe10012d75fa5e:b5366f113c0947a885edff34e98db643
+https://jiotvmblive.cdn.jio.com/bpk-tv/Animax_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Sports 1 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_HD.png" group-title="SonyLIV",Sony Sports 1 HD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=3525c924e54154b39533d86b1c7a428a:8548b566fc6608a7d3bd601ee5f3d889
+https://jiotvmblive.cdn.jio.com/bpk-tv/Ten_HD_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Sports 2 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten2_HD.png" group-title="SonyLIV",Sony Sports 2 HD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=91fce77f2f8056f084ed961c7ebe86ed:8214bd5eb6c21444e8ea644824affd79
+https://jiotvmblive.cdn.jio.com/bpk-tv/Ten2_HD_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Sports 3 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten3_HD.png" group-title="SonyLIV",Sony Sports 3 HD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=111e6908b965566e97139efddf7ef459:c87903abbc052e1f21e51ebd928d9cb1
+https://jiotvmblive.cdn.jio.com/bpk-tv/Ten3_HD_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Sports 5 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Six_HD.png" group-title="SonyLIV",Sony Sports 5 HD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=8cb7b40cefe053ea91895e3194bb9912:467cf6d740b7212fcfc648644fb79943
+https://jiotvmblive.cdn.jio.com/bpk-tv/Six_HD_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Sports 1" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_1.png" group-title="SonyLIV",Sony Sports 1
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=3394be91407c5fe99d784d2f2d6d4a12:58665e1df41f9f22ed73c56384bb3f51
+https://jiotvmblive.cdn.jio.com/bpk-tv/Ten_3_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Sports 3" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten3_HD.png" group-title="SonyLIV",Sony Sports 3
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=68318f7c97c55ba6ab8d0398a88fed3e:d312fb3325b4eb9462b4a0d2b6794adf
+https://jiotvmblive.cdn.jio.com/bpk-tv/Ten_3_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Sports 5" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Six_SD.png" group-title="SonyLIV",Sony Sports 5
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=d2d8709de11d5955b60c57d3c955733e:7655200b24bf82808fb8addf2f02847b
+https://jiotvmblive.cdn.jio.com/bpk-tv/Sony_Six_SD_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Sports 4 Tamil" tvg-logo="https://img.media.jio.com/tvpimages/21/10/304240_1787558465564_l_medium.jpg" group-title="SonyLIV",Sony Sports 4 Tamil
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0df5f800775c5979ab8aeaff28ee674b:47dd1b9c8d4049760059aab27bddf1cb
+https://jiotvmblive.cdn.jio.com/bpk-tv/Ten_4_Tamil_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-name="Sony Sports 4 Telugu" tvg-logo="https://img.media.jio.com/tvpimages/69/98/301739_1758886924465_l_medium.jpg" group-title="SonyLIV",Sony Sports 4 Telugu
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=494a8a050ecc5a22adab6dc304ead1b4:9b3bbf2ccb71a876a2bbeb9cde00d7bf
+https://jiotvmblive.cdn.jio.com/bpk-tv/Ten_4_Telugu_MOB/WDVLive/index.mpd
+

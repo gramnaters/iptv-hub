@@ -38,5 +38,5 @@ jobs:
             echo "No changes in playlists."
           else
             git commit -m "📡 Auto-refreshed master playlist [$(date -u +'%Y-%m-%d %H:%M:%S UTC')]"
-            git push origin main
+            git push origin HEAD
           fi

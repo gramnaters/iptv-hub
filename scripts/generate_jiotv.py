@@ -76,53 +76,20 @@ def _expiry_hours(cookie):
 
 
 def fetch_live_cookie():
-    """Extracts the freshest active __hdnea__ cookie from the one hub we trust."""
-    print("🔑 Searching for active JioTV Akamai cookie...")
+    """Directly fetch the live __hdnea__ cookie from the endpoint."""
+    print("🔑 Fetching live JioTV cookie...")
     for url in COOKIE_ENDPOINTS:
         try:
-            r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
-            if r.status_code != 200:
-                continue
-            # 1. Regex search for the __hdnea__ parameter
-            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=[^~"\r\n]+~hmac=[a-f0-9]+)', r.text)
-            if not m:
-                # 2. Try the JSON schema
-                try:
-                    for item in r.json():
-                        c = (item or {}).get("cookie", "")
-                        if c.startswith("__hdnea__="):
-                            m = re.match(r"(__hdnea__=.*)", c.strip())
-                            break
-                except Exception:
-                    pass
-            if m:
-                cookie = m.group(1).strip()
-                left = _expiry_hours(cookie)
-                if left <= 0:
-                    print(f"  ⚠️ {url} returned an already-expired token - skipping")
-                    continue
-                print(f"  ✅ Harvested active cookie from: {url} ({left:.2f} h left)")
-                _cache_cookie(cookie, url)
-                return cookie
+            r = requests.get(url, timeout=10)
+            if r.status_code == 200:
+                data = r.json()
+                for item in data:
+                    c = (item or {}).get("cookie", "")
+                    if c.startswith("__hdnea__="):
+                        print(f"✅ Fetched cookie successfully from {url}")
+                        return c.strip()
         except Exception as e:
-            print(f"  ⚠️ Warning for {url}: {e}")
-
-    # Fallback: a locally cached token, but ONLY while it is still valid.
-    # The cron runs every 24h while a token lives ~6h, so a committed cache
-    # is always dead by the next run - never inject one blindly.
-    if os.path.exists(COOKIE_CACHE_FILE):
-        try:
-            with open(COOKIE_CACHE_FILE, "r", encoding="utf-8") as f:
-                cached = json.load(f)
-            cookie = cached.get("cookie", "")
-            left = _expiry_hours(cookie)
-            if left > 0.25:
-                print(f"  🔄 Using cached cookie from {cached.get('updated_at')} ({left:.2f} h left)")
-                return cookie
-            print(f"  ⚠️ Cached cookie is expired ({left:.2f} h) - ignoring it")
-        except Exception:
-            pass
-
+            print(f"❌ Error fetching from {url}: {e}")
     return ""
 
 def fetch_channels_catalog():

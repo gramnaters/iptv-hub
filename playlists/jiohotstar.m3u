@@ -1,6 +1,7 @@
 #EXTM3U
-#DATE:- 19-10-2026 08:43:28 IST
-# Source: JioHotstar
+#DATE:- 19-10-2026 19:35:07 IST
+# Category: jiohotstar
+# Total Channels: 146
 
 #EXTINF:-1 tvg-id="star_sports_2_hindi_hd" tvg-name="STAR SPORTS 2 Hindi HD" tvg-logo="https://i.ibb.co/YBMBDWtd/SS2HD-HINDI.jpg" group-title="JioHotstar", STAR SPORTS 2 Hindi HD
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169@Premium Plugx(Android/15)

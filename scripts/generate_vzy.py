@@ -1,25 +1,4 @@
 #!/usr/bin/env python3
-"""
-Independent VZY Playlist Generator
-
-VZY is a free, ad-supported ZEE5 white-label bundle served from
-d2o8pibksxtln6.cloudfront.net with STATIC ClearKeys. It needs:
-
-    token   -> none
-    cookie  -> none
-    headers -> none
-
-The full chain (manifest -> init -> media segment) plays bare, and the
-ClearKeys never rotate, so nothing has to be refreshed - ever.
-
-The only piece that used to come from a third party was the channel list
-itself. That list is now baked into channels/vzy_catalog.json, so this
-generator has no runtime dependency on any external API.
-
-Reads:  channels/vzy_catalog.json
-Writes: playlists/vzy.m3u
-"""
-
 import os
 import sys
 import json

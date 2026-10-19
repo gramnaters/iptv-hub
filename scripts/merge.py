@@ -1,25 +1,4 @@
 #!/usr/bin/env python3
-"""
-IPTV Auto-Updater & Master Aggregator
-Generates a comprehensive IPTV master playlist. Every category is assembled
-from the most independent source available:
-
-  - JioHotstar    -> user's own Cloudflare worker (self-minted, own cookie)
-  - VZY           -> channels/vzy_catalog.json   (static ClearKey, NO token/cookie)
-  - FanCode       -> doctor-8trange feed         (per-match hdntl token)
-  - Jio TV+       -> channels/jiotv_cookie.json  (allinonereborn minted __hdnea__)
-  - ZEE5 / SunNXT / SonyLIV / Dangal / Kids / Willow / Prime -> public feed
-
-Locally generated playlists (scripts/generate_*.py -> playlists/*.m3u) take
-precedence over the public feed for the categories they cover, so a dead
-third-party feed can no longer take a category offline.
-
-Outputs:
-  - Combined.m3u (Master playlist in root directory)
-  - playlists/Combined.m3u
-  - playlists/<source>.m3u
-"""
-
 import os
 import sys
 import re

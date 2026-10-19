@@ -1,34 +1,4 @@
 #!/usr/bin/env python3
-"""
-SonyLIV Playlist Generator — minted from the allinonereborn Sony API
-
-Catalog source (ours now, not three scraped repos):
-    https://allinonereborn2.online/sony/sliv3.json
-
-The hub exposes three Sony catalogs; only sliv3 is live:
-    sliv.json   - 22 ch, inline hdnea tokens  -> EXPIRED (exp 1766493005)
-    sliv2.json  - 22 ch, inline hdnea tokens  -> EXPIRED (exp 1771914784)
-    sliv3.json  - 22 ch, hub playlist paths   -> LIVE  (mints a fresh hdntl each fetch)
-
-sliv3 entries point at the hub's own playlist, e.g.
-    https://allinonereborn2.online/sony-new/playlists/sony_hd.m3u8
-which resolves to the real Sony CDN with a freshly minted token:
-    https://dishmt.slivcdn.com/hls/live/2011671/SETHD/hdntl=exp=..~hmac=..  /master_108.m3u8
-
-Because the playlist holds a POINTER (not a token), nothing goes stale: the hub
-mints a new ~11 h hdntl every time the playlist is fetched. The only thing that
-needs refreshing is the channel LIST, which is what this script mints.
-
-Playback notes:
-  - the hub playlist needs a Referer (403 without, 200 with any Referer) -> emitted
-    as #EXTVLCOPT:http-referrer and inside #EXTHTTP
-  - the slivcdn variant/segment URLs play bare (no token, no headers needed)
-
-Reads:  https://allinonereborn2.online/sony/sliv3.json
-Writes: playlists/sonyliv.m3u
-        channels/sony_catalog.json   (cache of the minted catalog)
-"""
-
 import os
 import sys
 import json

@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-"""
-SunNXT Live Channel Health Checker & Playlist Generator
-Features:
-  - Fetches the verified SunNXT DASH MPD manifests and ClearKeys catalog
-  - Syncs live channel names & metadata from SunNXT official API (https://pwaapi.sunnxt.com)
-  - Performs fast parallel HTTP health checks (verifying 200 OK from Akamai CDN)
-  - Generates playlists/sunnxt.m3u with verified active channels and ClearKey DRM headers
-"""
-
 import os
 import sys
 import json

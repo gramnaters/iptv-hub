@@ -1,22 +1,4 @@
 #!/usr/bin/env python3
-"""
-Independent FanCode Live Sports Playlist Generator
-
-Source (single, deliberate):
-    https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
-
-FanCode's catalogue is public, but every stream URL carries a short-lived
-`hdntl` token minted from a FanCode app session - the token is NOT derivable
-from a cookie or an algorithm. This generator therefore consumes the
-doctor-8trange feed (which already carries a freshly minted token) and
-normalises it into clean, player-safe entries:
-
-    - strips the Kodi-only  "<url>|User-Agent=..&Referer=.."  suffix
-    - re-emits those values as  #EXTVLCOPT:http-user-agent / http-referrer
-
-Writes: playlists/fancode.m3u
-"""
-
 import os
 import sys
 import re

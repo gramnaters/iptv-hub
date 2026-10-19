@@ -1,24 +1,4 @@
 #!/usr/bin/env python3
-"""
-Independent JioTV Master Playlist & Cookie Refresh Engine
-
-Cookie source (single, deliberate):
-    1. https://allinonereborn2.online/jstrweb2/cookies.json
-
-The __hdnea__ Akamai token cannot be derived from any cookie or algorithm -
-it is minted by a JioTV hub that holds a real Jio login. This script
-therefore harvests the token from ONE upstream (allinonereborn) instead of
-scraping a chain of mirrors, and caches it so an outage degrades instead of
-breaking the build.
-
-- Loads the 1,200+ JioTV channels catalog with Widevine ClearKeys
-- Injects live cookies into Kodi (#KODIPROP), VLC (#EXTVLCOPT), and HTTP headers (#EXTHTTP)
-- Outputs:
-    - playlists/jiotv.m3u
-    - channels/jiotv_catalog.json  (channel catalog cache - committed, changes slowly)
-    - channels/jiotv_cookie.json   (token cache - GIT-IGNORED, ~6 h TTL, never committed)
-"""
-
 import os
 import sys
 import re

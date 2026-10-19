@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
 """
 Independent JioTV Master Playlist & Cookie Refresh Engine
-- Fetches active __hdnea__ Akamai cookies directly across multiple live endpoints:
+
+Cookie source (single, deliberate):
     1. https://allinonereborn2.online/jstrweb2/cookies.json
-    2. https://raw.githubusercontent.com/sportlive18/Sportlink-wtf/refs/heads/main/cookie.json
-    3. https://raw.githubusercontent.com/purupc00-dev/Gmax-JioTV/refs/heads/main/Playlists/JioTV_S10.m3u
-    4. https://raw.githubusercontent.com/qwerty180506/Geo/refs/heads/main/jiotv_cf.m3u
+
+The __hdnea__ Akamai token cannot be derived from any cookie or algorithm -
+it is minted by a JioTV hub that holds a real Jio login. This script
+therefore harvests the token from ONE upstream (allinonereborn) instead of
+scraping a chain of mirrors, and caches it so an outage degrades instead of
+breaking the build.
+
 - Loads the 1,200+ JioTV channels catalog with Widevine ClearKeys
 - Injects live cookies into Kodi (#KODIPROP), VLC (#EXTVLCOPT), and HTTP headers (#EXTHTTP)
 - Outputs:
     - playlists/jiotv.m3u
-    - scripts/jiotv_cookie.json
+    - channels/jiotv_cookie.json   (token cache)
+    - channels/jiotv_catalog.json  (channel catalog cache)
 """
 
 import os
@@ -32,14 +38,12 @@ IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "jiotv.m3u")
-COOKIE_CACHE_FILE = os.path.join(ROOT_DIR, "scripts", "jiotv_cookie.json")
+CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "channels", "jiotv_catalog.json")
+COOKIE_CACHE_FILE = os.path.join(ROOT_DIR, "channels", "jiotv_cookie.json")
 
-# Primary live cookie sources
+# Cookie source: allinonereborn (the hub that mints the __hdnea__ token)
 COOKIE_ENDPOINTS = [
     "https://allinonereborn2.online/jstrweb2/cookies.json",
-    "https://raw.githubusercontent.com/sportlive18/Sportlink-wtf/refs/heads/main/cookie.json",
-    "https://raw.githubusercontent.com/purupc00-dev/Gmax-JioTV/refs/heads/main/Playlists/JioTV_S10.m3u",
-    "https://raw.githubusercontent.com/qwerty180506/Geo/refs/heads/main/jiotv_cf.m3u"
 ]
 
 # Channels catalog sources
@@ -115,9 +119,22 @@ def fetch_channels_catalog():
             data = r.json()
             if isinstance(data, list) and len(data) > 0:
                 print(f"  ✅ Loaded {len(data)} channels from catalog")
+                os.makedirs(os.path.dirname(CATALOG_CACHE_FILE), exist_ok=True)
+                with open(CATALOG_CACHE_FILE, "w", encoding="utf-8") as f:
+                    json.dump(data, f, ensure_ascii=False)
                 return data
         except Exception as e:
             print(f"  ⚠️ Error loading {src}: {e}")
+
+    # Fallback to the baked catalog cache
+    if os.path.exists(CATALOG_CACHE_FILE):
+        try:
+            with open(CATALOG_CACHE_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            print(f"  🔄 Using cached channel catalog ({len(data)} channels)")
+            return data
+        except Exception:
+            pass
     return []
 
 def extract_drm_keys(channel):

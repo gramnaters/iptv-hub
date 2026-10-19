@@ -22,7 +22,7 @@ if sys.stdout.encoding != 'utf-8':
 IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CATALOG_FILE = os.path.join(ROOT_DIR, "scripts", "zee5_catalog.json")
+CATALOG_FILE = os.path.join(ROOT_DIR, "channels", "zee5_catalog.json")
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "zee5.m3u")
 
 def generate_zee5_playlist():

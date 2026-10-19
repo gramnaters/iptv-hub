@@ -1,9 +1,15 @@
-name: Auto Refresh 24h Playlists
+name: Auto Refresh Playlists
 
 on:
   schedule:
-    # Runs once every 24 hours at 00:00 UTC (05:30 AM IST)
-    - cron: '0 0 * * *'
+    # Every 5 hours. WHY 5h: JioTV's __hdnea__ token and the JioHotstar
+    # hdntl token both expire ~6h after they are minted, and the token is
+    # baked into the playlist. A 24h cron left ~1300 of 1600 channels
+    # holding a dead token for most of the day; 5h keeps the gap in the
+    # day (the 20:00 -> 00:00 UTC step is 4h) safely inside the 6h life.
+    # SonyLIV / VZY / FanCode don't depend on this cadence (pointers or
+    # no expiry), they simply refresh along.
+    - cron: '0 */5 * * *'
   workflow_dispatch:
 
 permissions:

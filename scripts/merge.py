@@ -170,6 +170,7 @@ def load_local_playlist(path, min_channels=1):
         return []
     return [clean_watermarks_from_block(b) for b in blocks]
 
+
 def main():
     print("=" * 60)
     print(f"🚀 Master IPTV Auto-Updater starting at {get_current_ist()}")
@@ -208,6 +209,9 @@ def main():
     # 2. Independent local sources (channels/*.json -> playlists/*.m3u)
     # -------------------------------------------------------------
     skip_from_plug = {"jiohotstar"}   # exact group names to take from local instead
+    # ZEE5 India is dropped on purpose: its streams hang (measured 31/33 dead),
+    # while ZEE5 Worldwide plays. Keep only the working half off the public feed.
+    skip_from_plug.add("zee5 india")
     skip_jiotv_from_plug = False      # "Jio TV+ *" groups
 
     print("\n🔒 Loading independent local sources...")
@@ -257,7 +261,7 @@ def main():
         cleaned_b = clean_watermarks_from_block(b)
         all_channels_by_group.setdefault(grp, []).append(cleaned_b)
     if skipped_groups:
-        print(f"⏭️  Skipped {len(skipped_groups)} public-feed group(s) covered locally: {', '.join(sorted(skipped_groups))}")
+        print(f"⏭️  Skipped {len(skipped_groups)} public-feed group(s) (local copy wins or category disabled): {', '.join(sorted(skipped_groups))}")
 
     # -------------------------------------------------------------
     # 3. Add Extra Feeds (Willow, Prime Video)
@@ -294,7 +298,7 @@ def main():
         "willow": ["Willow"],
         "prime": ["Prime Video"],
         "sunnxt": ["SunNXT"],
-        "zee5": ["ZEE5 India", "ZEE5 Worldwide"],
+        "zee5": ["ZEE5 Worldwide"],
         "dangal": ["Dangal Play"],
         "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ"],
     }
@@ -329,7 +333,6 @@ def main():
         "Prime Video",
         "SunNXT",
         "VZY",
-        "ZEE5 India",
         "ZEE5 Worldwide",
         "Dangal Play",
         "24/7 kids+Goldmines pack",

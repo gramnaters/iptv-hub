@@ -1,7 +1,7 @@
 #EXTM3U
-#DATE:- 19-10-2026 19:35:07 IST
+#DATE:- 20-10-2026 01:11:07 IST
 # Category: sonyliv
-# Total Channels: 26
+# Total Channels: 22
 
 #EXTINF:-1 tvg-id="sony-hd" tvg-name="SET HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Sony_HD.png" tvg-category="Entertainment" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SET HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
@@ -90,16 +90,4 @@ https://sliv.tgaadi.workers.dev/ten4hd.m3u8
 #EXTINF:-1 tvg-id="sony-ten-5-hd" tvg-name="Sony Sports Ten 5 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Six_HD.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 5 HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
 https://sliv.tgaadi.workers.dev/sonysixhd.m3u8
-
-#EXTINF:-1 tvg-name="Punjab FC vs Mumbai City FC - 19 Oct 2026 [ENG] - MG Indian Super League 2026-27" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026609/1792269685499510_ISL26_PunjabFC_vs_MumbaiCityFC_live_landscape_thumb.jpg" tvg-category="Other" group-title="Sonyliv events" group-logo="https://www.google.com/s2/favicons?domain=sonyliv.com&sz=128", Punjab FC vs Mumbai City FC - 19 Oct 2026 [ENG] - MG Indian Super League 2026-27
-https://sonydaimenew.akamaized.net/hls/live/2120300/Footlive1910/ENG/std_lrh-800300010.m3u8?hdnea=exp=1792461422~acl=/*~id=71076701025865226626204529564732~hmac=d6e1f0da1b380422313bbfc4cd1130a044538dad55d6d31ebaca880de272d0df
-
-#EXTINF:-1 tvg-name="Punjab FC vs Mumbai City FC - 19 Oct 2026 [HIN] - MG Indian Super League 2026-27" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026609/1792269685499510_ISL26_PunjabFC_vs_MumbaiCityFC_live_landscape_thumb.jpg" tvg-category="Other" group-title="Sonyliv events" group-logo="https://www.google.com/s2/favicons?domain=sonyliv.com&sz=128", Punjab FC vs Mumbai City FC - 19 Oct 2026 [HIN] - MG Indian Super League 2026-27
-https://sonydaimenew.akamaized.net/hls/live/2120302/Footlive1910/HIN/std_lrh-800300010.m3u8?hdnea=exp=1792461422~acl=/*~id=71076701025865226626204529564732~hmac=d6e1f0da1b380422313bbfc4cd1130a044538dad55d6d31ebaca880de272d0df
-
-#EXTINF:-1 tvg-name="Ayodhya Garjan vs Delhi Dynamites - Semi Final 1 - 19 Oct 2026 [ENG] - Volleyball Champions League 2026" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026663/179234677352525_VCL26_SF_Ayodhya_Garjan_vs_Delhi_Dynamites_landscape_thumb.jpg" tvg-category="Other" group-title="Sonyliv events" group-logo="https://www.google.com/s2/favicons?domain=sonyliv.com&sz=128", Ayodhya Garjan vs Delhi Dynamites - Semi Final 1 - 19 Oct 2026 [ENG] - Volleyball Champions League 2026
-https://sonydaimenew.akamaized.net/hls/live/mpchgp431f/mpche169/cricodi21910-eng-1-ts-hls/std-lrh-800300010.m3u8?hdnea=exp=1792461422~acl=/*~id=71076701025865226626204529564732~hmac=d6e1f0da1b380422313bbfc4cd1130a044538dad55d6d31ebaca880de272d0df
-
-#EXTINF:-1 tvg-name="Ayodhya Garjan vs Delhi Dynamites - Semi Final 1 - 19 Oct 2026 [HIN] - Volleyball Champions League 2026" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026663/179234677352525_VCL26_SF_Ayodhya_Garjan_vs_Delhi_Dynamites_landscape_thumb.jpg" tvg-category="Other" group-title="Sonyliv events" group-logo="https://www.google.com/s2/favicons?domain=sonyliv.com&sz=128", Ayodhya Garjan vs Delhi Dynamites - Semi Final 1 - 19 Oct 2026 [HIN] - Volleyball Champions League 2026
-https://sonydaimenew.akamaized.net/hls/live/mpchgp431f/mpch8872/cricodi21910-hin-1-ts-hls/std-lrh-800300010.m3u8?hdnea=exp=1792461422~acl=/*~id=71076701025865226626204529564732~hmac=d6e1f0da1b380422313bbfc4cd1130a044538dad55d6d31ebaca880de272d0df
 

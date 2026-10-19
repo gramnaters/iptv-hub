@@ -1,10 +1,23 @@
 #!/usr/bin/env python3
 """
-Independent ZEE5 Playlist Generator
-Generates full ZEE5 catalog (India & Worldwide: 145+ channels).
-- ZEE5 India: Direct DASH MPD streams with ClearKeys
-- ZEE5 Worldwide: International HLS feeds
-Independent of external playlist down-times.
+Independent VZY Playlist Generator
+
+VZY is a free, ad-supported ZEE5 white-label bundle served from
+d2o8pibksxtln6.cloudfront.net with STATIC ClearKeys. It needs:
+
+    token   -> none
+    cookie  -> none
+    headers -> none
+
+The full chain (manifest -> init -> media segment) plays bare, and the
+ClearKeys never rotate, so nothing has to be refreshed - ever.
+
+The only piece that used to come from a third party was the channel list
+itself. That list is now baked into channels/vzy_catalog.json, so this
+generator has no runtime dependency on any external API.
+
+Reads:  channels/vzy_catalog.json
+Writes: playlists/vzy.m3u
 """
 
 import os
@@ -22,11 +35,15 @@ if sys.stdout.encoding != 'utf-8':
 IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CATALOG_FILE = os.path.join(ROOT_DIR, "scripts", "zee5_catalog.json")
-OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "zee5.m3u")
+CATALOG_FILE = os.path.join(ROOT_DIR, "channels", "vzy_catalog.json")
+OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "vzy.m3u")
 
-def generate_zee5_playlist():
+GROUP_LOGO = "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0"
+
+
+def generate_vzy_playlist():
     now_ist = datetime.now(IST).strftime("%d-%m-%Y %H:%M:%S IST")
+
     if not os.path.exists(CATALOG_FILE):
         print(f"❌ Catalog file {CATALOG_FILE} not found!")
         return
@@ -37,8 +54,9 @@ def generate_zee5_playlist():
     lines = [
         "#EXTM3U",
         f"#DATE:- {now_ist}",
-        f"# Category: zee5",
+        "# Category: vzy",
         f"# Total Channels: {len(channels)}",
+        "# Source: channels/vzy_catalog.json (baked, no token, no cookie)",
         ""
     ]
 
@@ -46,7 +64,7 @@ def generate_zee5_playlist():
         cid = ch.get("id", "")
         name = ch.get("name", "")
         logo = ch.get("logo", "")
-        group = ch.get("group", "ZEE5")
+        genre = ch.get("group", "VZY")
         key = ch.get("key")
         url = ch.get("url", "")
 
@@ -54,15 +72,17 @@ def generate_zee5_playlist():
         type_tag = ' type="dash"' if is_dash else ''
 
         lines.append(
-            f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" group-title="{group}"'
-            f' group-logo="https://yt3.googleusercontent.com/lyA_tGOMIiCHSVvdjC8ExJE3BsXMjyjipa1vL5g736p7Gu1mAkTDqLbMttOYMVdgvEs0NYEtZw=s900-c-k-c0x00ffffff-no-rj"{type_tag},{name}'
+            f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" '
+            f'tvg-category="{genre}" group-title="VZY" group-logo="{GROUP_LOGO}"{type_tag},{name}'
         )
+
         if is_dash:
             lines.append("#KODIPROP:inputstream=inputstream.adaptive")
             lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
             if key:
                 lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
                 lines.append(f"#KODIPROP:inputstream.adaptive.license_key={key}")
+
         lines.append(url)
         lines.append("")
 
@@ -70,7 +90,11 @@ def generate_zee5_playlist():
     os.makedirs(os.path.dirname(OUTPUT_M3U), exist_ok=True)
     with open(OUTPUT_M3U, "w", encoding="utf-8") as f:
         f.write(content)
-    print(f"✅ Generated {OUTPUT_M3U} ({len(channels)} ZEE5 channels)")
+
+    dash = sum(1 for c in channels if c.get("url", "").lower().endswith(".mpd"))
+    print(f"✅ Generated {OUTPUT_M3U} ({len(channels)} VZY channels)")
+    print(f"   DASH+ClearKey {dash} | FTA HLS {len(channels) - dash} | no token, no cookie")
+
 
 if __name__ == "__main__":
-    generate_zee5_playlist()
+    generate_vzy_playlist()

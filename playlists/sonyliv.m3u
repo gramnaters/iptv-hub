@@ -1,93 +1,137 @@
 #EXTM3U
-#DATE:- 20-10-2026 01:11:07 IST
+#DATE:- 20-10-2026 00:36:21 IST
 # Category: sonyliv
 # Total Channels: 22
+# Source: https://allinonereborn2.online/sony/sliv3.json (allinonereborn mints the hdntl token)
 
-#EXTINF:-1 tvg-id="sony-hd" tvg-name="SET HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Sony_HD.png" tvg-category="Entertainment" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SET HD
+#EXTINF:-1 tvg-id="sony-hd" tvg-name="SONY HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_HD.png" tvg-category="Entertainment" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sethd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_hd.m3u8
 
-#EXTINF:-1 tvg-id="sony-sab-hd" tvg-name="Sony SAB HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonySAB.png" tvg-category="Entertainment" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony SAB HD
+#EXTINF:-1 tvg-id="sab-hd" tvg-name="SAB HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_SAB_HD.png" tvg-category="Entertainment" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SAB HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sabhd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sab_hd.m3u8
 
-#EXTINF:-1 tvg-id="sony-marathi" tvg-name="Sony Marathi" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyMarathi.png" tvg-category="Entertainment" tvg-language="Marathi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Marathi
+#EXTINF:-1 tvg-id="sony-marathi" tvg-name="SONY MARATHI" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Marathi_SD.png" tvg-category="Entertainment" tvg-language="Marathi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY MARATHI
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sonymarathi.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_marathi.m3u8
 
-#EXTINF:-1 tvg-id="sony-pal" tvg-name="Sony Pal" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyPAL.png" tvg-category="Entertainment" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Pal
+#EXTINF:-1 tvg-id="sony-pal" tvg-name="SONY PAL" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Pal.png" tvg-category="Movies" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY PAL
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sonypalsd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_pal.m3u8
 
-#EXTINF:-1 tvg-id="sony-aath" tvg-name="Sony Aath" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyAATH.png" tvg-category="Entertainment" tvg-language="Bengali" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Aath
+#EXTINF:-1 tvg-id="sony-aath" tvg-name="SONY AATH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_aath.png" tvg-category="Entertainment" tvg-language="Bengali" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY AATH
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sonyaathsd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_aath.m3u8
 
-#EXTINF:-1 tvg-id="sony-yay" tvg-name="Sony Yay" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYHin.png" tvg-category="Kids" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Yay
+#EXTINF:-1 tvg-id="sony-yay" tvg-name="SONY YAY" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Yay_Hindi.png" tvg-category="Kids" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY YAY
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sonyyaysd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_yay.m3u8
 
-#EXTINF:-1 tvg-id="sony-max-hd" tvg-name="Sony MAX HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyMAX.png" tvg-category="Movies" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony MAX HD
+#EXTINF:-1 tvg-id="sony-max-hd" tvg-name="SONY MAX HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Max_HD.png" tvg-category="Movies" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY MAX HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sonymaxhd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_max_hd.m3u8
 
-#EXTINF:-1 tvg-id="sony-max" tvg-name="Sony MAX" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Sony_Max_SD.png" tvg-category="Movies" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony MAX
+#EXTINF:-1 tvg-id="sony-max" tvg-name="SONY MAX" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Max_SD.png" tvg-category="Movies" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY MAX
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sonymaxsd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_max.m3u8
 
-#EXTINF:-1 tvg-id="sony-max-2" tvg-name="Sony MAX 2" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyMAX2.png" tvg-category="Movies" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony MAX 2
+#EXTINF:-1 tvg-id="sony-wah" tvg-name="SONY WAH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Wah.png" tvg-category="Movies" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY WAH
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/max2.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_wah.m3u8
 
-#EXTINF:-1 tvg-id="sony-wah" tvg-name="Sony WAH" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyWAH.png" tvg-category="Movies" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony WAH
+#EXTINF:-1 tvg-id="sony-max2" tvg-name="SONY MAX2" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_MAX2.png" tvg-category="Movies" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY MAX2
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sonywah.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_max2.m3u8
 
-#EXTINF:-1 tvg-id="sony-pix-hd" tvg-name="Sony PIX HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyPIX.png" tvg-category="Movies" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony PIX HD
+#EXTINF:-1 tvg-id="sony-pix-hd" tvg-name="SONY PIX HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Pix_HD.png" tvg-category="Movies" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY PIX HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/pixhd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_pix_hd.m3u8
 
-#EXTINF:-1 tvg-id="sony-bbc-earth" tvg-name="Sony BBC Earth HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SonyBBCEarthEng.png" tvg-category="Infotainment" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony BBC Earth HD
+#EXTINF:-1 tvg-id="sony-ten-1-hd" tvg-name="SONY TEN 1 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_HD.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 1 HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sonybbcearthhd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_ten1_hd.m3u8
 
-#EXTINF:-1 tvg-id="sony-ten-1" tvg-name="Sony Sports Ten 1" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_1.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 1
+#EXTINF:-1 tvg-id="sony-ten-1" tvg-name="SONY TEN 1" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_1.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 1
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/ten1sd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_ten1.m3u8
 
-#EXTINF:-1 tvg-id="sony-ten-2" tvg-name="Sony Sports Ten 2" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_2.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 2
+#EXTINF:-1 tvg-id="sony-ten-2-hd" tvg-name="SONY TEN 2 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten2_HD.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 2 HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/ten2sd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_ten2_hd.m3u8
 
-#EXTINF:-1 tvg-id="sony-ten-3" tvg-name="Sony Sports Ten 3" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_3.png" tvg-category="Sports" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 3
+#EXTINF:-1 tvg-id="sony-ten-2" tvg-name="SONY TEN 2" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten2_HD.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 2
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/ten3sd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_ten2.m3u8
 
-#EXTINF:-1 tvg-id="sony-ten-4" tvg-name="Sony Sports Ten 4" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Ten_4_Tamil.png" tvg-category="Sports" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 4
+#EXTINF:-1 tvg-id="sony-ten-3-hd" tvg-name="SONY TEN 3 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten3_HD.png" tvg-category="Sports" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 3 HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/ten4sd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_ten3_hd.m3u8
 
-#EXTINF:-1 tvg-id="sony-ten-5" tvg-name="Sony Sports Ten 5" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Six_SD.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 5
+#EXTINF:-1 tvg-id="sony-ten-3" tvg-name="SONY TEN 3" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten3_HD.png" tvg-category="Sports" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 3
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sonysixsd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_ten3.m3u8
 
-#EXTINF:-1 tvg-id="sony-ten-1-hd" tvg-name="Sony Sports Ten 1 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_HD.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 1 HD
+#EXTINF:-1 tvg-id="sony-ten-4-hd" tvg-name="SONY TEN 4 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_4_HD_Telugu.png" tvg-category="Sports" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 4 HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/ten1hd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_ten4_hd.m3u8
 
-#EXTINF:-1 tvg-id="sony-ten-2-hd" tvg-name="Sony Sports Ten 2 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten2_HD.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 2 HD
+#EXTINF:-1 tvg-id="sony-ten-4" tvg-name="SONY TEN 4" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_4_Telugu.png" tvg-category="Sports" tvg-language="Telugu" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 4
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/ten2hd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_ten4.m3u8
 
-#EXTINF:-1 tvg-id="sony-ten-3-hd" tvg-name="Sony Sports Ten 3 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten3_HD.png" tvg-category="Sports" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 3 HD
+#EXTINF:-1 tvg-id="sony-ten-5-hd" tvg-name="SONY TEN 5 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Six_HD.png" tvg-category="Sports" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 5 HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/ten3hd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_ten5_hd.m3u8
 
-#EXTINF:-1 tvg-id="sony-ten-4-hd" tvg-name="Sony Sports Ten 4 HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Ten_4_Tamil.png" tvg-category="Sports" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 4 HD
+#EXTINF:-1 tvg-id="sony-ten-5" tvg-name="SONY TEN 5" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Six_HD.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 5
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/ten4hd.m3u8
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/sony_ten5.m3u8
 
-#EXTINF:-1 tvg-id="sony-ten-5-hd" tvg-name="Sony Sports Ten 5 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Six_HD.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 5 HD
+#EXTINF:-1 tvg-id="bbc-earth" tvg-name="BBC EARTH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_BBC_Earth_HD.png" tvg-category="Infotainment" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",BBC EARTH
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://sliv.tgaadi.workers.dev/sonysixhd.m3u8
-
+#EXTVLCOPT:http-referrer=https://allinonereborn2.online/
+#EXTHTTP:{"User-Agent": "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7", "Referer": "https://allinonereborn2.online/", "Origin": "https://allinonereborn2.online"}
+https://allinonereborn2.online/sony-new/playlists/bbc_earth.m3u8

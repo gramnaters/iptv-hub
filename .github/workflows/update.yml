@@ -1,9 +1,15 @@
-name: Auto Refresh 24h Playlists
+name: Auto Refresh Playlists
 
 on:
   schedule:
-    # Runs once every 24 hours at 00:00 UTC (05:30 AM IST)
-    - cron: '0 0 * * *'
+    # Every 5 hours. WHY 5h: JioTV's __hdnea__ token and the JioHotstar
+    # hdntl token both expire ~6h after they are minted, and the token is
+    # baked into the playlist. A 24h cron left ~1300 of 1600 channels
+    # holding a dead token for most of the day; 5h keeps the gap in the
+    # day (the 20:00 -> 00:00 UTC step is 4h) safely inside the 6h life.
+    # SonyLIV / VZY / FanCode don't depend on this cadence (pointers or
+    # no expiry), they simply refresh along.
+    - cron: '0 */5 * * *'
   workflow_dispatch:
 
 permissions:
@@ -25,6 +31,16 @@ jobs:
         run: |
           pip install requests
 
+      - name: Generate independent source playlists
+        run: |
+          # Each of these writes its own playlists/<name>.m3u from
+          # channels/<name>_*.json and is consumed by merge.py.
+          # Failures are non-fatal: merge.py falls back to the public feed.
+          python scripts/generate_jiotv.py || echo "::warning::jiotv generator failed"
+          python scripts/generate_vzy.py   || echo "::warning::vzy generator failed"
+          python scripts/generate_fancode.py || echo "::warning::fancode generator failed"
+          python scripts/generate_sony.py  || echo "::warning::sony generator failed"
+
       - name: Run Master Updater & Aggregator
         run: |
           python scripts/merge.py
@@ -33,7 +49,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add Combined.m3u playlists/
+          git add Combined.m3u playlists/ channels/
           if git diff --staged --quiet; then
             echo "No changes in playlists."
           else

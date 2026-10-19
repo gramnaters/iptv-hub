@@ -1,0 +1,17 @@
+# Runtime token caches - never commit.
+# The JioTV __hdnea__ token lives ~6 h while the workflow runs every 24 h,
+# so a committed copy would always be stale (and it is a credential).
+channels/jiotv_cookie.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+desktop.ini

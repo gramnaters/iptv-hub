@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
 """
 IPTV Auto-Updater & Master Aggregator
-Generates comprehensive IPTV master playlist matching and exceeding PremiumPlug/sportslink:
-  - JioHotstar (User's Independent Worker - https://jhs.gramnaters.workers.dev/)
-  - Jio TV+ Categories (News, Entertainment, Devotional, Movies, Kids, Music, Sports, Education, Infotainment, Lifestyle, Specials, Shopping, etc.)
-  - ZEE5 Worldwide (112 channels)
-  - ZEE5 India (33 channels)
-  - 24/7 kids + Goldmines pack (14 channels)
-  - WOW KIDZ (3 channels)
-  - Dangal Play (4 channels)
-  - VZY (48 channels)
-  - FanCode (Live & Upcoming Sports)
-  - SonyLIV / Sonyliv events
-  - SunNXT (33 channels)
-  - Willow (Cricket)
-  - Prime Video (Sports)
+Generates a comprehensive IPTV master playlist. Every category is assembled
+from the most independent source available:
+
+  - JioHotstar    -> user's own Cloudflare worker (self-minted, own cookie)
+  - VZY           -> channels/vzy_catalog.json   (static ClearKey, NO token/cookie)
+  - FanCode       -> doctor-8trange feed         (per-match hdntl token)
+  - Jio TV+       -> channels/jiotv_cookie.json  (allinonereborn minted __hdnea__)
+  - ZEE5 / SunNXT / SonyLIV / Dangal / Kids / Willow / Prime -> public feed
+
+Locally generated playlists (scripts/generate_*.py -> playlists/*.m3u) take
+precedence over the public feed for the categories they cover, so a dead
+third-party feed can no longer take a category offline.
 
 Outputs:
   - Combined.m3u (Master playlist in root directory)
@@ -41,6 +39,7 @@ IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PLAYLISTS_DIR = os.path.join(ROOT_DIR, "playlists")
+CHANNELS_DIR = os.path.join(ROOT_DIR, "channels")
 COMBINED_M3U = os.path.join(ROOT_DIR, "Combined.m3u")
 EPG_URL = "https://avkb.short.gy/jioepg.xml.gz"
 
@@ -52,6 +51,42 @@ USER_JIOHOTSTAR_URL = "https://jhs.gramnaters.workers.dev/"
 # Upstream public feeds
 PUBLIC_PLUG_API = "https://plugxvipplaylist.lovable.app/api/playlist"
 LOCAL_PLUG_BACKUP = os.path.join(os.path.dirname(ROOT_DIR), "premiumplug_full.m3u")
+
+# Independent local sources: scripts/generate_*.py -> playlists/*.m3u
+# When one of these loads, its group is skipped in the public feed so the
+# independent copy wins and there are no duplicates.
+LOCAL_OVERRIDES = [
+    {
+        "name": "VZY",
+        "file": os.path.join(PLAYLISTS_DIR, "vzy.m3u"),
+        "min_channels": 10,
+        "plug_groups": ["VZY"],
+        "group": "VZY",
+    },
+    {
+        "name": "FanCode",
+        "file": os.path.join(PLAYLISTS_DIR, "fancode.m3u"),
+        "min_channels": 1,
+        "plug_groups": ["FanCode"],
+        "group": "FanCode",
+    },
+    {
+        "name": "SonyLIV (own catalog)",
+        "file": os.path.join(PLAYLISTS_DIR, "sonyliv.m3u"),
+        "min_channels": 5,
+        "plug_groups": ["Sony LIV", "Sonyliv events"],
+        "group": None,  # keep the group-title carried by the file itself
+    },
+    {
+        "name": "JioTV (allinonereborn cookie)",
+        "file": os.path.join(PLAYLISTS_DIR, "jiotv.m3u"),
+        "min_channels": 100,
+        "plug_groups": None,  # None => skip every group starting with "Jio TV+"
+        "group": None,
+    },
+]
+
+JIOTV_GROUP_PREFIX = "Jio TV+"
 
 EXTRA_FEEDS = {
     "Willow": {
@@ -119,6 +154,23 @@ def get_block_group(block):
                 return m.group(1).strip()
     return "Other"
 
+def load_local_playlist(path, min_channels=1):
+    """Load blocks from a locally generated playlist (scripts/generate_*.py -> playlists/*.m3u)."""
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            text = f.read()
+    except Exception as e:
+        print(f"⚠️ Could not read {path}: {e}")
+        return []
+    blocks = extract_channel_blocks(text)
+    if len(blocks) < min_channels:
+        print(f"⚠️ {os.path.basename(path)} has only {len(blocks)} channels (needs >= {min_channels}), ignoring")
+        return []
+    return [clean_watermarks_from_block(b) for b in blocks]
+
+
 def main():
     print("=" * 60)
     print(f"🚀 Master IPTV Auto-Updater starting at {get_current_ist()}")
@@ -154,7 +206,35 @@ def main():
         all_channels_by_group["JioHotstar"] = jhs_blocks
 
     # -------------------------------------------------------------
-    # 2. Fetch Public Feeds (ZEE5, FanCode, VZY, SunNXT, Kids, Dangal, Jio TV+ Packs)
+    # 2. Independent local sources (channels/*.json -> playlists/*.m3u)
+    # -------------------------------------------------------------
+    skip_from_plug = {"jiohotstar"}   # exact group names to take from local instead
+    # ZEE5 India is dropped on purpose: its streams hang (measured 31/33 dead),
+    # while ZEE5 Worldwide plays. Keep only the working half off the public feed.
+    skip_from_plug.add("zee5 india")
+    skip_jiotv_from_plug = False      # "Jio TV+ *" groups
+
+    print("\n🔒 Loading independent local sources...")
+    for src in LOCAL_OVERRIDES:
+        blocks = load_local_playlist(src["file"], src["min_channels"])
+        if not blocks:
+            print(f"⚠️ {src['name']}: local playlist unavailable -> falling back to public feed")
+            continue
+        if src["group"]:
+            all_channels_by_group.setdefault(src["group"], []).extend(blocks)
+        else:
+            # e.g. JioTV: keep each "JioTV - <category>" group intact
+            for b in blocks:
+                all_channels_by_group.setdefault(get_block_group(b), []).append(b)
+        if src["plug_groups"] is None:
+            skip_jiotv_from_plug = True
+        else:
+            for g in src["plug_groups"]:
+                skip_from_plug.add(g.lower())
+        print(f"✅ {src['name']}: {len(blocks)} channels loaded from {os.path.basename(src['file'])}")
+
+    # -------------------------------------------------------------
+    # 3. Fetch Public Feeds (ZEE5, SunNXT, Dangal, Kids, SonyLIV, ...)
     # -------------------------------------------------------------
     print(f"\n📡 Fetching comprehensive catalog from {PUBLIC_PLUG_API}...")
     plug_text = fetch_content(PUBLIC_PLUG_API)
@@ -166,14 +246,22 @@ def main():
     plug_blocks = extract_channel_blocks(plug_text) if plug_text else []
     print(f"✅ Loaded {len(plug_blocks)} total public channel items")
 
-    # Accumulate non-JioHotstar channels from the public catalog
+    # Accumulate public-feed channels, skipping any category we already have
+    # from an independent local source (no duplicates).
+    skipped_groups = set()
     for b in plug_blocks:
         grp = get_block_group(b)
-        # Skip JioHotstar from public feed because user has their own independent worker!
-        if grp.lower() == "jiohotstar":
+        gl = grp.lower()
+        if gl in skip_from_plug:
+            skipped_groups.add(grp)
+            continue
+        if skip_jiotv_from_plug and grp.startswith(JIOTV_GROUP_PREFIX):
+            skipped_groups.add(grp)
             continue
         cleaned_b = clean_watermarks_from_block(b)
         all_channels_by_group.setdefault(grp, []).append(cleaned_b)
+    if skipped_groups:
+        print(f"⏭️  Skipped {len(skipped_groups)} public-feed group(s) (local copy wins or category disabled): {', '.join(sorted(skipped_groups))}")
 
     # -------------------------------------------------------------
     # 3. Add Extra Feeds (Willow, Prime Video)
@@ -201,19 +289,18 @@ def main():
     # -------------------------------------------------------------
     # 4. Save Individual Category/Service M3U Files in playlists/
     # -------------------------------------------------------------
-    # Mapping for clean individual playlists
+    # Mapping for clean individual playlists.
+    # NOTE: vzy / fancode / jiotv are deliberately absent - those files are
+    # produced by their own independent generators (scripts/generate_*.py)
+    # and must not be overwritten here.
     individual_categories = {
         "jiohotstar": ["JioHotstar"],
-        "fancode": ["FanCode"],
-        "vzy": ["VZY"],
         "willow": ["Willow"],
         "prime": ["Prime Video"],
-        "sonyliv": ["Sony LIV", "Sonyliv events"],
         "sunnxt": ["SunNXT"],
-        "zee5": ["ZEE5 India", "ZEE5 Worldwide"],
+        "zee5": ["ZEE5 Worldwide"],
         "dangal": ["Dangal Play"],
-        "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ", "Jio TV+ | Kids"],
-        "jiotv": [g for g in all_channels_by_group.keys() if g.startswith("Jio TV+")]
+        "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ"],
     }
 
     print("\n💾 Writing individual playlists to playlists/...")
@@ -246,7 +333,6 @@ def main():
         "Prime Video",
         "SunNXT",
         "VZY",
-        "ZEE5 India",
         "ZEE5 Worldwide",
         "Dangal Play",
         "24/7 kids+Goldmines pack",
@@ -264,7 +350,35 @@ def main():
         "Jio TV+ | Business",
         "Jio TV+ | Specials",
         "Jio TV+ | Shopping",
-        "Jio TV+ | Other"
+        "Jio TV+ | Other",
+        # Independent JioTV (channels/jiotv_cookie.json -> playlists/jiotv.m3u)
+        "JioTV - Sports",
+        "JioTV - News",
+        "JioTV - English",
+        "JioTV - Tamil",
+        "JioTV - Telugu",
+        "JioTV - Kannada",
+        "JioTV - Malayalam",
+        "JioTV - Bengali",
+        "JioTV - Marathi",
+        "JioTV - Gujarati",
+        "JioTV - Punjabi",
+        "JioTV - Odia",
+        "JioTV - Assamese",
+        "JioTV - Urdu",
+        "JioTV - Bhojpuri",
+        "JioTV - Nepali",
+        "JioTV - French",
+        "JioTV - Entertainment",
+        "JioTV - Movies",
+        "JioTV - Kids",
+        "JioTV - Music",
+        "JioTV - Devotional",
+        "JioTV - Infotainment",
+        "JioTV - Lifestyle",
+        "JioTV - Educational",
+        "JioTV - Business News",
+        "JioTV - Unknown"
     ]
 
     # Include any groups that may not be explicitly listed

@@ -1,22 +1,40 @@
 #!/usr/bin/env python3
 """
-Full SonyLIV Playlist & JSON Generator
-Reconstructs data/sony.json and data/sony.m3u matching doctor-8trange/zyphora schema.
+SonyLIV Playlist Generator — minted from the allinonereborn Sony API
 
-Features:
-- Fetches live events / channels & upcoming matches
-- Uses SonyLIV / Akamai auth token parameters
-- Outputs valid sony.json and playable sony.m3u
+Catalog source (ours now, not three scraped repos):
+    https://allinonereborn2.online/sony/sliv3.json
+
+The hub exposes three Sony catalogs; only sliv3 is live:
+    sliv.json   - 22 ch, inline hdnea tokens  -> EXPIRED (exp 1766493005)
+    sliv2.json  - 22 ch, inline hdnea tokens  -> EXPIRED (exp 1771914784)
+    sliv3.json  - 22 ch, hub playlist paths   -> LIVE  (mints a fresh hdntl each fetch)
+
+sliv3 entries point at the hub's own playlist, e.g.
+    https://allinonereborn2.online/sony-new/playlists/sony_hd.m3u8
+which resolves to the real Sony CDN with a freshly minted token:
+    https://dishmt.slivcdn.com/hls/live/2011671/SETHD/hdntl=exp=..~hmac=..  /master_108.m3u8
+
+Because the playlist holds a POINTER (not a token), nothing goes stale: the hub
+mints a new ~11 h hdntl every time the playlist is fetched. The only thing that
+needs refreshing is the channel LIST, which is what this script mints.
+
+Playback notes:
+  - the hub playlist needs a Referer (403 without, 200 with any Referer) -> emitted
+    as #EXTVLCOPT:http-referrer and inside #EXTHTTP
+  - the slivcdn variant/segment URLs play bare (no token, no headers needed)
+
+Reads:  https://allinonereborn2.online/sony/sliv3.json
+Writes: playlists/sonyliv.m3u
+        channels/sony_catalog.json   (cache of the minted catalog)
 """
 
 import os
 import sys
 import json
-import time
-import requests
 from datetime import datetime, timezone, timedelta
 
-# Ensure UTF-8 output on Windows consoles
+# Ensure UTF-8 output
 if sys.stdout.encoding != 'utf-8':
     try:
         sys.stdout.reconfigure(encoding='utf-8')
@@ -25,187 +43,143 @@ if sys.stdout.encoding != 'utf-8':
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
-# ----------------- Configuration -----------------
-OUTPUT_JSON = "data/sony.json"
-OUTPUT_M3U = "data/sony.m3u"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "channels", "sony_catalog.json")
+OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "sonyliv.m3u")
 
-SONY_CATALOG_SOURCES = [
-    "https://raw.githubusercontent.com/doctor-8trange/zyphora/main/data/sony.json",
-    "https://raw.githubusercontent.com/sportlive18/Sonyliv-Playlist-Autoupdate/main/sonyliv2.json",
-    "https://raw.githubusercontent.com/sm-monirulislam/SonyLiv_Event_Playlist/main/sonyLiv_data.json"
-]
+# Sony catalog on the same hub that mints the JioTV token
+SONY_API = "https://allinonereborn2.online/sony/sliv3.json"
 
-COOKIE_SOURCES = [
-    "https://allinonereborn2.online/jstrweb2/cookies.json"
-]
+HUB = "https://allinonereborn2.online"
+REFERER = HUB + "/"
+ORIGIN = HUB
 
-DEFAULT_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0"
-ORIGIN = "https://www.sonyliv.com"
-REFERER = "https://www.sonyliv.com/"
+USER_AGENT = "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7"
+GROUP = "Sony LIV"
+GROUP_LOGO = "https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png"
 
-def get_current_ist_str():
-    now = datetime.now(IST)
-    return now.strftime("%d-%m-%Y %H:%M")
+MIN_CHANNELS = 5
 
-def fetch_json(url, timeout=15):
+
+def fetch_sony_catalog():
+    """Mint the catalog from the hub; fall back to the cached copy."""
+    print(f"📡 Minting SonyLIV catalog from {SONY_API}...")
     try:
-        resp = requests.get(url, headers={"User-Agent": DEFAULT_USER_AGENT}, timeout=timeout)
-        resp.raise_for_status()
-        return resp.json()
+        import requests
+        r = requests.get(SONY_API, headers={"User-Agent": USER_AGENT}, timeout=20)
+        r.raise_for_status()
+        data = r.json()
+        if isinstance(data, dict) and data:
+            catalog = []
+            for key, ch in data.items():
+                url = (ch or {}).get("m3u8") or (ch or {}).get("url") or ""
+                if not url:
+                    continue
+                catalog.append({
+                    "id": ch.get("id") or key,
+                    "name": ch.get("title") or key,
+                    "logo": ch.get("logo") or "",
+                    "category": ch.get("genre") or "Entertainment",
+                    "language": ch.get("language") or "",
+                    "group": GROUP,
+                    "url": url,
+                })
+            if catalog:
+                print(f"  ✅ Minted {len(catalog)} channels")
+                os.makedirs(os.path.dirname(CATALOG_CACHE_FILE), exist_ok=True)
+                with open(CATALOG_CACHE_FILE, "w", encoding="utf-8") as f:
+                    json.dump(catalog, f, indent=2, ensure_ascii=False)
+                return catalog
+            print("  ⚠️ API returned an empty catalog")
     except Exception as e:
-        print(f"⚠️ Failed to fetch from {url}: {e}")
-        return None
+        print(f"  ⚠️ Error minting from the hub: {e}")
 
-def fetch_active_cookie():
-    for source in COOKIE_SOURCES:
-        data = fetch_json(source)
-        if data and isinstance(data, list):
-            for item in data:
-                if "cookie" in item:
-                    cookie = item["cookie"]
-                    # Clean prefix if __hdnea__=
-                    if cookie.startswith("__hdnea__="):
-                        cookie = cookie.replace("__hdnea__=", "", 1)
-                    return cookie
-    return None
+    if os.path.exists(CATALOG_CACHE_FILE):
+        try:
+            with open(CATALOG_CACHE_FILE, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            print(f"  🔄 Using cached SonyLIV catalog ({len(cached)} channels)")
+            return cached
+        except Exception:
+            pass
+    return []
 
-def fetch_catalog_events():
-    for source in SONY_CATALOG_SOURCES:
-        data = fetch_json(source)
-        if data and isinstance(data, dict):
-            # Check if this matches doctor-8trange schema
-            if "data" in data or "upcoming" in data:
-                return data
-            elif "matches" in data:
-                # Transmute sm-monirulislam format to zyphora schema
-                upcoming = []
-                for m in data.get("matches", []):
-                    upcoming.append({
-                        "contentId": m.get("contentId"),
-                        "video_info": {
-                            "title": m.get("event_name", ""),
-                            "shortDescription": m.get("event_name", ""),
-                            "longDescription": m.get("event_name", ""),
-                            "genres": [m.get("event_category", "Sports")],
-                            "episodeTitle": ""
-                        },
-                        "stream_info": {
-                            "Maximum_Video_Quality": "SDR",
-                            "dai_asset_key": None,
-                            "broadcast_channel": m.get("broadcast_channel", ""),
-                            "audio_language_list": [{"lang_code": m.get("audioLanguageName", "HIN"), "lang_label": "Hindi"}],
-                            "emfAttributes__audio_languages": m.get("audioLanguageName", "HIN"),
-                            "platformVariants": {
-                                "assetType": "MASTER",
-                                "assetName": "VOD_FULL_HD",
-                                "videoType": "FULL_HD",
-                                "audioLanguages": [],
-                                "subtitlesLanguages": [],
-                                "videoUrl": "NA"
-                            }
-                        },
-                        "air_dates": {
-                            "contractStartDate": "",
-                            "contractEndDate": "",
-                            "originalAirDate": None
-                        },
-                        "image_cdn": {
-                            "portrait_thumb": m.get("src", ""),
-                            "thumbnail": m.get("src", ""),
-                            "landscape_thumb": m.get("src", "")
-                        },
-                        "multiple_audio_links": []
-                    })
-                return {"data": [], "upcoming": upcoming}
-    return {"data": [], "upcoming": []}
 
-def generate_sony_json(catalog_data, active_token):
-    time_str = get_current_ist_str()
-    
-    result = {
-        "name": "Sony Live Matches API",
-        "last_updated": time_str,
-        "app_settings": {
-            "PROXY": "ON",
-            "state_code": "MH",
-            "MULTI_CDN": "OFF",
-            "Debugging": "OFF",
-            "SUB_TYPE": "PREMIUM",
-            "RECIVER": "OFF",
-            "REALTIME": "OFF",
-            "REPLACEMENT": "OFF",
-            "FREEPREVIEW": "AUTO",
-            "ALL_IN_ONE": "OFF",
-            "SERVER_STATUS": "NORMAL",
-            "USAGE_GUIDE": []
-        },
-        "data": catalog_data.get("data", []),
-        "upcoming": catalog_data.get("upcoming", [])
-    }
-    return result
+def probe(url, timeout=12):
+    """(ok, detail) - the hub playlist needs a Referer."""
+    try:
+        import requests
+        r = requests.get(url, headers={
+            "User-Agent": USER_AGENT,
+            "Referer": REFERER,
+            "Origin": ORIGIN,
+        }, timeout=timeout)
+        if r.status_code == 200 and r.text.lstrip().startswith("#EXTM3U"):
+            return True, "200"
+        return False, f"HTTP {r.status_code}"
+    except Exception as e:
+        return False, type(e).__name__
 
-def generate_sony_m3u(sony_json, active_token):
+
+def generate_sony_playlist(verify=True):
+    now_ist = datetime.now(IST).strftime("%d-%m-%Y %H:%M:%S IST")
+
+    catalog = fetch_sony_catalog()
+    if not catalog:
+        print("❌ No SonyLIV catalog available (hub + cache both empty)")
+        return False
+
+    live, dead, why = [], [], []
+    if verify:
+        for ch in catalog:
+            ok, detail = probe(ch["url"])
+            if ok:
+                live.append(ch)
+            else:
+                dead.append(ch["name"])
+                why.append(detail)
+
+    if verify and len(live) < MIN_CHANNELS:
+        # Not enough signal to prune. This is the environment, not the channels:
+        # a datacenter IP can be refused even when a real ISP client streams fine.
+        # Publishing the full minted catalog beats pruning good channels.
+        print(f"⚠️ Only {len(live)}/{len(catalog)} responded ({', '.join(sorted(set(why))[:4]) or 'n/a'})")
+        print("⚠️ Treating this as 'verification unavailable here', NOT as dead channels")
+        live = list(catalog)
+        dead = []
+
     lines = [
         "#EXTM3U",
-        f"#DATE:- {sony_json['last_updated']}"
+        f"#DATE:- {now_ist}",
+        "# Category: sonyliv",
+        f"# Total Channels: {len(live)}",
+        f"# Source: {SONY_API} (allinonereborn mints the hdntl token)",
+        ""
     ]
 
-    session_id = f"sess_{int(time.time()*1000)}"
+    for ch in live:
+        lines.append(
+            f'#EXTINF:-1 tvg-id="{ch.get("id","")}" tvg-name="{ch.get("name","")}" '
+            f'tvg-logo="{ch.get("logo","")}" tvg-category="{ch.get("category","")}" '
+            f'tvg-language="{ch.get("language","")}" group-title="{ch.get("group") or GROUP}" '
+            f'group-logo="{GROUP_LOGO}",{ch.get("name","")}'
+        )
+        lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
+        lines.append(f"#EXTVLCOPT:http-referrer={REFERER}")
+        lines.append(f'#EXTHTTP:{json.dumps({"User-Agent": USER_AGENT, "Referer": REFERER, "Origin": ORIGIN}, ensure_ascii=False)}')
+        lines.append(ch["url"])
+        lines.append("")
 
-    for item in sony_json.get("data", []):
-        content_id = item.get("contentId", "")
-        title = item.get("video_info", {}).get("title", "")
-        logo = item.get("image_cdn", {}).get("thumbnail", "") or item.get("image_cdn", {}).get("landscape_thumb", "")
-        genres = ", ".join(item.get("video_info", {}).get("genres", ["Sports"]))
-
-        for audio in item.get("multiple_audio_links", []):
-            lang_label = audio.get("language", "Hindi")
-            lang_code = audio.get("lang_code", "HIN")
-            raw_url = audio.get("data", {}).get("Playback_videoURL", "")
-
-            if not raw_url:
-                continue
-
-            stream_url = raw_url
-            if active_token:
-                stream_url = f"{raw_url}?hdnea={active_token}"
-
-            stream_url += f"|User-Agent={DEFAULT_USER_AGENT}&Referer={REFERER}&Origin={ORIGIN}&x-playback-session-id={session_id}"
-
-            extinf = f'#EXTINF:-1 tvg-id="{content_id}" tvg-name="{title}" tvg-logo="{logo}" tvg-language="{lang_label}" group-title="{genres}",{lang_code} | {title}'
-            lines.append(extinf)
-            lines.append(stream_url)
-
-    return "\n".join(lines) + "\n"
-
-def main():
-    print("🚀 Running Sony Playlist & JSON Generator...")
-    os.makedirs("data", exist_ok=True)
-
-    print("🔑 Fetching active Akamai / Sony auth token...")
-    token = fetch_active_cookie()
-    if token:
-        print(f"✅ Token obtained: {token[:40]}...")
-    else:
-        print("⚠️ No dynamic token found, proceeding with catalog base URLs.")
-
-    print("📦 Fetching latest Sony live & upcoming catalog...")
-    catalog = fetch_catalog_events()
-    live_count = len(catalog.get("data", []))
-    upcoming_count = len(catalog.get("upcoming", []))
-    print(f"✅ Loaded {live_count} live channels/events, {upcoming_count} upcoming events.")
-
-    # Build sony.json
-    sony_json = generate_sony_json(catalog, token)
-    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
-        json.dump(sony_json, f, indent=2, ensure_ascii=False)
-    print(f"✅ Wrote JSON to {OUTPUT_JSON} ({os.path.getsize(OUTPUT_JSON)} bytes)")
-
-    # Build sony.m3u
-    sony_m3u = generate_sony_m3u(sony_json, token)
+    os.makedirs(os.path.dirname(OUTPUT_M3U), exist_ok=True)
     with open(OUTPUT_M3U, "w", encoding="utf-8") as f:
-        f.write(sony_m3u)
-    print(f"✅ Wrote M3U to {OUTPUT_M3U} ({os.path.getsize(OUTPUT_M3U)} bytes)")
+        f.write("\n".join(lines))
+
+    print(f"✅ Generated {OUTPUT_M3U} ({len(live)} SonyLIV channels)")
+    if dead:
+        print(f"   ⚠️ dropped {len(dead)} dead: {', '.join(dead[:6])}{'...' if len(dead) > 6 else ''}")
+    return True
+
 
 if __name__ == "__main__":
-    main()
+    verify = "--no-verify" not in sys.argv
+    sys.exit(0 if generate_sony_playlist(verify=verify) else 1)

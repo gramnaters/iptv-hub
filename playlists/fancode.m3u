@@ -1,14 +1,30 @@
 #EXTM3U
-#DATE:- 20-10-2026 01:11:07 IST
+#DATE:- 20-10-2026 00:36:21 IST
 # Category: fancode
-# Total Channels: 3
+# Total Channels: 5
+# Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
-#EXTINF:-1 tvg-name="Afghanistan, Bangladesh & Zimbabwe Tri Series, 2026 [English]" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249695_53089_AFG_ZIM_FC-Web_1792056447809.jpg" tvg-category="Sports" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Afghanistan, Bangladesh & Zimbabwe Tri Series, 2026 [English]
-https://in-mc-flive.fancode.com/mumbai/4249695_english_hls_940482a4d917399_1ta-di_h264/1080p.m3u8?hdntl=Expires=1792522838~_GO=Generated~acl=/mumbai/4249695_english_hls_940482a4d917399_1ta-di_h264/*~SessionID=fc-app_sportsguruand_watcho_3e6446f0-69ff-45~Signature=ASgJGVBVxgUOqOd3I16_1OFrsCkHdPTea9GLWfDuf2737PqR6WblehXVaWRUu8qZiIdhxHC8KLk_4KY5K5FgWn12gQwL
+#EXTINF:-1 tvg-id="4249695" tvg-name="Afghanistan Vs Zimbabwe" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249695_53089_AFG_ZIM_FC-Web_1792056447809.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Afghanistan Vs Zimbabwe
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249695_english_hls_940482a4d917399_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-name="Emirates D20, 2026 [English]" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250475_53130_EMR_ABD_fc-web_1792412929308.jpg" tvg-category="Sports" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Emirates D20, 2026 [English]
-https://in-mc-flive.fancode.com/mumbai/4250475_english_hls_0d7188283867493_1ta-di_h264/1080p.m3u8?hdntl=Expires=1792513110~_GO=Generated~acl=/mumbai/4250475_english_hls_0d7188283867493_1ta-di_h264/*~SessionID=fc-app_sportsguruand_watcho_940e29f7-ca1a-4b~Signature=ASgJGVC6n1AGh9ndTutz0jOMr8VQRGMk6bH7GJ5bzC27IJ5sr8F6VZmuHoaEyjTnhBEpRKjyj9dL_FUFFwqIXW0jWH0E
+#EXTINF:-1 tvg-id="4250475" tvg-name="Emirates Red Vs Abu Dhabi" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250475_53130_EMR_ABD_fc-web_1792412929308.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Emirates Red Vs Abu Dhabi
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250475_english_hls_0d7188283867493_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-name="Roshn Saudi League 2026-2027 [English]" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250214_53025_AHS_HAZ_FC-Web.png" tvg-category="Sports" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Roshn Saudi League 2026-2027 [English]
-https://in-mc-flive.fancode.com/mumbai/4250214_english_hls_2120cc054e40303_1ta-di_h264/1080p.m3u8?hdntl=Expires=1792518571~_GO=Generated~acl=/mumbai/4250214_english_hls_2120cc054e40303_1ta-di_h264/*~SessionID=fc-app_sportsguruand_watcho_a4157ffa-84a6-4e~Signature=ASgJGVANAywJ493QmzVCtNN7Ys7V_WGBC48cA8m5KBXdBVorAk7541mqTVcV2o6JuohSbOHdVZNhmNfKulDv6vdJhoIL
+#EXTINF:-1 tvg-id="4250214" tvg-name="Al Hilal Sfc Vs Al Hazem Fc" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250214_53025_AHS_HAZ_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Al Hilal Sfc Vs Al Hazem Fc
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250214_english_hls_2120cc054e40303_1ta-di_h264/index.m3u8
 
+#EXTINF:-1 tvg-id="4247650" tvg-name="Getafe Cf Vs Rayo Vallecano" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4247650_53004_GEF_RVL_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Getafe Cf Vs Rayo Vallecano
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4247650_english_hls_59414c9f3d33823_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4249614" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-Auvergne-Rhone-Alpes_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249614_english_hls_1740f949599392_1ta-di_h264/index.m3u8

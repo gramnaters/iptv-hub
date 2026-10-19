@@ -1,7 +1,8 @@
 #EXTM3U
-#DATE:- 19-10-2026 22:31:00 IST
+#DATE:- 19-10-2026 22:28:51 IST
 # Category: sonyliv
 # Total Channels: 22
+# Source: channels/sony_catalog.json (own catalog; auth minted by the stream worker)
 
 #EXTINF:-1 tvg-id="sony-hd" tvg-name="SET HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Sony_HD.png" tvg-category="Entertainment" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SET HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
@@ -90,4 +91,3 @@ https://sliv.tgaadi.workers.dev/ten4hd.m3u8
 #EXTINF:-1 tvg-id="sony-ten-5-hd" tvg-name="Sony Sports Ten 5 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Six_HD.png" tvg-category="Sports" tvg-language="English" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Sony Sports Ten 5 HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
 https://sliv.tgaadi.workers.dev/sonysixhd.m3u8
-

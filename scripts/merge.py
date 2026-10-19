@@ -71,6 +71,13 @@ LOCAL_OVERRIDES = [
         "group": "FanCode",
     },
     {
+        "name": "SonyLIV (own catalog)",
+        "file": os.path.join(PLAYLISTS_DIR, "sonyliv.m3u"),
+        "min_channels": 5,
+        "plug_groups": ["Sony LIV", "Sonyliv events"],
+        "group": None,  # keep the group-title carried by the file itself
+    },
+    {
         "name": "JioTV (allinonereborn cookie)",
         "file": os.path.join(PLAYLISTS_DIR, "jiotv.m3u"),
         "min_channels": 100,
@@ -286,7 +293,6 @@ def main():
         "jiohotstar": ["JioHotstar"],
         "willow": ["Willow"],
         "prime": ["Prime Video"],
-        "sonyliv": ["Sony LIV", "Sonyliv events"],
         "sunnxt": ["SunNXT"],
         "zee5": ["ZEE5 India", "ZEE5 Worldwide"],
         "dangal": ["Dangal Play"],

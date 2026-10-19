@@ -33,6 +33,7 @@ jobs:
           python scripts/generate_jiotv.py || echo "::warning::jiotv generator failed"
           python scripts/generate_vzy.py   || echo "::warning::vzy generator failed"
           python scripts/generate_fancode.py || echo "::warning::fancode generator failed"
+          python scripts/generate_sony.py  || echo "::warning::sony generator failed"
 
       - name: Run Master Updater & Aggregator
         run: |

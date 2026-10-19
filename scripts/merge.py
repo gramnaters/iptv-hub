@@ -78,6 +78,13 @@ LOCAL_OVERRIDES = [
         "group": None,  # keep the group-title carried by the file itself
     },
     {
+        "name": "SunNXT (health-checked catalog)",
+        "file": os.path.join(PLAYLISTS_DIR, "sunnxt.m3u"),
+        "min_channels": 10,
+        "plug_groups": ["Sun NXT", "SunNXT"],
+        "group": "SunNXT",
+    },
+    {
         "name": "JioTV (allinonereborn cookie)",
         "file": os.path.join(PLAYLISTS_DIR, "jiotv.m3u"),
         "min_channels": 100,

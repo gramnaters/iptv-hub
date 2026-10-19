@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
 """
-IPTV Auto-Updater & Aggregator
-Updates and merges playlists for:
-  - JioTV
-  - JioHotstar
-  - FanCode
-  - VZY
-  - Willow
-  - SonyLIV
-  - Prime Video
+IPTV Auto-Updater & Master Aggregator
+Generates comprehensive IPTV master playlist matching and exceeding PremiumPlug/sportslink:
+  - JioHotstar (User's Independent Worker - https://jhs.gramnaters.workers.dev/)
+  - Jio TV+ Categories (News, Entertainment, Devotional, Movies, Kids, Music, Sports, Education, Infotainment, Lifestyle, Specials, Shopping, etc.)
+  - ZEE5 Worldwide (112 channels)
+  - ZEE5 India (33 channels)
+  - 24/7 kids + Goldmines pack (14 channels)
+  - WOW KIDZ (3 channels)
+  - Dangal Play (4 channels)
+  - VZY (48 channels)
+  - FanCode (Live & Upcoming Sports)
+  - SonyLIV / Sonyliv events
+  - SunNXT (33 channels)
+  - Willow (Cricket)
+  - Prime Video (Sports)
 
 Outputs:
-  - playlists/Combined.m3u (Merged categorized master playlist)
-  - playlists/jiotv.m3u
-  - playlists/jiohotstar.m3u
-  - playlists/fancode.m3u
-  - playlists/vzy.m3u
-  - playlists/willow.m3u
-  - playlists/sonyliv.m3u
-  - playlists/prime.m3u
-  - playlists/all_channels.json
+  - Combined.m3u (Master playlist in root directory)
+  - playlists/Combined.m3u
+  - playlists/<source>.m3u
 """
 
 import os
@@ -30,7 +30,7 @@ import time
 import requests
 from datetime import datetime, timezone, timedelta
 
-# Ensure UTF-8 output on Windows / Linux consoles
+# Ensure UTF-8 output
 if sys.stdout.encoding != 'utf-8':
     try:
         sys.stdout.reconfigure(encoding='utf-8')
@@ -42,85 +42,35 @@ IST = timezone(timedelta(hours=5, minutes=30))
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PLAYLISTS_DIR = os.path.join(ROOT_DIR, "playlists")
 COMBINED_M3U = os.path.join(ROOT_DIR, "Combined.m3u")
-EPG_URL = "https://www.tsepg.cf/epg.xml.gz"
+EPG_URL = "https://avkb.short.gy/jioepg.xml.gz"
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
-JIOTV_USER_AGENT = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
 
-# Upstream feeds
-SOURCES = {
-    "JioHotstar": {
-        "url": "https://jhs.gramnaters.workers.dev/",
-        "group": "JioHotstar",
-        "icon": "⭐"
-    },
-    "JioTV": {
-        "url": "https://raw.githubusercontent.com/qwerty180506/json/refs/heads/main/Geoplus.json",
-        "cookie_source": "https://raw.githubusercontent.com/purupc00-dev/Gmax-JioTV/refs/heads/main/Playlists/JioTV_S10.m3u",
-        "is_json": True,
-        "group": "JioTV",
-        "icon": "📡"
-    },
-    "FanCode": {
-        "url": "https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u",
-        "group": "FanCode",
-        "icon": "🏏"
-    },
-    "VZY": {
-        "url": "https://premiumplugx.me/vzy/playlist.php",
-        "group": "VZY",
-        "icon": "🎬"
-    },
+# User's dedicated independent JioHotstar worker
+USER_JIOHOTSTAR_URL = "https://jhs.gramnaters.workers.dev/"
+
+# Upstream public feeds
+PUBLIC_PLUG_API = "https://plugxvipplaylist.lovable.app/api/playlist"
+LOCAL_PLUG_BACKUP = os.path.join(os.path.dirname(ROOT_DIR), "premiumplug_full.m3u")
+
+EXTRA_FEEDS = {
     "Willow": {
         "url": "https://raw.githubusercontent.com/srhady/willow-event/refs/heads/main/live_sports.m3u",
         "group": "Willow",
         "icon": "🏏"
     },
-    "SonyLIV": {
-        "url": "https://raw.githubusercontent.com/drmlive/sliv-live-events/refs/heads/main/sonyliv.m3u",
-        "fallback_url": "https://sportlink-jtv.pages.dev/sony.json",
-        "group": "SonyLIV",
-        "icon": "📺"
-    },
     "Prime Video": {
         "url": "https://raw.githubusercontent.com/srhady/willow-event/refs/heads/main/primevideo_sports.m3u",
         "group": "Prime Video",
         "icon": "🎥"
-    },
-    "SunNXT": {
-        "url": "https://vk-playlist.pages.dev/sun.m3u",
-        "group": "SunNXT",
-        "icon": "☀️"
     }
 }
-
-CATEGORY_ORDER = [
-    "Live Events",
-    "Sports",
-    "Cricket",
-    "Football",
-    "JioHotstar",
-    "SonyLIV",
-    "SunNXT",
-    "FanCode",
-    "Willow",
-    "Prime Video",
-    "JioTV",
-    "Entertainment",
-    "Movies",
-    "News",
-    "Kids",
-    "Music",
-    "Infotainment",
-    "Devotional",
-    "Regional"
-]
 
 def get_current_ist():
     now = datetime.now(IST)
     return now.strftime("%d-%m-%Y %H:%M:%S IST")
 
-def fetch_content(url, timeout=20):
+def fetch_content(url, timeout=25):
     try:
         r = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=timeout)
         r.raise_for_status()
@@ -129,23 +79,12 @@ def fetch_content(url, timeout=20):
         print(f"⚠️ Error fetching {url}: {e}")
         return ""
 
-def fetch_jiotv_cookie():
-    src = SOURCES["JioTV"]["cookie_source"]
-    try:
-        text = fetch_content(src, timeout=15)
-        m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=[^~"\r\n]+~hmac=[a-f0-9]+)', text)
-        if m:
-            return m.group(1)
-    except Exception as e:
-        print(f"⚠️ Failed to extract JioTV cookie: {e}")
-    return ""
-
 def extract_channel_blocks(raw_text):
     blocks = []
     current_block = []
     for line in raw_text.splitlines():
         line = line.strip()
-        if not line or line.startswith("#EXTM3U"):
+        if not line or line.startswith("#EXTM3U") or line.startswith("# Generated") or line.startswith("#DATE"):
             continue
         if line.startswith("#EXTINF"):
             if current_block:
@@ -157,75 +96,28 @@ def extract_channel_blocks(raw_text):
         blocks.append(current_block)
     return blocks
 
-def generate_jiotv_blocks(channels_json_str, cookie):
-    try:
-        channels = json.loads(channels_json_str)
-    except Exception:
-        return []
+def clean_watermarks_from_block(block):
+    """Purge unwanted watermarks or promotional metadata from blocks."""
+    cleaned = []
+    watermark_patterns = [
+        r'DOCTOR\s*STRANGE',
+        r'jitendraunatti',
+        r'virat10',
+        r't\.me/[^\s\"\'\)]+'
+    ]
+    for line in block:
+        for pat in watermark_patterns:
+            line = re.sub(pat, '', line, flags=re.IGNORECASE)
+        cleaned.append(line.strip())
+    return [l for l in cleaned if l]
 
-    blocks = []
-    for ch in channels:
-        cid = str(ch.get("id") or "")
-        name = ch.get("name") or ""
-        group = ch.get("group") or ch.get("category") or "JioTV"
-        logo = ch.get("logo") or ""
-        url = ch.get("url") or ""
-        key_id = ch.get("keyId") or ""
-        key = ch.get("key") or ""
-
-        block = [f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" group-title="JioTV - {group}",{name}']
-
-        if ".mpd" in url.lower():
-            block.append("#KODIPROP:inputstream=inputstream.adaptive")
-            block.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-            if key_id and key:
-                block.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
-                block.append(f"#KODIPROP:inputstream.adaptive.license_key={key_id}:{key}")
-
-        block.append(f"#EXTVLCOPT:http-user-agent={JIOTV_USER_AGENT}")
-        if cookie:
-            block.append(f"#EXTVLCOPT:http-cookie={cookie}")
-            header_json = json.dumps({
-                "User-Agent": JIOTV_USER_AGENT,
-                "Origin": "https://www.jiotv.com/",
-                "Referer": "https://www.jiotv.com/",
-                "Cookie": cookie
-            })
-            block.append(f"#EXTHTTP:{header_json}")
-
-        block.append(url)
-        blocks.append(block)
-    return blocks
-
-def clean_and_normalize_block(block, source_name):
-    normalized = []
-    title = ""
-    group = source_name
-
+def get_block_group(block):
     for line in block:
         if line.startswith("#EXTINF"):
-            # Extract channel title
-            if "," in line:
-                title = line.rsplit(",", 1)[1].strip()
-
-            # Normalize or assign group-title
             m = re.search(r'group-title="([^"]*)"', line)
-            if m and m.group(1).strip():
-                existing_group = m.group(1).strip()
-                # If existing group doesn't specify source, prepend or format it
-                if source_name.lower() in existing_group.lower():
-                    group = existing_group
-                else:
-                    group = f"{source_name} - {existing_group}"
-                line = re.sub(r'group-title="[^"]*"', f'group-title="{group}"', line)
-            else:
-                group = source_name
-                line = line.replace("#EXTINF:-1 ", f'#EXTINF:-1 group-title="{group}" ')
-            normalized.append(line)
-        else:
-            normalized.append(line)
-
-    return group, normalized
+            if m:
+                return m.group(1).strip()
+    return "Other"
 
 def main():
     print("=" * 60)
@@ -233,96 +125,188 @@ def main():
     print("=" * 60)
     os.makedirs(PLAYLISTS_DIR, exist_ok=True)
 
-    grouped_channels = {}
-    total_channels = 0
+    all_channels_by_group = {}
 
-    # 1. Process each source
-    for source_name, config in SOURCES.items():
-        print(f"\n📡 Processing {config['icon']} {source_name}...")
-        raw_text = fetch_content(config["url"])
-        if not raw_text:
-            print(f"❌ Failed to fetch {source_name}")
+    # -------------------------------------------------------------
+    # 1. Fetch User's Independent JioHotstar Feed
+    # -------------------------------------------------------------
+    print(f"\n⭐ Fetching independent JioHotstar from {USER_JIOHOTSTAR_URL}...")
+    jhs_text = fetch_content(USER_JIOHOTSTAR_URL)
+    jhs_blocks = []
+    if jhs_text:
+        raw_jhs_blocks = extract_channel_blocks(jhs_text)
+        for b in raw_jhs_blocks:
+            # Force group-title="JioHotstar"
+            norm_b = []
+            for l in b:
+                if l.startswith("#EXTINF"):
+                    if 'group-title=' in l:
+                        l = re.sub(r'group-title="[^"]*"', 'group-title="JioHotstar"', l)
+                    else:
+                        l = l.replace('#EXTINF:-1 ', '#EXTINF:-1 group-title="JioHotstar" ')
+                norm_b.append(l)
+            jhs_blocks.append(clean_watermarks_from_block(norm_b))
+        print(f"✅ Loaded {len(jhs_blocks)} independent JioHotstar channels")
+    else:
+        print("⚠️ Could not load independent JioHotstar, check worker status")
+
+    if jhs_blocks:
+        all_channels_by_group["JioHotstar"] = jhs_blocks
+
+    # -------------------------------------------------------------
+    # 2. Fetch Public Feeds (ZEE5, FanCode, VZY, SunNXT, Kids, Dangal, Jio TV+ Packs)
+    # -------------------------------------------------------------
+    print(f"\n📡 Fetching comprehensive catalog from {PUBLIC_PLUG_API}...")
+    plug_text = fetch_content(PUBLIC_PLUG_API)
+    if not plug_text and os.path.exists(LOCAL_PLUG_BACKUP):
+        print("⚠️ Live API timed out, loading from local backup cache...")
+        with open(LOCAL_PLUG_BACKUP, "r", encoding="utf-8") as f:
+            plug_text = f.read()
+
+    plug_blocks = extract_channel_blocks(plug_text) if plug_text else []
+    print(f"✅ Loaded {len(plug_blocks)} total public channel items")
+
+    # Accumulate non-JioHotstar channels from the public catalog
+    for b in plug_blocks:
+        grp = get_block_group(b)
+        # Skip JioHotstar from public feed because user has their own independent worker!
+        if grp.lower() == "jiohotstar":
             continue
+        cleaned_b = clean_watermarks_from_block(b)
+        all_channels_by_group.setdefault(grp, []).append(cleaned_b)
 
-        if config.get("is_json"):
-            cookie = fetch_jiotv_cookie()
-            blocks = generate_jiotv_blocks(raw_text, cookie)
-        else:
-            blocks = extract_channel_blocks(raw_text)
+    # -------------------------------------------------------------
+    # 3. Add Extra Feeds (Willow, Prime Video)
+    # -------------------------------------------------------------
+    for name, cfg in EXTRA_FEEDS.items():
+        print(f"\n{cfg['icon']} Fetching {name} from {cfg['url']}...")
+        extra_text = fetch_content(cfg["url"])
+        if extra_text:
+            eblocks = extract_channel_blocks(extra_text)
+            norm_eblocks = []
+            for b in eblocks:
+                norm_b = []
+                for l in b:
+                    if l.startswith("#EXTINF"):
+                        if 'group-title=' in l:
+                            norm_b.append(re.sub(r'group-title="[^"]*"', f'group-title="{cfg["group"]}"', l))
+                        else:
+                            norm_b.append(l.replace('#EXTINF:-1 ', f'#EXTINF:-1 group-title="{cfg["group"]}" '))
+                    else:
+                        norm_b.append(l)
+                norm_eblocks.append(clean_watermarks_from_block(norm_b))
+            print(f"✅ Loaded {len(norm_eblocks)} channels from {name}")
+            all_channels_by_group.setdefault(cfg["group"], []).extend(norm_eblocks)
 
-        # If live event feed is empty (e.g. no match broadcasting right now) and fallback exists
-        if not blocks and config.get("fallback_url"):
-            fb_text = fetch_content(config["fallback_url"])
-            if fb_text.strip().startswith("["):
-                try:
-                    fb_channels = json.loads(fb_text)
-                    for ch in fb_channels:
-                        name = ch.get("name", "")
-                        url = ch.get("streamUrl", "")
-                        logo = ch.get("logo", "")
-                        key_id = ch.get("keyId", "")
-                        key = ch.get("key", "")
-                        b = [f'#EXTINF:-1 tvg-name="{name}" tvg-logo="{logo}" group-title="SonyLIV",{name}']
-                        if key_id and key:
-                            b.append("#KODIPROP:inputstream=inputstream.adaptive")
-                            b.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-                            b.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
-                            b.append(f"#KODIPROP:inputstream.adaptive.license_key={key_id}:{key}")
-                        b.append(url)
-                        blocks.append(b)
-                except Exception:
-                    pass
+    # -------------------------------------------------------------
+    # 4. Save Individual Category/Service M3U Files in playlists/
+    # -------------------------------------------------------------
+    # Mapping for clean individual playlists
+    individual_categories = {
+        "jiohotstar": ["JioHotstar"],
+        "fancode": ["FanCode"],
+        "vzy": ["VZY"],
+        "willow": ["Willow"],
+        "prime": ["Prime Video"],
+        "sonyliv": ["Sony LIV", "Sonyliv events"],
+        "sunnxt": ["SunNXT"],
+        "zee5": ["ZEE5 India", "ZEE5 Worldwide"],
+        "dangal": ["Dangal Play"],
+        "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ", "Jio TV+ | Kids"],
+        "jiotv": [g for g in all_channels_by_group.keys() if g.startswith("Jio TV+")]
+    }
 
-        print(f"✅ Loaded {len(blocks)} channels from {source_name}")
-
-        # Save individual source M3U
-        safe_name = source_name.lower().replace(" ", "")
-        individual_file = os.path.join(PLAYLISTS_DIR, f"{safe_name}.m3u")
-        with open(individual_file, "w", encoding="utf-8") as f:
+    print("\n💾 Writing individual playlists to playlists/...")
+    for filename, group_names in individual_categories.items():
+        cat_blocks = []
+        for g in group_names:
+            cat_blocks.extend(all_channels_by_group.get(g, []))
+        out_path = os.path.join(PLAYLISTS_DIR, f"{filename}.m3u")
+        with open(out_path, "w", encoding="utf-8") as f:
             f.write("#EXTM3U\n")
             f.write(f"#DATE:- {get_current_ist()}\n")
-            f.write(f"# Source: {source_name}\n\n")
-            for b in blocks:
+            f.write(f"# Category: {filename}\n")
+            f.write(f"# Total Channels: {len(cat_blocks)}\n\n")
+            for b in cat_blocks:
                 f.write("\n".join(b) + "\n\n")
+        print(f"  📁 {filename}.m3u ({len(cat_blocks)} channels)")
 
-        # Accumulate into master category groups
-        for b in blocks:
-            cat, normalized_b = clean_and_normalize_block(b, source_name)
-            grouped_channels.setdefault(cat, []).append(normalized_b)
-            total_channels += 1
+    # -------------------------------------------------------------
+    # 5. Assemble Master Combined.m3u
+    # -------------------------------------------------------------
+    print("\n📦 Generating Master Combined.m3u...")
 
-    # 2. Build Master Combined.m3u
-    print("\n📦 Generating Master Combined Playlist...")
+    # Canonical order of groups
+    PRIORITY_GROUPS = [
+        "JioHotstar",
+        "FanCode",
+        "Willow",
+        "Sony LIV",
+        "Sonyliv events",
+        "Prime Video",
+        "SunNXT",
+        "VZY",
+        "ZEE5 India",
+        "ZEE5 Worldwide",
+        "Dangal Play",
+        "24/7 kids+Goldmines pack",
+        "WOW KIDZ",
+        "Jio TV+ | Sports",
+        "Jio TV+ | News",
+        "Jio TV+ | Entertainment",
+        "Jio TV+ | Movies",
+        "Jio TV+ | Kids",
+        "Jio TV+ | Music",
+        "Jio TV+ | Devotional",
+        "Jio TV+ | Infotainment",
+        "Jio TV+ | Lifestyle",
+        "Jio TV+ | Education",
+        "Jio TV+ | Business",
+        "Jio TV+ | Specials",
+        "Jio TV+ | Shopping",
+        "Jio TV+ | Other"
+    ]
+
+    # Include any groups that may not be explicitly listed
+    all_known_groups = []
+    for g in PRIORITY_GROUPS:
+        if g in all_channels_by_group and g not in all_known_groups:
+            all_known_groups.append(g)
+    for g in sorted(all_channels_by_group.keys()):
+        if g not in all_known_groups:
+            all_known_groups.append(g)
+
+    total_combined_channels = sum(len(all_channels_by_group[g]) for g in all_known_groups)
+
     master_lines = [
-        f'#EXTM3U x-tvg-url="{EPG_URL}"',
+        f'#EXTM3U x-tvg-url="{EPG_URL}" url-tvg="{EPG_URL}" refresh="86400"',
         f'#DATE:- {get_current_ist()}',
-        f'# Total Channels: {total_channels}',
+        f'# Total Channels: {total_combined_channels}',
         ""
     ]
 
-    # Sort categories according to priority order
-    all_categories = list(grouped_channels.keys())
-    ordered_cats = []
-    for cat_prefix in CATEGORY_ORDER:
-        matches = [c for c in all_categories if c.lower().startswith(cat_prefix.lower()) and c not in ordered_cats]
-        ordered_cats.extend(matches)
-    for c in sorted(all_categories):
-        if c not in ordered_cats:
-            ordered_cats.append(c)
-
-    for cat in ordered_cats:
-        channel_list = grouped_channels[cat]
-        master_lines.append(f"# ===== {cat} ({len(channel_list)} Channels) =====")
-        for block in channel_list:
-            master_lines.extend(block)
+    for g in all_known_groups:
+        blocks = all_channels_by_group[g]
+        master_lines.append(f"# ===== {g} ({len(blocks)} Channels) =====")
+        for b in blocks:
+            master_lines.extend(b)
             master_lines.append("")
 
+    combined_content = "\n".join(master_lines)
+
+    # Write root Combined.m3u
     with open(COMBINED_M3U, "w", encoding="utf-8") as f:
-        f.write("\n".join(master_lines))
-    print(f"✅ Created {COMBINED_M3U} with {total_channels} channels ({os.path.getsize(COMBINED_M3U)} bytes)")
+        f.write(combined_content)
+    print(f"✅ Saved root Combined.m3u: {len(combined_content)} bytes ({total_combined_channels} channels)")
+
+    # Also write playlists/Combined.m3u for backwards compatibility
+    playlists_combined = os.path.join(PLAYLISTS_DIR, "Combined.m3u")
+    with open(playlists_combined, "w", encoding="utf-8") as f:
+        f.write(combined_content)
+    print(f"✅ Saved playlists/Combined.m3u")
 
     print("\n" + "=" * 60)
-    print("🎉 All playlists updated successfully!")
+    print(f"🎉 MASTER PLAYLIST GENERATED: {total_combined_channels} CHANNELS!")
     print("=" * 60)
 
 if __name__ == "__main__":

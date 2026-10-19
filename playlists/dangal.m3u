@@ -1,0 +1,21 @@
+#EXTM3U
+#DATE:- 19-10-2026 19:33:56 IST
+# Category: dangal
+# Total Channels: 4
+
+#EXTINF:-1 tvg-id="dangalplay-dangal" tvg-name="Dangal" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/Dangal_16x9.jpg" group-title="Dangal Play" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Dangal
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live-dangal.akamaized.net/liveabr/playlist.m3u8
+
+#EXTINF:-1 tvg-id="dangalplay-dangal2" tvg-name="Dangal2" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/Dangal2_16x9.jpg" group-title="Dangal Play" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Dangal2
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live-dangal2.akamaized.net/liveabr/playlist.m3u8
+
+#EXTINF:-1 tvg-id="dangalplay-bangla" tvg-name="Bangla" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/entree10_16x9.jpg" group-title="Dangal Play" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Bangla
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live-bangla.akamaized.net/liveabr/playlist.m3u8
+
+#EXTINF:-1 tvg-id="dangalplay-bhojpuri" tvg-name="Bhojpuri" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/BhojpuriCinema_16x9.jpg" group-title="Dangal Play" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Bhojpuri
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live-bhojpuri.akamaized.net/liveabr/playlist.m3u8
+

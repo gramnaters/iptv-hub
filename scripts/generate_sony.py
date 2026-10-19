@@ -1,37 +1,32 @@
 #!/usr/bin/env python3
 """
-SonyLIV Playlist Generator (own catalog)
+SonyLIV Playlist Generator — minted from the allinonereborn Sony API
 
-The channel list is OURS: channels/sony_catalog.json (22 channels, baked).
-This replaces the three third-party SONY_CATALOG_SOURCES that used to be
-scraped at runtime:
+Catalog source (ours now, not three scraped repos):
+    https://allinonereborn2.online/sony/sliv3.json
 
-    doctor-8trange/zyphora/data/sony.json          -> event catalog, 1 stream
-    sportlive18/Sonyliv-Playlist-Autoupdate/...     -> event catalog, 2 streams
-    sm-monirulislam/SonyLiv_Event_Playlist/...      -> event catalog, 15 matches
+The hub exposes three Sony catalogs; only sliv3 is live:
+    sliv.json   - 22 ch, inline hdnea tokens  -> EXPIRED (exp 1766493005)
+    sliv2.json  - 22 ch, inline hdnea tokens  -> EXPIRED (exp 1771914784)
+    sliv3.json  - 22 ch, hub playlist paths   -> LIVE  (mints a fresh hdntl each fetch)
 
-Those three are EVENT lists, not channel lists - between them they carry a
-single playable URL, so they can never produce the 22 SonyLIV channels.
-The 22 real channels are baked here instead.
+sliv3 entries point at the hub's own playlist, e.g.
+    https://allinonereborn2.online/sony-new/playlists/sony_hd.m3u8
+which resolves to the real Sony CDN with a freshly minted token:
+    https://dishmt.slivcdn.com/hls/live/2011671/SETHD/hdntl=exp=..~hmac=..  /master_108.m3u8
 
-Auth: NOT ours. All 22 streams are served by the sliv.tgaadi Cloudflare
-worker, which mints the Akamai `hdntl` token and rewrites the master
-playlist so the variant URIs are bare `hdntl=exp=..~hmac=..` strings.
-That token is minted server-side and cannot be derived here, so SonyLIV
-stays a third-party-auth category - like JioTV and FanCode.
+Because the playlist holds a POINTER (not a token), nothing goes stale: the hub
+mints a new ~11 h hdntl every time the playlist is fetched. The only thing that
+needs refreshing is the channel LIST, which is what this script mints.
 
-NOTE: the allinonereborn cookies.json is a **JioTV** token (`acl=/*`). It
-was previously appended to Sony URLs as `?hdnea=`; it does nothing there.
-Verified: Sony's CDN returns 403 with AND without it. That code is gone.
+Playback notes:
+  - the hub playlist needs a Referer (403 without, 200 with any Referer) -> emitted
+    as #EXTVLCOPT:http-referrer and inside #EXTHTTP
+  - the slivcdn variant/segment URLs play bare (no token, no headers needed)
 
-Reads:  channels/sony_catalog.json
+Reads:  https://allinonereborn2.online/sony/sliv3.json
 Writes: playlists/sonyliv.m3u
-
-Verification: each channel is probed, but the worker answers "Access Denied"
-to datacenter IPs, so a GitHub runner can never verify it. When the probe gets
-too little signal the full curated catalog is published unverified - it is not
-pruned, and the playlist is never deleted, because "CI is blocked" is not
-evidence that the channels are dead (a real ISP client reaches all 22).
+        channels/sony_catalog.json   (cache of the minted catalog)
 """
 
 import os
@@ -49,21 +44,76 @@ if sys.stdout.encoding != 'utf-8':
 IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CATALOG_FILE = os.path.join(ROOT_DIR, "channels", "sony_catalog.json")
+CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "channels", "sony_catalog.json")
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "sonyliv.m3u")
+
+# Sony catalog on the same hub that mints the JioTV token
+SONY_API = "https://allinonereborn2.online/sony/sliv3.json"
+
+HUB = "https://allinonereborn2.online"
+REFERER = HUB + "/"
+ORIGIN = HUB
+
+USER_AGENT = "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7"
+GROUP = "Sony LIV"
+GROUP_LOGO = "https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png"
 
 MIN_CHANNELS = 5
 
-DEFAULT_UA = "plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7"
-DEFAULT_GROUP_LOGO = "https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png"
-GROUP = "Sony LIV"
 
-
-def probe(url, ua, timeout=12):
-    """(ok, detail) - detail explains the failure so logs are diagnosable."""
+def fetch_sony_catalog():
+    """Mint the catalog from the hub; fall back to the cached copy."""
+    print(f"📡 Minting SonyLIV catalog from {SONY_API}...")
     try:
         import requests
-        r = requests.get(url, headers={"User-Agent": ua or DEFAULT_UA}, timeout=timeout)
+        r = requests.get(SONY_API, headers={"User-Agent": USER_AGENT}, timeout=20)
+        r.raise_for_status()
+        data = r.json()
+        if isinstance(data, dict) and data:
+            catalog = []
+            for key, ch in data.items():
+                url = (ch or {}).get("m3u8") or (ch or {}).get("url") or ""
+                if not url:
+                    continue
+                catalog.append({
+                    "id": ch.get("id") or key,
+                    "name": ch.get("title") or key,
+                    "logo": ch.get("logo") or "",
+                    "category": ch.get("genre") or "Entertainment",
+                    "language": ch.get("language") or "",
+                    "group": GROUP,
+                    "url": url,
+                })
+            if catalog:
+                print(f"  ✅ Minted {len(catalog)} channels")
+                os.makedirs(os.path.dirname(CATALOG_CACHE_FILE), exist_ok=True)
+                with open(CATALOG_CACHE_FILE, "w", encoding="utf-8") as f:
+                    json.dump(catalog, f, indent=2, ensure_ascii=False)
+                return catalog
+            print("  ⚠️ API returned an empty catalog")
+    except Exception as e:
+        print(f"  ⚠️ Error minting from the hub: {e}")
+
+    if os.path.exists(CATALOG_CACHE_FILE):
+        try:
+            with open(CATALOG_CACHE_FILE, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            print(f"  🔄 Using cached SonyLIV catalog ({len(cached)} channels)")
+            return cached
+        except Exception:
+            pass
+    return []
+
+
+def probe(url, timeout=12):
+    """(ok, detail) - the hub playlist needs a Referer."""
+    try:
+        import requests
+        r = requests.get(url, headers={
+            "User-Agent": USER_AGENT,
+            "Referer": REFERER,
+            "Origin": ORIGIN,
+        }, timeout=timeout)
         if r.status_code == 200 and r.text.lstrip().startswith("#EXTM3U"):
             return True, "200"
         return False, f"HTTP {r.status_code}"
@@ -74,47 +124,36 @@ def probe(url, ua, timeout=12):
 def generate_sony_playlist(verify=True):
     now_ist = datetime.now(IST).strftime("%d-%m-%Y %H:%M:%S IST")
 
-    if not os.path.exists(CATALOG_FILE):
-        print(f"❌ Catalog file {CATALOG_FILE} not found!")
+    catalog = fetch_sony_catalog()
+    if not catalog:
+        print("❌ No SonyLIV catalog available (hub + cache both empty)")
         return False
 
-    with open(CATALOG_FILE, "r", encoding="utf-8") as f:
-        catalog = json.load(f)
-
-    live = []
-    dead = []
-    why = []
-    for ch in catalog:
-        url = ch.get("url", "")
-        if not url:
-            continue
-        ua = ch.get("ua") or DEFAULT_UA
-        if verify:
-            ok, detail = probe(url, ua)
-            if not ok:
-                dead.append(ch.get("name", url))
+    live, dead, why = [], [], []
+    if verify:
+        for ch in catalog:
+            ok, detail = probe(ch["url"])
+            if ok:
+                live.append(ch)
+            else:
+                dead.append(ch["name"])
                 why.append(detail)
-                continue
-        live.append(ch)
 
     if verify and len(live) < MIN_CHANNELS:
-        # Not enough signal to prune. This is almost always the ENVIRONMENT, not
-        # the channels: sliv.tgaadi workers.dev answers "Access Denied" to
-        # datacenter IPs, so a GitHub runner can NEVER verify these. Deleting a
-        # good playlist just because CI is blocked is the wrong call - publish
-        # the full curated catalog instead and say so loudly.
+        # Not enough signal to prune. This is the environment, not the channels:
+        # a datacenter IP can be refused even when a real ISP client streams fine.
+        # Publishing the full minted catalog beats pruning good channels.
         print(f"⚠️ Only {len(live)}/{len(catalog)} responded ({', '.join(sorted(set(why))[:4]) or 'n/a'})")
-        print("⚠️ Treating this as 'verification unavailable here', NOT as 20 dead channels")
-        print("   (the stream worker blocks datacenter IPs; real ISP clients can reach it)")
+        print("⚠️ Treating this as 'verification unavailable here', NOT as dead channels")
         live = list(catalog)
-        dead = []  # nothing was actually dropped
+        dead = []
 
     lines = [
         "#EXTM3U",
         f"#DATE:- {now_ist}",
         "# Category: sonyliv",
         f"# Total Channels: {len(live)}",
-        "# Source: channels/sony_catalog.json (own catalog; auth minted by the stream worker)",
+        f"# Source: {SONY_API} (allinonereborn mints the hdntl token)",
         ""
     ]
 
@@ -123,9 +162,11 @@ def generate_sony_playlist(verify=True):
             f'#EXTINF:-1 tvg-id="{ch.get("id","")}" tvg-name="{ch.get("name","")}" '
             f'tvg-logo="{ch.get("logo","")}" tvg-category="{ch.get("category","")}" '
             f'tvg-language="{ch.get("language","")}" group-title="{ch.get("group") or GROUP}" '
-            f'group-logo="{ch.get("group_logo") or DEFAULT_GROUP_LOGO}",{ch.get("name","")}'
+            f'group-logo="{GROUP_LOGO}",{ch.get("name","")}'
         )
-        lines.append(f'#EXTVLCOPT:http-user-agent={ch.get("ua") or DEFAULT_UA}')
+        lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
+        lines.append(f"#EXTVLCOPT:http-referrer={REFERER}")
+        lines.append(f'#EXTHTTP:{json.dumps({"User-Agent": USER_AGENT, "Referer": REFERER, "Origin": ORIGIN}, ensure_ascii=False)}')
         lines.append(ch["url"])
         lines.append("")
 

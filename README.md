@@ -29,7 +29,7 @@ per source. Generators read from here; merge.py reads the resulting playlists.
 | File | Tracked? | Contents |
 | :--- | :--- | :--- |
 | `channels/vzy_catalog.json` | ✅ committed | 48 VZY channels — name, logo, stream URL, ClearKey |
-| `channels/sony_catalog.json` | ✅ committed | 22 SonyLIV channels — name, logo, language, stream URL, UA |
+| `channels/sony_catalog.json` | ✅ committed | 22 SonyLIV channels **minted from the hub** (`/sony/sliv3.json`) — cache |
 | `channels/zee5_catalog.json` | ✅ committed | 145 ZEE5 channels with ClearKeys |
 | `channels/jiotv_catalog.json` | ✅ committed | JioTV channel **list** cache (1,175 channels, changes slowly) |
 | `channels/jiotv_cookie.json` | 🚫 **git-ignored** | harvested `__hdnea__` token — ~6 h TTL, runtime only |
@@ -47,7 +47,7 @@ while its `~exp=` is still in the future.
 | **VZY** | ❌ none | ❌ none | ✅ **100%** — static ClearKey, plays bare, keys never rotate |
 | **JioTV** | `__hdnea__` (6h) | ❌ | ⚠️ token minted by the **allinonereborn** hub (single source) |
 | **FanCode** | `hdntl` (per match) | ❌ | ⚠️ token carried by the **doctor-8trange** feed |
-| **SonyLIV** | `hdntl` (per playlist) | ❌ | ⚠️ token minted by the **sliv.tgaadi** worker; catalog is ours |
+| **SonyLIV** | `hdntl` (~22h) | ❌ | ⚠️ catalog **and** token minted by the **allinonereborn** hub (same upstream as JioTV) |
 | **JioHotstar** | `hdntl` (24h) | ✅ own | ✅ **100%** — self-minted by the user's own worker |
 | ZEE5 / SunNXT / Dangal / Kids | varies | — | ❌ public feed |
 
@@ -55,9 +55,26 @@ A JioTV / FanCode / SonyLIV token **cannot** be derived from a cookie or an
 algorithm — a hub holding a real login mints it. VZY and JioHotstar are the two
 that are genuinely self-contained.
 
-> ⚠️ The `allinonereborn` cookie is a **JioTV-only** token (`acl=/*`). It does
-> nothing on Sony's CDN — verified: `403` with and without it. It is *not* a
-> Sony auth source.
+> ⚠️ The `allinonereborn` cookie (`jstrweb2/cookies.json`) is a **JioTV-only**
+> token (`acl=/*`). It does nothing on Sony's CDN — verified: `403` with and
+> without it. It is *not* a Sony auth source.
+
+**How SonyLIV is minted instead:** from the hub's Sony catalog
+`https://allinonereborn2.online/sony/sliv3.json` (22 channels). Of the hub's
+three Sony catalogs, only `sliv3` is live — `sliv.json` and `sliv2.json` carry
+inline `hdnea` tokens that **expired** in Dec 2025 / Feb 2026. Each `sliv3`
+entry points at the hub's own playlist, which resolves to the real Sony CDN
+with a **freshly minted ~22 h `hdntl`**:
+
+```
+our entry     https://allinonereborn2.online/sony-new/playlists/sony_hd.m3u8   (needs a Referer)
+resolves to   https://dishmt.slivcdn.com/hls/live/2011671/SETHD/hdntl=exp=..~hmac=../master_108.m3u8
+```
+
+Our playlist therefore stores a **pointer, not a token** — the hub re-mints on
+every fetch, so it can never go stale, and nothing sensitive is committed.
+Verified: 22/22 playlists resolve, and playlist → variant → segment returns
+~100 KB media segments.
 
 ## ⏰ Auto-Refresh Schedule
 - Automatically runs **every 24 hours** using GitHub Actions (`.github/workflows/update.yml`).

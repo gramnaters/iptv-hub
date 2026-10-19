@@ -21,17 +21,18 @@ Automated aggregator and generator for Live TV & Sports streams. Auto-refreshes 
 
 ---
 
-## 🗂️ Channel catalogs (`channels/`)
+## 🗂️ Channel catalogs (`catalogs/`)
 
-Every generated/injected JSON lives in **`channels/`** at the repo root, one file
+Every generated/injected JSON lives in **`catalogs/`** at the repo root, one file
 per source. Generators read from here; merge.py reads the resulting playlists.
 
 | File | Tracked? | Contents |
 | :--- | :--- | :--- |
-| `channels/vzy_catalog.json` | ✅ committed | 48 VZY channels — name, logo, stream URL, ClearKey |
-| `channels/sony_catalog.json` | ✅ committed | 22 SonyLIV channels **minted from the hub** (`/sony/sliv3.json`) — cache |
-| `channels/jiotv_catalog.json` | ✅ committed | JioTV channel **list** cache (1,175 channels, changes slowly) |
-| `channels/jiotv_cookie.json` | 🚫 **git-ignored** | harvested `__hdnea__` token — ~6 h TTL, runtime only |
+| `catalogs/sunnxt_catalog.json` | ✅ committed | 34 SunNXT channels — name, logo, Akamai MPD manifest URL, ClearKey |
+| `catalogs/vzy_catalog.json` | ✅ committed | 48 VZY channels — name, logo, stream URL, ClearKey |
+| `catalogs/sony_catalog.json` | ✅ committed | 22 SonyLIV channels **minted from the hub** (`/sony/sliv3.json`) — cache |
+| `catalogs/jiotv_catalog.json` | ✅ committed | JioTV channel **list** cache (1,175 channels, changes slowly) |
+| `catalogs/jiotv_cookie.json` | 🚫 **git-ignored** | harvested `__hdnea__` token — ~6 h TTL, runtime only |
 
 **Why the JioTV token is not committed:** the token lives ~6 h and is a
 credential. The generator writes it only to a git-ignored cache and **refuses

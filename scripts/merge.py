@@ -39,7 +39,7 @@ IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PLAYLISTS_DIR = os.path.join(ROOT_DIR, "playlists")
-CHANNELS_DIR = os.path.join(ROOT_DIR, "channels")
+CATALOGS_DIR = os.path.join(ROOT_DIR, "catalogs")
 COMBINED_M3U = os.path.join(ROOT_DIR, "Combined.m3u")
 EPG_URL = "https://avkb.short.gy/jioepg.xml.gz"
 

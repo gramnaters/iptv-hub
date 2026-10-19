@@ -26,7 +26,7 @@ if sys.stdout.encoding != 'utf-8':
 IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CATALOG_FILE = os.path.join(ROOT_DIR, "scripts", "sunnxt_catalog.json")
+CATALOG_FILE = os.path.join(ROOT_DIR, "catalogs", "sunnxt_catalog.json")
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "sunnxt.m3u")
 
 SUNNXT_PWA_URL = "https://pwaapi.sunnxt.com/content/v2/contentList?type=live&offset=0&limit=100"

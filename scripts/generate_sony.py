@@ -44,7 +44,7 @@ if sys.stdout.encoding != 'utf-8':
 IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "channels", "sony_catalog.json")
+CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "catalogs", "sony_catalog.json")
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "sonyliv.m3u")
 
 # Sony catalog on the same hub that mints the JioTV token

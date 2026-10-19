@@ -38,8 +38,8 @@ IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "jiotv.m3u")
-CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "channels", "jiotv_catalog.json")
-COOKIE_CACHE_FILE = os.path.join(ROOT_DIR, "channels", "jiotv_cookie.json")
+CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_catalog.json")
+COOKIE_CACHE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_cookie.json")
 
 # Cookie source: allinonereborn (the hub that mints the __hdnea__ token)
 COOKIE_ENDPOINTS = [

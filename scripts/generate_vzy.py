@@ -35,7 +35,7 @@ if sys.stdout.encoding != 'utf-8':
 IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CATALOG_FILE = os.path.join(ROOT_DIR, "channels", "vzy_catalog.json")
+CATALOG_FILE = os.path.join(ROOT_DIR, "catalogs", "vzy_catalog.json")
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "vzy.m3u")
 
 GROUP_LOGO = "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0"

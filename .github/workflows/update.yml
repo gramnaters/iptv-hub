@@ -34,7 +34,7 @@ jobs:
       - name: Generate independent source playlists
         run: |
           # Each of these writes its own playlists/<name>.m3u from
-          # channels/<name>_*.json and is consumed by merge.py.
+          # catalogs/<name>_*.json and is consumed by merge.py.
           # Failures are non-fatal: merge.py falls back to the public feed.
           python scripts/generate_jiotv.py || echo "::warning::jiotv generator failed"
           python scripts/generate_vzy.py   || echo "::warning::vzy generator failed"
@@ -49,7 +49,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add Combined.m3u playlists/ channels/
+          git add Combined.m3u playlists/ catalogs/
           if git diff --staged --quiet; then
             echo "No changes in playlists."
           else

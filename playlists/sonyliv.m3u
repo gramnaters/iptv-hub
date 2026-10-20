@@ -1,8 +1,8 @@
 #EXTM3U
-#DATE:- 20-10-2026 18:31:40 IST
+#DATE:- 20-10-2026 18:43:28 IST
 # Category: sonyliv
 # Total Channels: 22
-# Source: https://sonyliv-worker.gramnaters.workers.dev/playlist.m3u (direct SonyLIV hdnea; token refreshed by local script ~8h)
+# Source: https://sonyliv-worker.gramnaters.workers.dev/playlist.m3u (direct SonyLIV hdnea; worker self-refreshes via Browser Rendering ~5h)
 
 #EXTINF:-1 tvg-id="sony-hd" tvg-name="SONY HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_HD.png" tvg-category="Entertainment" tvg-language="Hindi" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36

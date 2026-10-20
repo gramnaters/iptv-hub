@@ -7,8 +7,9 @@ on:
     # baked into the playlist. A 24h cron left ~1300 of 1600 channels
     # holding a dead token for most of the day; 5h keeps the gap in the
     # day (the 20:00 -> 00:00 UTC step is 4h) safely inside the 6h life.
-    # SonyLIV points at the independent worker; its token is refreshed by a
-    # local script (~8h), so this run only copies the worker's channel list. VZY
+    # SonyLIV points at the independent worker; its token is self-refreshed by
+    # a Browser Rendering cron, so this run only copies the worker's channel
+    # list. VZY
     # and FanCode don't depend on this cadence and simply refresh along.
     - cron: '0 */5 * * *'
   workflow_dispatch:

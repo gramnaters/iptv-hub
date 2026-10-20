@@ -7,8 +7,9 @@ on:
     # baked into the playlist. A 24h cron left ~1300 of 1600 channels
     # holding a dead token for most of the day; 5h keeps the gap in the
     # day (the 20:00 -> 00:00 UTC step is 4h) safely inside the 6h life.
-    # SonyLIV / VZY / FanCode don't depend on this cadence (pointers or
-    # no expiry), they simply refresh along.
+    # SonyLIV points at the independent worker; its token is refreshed by a
+    # local 5h task, so this run only copies the worker's channel list. VZY
+    # and FanCode don't depend on this cadence and simply refresh along.
     - cron: '0 */5 * * *'
   workflow_dispatch:
 
@@ -35,8 +36,9 @@ jobs:
         run: |
           # Each script writes its own playlists/<name>.m3u, which merge.py
           # consumes. VZY reads catalogs/vzy_catalog.json (static data); JioTV
-          # and SonyLIV fetch their channel lists live and leave the previous
-          # playlist untouched if the upstream is unreachable.
+          # fetches its channel list live, and SonyLIV copies the independent
+          # worker's catalog. Both leave the previous playlist untouched if the
+          # upstream (or the worker token) is unavailable.
           python scripts/generate_jiotv.py || echo "::warning::jiotv generator failed"
           python scripts/generate_vzy.py   || echo "::warning::vzy generator failed"
           python scripts/generate_fancode.py || echo "::warning::fancode generator failed"

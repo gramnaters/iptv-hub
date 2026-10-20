@@ -173,9 +173,9 @@ LANG_KEYWORDS = {
     "Punjabi": ["punjabi", "ptc", "sanjha"],
     "Odia": ["odia", "tarang", "otv", "kalinga", "odisha"],
     "Assamese": ["assam", "assamese", "northeast", "north east", "dy365"],
-    "English": ["english", "espn", "cnn", "cnbc", "wion", "mtv", "nick", "sonic", "disney", "national geographic", "nat geo", "fox", "tsn", "great!", "tiny pop", "pop up", "bbc earth"],
+    "English": ["english", "espn", "cnn", "cnbc", "wion", "national geographic", "nat geo", "fox", "tsn", "great!", "tiny pop", "pop up", "bbc earth"],
     "Bhojpuri": ["bhojpuri", "mahuaa"],
-    "International": ["french", "german", "arabic", "aflam", "bioskop", "indonesian", "international", "one "],
+    "International": ["french", "german", "arabic", "aflam", "bioskop", "indonesian", "one "],
 }
 
 CATEGORY_MAP = {
@@ -217,6 +217,8 @@ def get_block_category(block):
 
 def detect_language(name):
     n = " " + name.lower() + " "
+    if "awaaz" in n:  # CNBC Awaaz is Hindi, not English
+        return "Hindi"
     for lang, kws in LANG_KEYWORDS.items():
         for kw in kws:
             if kw in n:

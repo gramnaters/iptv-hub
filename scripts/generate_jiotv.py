@@ -120,7 +120,7 @@ def generate_jiotv_playlist():
         # Standard group-title format
         lines.append(
             f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" '
-            f'group-title="JioTV - {cat}",{name}'
+            f'group-title="Jio TV+ | {cat}",{name}'
         )
 
         is_dash = ".mpd" in url.lower()

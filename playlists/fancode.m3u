@@ -1,7 +1,7 @@
 #EXTM3U
-#DATE:- 20-10-2026 16:44:58 IST
+#DATE:- 20-10-2026 18:17:38 IST
 # Category: fancode
-# Total Channels: 5
+# Total Channels: 7
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
 #EXTINF:-1 tvg-id="4249782" tvg-name="South Africa Vs Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/AUS-vs-SA-test_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | South Africa Vs Australia
@@ -9,15 +9,20 @@
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4249782_english_hls_bf21f9fa2f10890_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4250162" tvg-name="Australia Women Vs New Zealand Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Australia-vs-New-ZealandT20I-Series-old-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Australia Women Vs New Zealand Women
+#EXTINF:-1 tvg-id="4250476" tvg-name="Emirates Blues Vs Ajman" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250476_53130_AJM_EMB_fc-web_1792412929325.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Emirates Blues Vs Ajman
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250162_english_hls_6a0b09f2ee41913_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250476_english_hls_550b3930e750705_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249754" tvg-name="Uganda Vs Zambia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-Web_1792403588984.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Uganda Vs Zambia
+#EXTINF:-1 tvg-id="4249755" tvg-name="Lesotho Vs Mozambique" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249755_53093_LES_MOZ_FC-Web_1792493252639.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Lesotho Vs Mozambique
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249754_english_hls_b4548ca71283450_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249755_english_hls_b7141fe3ec9908_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4249756" tvg-name="Nigeria Vs Gambia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249756_53093_NGR_GAM_FC-Web_1792493253295.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Nigeria Vs Gambia
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249756_english_hls_e0a59c015f99540_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="4249608" tvg-name="Day 2   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-Web_1792479545067.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 2   World Feed
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
@@ -28,3 +33,8 @@ https://dai-fancode.pages.dev/mumbai/4249608_english_hls_a2345ca73095655_1ta-di_
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4249622_english_hls_8342648ba261_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4249615" tvg-name="Day 2   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-Auvergne-Rhone-Alpes_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 2   World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249615_english_hls_d47039c54e87886_1ta-di_h264/index.m3u8

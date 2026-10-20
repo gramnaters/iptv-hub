@@ -3,7 +3,8 @@
 
 The worker serves 22 SonyLIV channels and attaches a wildcard Akamai `hdnea`
 token minted directly from Sony's API. The token lives ~12 h and is refreshed
-on a local 5-hour schedule; this script only copies the worker's channel list.
+by a local manual script (recommended every 8 h); this script only copies the
+worker's channel list.
 If the worker is unavailable (or its token is expired) the previous playlist
 is kept, so CI never publishes a broken SonyLIV block.
 """
@@ -140,7 +141,7 @@ def generate_sony_playlist(verify=True):
         f"#DATE:- {now_ist}",
         "# Category: sonyliv",
         f"# Total Channels: {len(live)}",
-        f"# Source: {PLAYLIST} (direct SonyLIV hdnea; token refreshed every 5h)",
+        f"# Source: {PLAYLIST} (direct SonyLIV hdnea; token refreshed by local script ~8h)",
         "",
     ]
 

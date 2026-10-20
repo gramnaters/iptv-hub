@@ -18,8 +18,6 @@ IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "jiotv.m3u")
-CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_catalog.json")
-COOKIE_CACHE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_cookie.json")
 
 # Cookie source: allinonereborn (the hub that mints the __hdnea__ token)
 COOKIE_ENDPOINTS = [
@@ -37,15 +35,6 @@ REFERER = "https://www.jiotv.com/"
 
 def get_ist_time():
     return datetime.now(IST).strftime("%d-%m-%Y %H:%M:%S IST")
-
-def _cache_cookie(cookie, source):
-    """Write the harvested token to the (git-ignored) runtime cache."""
-    try:
-        os.makedirs(os.path.dirname(COOKIE_CACHE_FILE), exist_ok=True)
-        with open(COOKIE_CACHE_FILE, "w", encoding="utf-8") as f:
-            json.dump({"updated_at": get_ist_time(), "source": source, "cookie": cookie}, f, indent=2)
-    except Exception:
-        pass
 
 
 def _expiry_hours(cookie):
@@ -81,22 +70,9 @@ def fetch_channels_catalog():
             data = r.json()
             if isinstance(data, list) and len(data) > 0:
                 print(f"  ✅ Loaded {len(data)} channels from catalog")
-                os.makedirs(os.path.dirname(CATALOG_CACHE_FILE), exist_ok=True)
-                with open(CATALOG_CACHE_FILE, "w", encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False)
                 return data
         except Exception as e:
             print(f"  ⚠️ Error loading {src}: {e}")
-
-    # Fallback to the baked catalog cache
-    if os.path.exists(CATALOG_CACHE_FILE):
-        try:
-            with open(CATALOG_CACHE_FILE, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            print(f"  🔄 Using cached channel catalog ({len(data)} channels)")
-            return data
-        except Exception:
-            pass
     return []
 
 def extract_drm_keys(channel):
@@ -114,7 +90,7 @@ def generate_jiotv_playlist():
     channels = fetch_channels_catalog()
 
     if not channels:
-        print("❌ Could not load channel catalog. Aborting.")
+        print("❌ Could not load the JioTV channel catalog - keeping the existing playlist")
         return False
 
     if not cookie:

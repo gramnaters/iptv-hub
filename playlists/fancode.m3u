@@ -1,18 +1,13 @@
 #EXTM3U
-#DATE:- 20-10-2026 15:13:46 IST
+#DATE:- 20-10-2026 16:39:47 IST
 # Category: fancode
-# Total Channels: 6
+# Total Channels: 5
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
 #EXTINF:-1 tvg-id="4249782" tvg-name="South Africa Vs Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/AUS-vs-SA-test_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | South Africa Vs Australia
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4249782_english_hls_bf21f9fa2f10890_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4249667" tvg-name="New South Wales Vs Western Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249667_53087_WAU_NSW_FC-WEB_1791299730396.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | New South Wales Vs Western Australia
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249667_english_hls_27a33faf8092749_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="4250162" tvg-name="Australia Women Vs New Zealand Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Australia-vs-New-ZealandT20I-Series-old-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Australia Women Vs New Zealand Women
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1

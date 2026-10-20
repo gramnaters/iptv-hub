@@ -14,7 +14,6 @@ if sys.stdout.encoding != 'utf-8':
 IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "catalogs", "sony_catalog.json")
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "sonyliv.m3u")
 
 # Sony catalog on the same hub that mints the JioTV token
@@ -32,7 +31,7 @@ MIN_CHANNELS = 5
 
 
 def fetch_sony_catalog():
-    """Mint the catalog from the hub; fall back to the cached copy."""
+    """Mint the catalog from the hub. The playlist is the only cache."""
     print(f"📡 Minting SonyLIV catalog from {SONY_API}...")
     try:
         import requests
@@ -56,22 +55,10 @@ def fetch_sony_catalog():
                 })
             if catalog:
                 print(f"  ✅ Minted {len(catalog)} channels")
-                os.makedirs(os.path.dirname(CATALOG_CACHE_FILE), exist_ok=True)
-                with open(CATALOG_CACHE_FILE, "w", encoding="utf-8") as f:
-                    json.dump(catalog, f, indent=2, ensure_ascii=False)
                 return catalog
             print("  ⚠️ API returned an empty catalog")
     except Exception as e:
         print(f"  ⚠️ Error minting from the hub: {e}")
-
-    if os.path.exists(CATALOG_CACHE_FILE):
-        try:
-            with open(CATALOG_CACHE_FILE, "r", encoding="utf-8") as f:
-                cached = json.load(f)
-            print(f"  🔄 Using cached SonyLIV catalog ({len(cached)} channels)")
-            return cached
-        except Exception:
-            pass
     return []
 
 
@@ -96,7 +83,7 @@ def generate_sony_playlist(verify=True):
 
     catalog = fetch_sony_catalog()
     if not catalog:
-        print("❌ No SonyLIV catalog available (hub + cache both empty)")
+        print("❌ Could not mint the SonyLIV catalog - keeping the existing playlist")
         return False
 
     live, dead, why = [], [], []

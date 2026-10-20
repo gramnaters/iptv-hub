@@ -156,6 +156,122 @@ def load_local_playlist(path, min_channels=1):
     return [clean_watermarks_from_block(b) for b in blocks]
 
 
+# ---------------------------------------------------------------------------
+# Category merge: fold JioHotstar / SonyLIV / SunNXT / ZEE5 channels into the
+# JioTV category scheme. Hindi channels keep their content category, non-Hindi
+# channels route to their language group, and Big Boss stays separate.
+# ---------------------------------------------------------------------------
+
+LANG_KEYWORDS = {
+    "Tamil": ["tamil", "vijay", "ktv", "sun tv", "sun music", "sun life", "sun news", "thirai", "chutti", "polimer", "jaya ", "makkal", "kalaignar", "captain", "thalapathy"],
+    "Telugu": ["telugu", " maa", "gemini", "cinemalu", "kushi", "adithya", " etv", "tv5", "ntv ", "sakshi", "vanitha"],
+    "Kannada": ["kannada", "udaya", "suvarna", "kasthuri", "public tv"],
+    "Malayalam": ["malayalam", "asianet", "surya", "kairali", "flowers", "mazhavil", "keralam", "kochu", "chintu", "manorama", "mathrubhumi", "amrita", "24 news"],
+    "Bengali": ["bangla", "bengali", "jalsha", "aath", "sarthak", "sonar", "biskope", "ghanta", "akash"],
+    "Marathi": ["marathi", "pravah", "lokmat", "talkies", "taas", "saam", "pudhari", "yuva"],
+    "Gujarati": ["gujarati", "kalak", "sandesh", "girnar", "alwan"],
+    "Punjabi": ["punjabi", "ptc", "sanjha"],
+    "Odia": ["odia", "tarang", "otv", "kalinga", "odisha"],
+    "Assamese": ["assam", "assamese", "northeast", "north east", "dy365"],
+    "English": ["english", "espn", "cnn", "cnbc", "wion", "mtv", "nick", "sonic", "disney", "national geographic", "nat geo", "fox", "tsn", "great!", "tiny pop", "pop up", "bbc earth"],
+    "Bhojpuri": ["bhojpuri", "mahuaa"],
+    "International": ["french", "german", "arabic", "aflam", "bioskop", "indonesian", "international", "one "],
+}
+
+CATEGORY_MAP = {
+    "Entertainment": "Entertainment",
+    "Movies": "Movies",
+    "Kids": "Kids",
+    "News": "News",
+    "Sports": "Sports",
+    "Music": "Music",
+    "Devotional": "Devotional",
+    "Knowledge": "Infotainment",
+    "Infotainment": "Infotainment",
+    "Business": "Business News",
+    "Business News": "Business News",
+    "Lifestyle": "Lifestyle",
+    "Other": "Other",
+    "Unknown": "Unknown",
+    "SunNXT": "Entertainment",
+}
+
+BIG_BOSS_RE = re.compile(r"(?i)bigboss|big boss")
+
+def normalize_name(name):
+    return re.sub(r"[^a-z0-9]+", "", name.lower())
+
+def get_block_name(block):
+    for line in block:
+        if line.startswith("#EXTINF"):
+            return line.rsplit(",", 1)[-1].strip()
+    return ""
+
+def get_block_category(block):
+    for line in block:
+        if line.startswith("#EXTINF"):
+            m = re.search(r'tvg-category="([^"]*)"', line)
+            if m and m.group(1):
+                return m.group(1)
+    return get_block_group(block)
+
+def detect_language(name):
+    n = " " + name.lower() + " "
+    for lang, kws in LANG_KEYWORDS.items():
+        for kw in kws:
+            if kw in n:
+                return lang
+    return "Hindi"
+
+def merge_group(name, category):
+    if BIG_BOSS_RE.search(name):
+        return "Big Boss"
+    lang = detect_language(name)
+    if lang == "Hindi":
+        return "Jio TV+ | " + CATEGORY_MAP.get(category, category or "Other")
+    if lang == "International":
+        return "Jio TV+ | Other"
+    return "Jio TV+ | " + lang
+
+def set_block_group(block, group):
+    new = []
+    for line in block:
+        if line.startswith("#EXTINF"):
+            if 'group-title=' in line:
+                line = re.sub(r'group-title="[^"]*"', f'group-title="{group}"', line)
+            else:
+                line = line.replace('#EXTINF:-1 ', f'#EXTINF:-1 group-title="{group}" ')
+        new.append(line)
+    return new
+
+def classify_into(blocks, out, direct_names):
+    """Classify blocks into JioTV categories (language routing + Big Boss split)."""
+    for b in blocks:
+        name = get_block_name(b)
+        grp = merge_group(name, get_block_category(b))
+        out.setdefault(grp, []).append(set_block_group(b, grp))
+        direct_names.add(normalize_name(name))
+
+def classify_sonyliv(blocks, out):
+    """Keep SonyLIV channels in their own per-category groups (SonyLIV | Kids, ...)."""
+    for b in blocks:
+        name = get_block_name(b)
+        cat = CATEGORY_MAP.get(get_block_category(b), "Entertainment")
+        grp = f"SonyLIV | {cat}"
+        out.setdefault(grp, []).append(set_block_group(b, grp))
+
+def classify_jiohotstar(blocks, out, direct_names):
+    """Big Boss live streams stay in JioHotstar; the rest fold into JioTV."""
+    for b in blocks:
+        name = get_block_name(b)
+        if BIG_BOSS_RE.search(name):
+            out.setdefault("JioHotstar", []).append(set_block_group(b, "JioHotstar"))
+        else:
+            grp = merge_group(name, get_block_category(b))
+            out.setdefault(grp, []).append(set_block_group(b, grp))
+            direct_names.add(normalize_name(name))
+
+
 def main():
     print("=" * 60)
     print(f"🚀 Master IPTV Auto-Updater starting at {get_current_ist()}")
@@ -163,32 +279,21 @@ def main():
     os.makedirs(PLAYLISTS_DIR, exist_ok=True)
 
     all_channels_by_group = {}
+    direct_names = set()      # normalized names of JioHotstar/SonyLIV/SunNXT/ZEE5
+    jiotv_blocks = []         # JioTV channels, deduped against direct_names at the end
 
     # -------------------------------------------------------------
-    # 1. Fetch User's Independent JioHotstar Feed
+    # 1. Fetch User's Independent JioHotstar Feed -> fold into JioTV categories
     # -------------------------------------------------------------
     print(f"\n⭐ Fetching independent JioHotstar from {USER_JIOHOTSTAR_URL}...")
     jhs_text = fetch_content(USER_JIOHOTSTAR_URL)
     jhs_blocks = []
     if jhs_text:
-        raw_jhs_blocks = extract_channel_blocks(jhs_text)
-        for b in raw_jhs_blocks:
-            # Force group-title="JioHotstar"
-            norm_b = []
-            for l in b:
-                if l.startswith("#EXTINF"):
-                    if 'group-title=' in l:
-                        l = re.sub(r'group-title="[^"]*"', 'group-title="JioHotstar"', l)
-                    else:
-                        l = l.replace('#EXTINF:-1 ', '#EXTINF:-1 group-title="JioHotstar" ')
-                norm_b.append(l)
-            jhs_blocks.append(clean_watermarks_from_block(norm_b))
+        jhs_blocks = [clean_watermarks_from_block(b) for b in extract_channel_blocks(jhs_text)]
+        classify_jiohotstar(jhs_blocks, all_channels_by_group, direct_names)
         print(f"✅ Loaded {len(jhs_blocks)} independent JioHotstar channels")
     else:
         print("⚠️ Could not load independent JioHotstar, check worker status")
-
-    if jhs_blocks:
-        all_channels_by_group["JioHotstar"] = jhs_blocks
 
     # -------------------------------------------------------------
     # 2. Independent local sources (channels/*.json -> playlists/*.m3u)
@@ -205,12 +310,19 @@ def main():
         if not blocks:
             print(f"⚠️ {src['name']}: local playlist unavailable -> falling back to public feed")
             continue
-        if src["group"]:
+        name = src["name"]
+        if name.startswith("SonyLIV"):
+            # keep SonyLIV in its own per-category groups (Sony already in JioTV)
+            classify_sonyliv(blocks, all_channels_by_group)
+        elif name.startswith("SunNXT"):
+            # fold SunNXT into JioTV categories (language-routed)
+            classify_into(blocks, all_channels_by_group, direct_names)
+        elif src["group"]:
+            # VZY, FanCode, ... keep their own group
             all_channels_by_group.setdefault(src["group"], []).extend(blocks)
         else:
-            # e.g. JioTV: keep each "JioTV - <category>" group intact
-            for b in blocks:
-                all_channels_by_group.setdefault(get_block_group(b), []).append(b)
+            # JioTV: hold aside, dedup against direct sources at the end
+            jiotv_blocks.extend(blocks)
         if src["plug_groups"] is None:
             skip_jiotv_from_plug = True
         else:
@@ -244,7 +356,11 @@ def main():
             skipped_groups.add(grp)
             continue
         cleaned_b = clean_watermarks_from_block(b)
-        all_channels_by_group.setdefault(grp, []).append(cleaned_b)
+        if grp == "ZEE5 Worldwide":
+            # fold ZEE5 into JioTV categories (language-routed)
+            classify_into([cleaned_b], all_channels_by_group, direct_names)
+        else:
+            all_channels_by_group.setdefault(grp, []).append(cleaned_b)
     if skipped_groups:
         print(f"⏭️  Skipped {len(skipped_groups)} public-feed group(s) (local copy wins or category disabled): {', '.join(sorted(skipped_groups))}")
 
@@ -272,18 +388,31 @@ def main():
             all_channels_by_group.setdefault(cfg["group"], []).extend(norm_eblocks)
 
     # -------------------------------------------------------------
-    # 4. Save Individual Category/Service M3U Files in playlists/
+    # 4. Fold deduped JioTV channels into the category groups.
+    #    Direct sources (JioHotstar/SonyLIV/SunNXT/ZEE5) win over JioTV
+    #    re-broadcasts of the same channel.
+    # -------------------------------------------------------------
+    jiotv_kept = 0
+    jiotv_dropped = 0
+    for b in jiotv_blocks:
+        if normalize_name(get_block_name(b)) in direct_names:
+            jiotv_dropped += 1
+            continue
+        all_channels_by_group.setdefault(get_block_group(b), []).append(b)
+        jiotv_kept += 1
+    print(f"\n🔗 JioTV dedup: kept {jiotv_kept}, dropped {jiotv_dropped} (already covered by a direct source)")
+
+    # -------------------------------------------------------------
+    # 5. Save Individual Category/Service M3U Files in playlists/
     # -------------------------------------------------------------
     # Mapping for clean individual playlists.
-    # NOTE: vzy / fancode / jiotv are deliberately absent - those files are
-    # produced by their own independent generators (scripts/generate_*.py)
-    # and must not be overwritten here.
+    # NOTE: vzy / fancode / jiotv / jiohotstar / sunnxt / zee5 are deliberately
+    # absent. vzy/fancode/jiotv come from their own generators; jiohotstar/
+    # sunnxt/zee5 are now folded into the JioTV category groups, and sunnxt.m3u
+    # is the SunNXT source (must not be overwritten).
     individual_categories = {
-        "jiohotstar": ["JioHotstar"],
         "willow": ["Willow"],
         "prime": ["Prime Video"],
-        "sunnxt": ["SunNXT"],
-        "zee5": ["ZEE5 Worldwide"],
         "dangal": ["Dangal Play"],
         "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ"],
     }
@@ -349,11 +478,13 @@ def main():
         "Jio TV+ | Unknown",
         "Jio TV+ | Malyalam",
         # Everything else — plugx order
-        "ZEE5 Worldwide",
-        "Sony LIV",
-        "SunNXT",
         "24/7 kids+Goldmines pack",
         "WOW KIDZ",
+        "SonyLIV | Entertainment",
+        "SonyLIV | Movies",
+        "SonyLIV | Kids",
+        "SonyLIV | Sports",
+        "SonyLIV | Infotainment",
         "JioHotstar",
         "VZY",
         "FanCode",

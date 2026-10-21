@@ -37,7 +37,6 @@ def fetch_text(url, timeout=20):
 
 
 def split_inline_headers(url):
-    """Split '<url>|User-Agent=..&Referer=..' into (clean_url, headers_dict)."""
     if "|" not in url:
         return url, {}
     base, _, query = url.partition("|")
@@ -57,7 +56,6 @@ def split_inline_headers(url):
 
 
 def parse_m3u(text):
-    """Return a list of dicts: {attrs, name, headers, url}."""
     entries = []
     attrs = None
     name = ""
@@ -88,7 +86,6 @@ def parse_m3u(text):
 
 
 def normalize_attrs(attrs, name):
-    """Force group-title="FanCode" and keep tvg-id/name/logo."""
     out = attrs
     if 'group-title=' in out:
         out = re.sub(r'group-title="[^"]*"', 'group-title="FanCode"', out)

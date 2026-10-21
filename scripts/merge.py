@@ -26,13 +26,9 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 # User's dedicated independent JioHotstar worker
 USER_JIOHOTSTAR_URL = "https://jhs.gramnaters.workers.dev/"
 
-# Upstream public feeds
 PUBLIC_PLUG_API = "https://plugxvipplaylist.lovable.app/api/playlist"
 LOCAL_PLUG_BACKUP = os.path.join(os.path.dirname(ROOT_DIR), "premiumplug_full.m3u")
 
-# Independent local sources: scripts/generate_*.py -> playlists/*.m3u
-# When one of these loads, its group is skipped in the public feed so the
-# independent copy wins and there are no duplicates.
 LOCAL_OVERRIDES = [
     {
         "name": "VZY",
@@ -149,12 +145,6 @@ def load_local_playlist(path, min_channels=1):
     return [clean_watermarks_from_block(b) for b in blocks]
 
 
-# ---------------------------------------------------------------------------
-# Category merge: fold JioHotstar / SonyLIV / SunNXT / ZEE5 channels into the
-# JioTV category scheme. Hindi channels keep their content category, non-Hindi
-# channels route to their language group, and Big Boss stays separate.
-# ---------------------------------------------------------------------------
-
 LANG_KEYWORDS = {
     "Tamil": ["tamil", "vijay", "ktv", "sun tv", "sun music", "sun life", "sun news", "thirai", "chutti", "polimer", "jaya ", "makkal", "kalaignar", "captain", "thalapathy"],
     "Telugu": ["telugu", " maa", "gemini", "cinemalu", "kushi", "adithya", " etv", "tv5", "ntv ", "sakshi", "vanitha"],
@@ -240,7 +230,6 @@ def set_block_group(block, group):
     return new
 
 def classify_into(blocks, out, direct_names):
-    """Classify blocks into JioTV categories (language routing + Big Boss split)."""
     for b in blocks:
         name = get_block_name(b)
         grp = merge_group(name, get_block_category(b))
@@ -248,7 +237,6 @@ def classify_into(blocks, out, direct_names):
         direct_names.add(normalize_name(name))
 
 def classify_sonyliv(blocks, out):
-    """Keep SonyLIV channels in their own per-category groups (SonyLIV | Kids, ...)."""
     for b in blocks:
         name = get_block_name(b)
         cat = CATEGORY_MAP.get(get_block_category(b), "Entertainment")
@@ -256,7 +244,6 @@ def classify_sonyliv(blocks, out):
         out.setdefault(grp, []).append(set_block_group(b, grp))
 
 def classify_jiohotstar(blocks, out, direct_names):
-    """Big Boss live streams stay in JioHotstar; the rest fold into JioTV."""
     for b in blocks:
         name = get_block_name(b)
         if BIG_BOSS_RE.search(name):
@@ -274,12 +261,9 @@ def main():
     os.makedirs(PLAYLISTS_DIR, exist_ok=True)
 
     all_channels_by_group = {}
-    direct_names = set()      # normalized names of JioHotstar/SonyLIV/SunNXT/ZEE5
-    jiotv_blocks = []         # plugx "Jio TV+" channels (fresh keys), deduped + classified at the end
+    direct_names = set()
+    jiotv_blocks = []
 
-    # -------------------------------------------------------------
-    # 1. Fetch User's Independent JioHotstar Feed -> fold into JioTV categories
-    # -------------------------------------------------------------
     print(f"\n⭐ Fetching independent JioHotstar from {USER_JIOHOTSTAR_URL}...")
     jhs_text = fetch_content(USER_JIOHOTSTAR_URL)
     jhs_blocks = []
@@ -293,10 +277,7 @@ def main():
     # -------------------------------------------------------------
     # 2. Independent local sources (channels/*.json -> playlists/*.m3u)
     # -------------------------------------------------------------
-    skip_from_plug = {"jiohotstar"}   # exact group names to take from local instead
-    # ZEE5 India is dropped on purpose: its streams hang (measured 31/33 dead),
-    # while ZEE5 Worldwide plays. Keep only the working half off the public feed.
-    skip_from_plug.add("zee5 india")
+    skip_from_plug = {"jiohotstar", "zee5 india"}
 
     print("\n🔒 Loading independent local sources...")
     for src in LOCAL_OVERRIDES:
@@ -306,21 +287,15 @@ def main():
             continue
         name = src["name"]
         if name.startswith("SonyLIV"):
-            # keep SonyLIV in its own per-category groups (Sony already in JioTV)
             classify_sonyliv(blocks, all_channels_by_group)
         elif name.startswith("SunNXT"):
-            # fold SunNXT into JioTV categories (language-routed)
             classify_into(blocks, all_channels_by_group, direct_names)
         elif src["group"]:
-            # VZY, FanCode, ... keep their own group
             all_channels_by_group.setdefault(src["group"], []).extend(blocks)
         for g in src["plug_groups"]:
             skip_from_plug.add(g.lower())
         print(f"✅ {src['name']}: {len(blocks)} channels loaded from {os.path.basename(src['file'])}")
 
-    # -------------------------------------------------------------
-    # 3. Fetch Public Feeds (ZEE5, SunNXT, Dangal, Kids, SonyLIV, ...)
-    # -------------------------------------------------------------
     print(f"\n📡 Fetching comprehensive catalog from {PUBLIC_PLUG_API}...")
     plug_text = fetch_content(PUBLIC_PLUG_API)
     if not plug_text and os.path.exists(LOCAL_PLUG_BACKUP):
@@ -331,8 +306,6 @@ def main():
     plug_blocks = extract_channel_blocks(plug_text) if plug_text else []
     print(f"✅ Loaded {len(plug_blocks)} total public channel items")
 
-    # Accumulate public-feed channels, skipping any category we already have
-    # from an independent local source (no duplicates).
     skipped_groups = set()
     for b in plug_blocks:
         grp = get_block_group(b)
@@ -342,20 +315,14 @@ def main():
             continue
         cleaned_b = clean_watermarks_from_block(b)
         if grp.startswith(JIOTV_GROUP_PREFIX):
-            # JioTV now comes straight from the plugx feed (fresh DRM keys);
-            # hold aside to dedup + classify against direct sources below.
             jiotv_blocks.append(cleaned_b)
         elif grp == "ZEE5 Worldwide":
-            # fold ZEE5 into JioTV categories (language-routed)
             classify_into([cleaned_b], all_channels_by_group, direct_names)
         else:
             all_channels_by_group.setdefault(grp, []).append(cleaned_b)
     if skipped_groups:
         print(f"⏭️  Skipped {len(skipped_groups)} public-feed group(s) (local copy wins or category disabled): {', '.join(sorted(skipped_groups))}")
 
-    # -------------------------------------------------------------
-    # 3. Add Extra Feeds (Willow, Prime Video)
-    # -------------------------------------------------------------
     for name, cfg in EXTRA_FEEDS.items():
         print(f"\n{cfg['icon']} Fetching {name} from {cfg['url']}...")
         extra_text = fetch_content(cfg["url"])
@@ -376,11 +343,6 @@ def main():
             print(f"✅ Loaded {len(norm_eblocks)} channels from {name}")
             all_channels_by_group.setdefault(cfg["group"], []).extend(norm_eblocks)
 
-    # -------------------------------------------------------------
-    # 4. Fold deduped plugx JioTV channels into the category groups
-    #    (language routing). Direct sources (JioHotstar/SonyLIV/SunNXT/
-    #    ZEE5) win over JioTV re-broadcasts of the same channel.
-    # -------------------------------------------------------------
     jiotv_kept = 0
     jiotv_dropped = 0
     for b in jiotv_blocks:
@@ -393,14 +355,6 @@ def main():
         jiotv_kept += 1
     print(f"\n🔗 JioTV dedup: kept {jiotv_kept}, dropped {jiotv_dropped} (already covered by a direct source)")
 
-    # -------------------------------------------------------------
-    # 5. Save Individual Category/Service M3U Files in playlists/
-    # -------------------------------------------------------------
-    # Mapping for clean individual playlists.
-    # NOTE: vzy / fancode / jiotv / jiohotstar / sunnxt / zee5 are deliberately
-    # absent. vzy/fancode/jiotv come from their own generators; jiohotstar/
-    # sunnxt/zee5 are now folded into the JioTV category groups, and sunnxt.m3u
-    # is the SunNXT source (must not be overwritten).
     individual_categories = {
         "willow": ["Willow"],
         "prime": ["Prime Video"],
@@ -423,17 +377,9 @@ def main():
                 f.write("\n".join(b) + "\n\n")
         print(f"  📁 {filename}.m3u ({len(cat_blocks)} channels)")
 
-    # -------------------------------------------------------------
-    # 5. Assemble Master Combined.m3u
-    # -------------------------------------------------------------
     print("\n📦 Generating Master Combined.m3u...")
 
-    # Canonical order of groups — mirrors the plugx public feed's category
-    # sequence: JioTV first (by category, then languages), then ZEE5 -> Sony
-    # -> SunNXT -> kids -> JioHotstar -> VZY -> FanCode -> Sonyliv events ->
-    # Dangal Play.
     PRIORITY_GROUPS = [
-        # JioTV categories — plugx order (shared + public-only + catalog-only)
         "Jio TV+ | Entertainment",
         "Jio TV+ | Infotainment",
         "Jio TV+ | Movies",
@@ -450,7 +396,6 @@ def main():
         "Jio TV+ | Other",
         "Jio TV+ | Specials",
         "Jio TV+ | Shopping",
-        # JioTV language groups (independent catalog only)
         "Jio TV+ | English",
         "Jio TV+ | Tamil",
         "Jio TV+ | Telugu",
@@ -468,7 +413,6 @@ def main():
         "Jio TV+ | French",
         "Jio TV+ | Unknown",
         "Jio TV+ | Malyalam",
-        # Everything else — plugx order
         "24/7 kids+Goldmines pack",
         "WOW KIDZ",
         "SonyLIV | Entertainment",
@@ -485,7 +429,6 @@ def main():
         "Dangal Play",
     ]
 
-    # Include any groups that may not be explicitly listed
     all_known_groups = []
     for g in PRIORITY_GROUPS:
         if g in all_channels_by_group and g not in all_known_groups:
@@ -512,12 +455,10 @@ def main():
 
     combined_content = "\n".join(master_lines)
 
-    # Write root Combined.m3u
     with open(COMBINED_M3U, "w", encoding="utf-8") as f:
         f.write(combined_content)
     print(f"✅ Saved root Combined.m3u: {len(combined_content)} bytes ({total_combined_channels} channels)")
 
-    # Also write playlists/Combined.m3u for backwards compatibility
     playlists_combined = os.path.join(PLAYLISTS_DIR, "Combined.m3u")
     with open(playlists_combined, "w", encoding="utf-8") as f:
         f.write(combined_content)

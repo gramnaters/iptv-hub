@@ -1,6 +1,6 @@
 #EXTM3U
-#DATE:- 20-10-2026 23:23:01 IST
-# Category: sunnxt
+#DATE:- 21-10-2026 18:35:35 IST
+# Category: SunNXT
 # Total Channels: 34
 
 #EXTINF:-1 tvg-id="sun-194408" tvg-name="Sun TV" tvg-logo="https://sund-images.sunnxt.com/194408/640x360_SunTV_194408_2617a80e-4f90-42fa-b13a-acc8d7c97f9e.jpg" group-title="SunNXT" group-logo="https://upload.wikimedia.org/wikipedia/en/d/d5/Sun_NXT_logo_small.png" type="dash",Sun TV
@@ -274,4 +274,3 @@ https://livestream.sunnxt.com/1893b9ab790747cb80a584873a608dcb/KochuTVB_IN_index
 #KODIPROP:inputstream.adaptive.license_key=19d8a5cc002f411b89b33925acdc33e0:2a9aa7a3f69834c4f348430cc3f658bb
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
 https://livestream.sunnxt.com/ed4c67ad957644b69361651d9101107e/ChintuTVB_IN_index.mpd
-

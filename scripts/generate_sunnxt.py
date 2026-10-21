@@ -27,26 +27,18 @@ def get_current_ist_str():
     return datetime.now(IST).strftime("%d-%m-%Y %H:%M:%S IST")
 
 def fetch_live_pwa_catalog():
-    """Fetches official live catalog metadata from SunNXT PWA API."""
     try:
         r = requests.get(SUNNXT_PWA_URL, headers={"User-Agent": "okhttp/3.14.9"}, timeout=8)
         if r.status_code == 200:
-            data = r.json()
-            return data.get("results", [])
+            return r.json().get("results", [])
     except Exception as e:
         print(f"⚠️ Notice: Could not sync with SunNXT PWA API: {e}")
     return []
 
 def check_stream_health(channel):
-    """Verifies that the channel's DASH manifest responds with HTTP 200 OK."""
-    url = channel.get("url")
-    headers = {"User-Agent": USER_AGENT}
     try:
-        # A fast GET request with stream=True or timeout=6
-        r = requests.get(url, headers=headers, timeout=6, stream=True)
-        if r.status_code == 200:
-            return channel, True, r.status_code
-        return channel, False, r.status_code
+        r = requests.get(channel.get("url"), headers={"User-Agent": USER_AGENT}, timeout=6, stream=True)
+        return channel, r.status_code == 200, r.status_code
     except Exception as e:
         return channel, False, str(e)
 
@@ -64,24 +56,20 @@ def generate_playlist():
 
     print(f"📋 Loaded {len(catalog)} channels from catalog.")
 
-    # 1. Sync metadata with official SunNXT PWA API if available
     pwa_results = fetch_live_pwa_catalog()
     if pwa_results:
         print(f"📡 Synced with official SunNXT API ({len(pwa_results)} live records returned)")
-        # Map IDs to official titles
         pwa_map = {str(item.get("_id")): item.get("title") for item in pwa_results if item.get("_id")}
         for ch in catalog:
             raw_id = ch.get("id", "").replace("sun-", "").replace("-dv", "")
             if raw_id in pwa_map and pwa_map[raw_id]:
-                # Update title if different
                 official_title = pwa_map[raw_id]
                 if "-dv" in ch.get("id", ""):
                     ch["name"] = f"{official_title} - Dolby Vision"
                 elif "HD" in ch.get("name", "") and "HD" not in official_title:
                     ch["name"] = f"{official_title} HD"
 
-    # 2. Fast parallel health verification
-    print("\n🔍 Running live stream health checks (verifying Akamai MPD manifests)...")
+    print("\n🔍 Running live stream health checks...")
     verified_channels = []
     failed_channels = []
 
@@ -96,12 +84,10 @@ def generate_playlist():
             failed_channels.append((ch, status))
             print(f"  ⚠️ [FAILED: {status}] {ch['name']}")
 
-    print(f"\n📊 Health Check Summary: {len(verified_channels)} / {len(catalog)} channels healthy and verified live.")
+    print(f"\n📊 Health Check Summary: {len(verified_channels)} / {len(catalog)} channels healthy.")
 
-    # Even if a network glitch fails a check, keep all unless persistently dead
     channels_to_write = verified_channels if len(verified_channels) >= (len(catalog) * 0.8) else catalog
 
-    # 3. Assemble and write M3U playlist
     lines = [
         "#EXTM3U",
         f"#DATE:- {get_current_ist_str()}",

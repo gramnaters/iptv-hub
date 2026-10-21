@@ -178,6 +178,7 @@ CATEGORY_MAP = {
 }
 
 BIG_BOSS_RE = re.compile(r"(?i)bigboss|big boss")
+CATCHUP_RE = re.compile(r"(?i)24\s*[/x]\s*7")
 
 def normalize_name(name):
     return re.sub(r"[^a-z0-9]+", "", name.lower())
@@ -244,7 +245,7 @@ def classify_sonyliv(blocks, out):
 def classify_jiohotstar(blocks, out, direct_names):
     for b in blocks:
         name = get_block_name(b)
-        if BIG_BOSS_RE.search(name):
+        if BIG_BOSS_RE.search(name) or CATCHUP_RE.search(name):
             out.setdefault("JioHotstar", []).append(set_block_group(b, "JioHotstar"))
         else:
             grp = merge_group(name, get_block_category(b))

@@ -7,28 +7,26 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
       - name: Probe Akamai hotstar CDN from GitHub datacenter IP
         run: |
-          python - <<'PY'
-          import requests
+          python3 - <<'PY'
+          import urllib.request, urllib.error
           UA = "Hotstar;in.startv.hotstar/25.02.24.8.11169@Premium Plugx(Android/15)"
           url = "https://jcevents.hotstar.com/bpk-tv/082c75fa2fec61647e9192140d488d30/JioHotstar/082c75fa2fec61647e9192140d488d30.m3u8"
           tok = "hdntl=exp=1792667805~acl=%2f*~id=ef0cb8d6635fb2d058cf6b2e82b0ea56~data=hdntl~hmac=e7da29301fdbf5d8657fa1000b9f316df4aacf7c67a44e2ec3e822f2b36d3e60"
 
-          # 1) streaming WITH the valid hdntl token
-          try:
-              r = requests.get(url, headers={"User-Agent": UA, "Referer": "https://www.hotstar.com/", "Origin": "https://www.hotstar.com", "Cookie": tok}, timeout=20)
-              print("WITH_TOKEN:", r.status_code)
-          except Exception as e:
-              print("WITH_TOKEN: ERR", type(e).__name__, e)
+          def fetch(u, extra=None):
+              h = {"User-Agent": UA, "Referer": "https://www.hotstar.com/"}
+              if extra: h.update(extra)
+              req = urllib.request.Request(u, headers=h)
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as r:
+                      return r.status
+              except urllib.error.HTTPError as e:
+                  return e.code
+              except Exception as e:
+                  return "ERR " + type(e).__name__
 
-          # 2) bare fetch (no token) — the minting style fetch
-          try:
-              r2 = requests.get(url, headers={"User-Agent": UA, "Referer": "https://www.hotstar.com/"}, timeout=20)
-              print("BARE_FETCH:", r2.status_code)
-          except Exception as e:
-              print("BARE_FETCH: ERR", type(e).__name__, e)
+          print("WITH_TOKEN:", fetch(url, {"Origin": "https://www.hotstar.com", "Cookie": tok}))
+          print("BARE_FETCH:", fetch(url))
           PY

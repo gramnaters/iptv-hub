@@ -106,7 +106,6 @@ def extract_channel_blocks(raw_text):
     return blocks
 
 def clean_watermarks_from_block(block):
-    """Purge unwanted watermarks or promotional metadata from blocks."""
     cleaned = []
     watermark_patterns = [
         r'DOCTOR\s*STRANGE',
@@ -129,7 +128,6 @@ def get_block_group(block):
     return "Other"
 
 def load_local_playlist(path, min_channels=1):
-    """Load blocks from a locally generated playlist (scripts/generate_*.py -> playlists/*.m3u)."""
     if not os.path.exists(path):
         return []
     try:
@@ -274,9 +272,6 @@ def main():
     else:
         print("⚠️ Could not load independent JioHotstar, check worker status")
 
-    # -------------------------------------------------------------
-    # 2. Independent local sources (channels/*.json -> playlists/*.m3u)
-    # -------------------------------------------------------------
     skip_from_plug = {"jiohotstar", "zee5 india"}
 
     print("\n🔒 Loading independent local sources...")

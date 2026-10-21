@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1000009246",
+    "name": "SET HD",
+    "logo": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SET_HD/images/LOGO_HD/image.png"
+  },
+  {
+    "id": "1000009248",
+    "name": "Sony SAB HD",
+    "logo": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SONY_SAB_HD/images/LOGO_HD/image.png"
+  },
+  {
+    "id": "1000009249",
+    "name": "SONY Max SD",
+    "logo": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SONY_MAX/images/LOGO_HD/image.png"
+  },
+  {
+    "id": "1000009247",
+    "name": "Sony MAX HD",
+    "logo": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SONY_MAX_HD/images/LOGO_HD/image.png"
+  },
+  {
+    "id": "1000009278",
+    "name": "Sony Sports Ten 3 HD Hindi",
+    "logo": "https://brand-websites-prod.s3.ap-south-1.amazonaws.com/sonypicturesnetworksindia/logo/25_276.png"
+  },
+  {
+    "id": "1000044878",
+    "name": "Sony MAX 2",
+    "logo": "https://brand-websites-prod.s3.ap-south-1.amazonaws.com/sonypicturesnetworksindia/logo/2_250.png"
+  },
+  {
+    "id": "1000001971",
+    "name": "Sony YAY",
+    "logo": "https://brand-websites-prod.s3.ap-south-1.amazonaws.com/sonypicturesnetworksindia/logo/12_259.png"
+  },
+  {
+    "id": "1000009276",
+    "name": "Sony Sports Ten 1 HD",
+    "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Ten_HD.png"
+  },
+  {
+    "id": "1000009275",
+    "name": "Sony Sports Ten 5 HD",
+    "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Six_HD.png"
+  },
+  {
+    "id": "1000009277",
+    "name": "Sony Sports Ten 2 HD",
+    "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Ten2_HD.png"
+  },
+  {
+    "id": "1000009253",
+    "name": "Sony WAH",
+    "logo": "https://brand-websites-prod.s3.ap-south-1.amazonaws.com/sonypicturesnetworksindia/logo/10_258.png"
+  },
+  {
+    "id": "1000009273",
+    "name": "Sony PAL",
+    "logo": "https://brand-websites-prod.s3.ap-south-1.amazonaws.com/sonypicturesnetworksindia/logo/6_257.png"
+  },
+  {
+    "id": "1000009252",
+    "name": "Sony BBC earth HD",
+    "logo": "https://brand-websites-prod.s3.ap-south-1.amazonaws.com/sonypicturesnetworksindia/logo/32_254.png"
+  },
+  {
+    "id": "1000009258",
+    "name": "Sony Pix HD",
+    "logo": "https://brand-websites-prod.s3.ap-south-1.amazonaws.com/sonypicturesnetworksindia/logo/34_252.png"
+  },
+  {
+    "id": "1000009283",
+    "name": "Sony Sports Ten 3 Hindi SD",
+    "logo": "https://brand-websites-prod.s3.ap-south-1.amazonaws.com/sonypicturesnetworksindia/logo/24_274.png"
+  },
+  {
+    "id": "1000009280",
+    "name": "Sony Ten 1 SD",
+    "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Ten_1.png"
+  },
+  {
+    "id": "1000009281",
+    "name": "Sony Sports Ten 5 SD",
+    "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Sony_Six_SD.png"
+  },
+  {
+    "id": "1000009279",
+    "name": "Sony Sports Ten 2 SD",
+    "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Ten_2.png"
+  }
+]

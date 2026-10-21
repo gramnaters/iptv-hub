@@ -58,6 +58,13 @@ LOCAL_OVERRIDES = [
         "plug_groups": ["Sun NXT", "SunNXT"],
         "group": "SunNXT",
     },
+    {
+        "name": "SonyLIV Premium (joker-verse)",
+        "file": os.path.join(PLAYLISTS_DIR, "sonyliv_premium.m3u"),
+        "min_channels": 5,
+        "plug_groups": ["SonyLIV Premium"],
+        "group": "SonyLIV Premium",
+    },
 ]
 
 JIOTV_GROUP_PREFIX = "Jio TV+"
@@ -282,7 +289,7 @@ def main():
             print(f"⚠️ {src['name']}: local playlist unavailable -> falling back to public feed")
             continue
         name = src["name"]
-        if name.startswith("SonyLIV"):
+        if name.startswith("SonyLIV ("):
             classify_sonyliv(blocks, all_channels_by_group)
         elif name.startswith("SunNXT"):
             classify_into(blocks, all_channels_by_group, direct_names)
@@ -416,6 +423,7 @@ def main():
         "SonyLIV | Kids",
         "SonyLIV | Sports",
         "SonyLIV | Infotainment",
+        "SonyLIV Premium",
         "JioHotstar",
         "VZY",
         "FanCode",

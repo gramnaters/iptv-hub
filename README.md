@@ -8,7 +8,7 @@ Automated aggregator and generator for Live TV & Sports streams. Auto-refreshes 
 | :--- | :--- | :--- |
 | **⭐ Master Combined (Front Root)** | **1,570+ Channels** | **`https://raw.githubusercontent.com/gramnaters/iptv-hub/main/Combined.m3u`** |
 | **⭐ JioHotstar (Independent Feed)** | 146 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/playlists/jiohotstar.m3u` |
-| **📡 JioTV (Full Packs & Categories)** | 1,175 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/playlists/jiotv.m3u` |
+| **📡 JioTV (Full Packs & Categories)** | 1,209 | *(folded into `Combined.m3u` as `Jio TV+ | …` groups)* |
 | **📺 ZEE5 Worldwide** | 112 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/playlists/zee5.m3u` |
 | **📺 SonyLIV** | 22 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/playlists/sonyliv.m3u` |
 | **☀️ SunNXT** | 34 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/playlists/sunnxt.m3u` |
@@ -33,21 +33,16 @@ is the fallback if the upstream is down.
 | `catalogs/vzy_catalog.json` | ✅ committed | 48 VZY channels — name, logo, stream URL, ClearKey |
 
 **Fetched live, not stored:**
-- **JioTV** — 1,175 channels from the qwerty `Geoplus.json` list, every run.
+- **JioTV** — 1,209 channels taken straight from the plugx public feed (which
+  carries fresh ClearKey DRM keys and the `__hdnea__` cookie), every run.
 - **SonyLIV** — 22 channels from the independent worker's `/playlist.m3u`, every run.
-
-**Why the JioTV token is not committed:** the token lives ~6 h and is a
-credential, so it is only ever written into `playlists/jiotv.m3u`. If no live
-token can be fetched, the generator removes that playlist so `merge.py` falls
-back to the public feed; if only the channel list is unreachable, the previous
-playlist is kept.
 
 ## 🔐 How each source is authenticated
 
 | Source | Token | Cookie | Independent? |
 | :--- | :--- | :--- | :--- |
 | **VZY** | ❌ none | ❌ none | ✅ **100%** — static ClearKey, plays bare, keys never rotate |
-| **JioTV** | `__hdnea__` (6h) | ❌ | ⚠️ token minted by the **allinonereborn** hub (single source) |
+| **JioTV** | `__hdnea__` (6h) | ❌ | ⚠️ token + ClearKey carried by the **plugx** public feed |
 | **FanCode** | `hdntl` (per match) | ❌ | ⚠️ token carried by the **doctor-8trange** feed |
 | **SonyLIV** | `hdnea` (~12h) | ❌ | ✅ **100%** — direct Sony API token, self-minted in **our worker** via Cloudflare Browser Rendering (5h cron) |
 | **JioHotstar** | `hdntl` | ✅ own | ✅ **100%** — self-minted by the user's own worker |
@@ -62,9 +57,9 @@ a hub holding a real login mints it. VZY, JioHotstar and SonyLIV are genuinely
 self-contained. SonyLIV's Worker mints through Cloudflare Browser Rendering,
 which egresses differently from normal Workers `fetch`.
 
-> ⚠️ The `allinonereborn` cookie (`jstrweb2/cookies.json`) is a **JioTV-only**
-> token (`acl=/*`). It does nothing on Sony's CDN — verified: `403` with and
-> without it. It is *not* a Sony auth source.
+> ⚠️ The JioTV `__hdnea__` cookie (`acl=/*`) is a **JioTV-only** token. It does
+> nothing on Sony's CDN — verified: `403` with and without it. It is *not* a
+> Sony auth source.
 
 **How SonyLIV is minted now (independent):** Sony's own anonymous API returns a
 wildcard `hdnea` for one free title:
@@ -92,6 +87,7 @@ a third-party minter.
   The JioTV and JioHotstar tokens live ~6 h, so a 5 h cycle keeps them fresh.
   SonyLIV's ~12 h token is refreshed inside the worker by a 5 h Browser
   Rendering cron; `sony-worker/refresh-sony.cmd` is only a fallback.
-- Step order: `generate_jiotv.py` → `generate_vzy.py` → `generate_fancode.py` → `generate_sony.py` → `merge.py`.
-- A generator failure is non-fatal: SonyLIV (worker fetch) and the JioTV catalog step keep the previous playlist; if no live JioTV token is available, `playlists/jiotv.m3u` is removed so `merge.py` falls back to the public feed.
+- Step order: `generate_vzy.py` → `generate_fancode.py` → `generate_sony.py` → `merge.py`.
+- A generator failure is non-fatal: each script leaves the previous playlist
+  untouched if its upstream (or the worker token) is unavailable.
 - Automatically updates stream tokens, live matches, upcoming fixtures, and manifest URLs.

@@ -36,11 +36,12 @@ jobs:
       - name: Generate independent source playlists
         run: |
           # Each script writes its own playlists/<name>.m3u, which merge.py
-          # consumes. VZY reads catalogs/vzy_catalog.json (static data); JioTV
-          # fetches its channel list live, and SonyLIV copies the independent
-          # worker's catalog. Both leave the previous playlist untouched if the
-          # upstream (or the worker token) is unavailable.
-          python scripts/generate_jiotv.py || echo "::warning::jiotv generator failed"
+          # consumes. VZY reads catalogs/vzy_catalog.json (static data); SonyLIV
+          # copies the independent worker's catalog. JioTV no longer needs a
+          # local generator — merge.py takes its channels straight from the
+          # plugx public feed, which carries fresh DRM keys. Each script leaves
+          # the previous playlist untouched if the upstream (or the worker
+          # token) is unavailable.
           python scripts/generate_vzy.py   || echo "::warning::vzy generator failed"
           python scripts/generate_fancode.py || echo "::warning::fancode generator failed"
           python scripts/generate_sony.py  || echo "::warning::sony generator failed"

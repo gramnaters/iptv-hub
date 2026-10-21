@@ -62,13 +62,6 @@ LOCAL_OVERRIDES = [
         "plug_groups": ["Sun NXT", "SunNXT"],
         "group": "SunNXT",
     },
-    {
-        "name": "JioTV (allinonereborn cookie)",
-        "file": os.path.join(PLAYLISTS_DIR, "jiotv.m3u"),
-        "min_channels": 100,
-        "plug_groups": None,  # None => skip every group starting with "Jio TV+"
-        "group": None,
-    },
 ]
 
 JIOTV_GROUP_PREFIX = "Jio TV+"
@@ -282,7 +275,7 @@ def main():
 
     all_channels_by_group = {}
     direct_names = set()      # normalized names of JioHotstar/SonyLIV/SunNXT/ZEE5
-    jiotv_blocks = []         # JioTV channels, deduped against direct_names at the end
+    jiotv_blocks = []         # plugx "Jio TV+" channels (fresh keys), deduped + classified at the end
 
     # -------------------------------------------------------------
     # 1. Fetch User's Independent JioHotstar Feed -> fold into JioTV categories
@@ -304,7 +297,6 @@ def main():
     # ZEE5 India is dropped on purpose: its streams hang (measured 31/33 dead),
     # while ZEE5 Worldwide plays. Keep only the working half off the public feed.
     skip_from_plug.add("zee5 india")
-    skip_jiotv_from_plug = False      # "Jio TV+ *" groups
 
     print("\n🔒 Loading independent local sources...")
     for src in LOCAL_OVERRIDES:
@@ -322,14 +314,8 @@ def main():
         elif src["group"]:
             # VZY, FanCode, ... keep their own group
             all_channels_by_group.setdefault(src["group"], []).extend(blocks)
-        else:
-            # JioTV: hold aside, dedup against direct sources at the end
-            jiotv_blocks.extend(blocks)
-        if src["plug_groups"] is None:
-            skip_jiotv_from_plug = True
-        else:
-            for g in src["plug_groups"]:
-                skip_from_plug.add(g.lower())
+        for g in src["plug_groups"]:
+            skip_from_plug.add(g.lower())
         print(f"✅ {src['name']}: {len(blocks)} channels loaded from {os.path.basename(src['file'])}")
 
     # -------------------------------------------------------------
@@ -354,11 +340,12 @@ def main():
         if gl in skip_from_plug:
             skipped_groups.add(grp)
             continue
-        if skip_jiotv_from_plug and grp.startswith(JIOTV_GROUP_PREFIX):
-            skipped_groups.add(grp)
-            continue
         cleaned_b = clean_watermarks_from_block(b)
-        if grp == "ZEE5 Worldwide":
+        if grp.startswith(JIOTV_GROUP_PREFIX):
+            # JioTV now comes straight from the plugx feed (fresh DRM keys);
+            # hold aside to dedup + classify against direct sources below.
+            jiotv_blocks.append(cleaned_b)
+        elif grp == "ZEE5 Worldwide":
             # fold ZEE5 into JioTV categories (language-routed)
             classify_into([cleaned_b], all_channels_by_group, direct_names)
         else:
@@ -390,9 +377,9 @@ def main():
             all_channels_by_group.setdefault(cfg["group"], []).extend(norm_eblocks)
 
     # -------------------------------------------------------------
-    # 4. Fold deduped JioTV channels into the category groups.
-    #    Direct sources (JioHotstar/SonyLIV/SunNXT/ZEE5) win over JioTV
-    #    re-broadcasts of the same channel.
+    # 4. Fold deduped plugx JioTV channels into the category groups
+    #    (language routing). Direct sources (JioHotstar/SonyLIV/SunNXT/
+    #    ZEE5) win over JioTV re-broadcasts of the same channel.
     # -------------------------------------------------------------
     jiotv_kept = 0
     jiotv_dropped = 0
@@ -401,7 +388,8 @@ def main():
         if normalize_name(name) in direct_names:
             jiotv_dropped += 1
             continue
-        all_channels_by_group.setdefault(get_block_group(b), []).append(b)
+        grp = merge_group(name, get_block_category(b))
+        all_channels_by_group.setdefault(grp, []).append(set_block_group(b, grp))
         jiotv_kept += 1
     print(f"\n🔗 JioTV dedup: kept {jiotv_kept}, dropped {jiotv_dropped} (already covered by a direct source)")
 

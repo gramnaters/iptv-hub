@@ -1,0 +1,61 @@
+name: JioTV Datacenter Egress Probe (temp)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe JioTV API + CDN from GitHub datacenter IP
+        run: |
+          python3 - <<'PY'
+          import os, json, re, base64, urllib.request, urllib.error
+
+          tok = json.loads(os.environ["JIOTV_TOKEN"])
+          authToken = tok["authToken"]; ssoToken = tok["ssoToken"]
+          deviceId = tok.get("deviceId", "3c6d6b5702fa09bd")
+          user = tok["sessionAttributes"]["user"]
+
+          def get(url, headers=None):
+              req = urllib.request.Request(url, headers=headers or {})
+              try:
+                  with urllib.request.urlopen(req, timeout=25) as r:
+                      return r.status, r.read().decode("utf-8", "replace"), dict(r.headers)
+              except urllib.error.HTTPError as e:
+                  return e.code, e.read().decode("utf-8", "replace"), dict(e.headers)
+              except Exception as e:
+                  return "ERR", type(e).__name__, {}
+
+          # 1. channel list (anonymous)
+          s, body, _ = get("https://jiotv.data.cdn.jio.com/apis/v1.4/getMobileChannelList/get/?os=android&devicetype=phone",
+              {"Accept":"*/*","User-Agent":"okhttp/4.2.2","appkey":"NzNiMDhlYzQyNjJm","devicetype":"phone","os":"android","deviceId":deviceId})
+          print("channel_list:", s, "| len", len(body))
+
+          # 2. geturl (with token)
+          import urllib.parse
+          data = urllib.parse.urlencode({"stream_type":"Seek","channel_id":"1763"}).encode()
+          req = urllib.request.Request("https://jiotvapi.media.jio.com/playback/apis/v1/geturl?langId=6", data=data,
+              headers={"appkey":"NzNiMDhlYzQyNjJm","devicetype":"phone","os":"android","deviceId":deviceId,
+                       "isott":"false","channel_id":"1763","accesstoken":authToken,"Content-Type":"application/x-www-form-urlencoded","User-Agent":"okhttp/4.2.2"})
+          try:
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  gub = json.loads(r.read().decode())
+                  print("geturl:", r.status, "| url", gub.get("result","")[:80])
+                  murl = gub.get("result","")
+          except urllib.error.HTTPError as e:
+              print("geturl: HTTP", e.code, "|", e.read().decode()[:150]); murl = ""
+          except Exception as e:
+              print("geturl: ERR", type(e).__name__); murl = ""
+
+          # 3. manifest fetch (Akamai CDN)
+          if murl:
+              s, body, hdrs = get(murl,
+                  {"Accept":"*/*","User-Agent":"plaYtv/7.0.8","crmid":user["subscriberId"],"deviceId":deviceId,
+                   "devicetype":"phone","os":"Android","osVersion":"9","srno":"230128144001","ssotoken":ssoToken,
+                   "uniqueId":user["unique"],"userId":user["uid"],"usergroup":"tvYR7NSNn7rymo3F","versionCode":"226"})
+              sc = hdrs.get("Set-Cookie","") or hdrs.get("set-cookie","")
+              print("manifest_fetch:", s, "| set-cookie", sc[:60])
+          PY
+        env:
+          JIOTV_TOKEN: ${{ secrets.JIOTV_TOKEN }}

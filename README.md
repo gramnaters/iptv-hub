@@ -1,6 +1,6 @@
 # 📡 Master Auto-Updated IPTV Playlists
 
-Automated aggregator and generator for Live TV & Sports streams. Auto-refreshes every 5 hours via GitHub Actions, with SonyLIV self-refreshing via a Cloudflare Browser Rendering cron.
+Automated aggregator and generator for Live TV & Sports streams. Auto-refreshes every 5 hours via GitHub Actions; SonyLIV self-mints its token from Sony's anonymous API on the same runner.
 
 ## 🔗 Playlists & Direct Raw Links
 
@@ -35,7 +35,7 @@ is the fallback if the upstream is down.
 **Fetched live, not stored:**
 - **JioTV** — 1,209 channels taken straight from the plugx public feed (which
   carries fresh ClearKey DRM keys and the `__hdnea__` cookie), every run.
-- **SonyLIV** — 22 channels from the independent worker's `/playlist.m3u`, every run.
+- **SonyLIV** — 22 channels self-minted from Sony's anonymous API (`GETTOKEN` → `VIDEOURL`), every run.
 
 ## 🔐 How each source is authenticated
 
@@ -44,7 +44,7 @@ is the fallback if the upstream is down.
 | **VZY** | ❌ none | ❌ none | ✅ **100%** — static ClearKey, plays bare, keys never rotate |
 | **JioTV** | `__hdnea__` (6h) | ❌ | ⚠️ token + ClearKey carried by the **plugx** public feed |
 | **FanCode** | `hdntl` (per match) | ❌ | ⚠️ token carried by the **doctor-8trange** feed |
-| **SonyLIV** | `hdnea` (~12h) | ❌ | ✅ **100%** — direct Sony API token, self-minted in **our worker** via Cloudflare Browser Rendering (5h cron) |
+| **SonyLIV** | `hdnea` (~12h) | ❌ | ✅ **100%** — direct Sony anonymous-API token, self-minted on the GitHub runner |
 | **JioHotstar** | `hdntl` | ✅ own | ✅ **100%** — self-minted by the user's own worker |
 | ZEE5 Worldwide / SunNXT / Dangal / Kids | varies | — | ❌ public feed |
 
@@ -54,15 +54,16 @@ is the fallback if the upstream is down.
 
 A JioTV / FanCode token **cannot** be derived from a cookie or an algorithm —
 a hub holding a real login mints it. VZY, JioHotstar and SonyLIV are genuinely
-self-contained. SonyLIV's Worker mints through Cloudflare Browser Rendering,
-which egresses differently from normal Workers `fetch`.
+self-contained. SonyLIV mints on the GitHub runner (Azure egress), which Sony
+does not flag — only Cloudflare's fetch egress is blocked as a VPN.
 
 > ⚠️ The JioTV `__hdnea__` cookie (`acl=/*`) is a **JioTV-only** token. It does
 > nothing on Sony's CDN — verified: `403` with and without it. It is *not* a
 > Sony auth source.
 
-**How SonyLIV is minted now (independent):** Sony's own anonymous API returns a
-wildcard `hdnea` for one free title:
+**How SonyLIV is minted (independent):** Sony's own anonymous API returns a
+wildcard `hdnea` for one free title, minted directly by `generate_sony.py` on
+the GitHub runner:
 
 ```
 GET  apiv2.sonyliv.com/AGL/1.4/A/ENG/WEB/ALL/GETTOKEN
@@ -71,23 +72,20 @@ GET  apiv2.sonyliv.com/AGL/1.5/A/ENG/WEB/IN/CONTENT/VIDEOURL/VOD/1000022678
 -> videoURL?hdnea=exp=...~acl=/*~id=...~hmac=...        (~12 h)
 ```
 
-One token covers all 22 `dishmt.slivcdn.com` channels, their media playlists,
-AES keys and segments (22/22 masters verified). Normal Workers `fetch` cannot
-mint it: Sony flags Cloudflare's fetch egress as a VPN (`AKA_0403_PANIC`).
-`sony-worker` therefore mints via **Cloudflare Browser Rendering**, whose egress
-is not flagged, on a 5-hour cron, and stores the token in KV. A local manual
-script (`refresh-token.mjs` / `refresh-sony.cmd` in the operator's
-`sony-worker/` checkout, outside this repo) remains as a fallback and can push a
-token to `/ingest`. The playlist stores **worker pointers, not tokens**; if the
-token is missing or expired the Worker returns `503` instead of falling back to
-a third-party minter.
+One token covers all 22 `dishmt.slivcdn.com` channels (22/22 masters verified).
+The anonymous API needs **no credential**, so there is no secret to store; the
+token is ephemeral (~12 h) and baked into the playlist like the JioTV/JioHotstar
+tokens. Normal Cloudflare Workers `fetch` cannot mint it (`AKA_0403_PANIC`), but
+GitHub Actions / any normal egress can — which is why it was moved off the
+Cloudflare Worker + Browser Rendering. The CDN may 403 the GitHub datacenter IP
+during verification, so `generate_sony.py` falls back to publishing the full
+catalog when it cannot verify from the runner.
 
 ## ⏰ Auto-Refresh Schedule
 - Automatically runs **every 5 hours** using GitHub Actions (`.github/workflows/update.yml`).
-  The JioTV and JioHotstar tokens live ~6 h, so a 5 h cycle keeps them fresh.
-  SonyLIV's ~12 h token is refreshed inside the worker by a 5 h Browser
-  Rendering cron; `sony-worker/refresh-sony.cmd` is only a fallback.
+  The JioTV and JioHotstar tokens live ~6 h, and SonyLIV's ~12 h, so a 5 h
+  cycle keeps them all fresh.
 - Step order: `generate_vzy.py` → `generate_fancode.py` → `generate_sony.py` → `merge.py`.
 - A generator failure is non-fatal: each script leaves the previous playlist
-  untouched if its upstream (or the worker token) is unavailable.
+  untouched if its upstream is unavailable.
 - Automatically updates stream tokens, live matches, upcoming fixtures, and manifest URLs.

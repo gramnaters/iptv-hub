@@ -76,11 +76,15 @@ def fetch_channels_catalog():
     return []
 
 def extract_drm_keys(channel):
-    key_id = channel.get("keyId") or ""
-    key = channel.get("key") or ""
+    def _clean(v):
+        s = str(v or "").strip()
+        return "" if s.lower() in ("null", "none", "nan") else s
+    key_id = _clean(channel.get("keyId"))
+    key = _clean(channel.get("key"))
     if not key_id and isinstance(channel.get("clearkey"), dict) and channel.get("clearkey"):
         try:
-            key_id, key = next(iter(channel["clearkey"].items()))
+            k, v = next(iter(channel["clearkey"].items()))
+            key_id, key = _clean(k), _clean(v)
         except StopIteration:
             pass
     return key_id, key

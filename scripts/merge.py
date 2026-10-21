@@ -198,6 +198,9 @@ CATEGORY_MAP = {
 
 BIG_BOSS_RE = re.compile(r"(?i)bigboss|big boss")
 
+# SonyLIV is the dedicated Sony source; drop Sony-branded re-broadcasts from JioTV.
+SONY_BRAND_RE = re.compile(r"(?i)^(sony|set\s+(hd|sd)\b)")
+
 def normalize_name(name):
     return re.sub(r"[^a-z0-9]+", "", name.lower())
 
@@ -397,12 +400,13 @@ def main():
     jiotv_kept = 0
     jiotv_dropped = 0
     for b in jiotv_blocks:
-        if normalize_name(get_block_name(b)) in direct_names:
+        name = get_block_name(b)
+        if normalize_name(name) in direct_names or SONY_BRAND_RE.match(name.strip()):
             jiotv_dropped += 1
             continue
         all_channels_by_group.setdefault(get_block_group(b), []).append(b)
         jiotv_kept += 1
-    print(f"\n🔗 JioTV dedup: kept {jiotv_kept}, dropped {jiotv_dropped} (already covered by a direct source)")
+    print(f"\n🔗 JioTV dedup: kept {jiotv_kept}, dropped {jiotv_dropped} (already covered by a direct source or SonyLIV)")
 
     # -------------------------------------------------------------
     # 5. Save Individual Category/Service M3U Files in playlists/

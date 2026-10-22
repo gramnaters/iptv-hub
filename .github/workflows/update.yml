@@ -37,19 +37,32 @@ jobs:
           SONY_INGEST_SECRET: ${{ secrets.SONY_INGEST_SECRET }}
         run: |
           # Fallback for the Cloudflare worker crons. Each worker also mints on
-          # its own schedule; this guarantees a fresh token right before the
-          # playlist is regenerated even if a cron was missed. The workers use
-          # Browser Rendering (not the GitHub egress), so Sony/Akamai do not
-          # block these mints.
-          if [ -n "$JHS_MINT_SECRET" ]; then
-            curl -fsS -X POST -H "Authorization: Bearer $JHS_MINT_SECRET" \
-              https://jhs.gramnaters.workers.dev/mint \
-              || echo "::warning::jhs mint trigger failed"
+          # its own schedule. We only mint when a token is within 8h of expiring,
+          # and space the two mints apart, because Cloudflare Browser Rendering
+          # rate-limits (429) rapid session creation. Minting on fresh tokens
+          # every run was burning that limit for nothing.
+          JHS_TTL=$(curl -fsS https://jhs.gramnaters.workers.dev/status 2>/dev/null \
+            | python3 -c "import sys,json; print(int(json.load(sys.stdin).get('expiresInHours', 99)))" 2>/dev/null \
+            || echo 99)
+          if [ "${JHS_TTL:-99}" -lt 8 ]; then
+            for i in 1 2 3; do
+              if curl -fsS -X POST -H "Authorization: Bearer $JHS_MINT_SECRET" \
+                https://jhs.gramnaters.workers.dev/mint; then break; fi
+              echo "::warning::jhs mint attempt $i failed, retrying"
+              sleep 12
+            done
           fi
-          if [ -n "$SONY_INGEST_SECRET" ]; then
-            curl -fsS -X POST -H "Authorization: Bearer $SONY_INGEST_SECRET" \
-              https://sonyliv-worker.gramnaters.workers.dev/mint \
-              || echo "::warning::sonyliv mint trigger failed"
+
+          SONY_TTL=$(curl -fsS https://sonyliv-worker.gramnaters.workers.dev/health 2>/dev/null \
+            | python3 -c "import sys,json; print(int(json.load(sys.stdin).get('ttl', 0)//3600))" 2>/dev/null \
+            || echo 99)
+          if [ "${SONY_TTL:-99}" -lt 8 ]; then
+            for i in 1 2 3; do
+              if curl -fsS -X POST -H "Authorization: Bearer $SONY_INGEST_SECRET" \
+                https://sonyliv-worker.gramnaters.workers.dev/mint; then break; fi
+              echo "::warning::sonyliv mint attempt $i failed, retrying"
+              sleep 12
+            done
           fi
 
       - name: Generate independent source playlists

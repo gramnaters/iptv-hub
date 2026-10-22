@@ -7,8 +7,6 @@ Live TV & Sports, auto-refreshed every 5 hours via GitHub Actions.
 | Category | Channels | Link |
 | :--- | :--- | :--- |
 | **Master Combined** | 1,456 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/Combined.m3u` |
-| JioHotstar | 146 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/playlists/jiohotstar.m3u` |
-| ZEE5 Worldwide | 112 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/playlists/zee5.m3u` |
 | SonyLIV | 22 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/playlists/sonyliv.m3u` |
 | SunNXT | 34 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/playlists/sunnxt.m3u` |
 | VZY | 48 | `https://raw.githubusercontent.com/gramnaters/iptv-hub/main/playlists/vzy.m3u` |
@@ -28,4 +26,4 @@ Live TV & Sports, auto-refreshed every 5 hours via GitHub Actions.
 | `sunnxt_catalog.json` | 34 |
 | `vzy_catalog.json` | 48 |
 
-JioTV (1,209) and JioHotstar (146) are fetched live each run and folded into the combined playlist.
+JioTV and ZEE5 come from the plugx public feed, and JioHotstar from the `jhs` worker; all are fetched live each run and folded into the combined playlist.

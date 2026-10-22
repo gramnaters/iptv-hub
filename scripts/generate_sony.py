@@ -19,7 +19,7 @@ CATALOG_FILE = os.path.join(ROOT_DIR, "catalogs", "sonyliv_catalog.json")
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "sonyliv.m3u")
 
 CDN = "https://dishmt.slivcdn.com/hls/live"
-WORKER = os.environ.get("SONYLIV_WORKER", "https://sonyliv-worker.gramnaters.workers.dev")
+WORKER = os.environ.get("SONYLIV_WORKER", "https://sliv.gramnaters.workers.dev")
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
 GROUP = "Sony LIV"

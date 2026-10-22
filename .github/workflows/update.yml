@@ -53,13 +53,13 @@ jobs:
             done
           fi
 
-          SONY_TTL=$(curl -fsS https://sonyliv-worker.gramnaters.workers.dev/health 2>/dev/null \
+          SONY_TTL=$(curl -fsS https://sliv.gramnaters.workers.dev/health 2>/dev/null \
             | python3 -c "import sys,json; print(int(json.load(sys.stdin).get('ttl', 0)//3600))" 2>/dev/null \
             || echo 99)
           if [ "${SONY_TTL:-99}" -lt 8 ]; then
             for i in 1 2 3; do
               if curl -fsS -X POST -H "Authorization: Bearer $SONY_INGEST_SECRET" \
-                https://sonyliv-worker.gramnaters.workers.dev/mint; then break; fi
+                https://sliv.gramnaters.workers.dev/mint; then break; fi
               echo "::warning::sonyliv mint attempt $i failed, retrying"
               sleep 12
             done
@@ -69,7 +69,7 @@ jobs:
         run: |
           # Each script writes its own playlists/<name>.m3u, which merge.py
           # consumes. VZY reads catalogs/vzy_catalog.json (static data);
-          # SonyLIV reads its hdnea token from the sonyliv-worker (minted via
+          # SonyLIV reads its hdnea token from the sliv worker (minted via
           # Browser Rendering, since Sony blocks the GitHub egress), and
           # JioTV comes straight from the plugx public feed (fresh DRM keys).
           # Each script leaves the previous playlist untouched if its upstream

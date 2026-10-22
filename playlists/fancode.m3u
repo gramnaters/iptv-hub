@@ -1,50 +1,45 @@
 #EXTM3U
-#DATE:- 21-10-2026 18:35:30 IST
+#DATE:- 22-10-2026 17:04:58 IST
 # Category: fancode
-# Total Channels: 9
+# Total Channels: 8
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
 #EXTINF:-1 tvg-id="4249782" tvg-name="South Africa Vs Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/AUS-vs-SA-test_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | South Africa Vs Australia
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249782_english_hls_bf21f9fa2f28565_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249782_english_hls_bf21f9fa2f75350_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4250336" tvg-name="Kenya Vs Denmark" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Kenya Vs Denmark
+#EXTINF:-1 tvg-id="4250337" tvg-name="Jersey Vs Papua New Guinea" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Jersey Vs Papua New Guinea
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250336_english_hls_3e3f7ed4433143_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250337_english_hls_82109dbdb653334_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249696" tvg-name="Bangladesh Vs Afghanistan" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249696_53089_AFG_BAN_FC-WEB_1792056448070.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Bangladesh Vs Afghanistan
+#EXTINF:-1 tvg-id="4250338" tvg-name="Kuwait Vs Qatar" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Kuwait Vs Qatar
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249696_english_hls_d51b02bd8369074_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250338_english_hls_e735380f0e82720_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4250478" tvg-name="Dubai Vs Emirates Blues" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250478_53130_EMB_DUB_fc-web_1792412930104.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Dubai Vs Emirates Blues
+#EXTINF:-1 tvg-id="4250331" tvg-name="Ireland Vs Namibia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Namibia-vs-Ireland_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Ireland Vs Namibia
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250478_english_hls_f696d741098031_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250331_english_hls_7f6dfbff8a18598_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249759" tvg-name="Zambia Vs Nigeria" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249759_53093_ZAM_NGR_FC-Web_1792493252671.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Zambia Vs Nigeria
+#EXTINF:-1 tvg-id="4249610" tvg-name="Day 4   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-Web_1792479545067.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 4   World Feed
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249759_english_hls_f29d7378369507_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249610_english_hls_f58b618b6194312_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249609" tvg-name="Day 3   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-Web_1792479545067.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 3   World Feed
+#EXTINF:-1 tvg-id="4250154" tvg-name="Court 1   Round 16" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Yonex-French-Open-2026_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Court 1   Round 16
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249609_english_hls_8f2b2f331567116_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250154_english_hls_3c611f41f696154_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4250153" tvg-name="Court 1   Round 32" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Yonex-French-Open-2026_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Court 1   Round 32
+#EXTINF:-1 tvg-id="4250155" tvg-name="Court 2   Round 16" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Yonex-French-Open-2026_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Court 2   Round 16
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250153_english_hls_0f4905838a44655_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250155_english_hls_ee7e9a1c7a21470_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249623" tvg-name="Day 3   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/BNP-Paribas-Fortis-European-Open_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 3   World Feed
+#EXTINF:-1 tvg-id="4249624" tvg-name="Day 4   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/BNP-Paribas-Fortis-European-Open_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 4   World Feed
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249623_english_hls_6c8130a2c479550_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4249616" tvg-name="Day 3   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-Auvergne-Rhone-Alpes_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 3   World Feed
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249616_english_hls_1cfc6b5feb21323_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249624_english_hls_00b5a191e961539_1ta-di_h264/index.m3u8

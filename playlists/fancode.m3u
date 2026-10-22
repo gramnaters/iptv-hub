@@ -1,7 +1,7 @@
 #EXTM3U
-#DATE:- 22-10-2026 17:36:09 IST
+#DATE:- 22-10-2026 17:45:55 IST
 # Category: fancode
-# Total Channels: 8
+# Total Channels: 9
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
 #EXTINF:-1 tvg-id="4249782" tvg-name="South Africa Vs Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/AUS-vs-SA-test_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | South Africa Vs Australia
@@ -43,3 +43,8 @@ https://dai-fancode.pages.dev/mumbai/4250155_english_hls_ee7e9a1c7a21470_1ta-di_
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4249624_english_hls_00b5a191e961539_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4249617" tvg-name="Day 4   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-Auvergne-Rhone-Alpes_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 4   World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249617_english_hls_a8e888094b44085_1ta-di_h264/index.m3u8

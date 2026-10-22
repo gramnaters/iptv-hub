@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import os
-import re
 import sys
 import time
 import json
@@ -19,9 +18,8 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATALOG_FILE = os.path.join(ROOT_DIR, "catalogs", "sonyliv_catalog.json")
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "sonyliv.m3u")
 
-API = "https://apiv2.sonyliv.com"
 CDN = "https://dishmt.slivcdn.com/hls/live"
-CONTENT_ID = "1000022678"
+WORKER = os.environ.get("SONYLIV_WORKER", "https://sonyliv-worker.gramnaters.workers.dev")
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
 GROUP = "Sony LIV"
@@ -30,20 +28,17 @@ GROUP_LOGO = "https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.p
 MIN_CHANNELS = 5
 
 
-def mint_token():
-    r = requests.get(f"{API}/AGL/1.4/A/ENG/WEB/ALL/GETTOKEN",
-                     headers={"User-Agent": USER_AGENT}, timeout=20)
+def fetch_token():
+    r = requests.get(f"{WORKER}/token.json", headers={"User-Agent": USER_AGENT}, timeout=20)
     r.raise_for_status()
-    jwt = r.json().get("resultObj")
-    if not jwt:
+    data = r.json()
+    token = data.get("token") or ""
+    exp = data.get("exp") or 0
+    if not token.startswith("hdnea="):
         return ""
-
-    r2 = requests.get(f"{API}/AGL/1.5/A/ENG/WEB/IN/CONTENT/VIDEOURL/VOD/{CONTENT_ID}",
-                      headers={"User-Agent": USER_AGENT, "security_token": jwt}, timeout=20)
-    r2.raise_for_status()
-    video_url = (r2.json().get("resultObj") or {}).get("videoURL") or ""
-    m = re.search(r"[?&](hdnea=[^&]+)", video_url)
-    return m.group(1) if m else ""
+    if exp and exp - time.time() < 600:
+        return ""
+    return token
 
 
 def probe(url, timeout=15):
@@ -61,12 +56,12 @@ def generate_sony_playlist(verify=True):
         catalog = json.load(f)
 
     try:
-        token = mint_token()
+        token = fetch_token()
     except Exception as e:
-        print(f"❌ Mint failed: {e} — keeping existing playlist")
+        print(f"❌ Token fetch failed: {e} — keeping existing playlist")
         return False
     if not token:
-        print("❌ No token — keeping existing playlist")
+        print("❌ No valid token — keeping existing playlist")
         return False
 
     channels = [

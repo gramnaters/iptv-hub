@@ -31,11 +31,33 @@ jobs:
         run: |
           pip install requests
 
+      - name: Trigger token mints (fallback to worker crons)
+        env:
+          JHS_MINT_SECRET: ${{ secrets.JHS_MINT_SECRET }}
+          SONY_INGEST_SECRET: ${{ secrets.SONY_INGEST_SECRET }}
+        run: |
+          # Fallback for the Cloudflare worker crons. Each worker also mints on
+          # its own schedule; this guarantees a fresh token right before the
+          # playlist is regenerated even if a cron was missed. The workers use
+          # Browser Rendering (not the GitHub egress), so Sony/Akamai do not
+          # block these mints.
+          if [ -n "$JHS_MINT_SECRET" ]; then
+            curl -fsS -X POST -H "Authorization: Bearer $JHS_MINT_SECRET" \
+              https://jhs.gramnaters.workers.dev/mint \
+              || echo "::warning::jhs mint trigger failed"
+          fi
+          if [ -n "$SONY_INGEST_SECRET" ]; then
+            curl -fsS -X POST -H "Authorization: Bearer $SONY_INGEST_SECRET" \
+              https://sonyliv-worker.gramnaters.workers.dev/mint \
+              || echo "::warning::sonyliv mint trigger failed"
+          fi
+
       - name: Generate independent source playlists
         run: |
           # Each script writes its own playlists/<name>.m3u, which merge.py
           # consumes. VZY reads catalogs/vzy_catalog.json (static data);
-          # SonyLIV self-mints its hdnea token via Sony's anonymous API, and
+          # SonyLIV reads its hdnea token from the sonyliv-worker (minted via
+          # Browser Rendering, since Sony blocks the GitHub egress), and
           # JioTV comes straight from the plugx public feed (fresh DRM keys).
           # Each script leaves the previous playlist untouched if its upstream
           # is unavailable.

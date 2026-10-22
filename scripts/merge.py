@@ -27,7 +27,7 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 USER_JIOHOTSTAR_URL = "https://jhs.gramnaters.workers.dev/"
 
 PUBLIC_PLUG_API = "https://plugxvipplaylist.lovable.app/api/playlist"
-LOCAL_PLUG_BACKUP = os.path.join(os.path.dirname(ROOT_DIR), "premiumplug_full.m3u")
+LOCAL_PLUG_BACKUP = os.path.join(PLAYLISTS_DIR, "premiumplug_full.m3u")
 
 LOCAL_OVERRIDES = [
     {
@@ -293,11 +293,19 @@ def main():
         print(f"✅ {src['name']}: {len(blocks)} channels loaded from {os.path.basename(src['file'])}")
 
     print(f"\n📡 Fetching comprehensive catalog from {PUBLIC_PLUG_API}...")
-    plug_text = fetch_content(PUBLIC_PLUG_API)
+    plug_text = fetch_content(PUBLIC_PLUG_API, timeout=60)
+    if not plug_text:
+        plug_text = fetch_content(PUBLIC_PLUG_API, timeout=120)
     if not plug_text and os.path.exists(LOCAL_PLUG_BACKUP):
         print("⚠️ Live API timed out, loading from local backup cache...")
         with open(LOCAL_PLUG_BACKUP, "r", encoding="utf-8") as f:
             plug_text = f.read()
+    elif plug_text:
+        try:
+            with open(LOCAL_PLUG_BACKUP, "w", encoding="utf-8") as f:
+                f.write(plug_text)
+        except Exception:
+            pass
 
     plug_blocks = extract_channel_blocks(plug_text) if plug_text else []
     print(f"✅ Loaded {len(plug_blocks)} total public channel items")

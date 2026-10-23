@@ -29,7 +29,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install requests
+          pip install requests pycryptodome
 
       - name: Trigger token mints (fallback to worker crons)
         env:
@@ -69,12 +69,13 @@ jobs:
         run: |
           # Each script writes its own playlists/<name>.m3u, which merge.py
           # consumes. SonyLIV reads its hdnea token from the sliv worker (minted
-          # via Browser Rendering, since Sony blocks the GitHub egress); VZY and
-          # JioTV come straight from the plugx public feed (fresh DRM keys).
-          # Each script leaves the previous playlist untouched if its upstream
-          # is unavailable.
+          # via Browser Rendering, since Sony blocks the GitHub egress); VZY
+          # solves its AES challenge and reads fresh ClearKey keys from its own
+          # api.php; JioTV comes straight from the plugx public feed. Each
+          # script leaves the previous playlist untouched if its upstream fails.
+          python scripts/generate_vzy.py     || echo "::warning::vzy generator failed"
           python scripts/generate_fancode.py || echo "::warning::fancode generator failed"
-          python scripts/generate_sony.py  || echo "::warning::sony generator failed"
+          python scripts/generate_sony.py    || echo "::warning::sony generator failed"
 
       - name: Run Master Updater & Aggregator
         run: |

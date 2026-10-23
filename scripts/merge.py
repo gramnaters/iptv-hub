@@ -30,6 +30,13 @@ PUBLIC_PLUG_API = "https://plugxvipplaylist.lovable.app/api/playlist"
 
 LOCAL_OVERRIDES = [
     {
+        "name": "VZY",
+        "file": os.path.join(PLAYLISTS_DIR, "vzy.m3u"),
+        "min_channels": 10,
+        "plug_groups": ["VZY"],
+        "group": "VZY",
+    },
+    {
         "name": "FanCode",
         "file": os.path.join(PLAYLISTS_DIR, "fancode.m3u"),
         "min_channels": 1,

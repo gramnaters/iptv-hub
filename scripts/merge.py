@@ -68,7 +68,7 @@ LOCAL_OVERRIDES = [
         "file": os.path.join(PLAYLISTS_DIR, "zee5.m3u"),
         "min_channels": 50,
         "plug_groups": ["ZEE5", "ZEE5 India", "ZEE5 Worldwide"],
-        "group": None,
+        "group": "ZEE5",
     },
     {
         "name": "JioTV (allinonereborn cookie)",
@@ -291,7 +291,6 @@ def main():
         "willow": ["Willow"],
         "prime": ["Prime Video"],
         "sunnxt": ["SunNXT"],
-        "zee5": ["ZEE5 Worldwide"],
         "dangal": ["Dangal Play"],
         "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ"],
     }
@@ -326,6 +325,7 @@ def main():
         "Prime Video",
         "SunNXT",
         "VZY",
+        "ZEE5",
         "ZEE5 Worldwide",
         "Dangal Play",
         "24/7 kids+Goldmines pack",

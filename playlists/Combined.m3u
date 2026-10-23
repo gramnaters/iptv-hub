@@ -1,8 +1,8 @@
 #EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz" url-tvg="https://avkb.short.gy/jioepg.xml.gz" refresh="86400"
-#DATE:- 24-10-2026 00:35:18 IST
+#DATE:- 24-10-2026 00:47:20 IST
 # Total Channels: 1582
 
-# ===== JioTV - Entertainment (38 Channels) =====
+# ===== JioTV - Entertainment (43 Channels) =====
 #EXTINF:-1 tvg-id="144" tvg-name="Colors HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsHD.png" group-title="JioTV - Entertainment",Colors HD
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
@@ -375,6 +375,26 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/IDHDHindi_MOB/WDVLive/index.mpd
 #EXTHTTP:{"User-Agent": "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0", "Origin": "https://www.jiotv.com/", "Referer": "https://www.jiotv.com/", "Cookie": "__hdnea__=st=1792728005~exp=1792749605~acl=/*~hmac=d83a5d46d409842924f89d481d61e8c435baf62a2fa9cc0c49f42cc20d13e841"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/IDHDEnglish_MOB/WDVLive/index.mpd
 
+#EXTINF:-1 tvg-id="kids-6" tvg-name="Shemaroo Josh" tvg-logo="https://www.lyngsat.com/logo/tv/ss/shemaroo-josh-in.png" group-title="JioTV - Entertainment" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Shemaroo Josh
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://airtelapp.shemaroo.com/shemarooChumbakTV/smil:shemarooChumbakTVadp.smil/chunklist_b1628000_sleng.m3u8
+
+#EXTINF:-1 tvg-id="dangalplay-dangal" tvg-name="Dangal" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/Dangal_16x9.jpg" group-title="JioTV - Entertainment" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Dangal
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live-dangal.akamaized.net/liveabr/playlist.m3u8
+
+#EXTINF:-1 tvg-id="dangalplay-dangal2" tvg-name="Dangal2" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/Dangal2_16x9.jpg" group-title="JioTV - Entertainment" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Dangal2
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live-dangal2.akamaized.net/liveabr/playlist.m3u8
+
+#EXTINF:-1 tvg-id="dangalplay-bangla" tvg-name="Bangla" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/entree10_16x9.jpg" group-title="JioTV - Entertainment" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Bangla
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live-bangla.akamaized.net/liveabr/playlist.m3u8
+
+#EXTINF:-1 tvg-id="dangalplay-bhojpuri" tvg-name="Bhojpuri" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/BhojpuriCinema_16x9.jpg" group-title="JioTV - Entertainment" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Bhojpuri
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live-bhojpuri.akamaized.net/liveabr/playlist.m3u8
+
 # ===== JioTV - Infotainment (9 Channels) =====
 #EXTINF:-1 tvg-id="566" tvg-name="Animal Planet Hindi" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/AnimalPlanetHin.png" group-title="JioTV - Infotainment",Animal Planet Hindi
 #KODIPROP:inputstream=inputstream.adaptive
@@ -466,7 +486,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/DiscoveryHDHin_MOB/WDVLive/index.mpd
 #EXTHTTP:{"User-Agent": "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0", "Origin": "https://www.jiotv.com/", "Referer": "https://www.jiotv.com/", "Cookie": "__hdnea__=st=1792728005~exp=1792749605~acl=/*~hmac=d83a5d46d409842924f89d481d61e8c435baf62a2fa9cc0c49f42cc20d13e841"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/DiscoveryScienceHin_MOB/WDVLive/index.mpd
 
-# ===== JioTV - Movies (27 Channels) =====
+# ===== JioTV - Movies (30 Channels) =====
 #EXTINF:-1 tvg-id="156" tvg-name="Star Gold HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Gold_HD.png" group-title="JioTV - Movies",Star Gold HD
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
@@ -729,6 +749,18 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Star_Gold_Thrills_MOB/WDVLive/index.mpd
 #EXTHTTP:{"User-Agent": "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0", "Origin": "https://www.jiotv.com/", "Referer": "https://www.jiotv.com/", "Cookie": "__hdnea__=st=1792728005~exp=1792749605~acl=/*~hmac=d83a5d46d409842924f89d481d61e8c435baf62a2fa9cc0c49f42cc20d13e841"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/SonyMAX1_MOB/WDVLive/index.mpd
 
+#EXTINF:-1 tvg-id="kids-7" tvg-name="Goldmines 2" tvg-logo="https://www.lyngsat.com/logo/tv/gg/goldmines-2-in.png" group-title="JioTV - Movies" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Goldmines 2
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://cdn-2.pishow.tv/live/1460/master.m3u8
+
+#EXTINF:-1 tvg-id="kids-8" tvg-name="Goldmines Movies" tvg-logo="https://yt3.googleusercontent.com/d66J-MMZ06-55gkF5maclPGB5f5j1L0SAs3iWnl3lhoswlWrJ67wD2a3mZGkgHgt-W3kMrIT=s900-c-k-c0x00ffffff-no-rj" group-title="JioTV - Movies" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Goldmines Movies
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://cdn-2.pishow.tv/live/1461/master.m3u8
+
+#EXTINF:-1 tvg-id="kids-10" tvg-name="Goldmines" tvg-logo="https://www.lyngsat.com/logo/tv/gg/goldmines-in.png" group-title="JioTV - Movies" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Goldmines
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://cdn.pishow.tv/ott/live/1459/master.m3u8
+
 # ===== JioTV - Lifestyle (5 Channels) =====
 #EXTINF:-1 tvg-id="561" tvg-name="Food Food" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Food_Food.png" group-title="JioTV - Lifestyle",Food Food
 #KODIPROP:inputstream=inputstream.adaptive
@@ -780,7 +812,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Food_XP_MOB/WDVLive/index.mpd
 #EXTHTTP:{"User-Agent": "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0", "Origin": "https://www.jiotv.com/", "Referer": "https://www.jiotv.com/", "Cookie": "__hdnea__=st=1792728005~exp=1792749605~acl=/*~hmac=d83a5d46d409842924f89d481d61e8c435baf62a2fa9cc0c49f42cc20d13e841"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/TLCHDHindi_MOB/WDVLive/index.mpd
 
-# ===== JioTV - Kids (15 Channels) =====
+# ===== JioTV - Kids (24 Channels) =====
 #EXTINF:-1 tvg-id="545" tvg-name="Nick Hindi" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Nick_Hindi.png" group-title="JioTV - Kids",Nick Hindi
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
@@ -931,7 +963,43 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Gubbare_MOB/WDVLive/index.mpd
 #EXTHTTP:{"User-Agent": "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0", "Origin": "https://www.jiotv.com/", "Referer": "https://www.jiotv.com/", "Cookie": "__hdnea__=st=1792728005~exp=1792749605~acl=/*~hmac=d83a5d46d409842924f89d481d61e8c435baf62a2fa9cc0c49f42cc20d13e841"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/CNHDHindi_MOB/WDVLive/index.mpd
 
-# ===== JioTV - News (148 Channels) =====
+#EXTINF:-1 tvg-id="kids-1" tvg-name="Oggy and the Cockroaches" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Oggy_and_the_Cockroaches_Logo.webp" group-title="JioTV - Kids" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Oggy and the Cockroaches
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live20.bozztv.com/giatvplayout7/giatv-210728/index.m3u8
+
+#EXTINF:-1 tvg-id="kids-2" tvg-name="Motu and Patlu" tvg-logo="https://image.tmdb.org/t/p/original/6cVcX2hRaWsUYPXr0It4HkVcx1F.png" group-title="JioTV - Kids" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Motu and Patlu
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live20.bozztv.com/giatvplayout7/giatv-209622/index.m3u8
+
+#EXTINF:-1 tvg-id="kids-3" tvg-name="Doraemon Live" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Doraemon_Logo2.png" group-title="JioTV - Kids" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Doraemon Live
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live20.bozztv.com/giatvplayout7/giatv-209902/index.m3u8
+
+#EXTINF:-1 tvg-id="kids-4" tvg-name="Shinchan 24/7" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Crayon_Shin-chan.png" group-title="JioTV - Kids" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Shinchan 24/7
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://live20.bozztv.com/giatvplayout7/giatv-210780/tracks-v1a1/mono.ts.m3u8
+
+#EXTINF:-1 tvg-id="kids-5" tvg-name="Green TV" tvg-logo="https://www.greengold.tv/assets/logo-small.png" group-title="JioTV - Kids" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Green TV
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://greengold.cdn.runn.tv/greengold/stream/grngld/manifest/1.m3u8
+
+#EXTINF:-1 tvg-id="kids-11" tvg-name="Jungle Book" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Jungle_Book_Logo.svg" group-title="JioTV - Kids" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Jungle Book
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://cc-4bhi5osabejc9.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-4bhi5osabejc9/junglebook.m3u8
+
+#EXTINF:-1 tvg-id="wowkidz-hindi" tvg-name="WOW KIDZ Hindi" tvg-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo" tvg-category="Kids" tvg-language="Hindi" group-title="JioTV - Kids" group-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo",WOW KIDZ Hindi
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://yuppparoriglin.akamaized.net/181224/smil:wowkidzhindi.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
+
+#EXTINF:-1 tvg-id="wowkidz-tamil" tvg-name="WOW KIDZ Tamil" tvg-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo" tvg-category="Kids" tvg-language="Tamil" group-title="JioTV - Kids" group-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo",WOW KIDZ Tamil
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://yuppparoriglin.akamaized.net/181224/smil:wowkidztamil.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
+
+#EXTINF:-1 tvg-id="wowkidz-telugu" tvg-name="WOW KIDZ Telugu" tvg-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo" tvg-category="Kids" tvg-language="Telugu" group-title="JioTV - Kids" group-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo",WOW KIDZ Telugu
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://yuppparoriglin.akamaized.net/181224/smil:wowkidztelgu.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
+
+# ===== JioTV - News (152 Channels) =====
 #EXTINF:-1 tvg-id="173" tvg-name="Aaj Tak" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Aaj_Tak.png" group-title="JioTV - News",Aaj Tak
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
@@ -2400,6 +2468,22 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Prajatantra_TV_Bharat_MOB/WDVLive/index.m
 #EXTHTTP:{"User-Agent": "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0", "Origin": "https://www.jiotv.com/", "Referer": "https://www.jiotv.com/", "Cookie": "__hdnea__=st=1792728005~exp=1792749605~acl=/*~hmac=d83a5d46d409842924f89d481d61e8c435baf62a2fa9cc0c49f42cc20d13e841"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/Prime_Bharat_News_MOB/WDVLive/index.mpd
 
+#EXTINF:-1 tvg-id="kids-9" tvg-name="Aaj Tak HD" tvg-logo="https://www.lyngsat.com/logo/tv/aa/aaj-tak-in.png" group-title="JioTV - News" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Aaj Tak HD
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://livehub-voidnet.onrender.com/cluster/streamcore/in/AAJTAK_REDIS.m3u8
+
+#EXTINF:-1 tvg-id="kids-12" tvg-name="Republic Bharat" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Republicbharatlogo.png" group-title="JioTV - News" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Republic Bharat
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://vg-republictvlive.akamaized.net/ptnr-airtelxstream/title-Republic_Bharat/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/ac1dfd73-1c95-4462-9f42-be68edb6b7ff/main.m3u8
+
+#EXTINF:-1 tvg-id="kids-13" tvg-name="Zee News" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Zee_News_2025.svg" group-title="JioTV - News" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Zee News
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://dxfxzhqtgt09i.cloudfront.net/index.m3u8
+
+#EXTINF:-1 tvg-id="kids-14" tvg-name="Zee Uttar Pradesh Uttarakhand" tvg-logo="https://www.tvlogo.org/india/zee-uttar-pradesh-uttarakhand-in.png" group-title="JioTV - News" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Zee Uttar Pradesh Uttarakhand
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
+https://duw35ict5q7th.cloudfront.net/index_1.m3u8
+
 # ===== JioTV - Devotional (44 Channels) =====
 #EXTINF:-1 tvg-id="175" tvg-name="Aastha" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Aastha.png" group-title="JioTV - Devotional",Aastha
 #KODIPROP:inputstream=inputstream.adaptive
@@ -3025,7 +3109,7 @@ https://jiotvpllive.cdn.jio.com/bpk-tv/Zee_Business_BTS/WDVLive/index.mpd
 #EXTHTTP:{"User-Agent": "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0", "Origin": "https://www.jiotv.com/", "Referer": "https://www.jiotv.com/", "Cookie": "__hdnea__=st=1792728005~exp=1792749605~acl=/*~hmac=d83a5d46d409842924f89d481d61e8c435baf62a2fa9cc0c49f42cc20d13e841"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/ET_Now_Swadesh_MOB/WDVLive/index.mpd
 
-# ===== JioTV - Sports (45 Channels) =====
+# ===== JioTV - Sports (46 Channels) =====
 #EXTINF:-1 tvg-id="204" tvg-name="DD Sports" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/DD_Sports.png" group-title="JioTV - Sports",DD Sports
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
@@ -3475,6 +3559,13 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/SonyLivSports4Kan_MOB/WDVLive/index.mpd
 #EXTVLCOPT:http-cookie=__hdnea__=st=1792728005~exp=1792749605~acl=/*~hmac=d83a5d46d409842924f89d481d61e8c435baf62a2fa9cc0c49f42cc20d13e841
 #EXTHTTP:{"User-Agent": "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0", "Origin": "https://www.jiotv.com/", "Referer": "https://www.jiotv.com/", "Cookie": "__hdnea__=st=1792728005~exp=1792749605~acl=/*~hmac=d83a5d46d409842924f89d481d61e8c435baf62a2fa9cc0c49f42cc20d13e841"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/UIPMPentathlonWC_MOB/WDVLive/index.mpd
+
+#EXTINF:-1 tvg-id="B0HFG5QN17" tvg-name="ODI Tri-Nation Series in UAE 2026 - Final - Afghanistan vs Zimbabwe" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.1399581a-e87b-45f3-ae53-faf4e42483fc/2/BOXART-16X9/en-US._UR1920,1080_.jpeg" tvg-category="Other" group-title="JioTV - Sports" type="dash",ODI Tri-Nation Series in UAE 2026 - Final - Afghanistan vs Zimbabwe
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=dbad433264aa645af31c76701ae83e38:f8fb07f5bc0a587bf4faa5ca640b1c00
+https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/jr2yukryn7/out/v1/2310db8f31c047c4b01ebd3ab96d815d/cenc.mpd
 
 # ===== JioTV - Educational (3 Channels) =====
 #EXTINF:-1 tvg-id="1531" tvg-name="Gyanvani 1" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Gyanvani_1.png" group-title="JioTV - Educational",Gyanvani 1
@@ -12141,76 +12232,6 @@ https://livestream.sunnxt.com/1893b9ab790747cb80a584873a608dcb/KochuTVB_IN_index
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
 https://livestream.sunnxt.com/ed4c67ad957644b69361651d9101107e/ChintuTVB_IN_index.mpd
 
-# ===== 24/7 kids+Goldmines pack (14 Channels) =====
-#EXTINF:-1 tvg-id="kids-1" tvg-name="Oggy and the Cockroaches" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Oggy_and_the_Cockroaches_Logo.webp" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Oggy and the Cockroaches
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://live20.bozztv.com/giatvplayout7/giatv-210728/index.m3u8
-
-#EXTINF:-1 tvg-id="kids-2" tvg-name="Motu and Patlu" tvg-logo="https://image.tmdb.org/t/p/original/6cVcX2hRaWsUYPXr0It4HkVcx1F.png" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Motu and Patlu
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://live20.bozztv.com/giatvplayout7/giatv-209622/index.m3u8
-
-#EXTINF:-1 tvg-id="kids-3" tvg-name="Doraemon Live" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Doraemon_Logo2.png" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Doraemon Live
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://live20.bozztv.com/giatvplayout7/giatv-209902/index.m3u8
-
-#EXTINF:-1 tvg-id="kids-4" tvg-name="Shinchan 24/7" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Crayon_Shin-chan.png" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Shinchan 24/7
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://live20.bozztv.com/giatvplayout7/giatv-210780/tracks-v1a1/mono.ts.m3u8
-
-#EXTINF:-1 tvg-id="kids-5" tvg-name="Green TV" tvg-logo="https://www.greengold.tv/assets/logo-small.png" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Green TV
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://greengold.cdn.runn.tv/greengold/stream/grngld/manifest/1.m3u8
-
-#EXTINF:-1 tvg-id="kids-6" tvg-name="Shemaroo Josh" tvg-logo="https://www.lyngsat.com/logo/tv/ss/shemaroo-josh-in.png" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Shemaroo Josh
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://airtelapp.shemaroo.com/shemarooChumbakTV/smil:shemarooChumbakTVadp.smil/chunklist_b1628000_sleng.m3u8
-
-#EXTINF:-1 tvg-id="kids-7" tvg-name="Goldmines 2" tvg-logo="https://www.lyngsat.com/logo/tv/gg/goldmines-2-in.png" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Goldmines 2
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://cdn-2.pishow.tv/live/1460/master.m3u8
-
-#EXTINF:-1 tvg-id="kids-8" tvg-name="Goldmines Movies" tvg-logo="https://yt3.googleusercontent.com/d66J-MMZ06-55gkF5maclPGB5f5j1L0SAs3iWnl3lhoswlWrJ67wD2a3mZGkgHgt-W3kMrIT=s900-c-k-c0x00ffffff-no-rj" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Goldmines Movies
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://cdn-2.pishow.tv/live/1461/master.m3u8
-
-#EXTINF:-1 tvg-id="kids-9" tvg-name="Aaj Tak HD" tvg-logo="https://www.lyngsat.com/logo/tv/aa/aaj-tak-in.png" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Aaj Tak HD
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://livehub-voidnet.onrender.com/cluster/streamcore/in/AAJTAK_REDIS.m3u8
-
-#EXTINF:-1 tvg-id="kids-10" tvg-name="Goldmines" tvg-logo="https://www.lyngsat.com/logo/tv/gg/goldmines-in.png" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Goldmines
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://cdn.pishow.tv/ott/live/1459/master.m3u8
-
-#EXTINF:-1 tvg-id="kids-11" tvg-name="Jungle Book" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Jungle_Book_Logo.svg" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Jungle Book
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://cc-4bhi5osabejc9.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-4bhi5osabejc9/junglebook.m3u8
-
-#EXTINF:-1 tvg-id="kids-12" tvg-name="Republic Bharat" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Republicbharatlogo.png" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Republic Bharat
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://vg-republictvlive.akamaized.net/ptnr-airtelxstream/title-Republic_Bharat/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/ac1dfd73-1c95-4462-9f42-be68edb6b7ff/main.m3u8
-
-#EXTINF:-1 tvg-id="kids-13" tvg-name="Zee News" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Zee_News_2025.svg" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Zee News
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://dxfxzhqtgt09i.cloudfront.net/index.m3u8
-
-#EXTINF:-1 tvg-id="kids-14" tvg-name="Zee Uttar Pradesh Uttarakhand" tvg-logo="https://www.tvlogo.org/india/zee-uttar-pradesh-uttarakhand-in.png" group-title="24/7 kids+Goldmines pack" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Zee Uttar Pradesh Uttarakhand
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://duw35ict5q7th.cloudfront.net/index_1.m3u8
-
-# ===== WOW KIDZ (3 Channels) =====
-#EXTINF:-1 tvg-id="wowkidz-hindi" tvg-name="WOW KIDZ Hindi" tvg-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo" tvg-category="Kids" tvg-language="Hindi" group-title="WOW KIDZ" group-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo",WOW KIDZ Hindi
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://yuppparoriglin.akamaized.net/181224/smil:wowkidzhindi.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
-
-#EXTINF:-1 tvg-id="wowkidz-tamil" tvg-name="WOW KIDZ Tamil" tvg-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo" tvg-category="Kids" tvg-language="Tamil" group-title="WOW KIDZ" group-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo",WOW KIDZ Tamil
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://yuppparoriglin.akamaized.net/181224/smil:wowkidztamil.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
-
-#EXTINF:-1 tvg-id="wowkidz-telugu" tvg-name="WOW KIDZ Telugu" tvg-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo" tvg-category="Kids" tvg-language="Telugu" group-title="WOW KIDZ" group-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo",WOW KIDZ Telugu
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://yuppparoriglin.akamaized.net/181224/smil:wowkidztelgu.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
-
 # ===== JioHotstar (146 Channels) =====
 #EXTINF:-1 tvg-id="star_sports_2_hindi_hd" tvg-name="STAR SPORTS 2 Hindi HD" tvg-logo="https://i.ibb.co/YBMBDWtd/SS2HD-HINDI.jpg" group-title="JioHotstar", STAR SPORTS 2 Hindi HD
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169@Premium Plugx(Android/15)
@@ -14079,14 +14100,6 @@ https://dai-fancode.pages.dev/mumbai/4250352_english_hls_7e8d59effb50597_1ta-di_
 #KODIPROP:inputstream.adaptive.license_key=dbad433264aa645af31c76701ae83e38:f8fb07f5bc0a587bf4faa5ca640b1c00
 https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/jr2yukryn7/out/v1/2310db8f31c047c4b01ebd3ab96d815d/cenc.mpd
 
-# ===== Willow live events (1 Channels) =====
-#EXTINF:-1 tvg-id="B0HFG5QN17" tvg-name="ODI Tri-Nation Series in UAE 2026 - Final - Afghanistan vs Zimbabwe" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.1399581a-e87b-45f3-ae53-faf4e42483fc/2/BOXART-16X9/en-US._UR1920,1080_.jpeg" tvg-category="Other" group-title="Willow live events" type="dash",ODI Tri-Nation Series in UAE 2026 - Final - Afghanistan vs Zimbabwe
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=dbad433264aa645af31c76701ae83e38:f8fb07f5bc0a587bf4faa5ca640b1c00
-https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/jr2yukryn7/out/v1/2310db8f31c047c4b01ebd3ab96d815d/cenc.mpd
-
 # ===== Prime Video (7 Channels) =====
 #EXTINF:-1 tvg-id="B0H37FB27F" tvg-name="Predator European Championships: Spain" tvg-logo="https://images-na.ssl-images-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.447494d8-1dc7-4b08-89c7-f04ce02111ea/8/BOXART-16X9/en-US._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/a-f/freewithads/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kv053498f62d21803ffcbf28da234cfe9f_SX624_FMjpg_.jpeg" group-title="Prime Video",Predator European Championships: Spain
 #KODIPROP:inputstream=inputstream.adaptive
@@ -14136,20 +14149,3 @@ https://dash-ott.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/5sxp9uvy
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=59f50679c9e60963bd0cb6640992aaaa:8685817c4d31f322e08940feeae2855a
 https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/bfigtl960n/out/v1/5ba5484550e84681bff2e8ca994266c1/cenc.mpd
-
-# ===== Dangal Play (4 Channels) =====
-#EXTINF:-1 tvg-id="dangalplay-dangal" tvg-name="Dangal" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/Dangal_16x9.jpg" group-title="Dangal Play" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Dangal
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://live-dangal.akamaized.net/liveabr/playlist.m3u8
-
-#EXTINF:-1 tvg-id="dangalplay-dangal2" tvg-name="Dangal2" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/Dangal2_16x9.jpg" group-title="Dangal Play" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Dangal2
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://live-dangal2.akamaized.net/liveabr/playlist.m3u8
-
-#EXTINF:-1 tvg-id="dangalplay-bangla" tvg-name="Bangla" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/entree10_16x9.jpg" group-title="Dangal Play" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Bangla
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://live-bangla.akamaized.net/liveabr/playlist.m3u8
-
-#EXTINF:-1 tvg-id="dangalplay-bhojpuri" tvg-name="Bhojpuri" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/BhojpuriCinema_16x9.jpg" group-title="Dangal Play" group-logo="https://play-lh.googleusercontent.com/gpqmD8o2XoBmDvQLWwekr0ydtnMv8i170Y6HUnOV5oRCpDCV7fMDW9HMCWdXyH7ESVmy9xoKznhByhwZograSw=w240-h480",Bhojpuri
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://live-bhojpuri.akamaized.net/liveabr/playlist.m3u8

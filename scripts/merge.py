@@ -29,7 +29,6 @@ USER_JIOHOTSTAR_URL = "https://jhs.gramnaters.workers.dev/"
 
 # Upstream public feeds
 PUBLIC_PLUG_API = "https://plugxvipplaylist.lovable.app/api/playlist"
-LOCAL_PLUG_BACKUP = os.path.join(os.path.dirname(ROOT_DIR), "premiumplug_full.m3u")
 
 # Independent local sources: scripts/generate_*.py -> playlists/*.m3u
 # When one of these loads, its group is skipped in the public feed so the
@@ -164,6 +163,41 @@ def load_local_playlist(path, min_channels=1):
     return [clean_watermarks_from_block(b) for b in blocks]
 
 
+# Genre inference for the premiumplug (plugx) groups folded into self-hosted
+# JioTV categories. Their own group names / tvg-categories are unreliable, so
+# each channel is bucketed by its name.
+GENRE_KEYWORDS = [
+    ("Kids", ["oggy", "motu", "patlu", "doraemon", "shinchan", "jungle", "kidz", "green tv", "cartoon", "toon"]),
+    ("Movies", ["goldmines", "cinema", "movie"]),
+    ("News", ["aaj tak", "republic", "zee news", "zee uttar", "ndtv", "india today", "news"]),
+    ("Sports", ["willow", "cricket", "odi", "t20", "series", "match"]),
+    ("Music", ["music", "sangeet"]),
+    ("Devotional", ["devotional", "bhakti", "temple", "mandir"]),
+]
+
+
+def get_block_name(block):
+    for line in block:
+        if line.startswith("#EXTINF"):
+            return line.rsplit(",", 1)[-1].strip()
+    return ""
+
+
+def infer_genre(name):
+    n = " " + name.lower() + " "
+    for genre, kws in GENRE_KEYWORDS:
+        for kw in kws:
+            if kw in n:
+                return genre
+    return "Entertainment"
+
+
+def classify_into(blocks, out):
+    for b in blocks:
+        grp = "JioTV - " + infer_genre(get_block_name(b))
+        out.setdefault(grp, []).append(set_block_group(b, grp))
+
+
 def set_block_group(block, group):
     new = []
     for line in block:
@@ -234,13 +268,18 @@ def main():
     # -------------------------------------------------------------
     print(f"\n📡 Fetching comprehensive catalog from {PUBLIC_PLUG_API}...")
     plug_text = fetch_content(PUBLIC_PLUG_API)
-    if not plug_text and os.path.exists(LOCAL_PLUG_BACKUP):
-        print("⚠️ Live API timed out, loading from local backup cache...")
-        with open(LOCAL_PLUG_BACKUP, "r", encoding="utf-8") as f:
-            plug_text = f.read()
 
     plug_blocks = extract_channel_blocks(plug_text) if plug_text else []
     print(f"✅ Loaded {len(plug_blocks)} total public channel items")
+
+    # Premiumplug (plugx) groups folded into self-hosted JioTV categories so no
+    # third-party group survives in the final playlist.
+    FOLD_GROUPS = {
+        "24/7 kids+goldmines pack",
+        "wow kidz",
+        "dangal play",
+        "willow live events",
+    }
 
     # Accumulate public-feed channels, skipping any category we already have
     # from an independent local source (no duplicates).
@@ -255,6 +294,9 @@ def main():
             skipped_groups.add(grp)
             continue
         cleaned_b = clean_watermarks_from_block(b)
+        if gl in FOLD_GROUPS:
+            classify_into([cleaned_b], all_channels_by_group)
+            continue
         all_channels_by_group.setdefault(grp, []).append(cleaned_b)
     if skipped_groups:
         print(f"⏭️  Skipped {len(skipped_groups)} public-feed group(s) (local copy wins or category disabled): {', '.join(sorted(skipped_groups))}")
@@ -293,8 +335,6 @@ def main():
         "jiohotstar": ["JioHotstar"],
         "willow": ["Willow"],
         "prime": ["Prime Video"],
-        "dangal": ["Dangal Play"],
-        "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ"],
     }
 
     print("\n💾 Writing individual playlists to playlists/...")
@@ -355,15 +395,11 @@ def main():
         "ZEE5 Worldwide",
         "Sony LIV",
         "SunNXT",
-        "24/7 kids+Goldmines pack",
-        "WOW KIDZ",
         "JioHotstar",
         "VZY",
         "FanCode",
         "Willow",
-        "Willow live events",
         "Prime Video",
-        "Dangal Play",
     ]
 
     # Include any groups that may not be explicitly listed

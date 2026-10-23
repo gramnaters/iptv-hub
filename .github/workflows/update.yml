@@ -42,6 +42,7 @@ jobs:
           python scripts/generate_sony.py  || echo "::warning::sony generator failed"
           python scripts/generate_sunnxt.py || echo "::warning::sunnxt generator failed"
           python scripts/generate_zee5.py  || echo "::warning::zee5 generator failed"
+          python scripts/generate_free.py  || echo "::warning::free generator failed"
 
       - name: Run Master Updater & Aggregator
         run: |

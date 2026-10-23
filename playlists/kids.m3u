@@ -1,0 +1,73 @@
+#EXTM3U
+#DATE:- 24-10-2026 00:54:52 IST
+# Category: kids
+# Total Channels: 17
+
+#EXTINF:-1 tvg-id="kids-1" tvg-name="Oggy and the Cockroaches" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Oggy_and_the_Cockroaches_Logo.webp" group-title="24/7 kids+Goldmines pack",Oggy and the Cockroaches
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://live20.bozztv.com/giatvplayout7/giatv-210728/index.m3u8
+
+#EXTINF:-1 tvg-id="kids-2" tvg-name="Motu and Patlu" tvg-logo="https://image.tmdb.org/t/p/original/6cVcX2hRaWsUYPXr0It4HkVcx1F.png" group-title="24/7 kids+Goldmines pack",Motu and Patlu
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://live20.bozztv.com/giatvplayout7/giatv-209622/index.m3u8
+
+#EXTINF:-1 tvg-id="kids-3" tvg-name="Doraemon Live" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Doraemon_Logo2.png" group-title="24/7 kids+Goldmines pack",Doraemon Live
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://live20.bozztv.com/giatvplayout7/giatv-209902/index.m3u8
+
+#EXTINF:-1 tvg-id="kids-4" tvg-name="Shinchan 24/7" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Crayon_Shin-chan.png" group-title="24/7 kids+Goldmines pack",Shinchan 24/7
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://live20.bozztv.com/giatvplayout7/giatv-210780/tracks-v1a1/mono.ts.m3u8
+
+#EXTINF:-1 tvg-id="kids-5" tvg-name="Green TV" tvg-logo="https://www.greengold.tv/assets/logo-small.png" group-title="24/7 kids+Goldmines pack",Green TV
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://greengold.cdn.runn.tv/greengold/stream/grngld/manifest/1.m3u8
+
+#EXTINF:-1 tvg-id="kids-6" tvg-name="Shemaroo Josh" tvg-logo="https://www.lyngsat.com/logo/tv/ss/shemaroo-josh-in.png" group-title="24/7 kids+Goldmines pack",Shemaroo Josh
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://airtelapp.shemaroo.com/shemarooChumbakTV/smil:shemarooChumbakTVadp.smil/chunklist_b1628000_sleng.m3u8
+
+#EXTINF:-1 tvg-id="kids-7" tvg-name="Goldmines 2" tvg-logo="https://www.lyngsat.com/logo/tv/gg/goldmines-2-in.png" group-title="24/7 kids+Goldmines pack",Goldmines 2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://cdn-2.pishow.tv/live/1460/master.m3u8
+
+#EXTINF:-1 tvg-id="kids-8" tvg-name="Goldmines Movies" tvg-logo="https://yt3.googleusercontent.com/d66J-MMZ06-55gkF5maclPGB5f5j1L0SAs3iWnl3lhoswlWrJ67wD2a3mZGkgHgt-W3kMrIT=s900-c-k-c0x00ffffff-no-rj" group-title="24/7 kids+Goldmines pack",Goldmines Movies
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://cdn-2.pishow.tv/live/1461/master.m3u8
+
+#EXTINF:-1 tvg-id="kids-9" tvg-name="Aaj Tak HD" tvg-logo="https://www.lyngsat.com/logo/tv/aa/aaj-tak-in.png" group-title="24/7 kids+Goldmines pack",Aaj Tak HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://livehub-voidnet.onrender.com/cluster/streamcore/in/AAJTAK_REDIS.m3u8
+
+#EXTINF:-1 tvg-id="kids-10" tvg-name="Goldmines" tvg-logo="https://www.lyngsat.com/logo/tv/gg/goldmines-in.png" group-title="24/7 kids+Goldmines pack",Goldmines
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://cdn.pishow.tv/ott/live/1459/master.m3u8
+
+#EXTINF:-1 tvg-id="kids-11" tvg-name="Jungle Book" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Jungle_Book_Logo.svg" group-title="24/7 kids+Goldmines pack",Jungle Book
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://cc-4bhi5osabejc9.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-4bhi5osabejc9/junglebook.m3u8
+
+#EXTINF:-1 tvg-id="kids-12" tvg-name="Republic Bharat" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Republicbharatlogo.png" group-title="24/7 kids+Goldmines pack",Republic Bharat
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://vg-republictvlive.akamaized.net/ptnr-airtelxstream/title-Republic_Bharat/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/ac1dfd73-1c95-4462-9f42-be68edb6b7ff/main.m3u8
+
+#EXTINF:-1 tvg-id="kids-13" tvg-name="Zee News" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Zee_News_2025.svg" group-title="24/7 kids+Goldmines pack",Zee News
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://dxfxzhqtgt09i.cloudfront.net/index.m3u8
+
+#EXTINF:-1 tvg-id="kids-14" tvg-name="Zee Uttar Pradesh Uttarakhand" tvg-logo="https://www.tvlogo.org/india/zee-uttar-pradesh-uttarakhand-in.png" group-title="24/7 kids+Goldmines pack",Zee Uttar Pradesh Uttarakhand
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://duw35ict5q7th.cloudfront.net/index_1.m3u8
+
+#EXTINF:-1 tvg-id="wowkidz-hindi" tvg-name="WOW KIDZ Hindi" tvg-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo" tvg-category="Kids" group-title="WOW KIDZ",WOW KIDZ Hindi
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://yuppparoriglin.akamaized.net/181224/smil:wowkidzhindi.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
+
+#EXTINF:-1 tvg-id="wowkidz-tamil" tvg-name="WOW KIDZ Tamil" tvg-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo" tvg-category="Kids" group-title="WOW KIDZ",WOW KIDZ Tamil
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://yuppparoriglin.akamaized.net/181224/smil:wowkidztamil.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
+
+#EXTINF:-1 tvg-id="wowkidz-telugu" tvg-name="WOW KIDZ Telugu" tvg-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo" tvg-category="Kids" group-title="WOW KIDZ",WOW KIDZ Telugu
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+https://yuppparoriglin.akamaized.net/181224/smil:wowkidztelgu.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
+

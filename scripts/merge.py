@@ -70,6 +70,13 @@ LOCAL_OVERRIDES = [
         "group": None,  # keep the group-title carried by the file itself
     },
     {
+        "name": "Free/other channels (self-hosted static catalog)",
+        "file": os.path.join(PLAYLISTS_DIR, "free.m3u"),
+        "min_channels": 5,
+        "plug_groups": ["24/7 kids+Goldmines pack", "WOW KIDZ", "Dangal Play", "Willow live events"],
+        "group": None,  # keep the group-title carried by the file itself
+    },
+    {
         "name": "JioTV (allinonereborn cookie)",
         "file": os.path.join(PLAYLISTS_DIR, "jiotv.m3u"),
         "min_channels": 100,
@@ -163,50 +170,6 @@ def load_local_playlist(path, min_channels=1):
     return [clean_watermarks_from_block(b) for b in blocks]
 
 
-# Genre inference for the premiumplug (plugx) groups folded into self-hosted
-# JioTV categories. Their own group names / tvg-categories are unreliable, so
-# each channel is bucketed by its name.
-GENRE_KEYWORDS = [
-    ("Kids", ["oggy", "motu", "patlu", "doraemon", "shinchan", "jungle", "kidz", "green tv", "cartoon", "toon"]),
-    ("Movies", ["goldmines", "cinema", "movie"]),
-    ("News", ["aaj tak", "republic", "zee news", "zee uttar", "ndtv", "india today", "news"]),
-    ("Sports", ["willow", "cricket", "odi", "t20", "series", "match"]),
-    ("Music", ["music", "sangeet"]),
-    ("Devotional", ["devotional", "bhakti", "temple", "mandir"]),
-]
-
-
-def get_block_name(block):
-    for line in block:
-        if line.startswith("#EXTINF"):
-            return line.rsplit(",", 1)[-1].strip()
-    return ""
-
-
-def infer_genre(name):
-    n = " " + name.lower() + " "
-    for genre, kws in GENRE_KEYWORDS:
-        for kw in kws:
-            if kw in n:
-                return genre
-    return "Entertainment"
-
-
-def normalize_name(name):
-    return re.sub(r"[^a-z0-9]+", "", name.lower())
-
-
-def classify_into(blocks, out, existing):
-    for b in blocks:
-        name = get_block_name(b)
-        key = normalize_name(name)
-        if key in existing:
-            continue  # already covered by a self-hosted source
-        existing.add(key)
-        grp = "JioTV - " + infer_genre(name)
-        out.setdefault(grp, []).append(set_block_group(b, grp))
-
-
 def set_block_group(block, group):
     new = []
     for line in block:
@@ -281,18 +244,6 @@ def main():
     plug_blocks = extract_channel_blocks(plug_text) if plug_text else []
     print(f"✅ Loaded {len(plug_blocks)} total public channel items")
 
-    # Premiumplug (plugx) groups folded into self-hosted JioTV categories so no
-    # third-party group survives in the final playlist.
-    FOLD_GROUPS = {
-        "24/7 kids+goldmines pack",
-        "wow kidz",
-        "dangal play",
-        "willow live events",
-    }
-
-    # Names already provided by self-hosted sources; the fold skips duplicates.
-    existing_names = {normalize_name(get_block_name(b)) for blocks in all_channels_by_group.values() for b in blocks}
-
     # Accumulate public-feed channels, skipping any category we already have
     # from an independent local source (no duplicates).
     skipped_groups = set()
@@ -306,9 +257,6 @@ def main():
             skipped_groups.add(grp)
             continue
         cleaned_b = clean_watermarks_from_block(b)
-        if gl in FOLD_GROUPS:
-            classify_into([cleaned_b], all_channels_by_group, existing_names)
-            continue
         all_channels_by_group.setdefault(grp, []).append(cleaned_b)
     if skipped_groups:
         print(f"⏭️  Skipped {len(skipped_groups)} public-feed group(s) (local copy wins or category disabled): {', '.join(sorted(skipped_groups))}")
@@ -347,6 +295,8 @@ def main():
         "jiohotstar": ["JioHotstar"],
         "willow": ["Willow"],
         "prime": ["Prime Video"],
+        "dangal": ["Dangal Play"],
+        "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ"],
     }
 
     print("\n💾 Writing individual playlists to playlists/...")
@@ -407,11 +357,15 @@ def main():
         "ZEE5 Worldwide",
         "Sony LIV",
         "SunNXT",
+        "24/7 kids+Goldmines pack",
+        "WOW KIDZ",
         "JioHotstar",
         "VZY",
         "FanCode",
         "Willow",
+        "Willow live events",
         "Prime Video",
+        "Dangal Play",
     ]
 
     # Include any groups that may not be explicitly listed

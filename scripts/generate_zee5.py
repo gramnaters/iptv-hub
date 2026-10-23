@@ -5,7 +5,7 @@ import json
 CATALOG_PATH = Path(__file__).resolve().parent.parent / "catalogs" / "zee5_catalog.json"
 PLAYLIST_PATH = Path(__file__).resolve().parent.parent / "playlists" / "zee5.m3u"
 USER_AGENT = "com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)"
-BASE_STREAM_URL = "http://premiumplug.fun/tee/zee5.php"
+BASE_STREAM_URL = "https://zee.gramnaters.workers.dev/live"
 
 def generate_playlist():
     if not CATALOG_PATH.exists():

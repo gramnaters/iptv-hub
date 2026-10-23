@@ -68,7 +68,7 @@ LOCAL_OVERRIDES = [
         "file": os.path.join(PLAYLISTS_DIR, "zee5.m3u"),
         "min_channels": 50,
         "plug_groups": ["ZEE5", "ZEE5 India", "ZEE5 Worldwide"],
-        "group": "ZEE5",
+        "group": None,  # keep the group-title carried by the file itself
     },
     {
         "name": "JioTV (allinonereborn cookie)",
@@ -164,6 +164,127 @@ def load_local_playlist(path, min_channels=1):
     return [clean_watermarks_from_block(b) for b in blocks]
 
 
+LANG_KEYWORDS = {
+    "Tamil": ["tamil", "vijay", "ktv", "sun tv", "sun music", "sun life", "sun news", "thirai", "chutti", "polimer", "jaya ", "makkal", "kalaignar", "captain", "thalapathy"],
+    "Telugu": ["telugu", " maa", "gemini", "cinemalu", "kushi", "adithya", " etv", "tv5", "ntv ", "sakshi", "vanitha"],
+    "Kannada": ["kannada", "udaya", "suvarna", "kasthuri", "public tv"],
+    "Malayalam": ["malayalam", "asianet", "surya", "kairali", "flowers", "mazhavil", "keralam", "kochu", "chintu", "manorama", "mathrubhumi", "amrita", "24 news"],
+    "Bengali": ["bangla", "bengali", "jalsha", "aath", "sarthak", "sonar", "biskope", "ghanta", "akash"],
+    "Marathi": ["marathi", "pravah", "lokmat", "talkies", "taas", "saam", "pudhari", "yuva"],
+    "Gujarati": ["gujarati", "kalak", "sandesh", "girnar", "alwan"],
+    "Punjabi": ["punjabi", "ptc", "sanjha"],
+    "Odia": ["odia", "tarang", "otv", "kalinga", "odisha"],
+    "Assamese": ["assam", "assamese", "northeast", "north east", "dy365"],
+    "English": ["english", "espn", "cnn", "cnbc", "wion", "national geographic", "nat geo", "fox", "tsn", "great!", "tiny pop", "pop up", "bbc earth"],
+    "Bhojpuri": ["bhojpuri", "mahuaa"],
+    "International": ["french", "german", "arabic", "aflam", "bioskop", "indonesian", "one "],
+}
+
+CATEGORY_MAP = {
+    "Entertainment": "Entertainment",
+    "Movies": "Movies",
+    "Kids": "Kids",
+    "News": "News",
+    "Sports": "Sports",
+    "Music": "Music",
+    "Devotional": "Devotional",
+    "Knowledge": "Infotainment",
+    "Infotainment": "Infotainment",
+    "Business": "Business News",
+    "Business News": "Business News",
+    "Lifestyle": "Lifestyle",
+    "Education": "Educational",
+    "Educational": "Educational",
+    "Other": "Other",
+    "Unknown": "Unknown",
+    "SunNXT": "Entertainment",
+}
+
+BIG_BOSS_RE = re.compile(r"(?i)bigboss|big boss")
+CATCHUP_RE = re.compile(r"(?i)24\s*[/x]\s*7")
+
+
+def normalize_name(name):
+    return re.sub(r"[^a-z0-9]+", "", name.lower())
+
+
+def get_block_name(block):
+    for line in block:
+        if line.startswith("#EXTINF"):
+            return line.rsplit(",", 1)[-1].strip()
+    return ""
+
+
+def get_block_category(block):
+    for line in block:
+        if line.startswith("#EXTINF"):
+            m = re.search(r'tvg-category="([^"]*)"', line)
+            if m and m.group(1):
+                return m.group(1)
+    return get_block_group(block)
+
+
+def detect_language(name):
+    n = " " + name.lower() + " "
+    if "awaaz" in n:  # CNBC Awaaz is Hindi, not English
+        return "Hindi"
+    for lang, kws in LANG_KEYWORDS.items():
+        for kw in kws:
+            if kw in n:
+                return lang
+    return "Hindi"
+
+
+def merge_group(name, category):
+    if BIG_BOSS_RE.search(name):
+        return "Big Boss"
+    lang = detect_language(name)
+    if lang == "Hindi":
+        return "JioTV - " + CATEGORY_MAP.get(category, category or "Other")
+    if lang == "International":
+        return "JioTV - English"
+    return "JioTV - " + lang
+
+
+def set_block_group(block, group):
+    new = []
+    for line in block:
+        if line.startswith("#EXTINF"):
+            if 'group-title=' in line:
+                line = re.sub(r'group-title="[^"]*"', f'group-title="{group}"', line)
+            else:
+                line = line.replace('#EXTINF:-1 ', f'#EXTINF:-1 group-title="{group}" ')
+        new.append(line)
+    return new
+
+
+def classify_into(blocks, out, direct_names):
+    for b in blocks:
+        name = get_block_name(b)
+        grp = merge_group(name, get_block_category(b))
+        out.setdefault(grp, []).append(set_block_group(b, grp))
+        direct_names.add(normalize_name(name))
+
+
+def classify_sonyliv(blocks, out):
+    for b in blocks:
+        name = get_block_name(b)
+        cat = CATEGORY_MAP.get(get_block_category(b), "Entertainment")
+        grp = f"SonyLIV | {cat}"
+        out.setdefault(grp, []).append(set_block_group(b, grp))
+
+
+def classify_jiohotstar(blocks, out, direct_names):
+    for b in blocks:
+        name = get_block_name(b)
+        if BIG_BOSS_RE.search(name) or CATCHUP_RE.search(name):
+            out.setdefault("JioHotstar", []).append(set_block_group(b, "JioHotstar"))
+        else:
+            grp = merge_group(name, get_block_category(b))
+            out.setdefault(grp, []).append(set_block_group(b, grp))
+            direct_names.add(normalize_name(name))
+
+
 def main():
     print("=" * 60)
     print(f"🚀 Master IPTV Auto-Updater starting at {get_current_ist()}")
@@ -171,32 +292,19 @@ def main():
     os.makedirs(PLAYLISTS_DIR, exist_ok=True)
 
     all_channels_by_group = {}
+    direct_names = set()
 
     # -------------------------------------------------------------
-    # 1. Fetch User's Independent JioHotstar Feed
+    # 1. Fetch User's Independent JioHotstar Feed (fold into JioTV categories)
     # -------------------------------------------------------------
     print(f"\n⭐ Fetching independent JioHotstar from {USER_JIOHOTSTAR_URL}...")
     jhs_text = fetch_content(USER_JIOHOTSTAR_URL)
-    jhs_blocks = []
     if jhs_text:
-        raw_jhs_blocks = extract_channel_blocks(jhs_text)
-        for b in raw_jhs_blocks:
-            # Force group-title="JioHotstar"
-            norm_b = []
-            for l in b:
-                if l.startswith("#EXTINF"):
-                    if 'group-title=' in l:
-                        l = re.sub(r'group-title="[^"]*"', 'group-title="JioHotstar"', l)
-                    else:
-                        l = l.replace('#EXTINF:-1 ', '#EXTINF:-1 group-title="JioHotstar" ')
-                norm_b.append(l)
-            jhs_blocks.append(clean_watermarks_from_block(norm_b))
-        print(f"✅ Loaded {len(jhs_blocks)} independent JioHotstar channels")
+        jhs_blocks = [clean_watermarks_from_block(b) for b in extract_channel_blocks(jhs_text)]
+        classify_jiohotstar(jhs_blocks, all_channels_by_group, direct_names)
+        print(f"✅ Loaded {len(jhs_blocks)} independent JioHotstar channels (folded into JioTV)")
     else:
         print("⚠️ Could not load independent JioHotstar, check worker status")
-
-    if jhs_blocks:
-        all_channels_by_group["JioHotstar"] = jhs_blocks
 
     # -------------------------------------------------------------
     # 2. Independent local sources (channels/*.json -> playlists/*.m3u)
@@ -216,8 +324,11 @@ def main():
         if src["group"]:
             all_channels_by_group.setdefault(src["group"], []).extend(blocks)
         else:
-            # e.g. JioTV: keep each "JioTV - <category>" group intact
+            # e.g. JioTV: keep each "JioTV - <category>" group intact, skipping
+            # channels already folded in from the independent JioHotstar feed.
             for b in blocks:
+                if normalize_name(get_block_name(b)) in direct_names:
+                    continue
                 all_channels_by_group.setdefault(get_block_group(b), []).append(b)
         if src["plug_groups"] is None:
             skip_jiotv_from_plug = True
@@ -317,36 +428,18 @@ def main():
 
     # Canonical order of groups
     PRIORITY_GROUPS = [
-        "JioHotstar",
-        "FanCode",
-        "Willow",
-        "Sony LIV",
-        "Sonyliv events",
-        "Prime Video",
-        "SunNXT",
-        "VZY",
-        "ZEE5",
-        "ZEE5 Worldwide",
-        "Dangal Play",
-        "24/7 kids+Goldmines pack",
-        "WOW KIDZ",
-        "Jio TV+ | Sports",
-        "Jio TV+ | News",
-        "Jio TV+ | Entertainment",
-        "Jio TV+ | Movies",
-        "Jio TV+ | Kids",
-        "Jio TV+ | Music",
-        "Jio TV+ | Devotional",
-        "Jio TV+ | Infotainment",
-        "Jio TV+ | Lifestyle",
-        "Jio TV+ | Education",
-        "Jio TV+ | Business",
-        "Jio TV+ | Specials",
-        "Jio TV+ | Shopping",
-        "Jio TV+ | Other",
-        # Independent JioTV (channels/jiotv_cookie.json -> playlists/jiotv.m3u)
+        # JioTV (self-minted, JioHotstar folded in)
         "JioTV - Sports",
         "JioTV - News",
+        "JioTV - Entertainment",
+        "JioTV - Movies",
+        "JioTV - Kids",
+        "JioTV - Music",
+        "JioTV - Devotional",
+        "JioTV - Infotainment",
+        "JioTV - Lifestyle",
+        "JioTV - Educational",
+        "JioTV - Business News",
         "JioTV - English",
         "JioTV - Tamil",
         "JioTV - Telugu",
@@ -362,16 +455,22 @@ def main():
         "JioTV - Bhojpuri",
         "JioTV - Nepali",
         "JioTV - French",
-        "JioTV - Entertainment",
-        "JioTV - Movies",
-        "JioTV - Kids",
-        "JioTV - Music",
-        "JioTV - Devotional",
-        "JioTV - Infotainment",
-        "JioTV - Lifestyle",
-        "JioTV - Educational",
-        "JioTV - Business News",
-        "JioTV - Unknown"
+        "JioTV - Unknown",
+        "JioTV - Other",
+        "JioTV - Malyalam",
+        "24/7 kids+Goldmines pack",
+        "WOW KIDZ",
+        "Sony LIV",
+        "JioHotstar",
+        "VZY",
+        "FanCode",
+        "Willow",
+        "Willow live events",
+        "Prime Video",
+        "ZEE5 India",
+        "ZEE5 Worldwide",
+        "SunNXT",
+        "Dangal Play",
     ]
 
     # Include any groups that may not be explicitly listed

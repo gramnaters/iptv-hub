@@ -1,6 +1,6 @@
 #EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz" url-tvg="https://avkb.short.gy/jioepg.xml.gz" refresh="86400"
-#DATE:- 24-10-2026 00:47:20 IST
-# Total Channels: 1582
+#DATE:- 24-10-2026 00:48:56 IST
+# Total Channels: 1580
 
 # ===== JioTV - Entertainment (43 Channels) =====
 #EXTINF:-1 tvg-id="144" tvg-name="Colors HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsHD.png" group-title="JioTV - Entertainment",Colors HD
@@ -999,7 +999,7 @@ https://yuppparoriglin.akamaized.net/181224/smil:wowkidztamil.smil/playlist.m3u8
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
 https://yuppparoriglin.akamaized.net/181224/smil:wowkidztelgu.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
 
-# ===== JioTV - News (152 Channels) =====
+# ===== JioTV - News (150 Channels) =====
 #EXTINF:-1 tvg-id="173" tvg-name="Aaj Tak" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Aaj_Tak.png" group-title="JioTV - News",Aaj Tak
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
@@ -2471,14 +2471,6 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Prime_Bharat_News_MOB/WDVLive/index.mpd
 #EXTINF:-1 tvg-id="kids-9" tvg-name="Aaj Tak HD" tvg-logo="https://www.lyngsat.com/logo/tv/aa/aaj-tak-in.png" group-title="JioTV - News" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Aaj Tak HD
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
 https://livehub-voidnet.onrender.com/cluster/streamcore/in/AAJTAK_REDIS.m3u8
-
-#EXTINF:-1 tvg-id="kids-12" tvg-name="Republic Bharat" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Republicbharatlogo.png" group-title="JioTV - News" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Republic Bharat
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://vg-republictvlive.akamaized.net/ptnr-airtelxstream/title-Republic_Bharat/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/ac1dfd73-1c95-4462-9f42-be68edb6b7ff/main.m3u8
-
-#EXTINF:-1 tvg-id="kids-13" tvg-name="Zee News" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Zee_News_2025.svg" group-title="JioTV - News" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Zee News
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
-https://dxfxzhqtgt09i.cloudfront.net/index.m3u8
 
 #EXTINF:-1 tvg-id="kids-14" tvg-name="Zee Uttar Pradesh Uttarakhand" tvg-logo="https://www.tvlogo.org/india/zee-uttar-pradesh-uttarakhand-in.png" group-title="JioTV - News" group-logo="https://www.shutterstock.com/image-vector/kids-text-logo-movie-editable-260nw-2536104593.jpg",Zee Uttar Pradesh Uttarakhand
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7

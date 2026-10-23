@@ -192,9 +192,18 @@ def infer_genre(name):
     return "Entertainment"
 
 
-def classify_into(blocks, out):
+def normalize_name(name):
+    return re.sub(r"[^a-z0-9]+", "", name.lower())
+
+
+def classify_into(blocks, out, existing):
     for b in blocks:
-        grp = "JioTV - " + infer_genre(get_block_name(b))
+        name = get_block_name(b)
+        key = normalize_name(name)
+        if key in existing:
+            continue  # already covered by a self-hosted source
+        existing.add(key)
+        grp = "JioTV - " + infer_genre(name)
         out.setdefault(grp, []).append(set_block_group(b, grp))
 
 
@@ -281,6 +290,9 @@ def main():
         "willow live events",
     }
 
+    # Names already provided by self-hosted sources; the fold skips duplicates.
+    existing_names = {normalize_name(get_block_name(b)) for blocks in all_channels_by_group.values() for b in blocks}
+
     # Accumulate public-feed channels, skipping any category we already have
     # from an independent local source (no duplicates).
     skipped_groups = set()
@@ -295,7 +307,7 @@ def main():
             continue
         cleaned_b = clean_watermarks_from_block(b)
         if gl in FOLD_GROUPS:
-            classify_into([cleaned_b], all_channels_by_group)
+            classify_into([cleaned_b], all_channels_by_group, existing_names)
             continue
         all_channels_by_group.setdefault(grp, []).append(cleaned_b)
     if skipped_groups:

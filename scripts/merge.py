@@ -64,6 +64,13 @@ LOCAL_OVERRIDES = [
         "group": "SunNXT",
     },
     {
+        "name": "ZEE5 (self-generated)",
+        "file": os.path.join(PLAYLISTS_DIR, "zee5.m3u"),
+        "min_channels": 50,
+        "plug_groups": ["ZEE5", "ZEE5 India", "ZEE5 Worldwide"],
+        "group": None,
+    },
+    {
         "name": "JioTV (allinonereborn cookie)",
         "file": os.path.join(PLAYLISTS_DIR, "jiotv.m3u"),
         "min_channels": 100,

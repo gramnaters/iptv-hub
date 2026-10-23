@@ -1,50 +1,20 @@
 #EXTM3U
-#DATE:- 24-10-2026 00:18:27 IST
+#DATE:- 24-10-2026 04:15:27 IST
 # Category: fancode
-# Total Channels: 9
+# Total Channels: 3
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
-
-#EXTINF:-1 tvg-id="4250483" tvg-name="Abu Dhabi Vs Emirates Blues" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250483_53130_EMB_ABD_fc-web_1792412930142.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Abu Dhabi Vs Emirates Blues
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250483_english_hls_48727574d09619_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4250219" tvg-name="Al Ahli Saudi Fc Vs Al Khaleej Fc" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250219_53025_AAS_AKH_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Al Ahli Saudi Fc Vs Al Khaleej Fc
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250219_english_hls_02bf778a4694263_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4250268" tvg-name="Al Qadsiah Fc Vs Al Hilal Sfc" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250268_53025_ALQ_AHS_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Al Qadsiah Fc Vs Al Hilal Sfc
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250268_english_hls_8b67c0225f71380_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4247660" tvg-name="Deportivo Alaves Vs Malaga" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4247660_53004_ALA_MAG_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Deportivo Alaves Vs Malaga
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4247660_english_hls_253d46920036765_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4250107" tvg-name="Granada Vs Real Valladolid" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250107_53017_GRD_VLD_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Granada Vs Real Valladolid
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250107_english_hls_8e3714422150927_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4250156" tvg-name="Court 1   Qf" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Yonex-French-Open-2026_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Court 1   Qf
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250156_english_hls_eaffc4881757714_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="4249618" tvg-name="Day 5   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-Auvergne-Rhone-Alpes_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 5   World Feed
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4249618_english_hls_bd306a0e4442012_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249625" tvg-name="Day 5   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/BNP-Paribas-Fortis-European-Open_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 5   World Feed
+#EXTINF:-1 tvg-id="139979" tvg-name="Day 2" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-of-Australiaold-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 2
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249625_english_hls_536367850459177_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/139979_english_hls_c7aa6f758469211_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4250352" tvg-name="Day 2   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Butterfield-bermuda-golf_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 2   World Feed
+#EXTINF:-1 tvg-id="4250507" tvg-name="Opening Race" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/F2_Canada_web_1792770153782.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Opening Race
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250352_english_hls_7e8d59effb50597_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250507_english_hls_44cd9f0fb737145_1ta-di_h264/index.m3u8

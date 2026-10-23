@@ -1,6 +1,6 @@
 #EXTM3U
-# Generated: 23-10-2026 18:17:24 UTC
-# Total Channels: 119
+# Generated: 23-10-2026 18:21:47 UTC
+# Total Channels: 118
 
 #EXTINF:-1 tvg-id="0-9-pictures" tvg-name="&Pictures" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-pictures/channel_list/360x2036af1e5bd11784d5089ee0fa175f2b267.png" tvg-category="Movie" group-title="ZEE5 India" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",&Pictures
 #EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
@@ -13,10 +13,6 @@ https://zee.gramnaters.workers.dev/live/0-9-tvpictureshd.m3u8
 #EXTINF:-1 tvg-id="0-9-tvhd_0" tvg-name="&TV HD" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-tvhd_0/channel_list/360x203b8aa32da7b8d40e3a88a149166705dc1.png" tvg-category="Entertainment" group-title="ZEE5 India" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",&TV HD
 #EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
 https://zee.gramnaters.workers.dev/live/0-9-tvhd_0.m3u8
-
-#EXTINF:-1 tvg-id="0-9-channel_122044711" tvg-name="&TV HD" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_122044711/channel_list/360x20316faf51333244b53a489be8b81cccb98.png" tvg-category="Entertainment" group-title="ZEE5 India" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",&TV HD
-#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
-https://zee.gramnaters.workers.dev/live/0-9-channel_122044711.m3u8
 
 #EXTINF:-1 tvg-id="0-9-channel_1510237423" tvg-name="&TV HD USA" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_1510237423/channel_list/360x203c2a1d92ca8da43b4afd29ad3e6b933e7.png" tvg-category="Entertainment" group-title="ZEE5 India" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",&TV HD USA
 #EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)

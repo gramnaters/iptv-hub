@@ -1,6 +1,6 @@
 #EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz" url-tvg="https://avkb.short.gy/jioepg.xml.gz" refresh="86400"
-#DATE:- 23-10-2026 23:47:27 IST
-# Total Channels: 1508
+#DATE:- 23-10-2026 23:51:49 IST
+# Total Channels: 1507
 
 # ===== JioTV - Entertainment (49 Channels) =====
 #EXTINF:-1 tvg-id="colors_hd" tvg-name="Colors HD" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/colors-hindi--16x9-1714557869344.jpg" group-title="JioTV - Entertainment", Colors HD
@@ -12161,7 +12161,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/4sites/HLSPartner/index.m3u8
 #EXTHTTP:{"User-Agent": "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0", "Origin": "https://www.jiotv.com/", "Referer": "https://www.jiotv.com/", "Cookie": "__hdnea__=st=1792440003~exp=1792461603~acl=/*~hmac=448c8b7065980bc9d84b47c6b7dbb55b9be4aaaa5ab93d29569587a573231cc3"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYMal_MOB/WDVLive/index.mpd
 
-# ===== ZEE5 India (119 Channels) =====
+# ===== ZEE5 India (118 Channels) =====
 #EXTINF:-1 tvg-id="0-9-pictures" tvg-name="&Pictures" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-pictures/channel_list/360x2036af1e5bd11784d5089ee0fa175f2b267.png" tvg-category="Movie" group-title="ZEE5 India" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",&Pictures
 #EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
 https://zee.gramnaters.workers.dev/live/0-9-pictures.m3u8
@@ -12173,10 +12173,6 @@ https://zee.gramnaters.workers.dev/live/0-9-tvpictureshd.m3u8
 #EXTINF:-1 tvg-id="0-9-tvhd_0" tvg-name="&TV HD" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-tvhd_0/channel_list/360x203b8aa32da7b8d40e3a88a149166705dc1.png" tvg-category="Entertainment" group-title="ZEE5 India" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",&TV HD
 #EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
 https://zee.gramnaters.workers.dev/live/0-9-tvhd_0.m3u8
-
-#EXTINF:-1 tvg-id="0-9-channel_122044711" tvg-name="&TV HD" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_122044711/channel_list/360x20316faf51333244b53a489be8b81cccb98.png" tvg-category="Entertainment" group-title="ZEE5 India" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",&TV HD
-#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
-https://zee.gramnaters.workers.dev/live/0-9-channel_122044711.m3u8
 
 #EXTINF:-1 tvg-id="0-9-channel_1510237423" tvg-name="&TV HD USA" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_1510237423/channel_list/360x203c2a1d92ca8da43b4afd29ad3e6b933e7.png" tvg-category="Entertainment" group-title="ZEE5 India" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",&TV HD USA
 #EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)

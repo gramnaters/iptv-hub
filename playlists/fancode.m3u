@@ -1,18 +1,18 @@
 #EXTM3U
-#DATE:- 23-10-2026 15:11:55 IST
+#DATE:- 23-10-2026 17:51:03 IST
 # Category: fancode
-# Total Channels: 6
+# Total Channels: 7
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
-#EXTINF:-1 tvg-id="4249760" tvg-name="Mozambique Vs Nigeria" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249760_53093_NGR_MOZ_FC-Web_1792493253330.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Mozambique Vs Nigeria
+#EXTINF:-1 tvg-id="4249697" tvg-name="Zimbabwe Vs Afghanistan" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249697_53089_AFG_ZIM_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Zimbabwe Vs Afghanistan
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249760_english_hls_bae1223fe532144_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249697_english_hls_7444655df2273_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249761" tvg-name="Lesotho Vs Zambia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249761_53093_ZAM_LES_FC-Web_1792493252664.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Lesotho Vs Zambia
+#EXTINF:-1 tvg-id="4250482" tvg-name="Ajman Vs Sharjah" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250482_53130_AJM_SHA_fc-web_1792412929295.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Ajman Vs Sharjah
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249761_english_hls_245a2df94d82412_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250482_english_hls_5de76197b666269_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="4249611" tvg-name="Day 5   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-Web_1792479545067.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 5   World Feed
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
@@ -29,7 +29,12 @@ https://dai-fancode.pages.dev/mumbai/4250156_english_hls_eaffc4881757714_1ta-di_
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250157_english_hls_5b7e4a7fb27605_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249840" tvg-name="Brisbane Roar Vs Perth Glory" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249840_53101_BRB_PG_fc-Web_1792223292186.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Brisbane Roar Vs Perth Glory
+#EXTINF:-1 tvg-id="4249618" tvg-name="Day 5   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-Auvergne-Rhone-Alpes_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 5   World Feed
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249840_english_hls_a5f9d1422359282_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249618_english_hls_bd306a0e4442012_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4249625" tvg-name="Day 5   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/BNP-Paribas-Fortis-European-Open_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 5   World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249625_english_hls_536367850459177_1ta-di_h264/index.m3u8

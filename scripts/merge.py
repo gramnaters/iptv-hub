@@ -426,20 +426,22 @@ def main():
     # -------------------------------------------------------------
     print("\n📦 Generating Master Combined.m3u...")
 
-    # Canonical order of groups
+    # Canonical order of groups (matches the plugx public feed ordering)
     PRIORITY_GROUPS = [
-        # JioTV (self-minted, JioHotstar folded in)
-        "JioTV - Sports",
-        "JioTV - News",
+        # JioTV categories (plugx order)
         "JioTV - Entertainment",
-        "JioTV - Movies",
-        "JioTV - Kids",
-        "JioTV - Music",
-        "JioTV - Devotional",
         "JioTV - Infotainment",
+        "JioTV - Movies",
         "JioTV - Lifestyle",
-        "JioTV - Educational",
+        "JioTV - Kids",
+        "JioTV - News",
+        "JioTV - Devotional",
+        "JioTV - Music",
         "JioTV - Business News",
+        "JioTV - Sports",
+        "JioTV - Educational",
+        "JioTV - Other",
+        # JioTV languages
         "JioTV - English",
         "JioTV - Tamil",
         "JioTV - Telugu",
@@ -456,20 +458,20 @@ def main():
         "JioTV - Nepali",
         "JioTV - French",
         "JioTV - Unknown",
-        "JioTV - Other",
         "JioTV - Malyalam",
+        # ZEE5
+        "ZEE5 India",
+        "ZEE5 Worldwide",
+        "Sony LIV",
+        "SunNXT",
         "24/7 kids+Goldmines pack",
         "WOW KIDZ",
-        "Sony LIV",
         "JioHotstar",
         "VZY",
         "FanCode",
         "Willow",
         "Willow live events",
         "Prime Video",
-        "ZEE5 India",
-        "ZEE5 Worldwide",
-        "SunNXT",
         "Dangal Play",
     ]
 

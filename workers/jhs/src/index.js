@@ -217,161 +217,29 @@ function buildPlaylist(hdntl) {
   return lines.join("\n");
 }
 
-function renderJhsDashboard(host, state) {
-  const hrs = state.expiresInHours ? state.expiresInHours + " hours" : "Active";
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JioHotstar • Live Stream Engine</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #060913;
-      --card: #0d1326;
-      --border: #182240;
-      --primary: #2563eb;
-      --accent: #38bdf8;
-      --text: #f8fafc;
-      --text-dim: #94a3b8;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; padding-bottom: 60px; }
-    .header { border-bottom: 1px solid var(--border); background: rgba(13,19,38,0.85); backdrop-filter: blur(12px); padding: 16px 24px; position: sticky; top:0; z-index:50; }
-    .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
-    .brand-icon { font-size: 22px; background: linear-gradient(135deg, #1e40af, #0284c7); width: 40px; height: 40px; border-radius: 10px; display:flex; align-items:center; justify-content:center; }
-    .badge { display: flex; align-items: center; gap: 8px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #34d399; font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 999px; }
-    .dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; }
-    .container { max-width: 1100px; margin: 32px auto 0; padding: 0 20px; }
-    .hero { text-align: center; margin-bottom: 32px; }
-    .hero h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
-    .hero p { color: var(--text-dim); }
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 32px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
-    .stat-label { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
-    .stat-val { font-size: 1.6rem; font-weight: 800; color: #fff; }
-    .endpoints { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 36px; }
-    .copy-box { display: flex; gap: 8px; background: #05070e; border: 1px solid var(--border); border-radius: 10px; padding: 4px 6px 4px 12px; align-items: center; margin-top: 12px; }
-    .copy-input { background: transparent; border: none; color: #7dd3fc; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; flex: 1; outline: none; }
-    .btn-copy { background: #1e293b; color: #fff; border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
-    .btn-copy:hover { background: var(--primary); }
-    .channels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; max-height: 480px; overflow-y: auto; padding-right: 6px; }
-    .ch-card { background: #070a14; border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; }
-    .ch-logo { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; background: #111827; }
-    .ch-name { font-weight: 600; font-size: 0.88rem; }
-    .ch-group { font-size: 0.75rem; color: var(--text-dim); }
-    .toast { position: fixed; bottom: 24px; right: 24px; background: #10b981; color: #fff; padding: 12px 20px; border-radius: 10px; font-weight: 600; opacity: 0; transform: translateY(20px); transition: all 0.3s; z-index: 100; }
-    .toast.show { opacity: 1; transform: translateY(0); }
-    footer { text-align: center; margin-top: 50px; color: var(--text-dim); font-size: 0.85rem; }
-  </style>
-</head>
-<body>
-  <header class="header">
-    <div class="header-inner">
-      <a href="/" class="brand">
-        <div class="brand-icon">⭐</div>
-        <div>
-          <h1 style="font-size:1.15rem; font-weight:800;">JioHotstar Live</h1>
-          <span style="font-size:0.75rem; color:var(--text-dim);">Puppeteer Autonomous Minter</span>
-        </div>
-      </a>
-      <div class="badge">
-        <div class="dot"></div>
-        <span>${CHANNELS.length} Channels Live</span>
-      </div>
-    </div>
-  </header>
-
-  <div class="container">
-    <div class="hero">
-      <h2>Live TV & Sports Streaming Engine</h2>
-      <p>Autonomous Akamai token self-minting powered by Cloudflare Browser Rendering</p>
-    </div>
-
-    <div class="stats">
-      <div class="card">
-        <div class="stat-label">Total Channels</div>
-        <div class="stat-val">${CHANNELS.length}</div>
-      </div>
-      <div class="card">
-        <div class="stat-label">Token Status</div>
-        <div class="stat-val" style="color:#34d399;">Active</div>
-        <div style="font-size:0.75rem; color:var(--text-dim); margin-top:4px;">${hrs} remaining</div>
-      </div>
-      <div class="card">
-        <div class="stat-label">Auto Refresh</div>
-        <div class="stat-val" style="color:#38bdf8;">Hourly Cron</div>
-      </div>
-    </div>
-
-    <h3 style="margin-bottom:14px; font-size:1.15rem;">⚡ Stream Playlist Endpoints</h3>
-    <div class="endpoints">
-      <div class="card">
-        <h4 style="font-size:0.95rem; font-weight:700;">⭐ Master JioHotstar Playlist (M3U)</h4>
-        <p style="font-size:0.85rem; color:var(--text-dim); margin-top:4px;">Direct M3U feed with baked Akamai hdntl cookie headers.</p>
-        <div class="copy-box">
-          <input type="text" readonly class="copy-input" id="u-m3u" value="https://${host}/playlist.m3u">
-          <button class="btn-copy" onclick="copy('u-m3u')">Copy</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <h4 style="font-size:0.95rem; font-weight:700;">📊 Token Freshness Status (JSON)</h4>
-        <p style="font-size:0.85rem; color:var(--text-dim); margin-top:4px;">Real-time KV token expiration timestamp & health.</p>
-        <div class="copy-box">
-          <input type="text" readonly class="copy-input" id="u-status" value="https://${host}/status">
-          <button class="btn-copy" onclick="copy('u-status')">Copy</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" style="margin-bottom:36px;">
-      <h3 style="margin-bottom:16px; font-size:1.15rem;">📺 Included Live Channels</h3>
-      <div class="channels-grid">
-        ${CHANNELS.map(c => `
-          <div class="ch-card">
-            <img src="${c.logo || 'https://www.hotstar.com/favicon.ico'}" class="ch-logo" onerror="this.src='https://www.hotstar.com/favicon.ico'">
-            <div>
-              <div class="ch-name">${c.name}</div>
-              <div class="ch-group">${c.group || 'Live TV'}</div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-
-    <footer>JioHotstar Live Engine • Community IPTV Hub</footer>
-  </div>
-  <div id="toast" class="toast">Link copied!</div>
-  <script>
-    function copy(id) {
-      navigator.clipboard.writeText(document.getElementById(id).value);
-      const t = document.getElementById('toast');
-      t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2000);
-    }
-  </script>
-</body>
-</html>`;
-}
-
 /* --------------------------------------------------------------------- main */
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
-    const accept = request.headers.get("Accept") || "";
 
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
 
-    if (path === "/status") {
+    if (path === "/status" || path === "/health") {
       const state = await loadState(env);
       const payload = { ...stateOf(state.token, state.mintedAt, state.source), cookieConfigured: !!env.HS_COOKIE, cron: "0 * * * *" };
       return Response.json(payload, { headers: CORS });
+    }
+
+    if (path === "/channels.json") {
+      return new Response(JSON.stringify(CHANNELS, null, 2), {
+        headers: {
+          ...CORS,
+          "Content-Type": "application/json; charset=utf-8",
+          "Cache-Control": "public, max-age=600",
+        },
+      });
     }
 
     if (path === "/mint") {
@@ -392,13 +260,7 @@ export default {
 
     const state = await loadState(env);
 
-    // Serve HTML Dashboard on root for browser visits
-    if (path === "/" && accept.includes("text/html")) {
-      return new Response(renderJhsDashboard(url.host, state), {
-        headers: { ...CORS, "Content-Type": "text/html; charset=utf-8" }
-      });
-    }
-
+    // Root / or /playlist.m3u or /live.m3u -> Pure M3U playlist (tgaadi style)
     return new Response(buildPlaylist(state.token), {
       headers: {
         ...CORS,

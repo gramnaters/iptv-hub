@@ -1,40 +1,45 @@
 #EXTM3U
-#DATE:- 24-10-2026 16:39:47 IST
+#DATE:- 24-10-2026 21:17:01 IST
 # Category: fancode
-# Total Channels: 7
+# Total Channels: 8
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
-#EXTINF:-1 tvg-id="4249282" tvg-name="New South Wales Vs Western Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249282_53072_WAU_NSW_FC-Web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | New South Wales Vs Western Australia
+#EXTINF:-1 tvg-id="4250484" tvg-name="Dubai Vs Abu Dhabi" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250484_53130_DUB_ABD_fc-web_1792412929330.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Dubai Vs Abu Dhabi
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249282_english_hls_43ae1cf2385812_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250484_english_hls_5abafb3d1014548_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4250339" tvg-name="Denmark Vs Kuwait" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Denmark Vs Kuwait
+#EXTINF:-1 tvg-id="4249764" tvg-name="Gambia Vs Zambia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249764_53093_GAM_ZAM_FC-Web_1792493252668.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Gambia Vs Zambia
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250339_english_hls_f94881589528837_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249764_english_hls_2771dfc2c691938_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4250340" tvg-name="Qatar Vs Kenya" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Qatar Vs Kenya
+#EXTINF:-1 tvg-id="4249599" tvg-name="Preston North End F.c. Vs West Bromwich Albion F.c." tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249599_52993_PST_WBA_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Preston North End F.c. Vs West Bromwich Albion F.c.
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250340_english_hls_ba610ffa8719836_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249599_english_hls_59bbe98d3383734_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4250332" tvg-name="Namibia Vs Ireland" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Namibia-vs-Ireland_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Namibia Vs Ireland
+#EXTINF:-1 tvg-id="4247658" tvg-name="Racing Club De Santander Vs Rcd Espanyol" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4247658_53004_RAC_ESL_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Racing Club De Santander Vs Rcd Espanyol
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250332_english_hls_1aa599cf365384_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4247658_english_hls_eda2c9bea474961_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4250108" tvg-name="Leganes Vs Rcd Mallorca" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250108_53017_LEG_MRC_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Leganes Vs Rcd Mallorca
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250108_english_hls_9de23e4f9271171_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="4250158" tvg-name="Semi Finals" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Yonex-French-Open-2026_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Semi Finals
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250158_english_hls_6fe83d089b42758_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249843" tvg-name="Melbourne Victory Vs Melbourne City" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249843_53101_MLV_MLC_fc-Web_1792223292104.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Melbourne Victory Vs Melbourne City
+#EXTINF:-1 tvg-id="4249619" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-Auvergne-Rhone-Alpes_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | World Feed
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249843_english_hls_e915c1c41d32510_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249619_english_hls_cfb645a9ef30372_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249612" tvg-name="Day 6   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-Web_1792479545067.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 6   World Feed
+#EXTINF:-1 tvg-id="4249626" tvg-name="Day 6   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/BNP-Paribas-Fortis-European-Open_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 6   World Feed
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249612_english_hls_4bb5d239f294482_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249626_english_hls_36a8c0fcd929601_1ta-di_h264/index.m3u8

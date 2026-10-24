@@ -104,14 +104,17 @@ def get_current_ist():
     now = datetime.now(IST)
     return now.strftime("%d-%m-%Y %H:%M:%S IST")
 
-def fetch_content(url, timeout=25):
-    try:
-        r = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=timeout)
-        r.raise_for_status()
-        return r.text
-    except Exception as e:
-        print(f"⚠️ Error fetching {url}: {e}")
-        return ""
+def fetch_content(url, timeout=35, retries=2):
+    for attempt in range(retries):
+        try:
+            r = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=timeout)
+            r.raise_for_status()
+            return r.text
+        except Exception as e:
+            if attempt == retries - 1:
+                print(f"⚠️ Error fetching {url}: {e}")
+            time.sleep(2)
+    return ""
 
 def extract_channel_blocks(raw_text):
     blocks = []

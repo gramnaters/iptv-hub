@@ -118,7 +118,7 @@ export default {
       });
     }
 
-    // Root / or /channels or /data.json -> JSON API (premiumplugx style)
+    // Root / or /channels or /data.json -> Structured JSON API
     if (path === "/" || path === "/channels" || path === "/data.json") {
       return new Response(JSON.stringify(buildDataJson(host), null, 2), {
         headers: {

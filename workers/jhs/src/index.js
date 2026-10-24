@@ -13,7 +13,7 @@ const KV_KEY = "hs:token:v1";
 const MIN_TTL_MS = 8 * 60 * 60 * 1000;
 const COOKIE_KEYS = ["deviceId", "userHID", "userPID", "userCountryCode", "sessionUserUP", "userUP"];
 
-const USER_AGENT = "Hotstar;in.startv.hotstar/25.02.24.8.11169@Premium Plugx(Android/15)";
+const USER_AGENT = "Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)";
 const REFERER = "https://www.hotstar.com/";
 const ORIGIN = "https://www.hotstar.com";
 
@@ -373,7 +373,7 @@ export default {
       });
     }
 
-    // Root / or /data.json or /channels -> JSON API (premiumplugx style)
+    // Root / or /data.json or /channels -> JSON API
     return new Response(JSON.stringify(buildDataJson(host, state.token, state.mintedAt, state.source), null, 2), {
       headers: {
         ...CORS,

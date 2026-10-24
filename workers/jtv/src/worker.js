@@ -128,7 +128,7 @@ export default {
       return new Response(null, { headers: CORS });
     }
 
-    // 1. Root / or /data or /channels.json -> Coder-friendly JSON (cricindia95 format)
+    // 1. Root / or /data or /channels.json -> Clean JSON channel array
     if (p === "/" || p === "/data" || p === "/channels.json") {
       return new Response(CHANNELS_JSON, {
         status: 200,

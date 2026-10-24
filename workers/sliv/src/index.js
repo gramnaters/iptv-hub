@@ -240,7 +240,7 @@ export default {
       });
     }
 
-    // Root / or /data or /channels.json -> PremiumPlug-style JSON
+    // Root / or /data or /channels.json -> Structured JSON API
     if (path === "/" || path === "/data" || path === "/channels.json") {
       return new Response(JSON.stringify(buildDataJson(host, token), null, 4), {
         headers: {

@@ -27,6 +27,8 @@ jobs:
           pip install requests
 
       - name: Generate independent source playlists
+        env:
+          JIOTV_CREDS: ${{ secrets.JIOTV_CREDS }}
         run: |
           python scripts/generate_jiotv.py   || echo "::warning::jiotv generator failed"
           python scripts/generate_vzy.py     || echo "::warning::vzy generator failed"

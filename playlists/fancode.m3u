@@ -1,45 +1,10 @@
 #EXTM3U
-#DATE:- 25-10-2026 00:13:32 IST
+#DATE:- 25-10-2026 03:53:49 IST
 # Category: fancode
-# Total Channels: 8
+# Total Channels: 1
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
-#EXTINF:-1 tvg-id="4250485" tvg-name="Emirates Red Vs Ajman" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250485_53130_EMR_AJM_fc-web_1792412929328.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Emirates Red Vs Ajman
+#EXTINF:-1 tvg-id="139980" tvg-name="Race Day" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-of-Australiaold-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Race Day
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250485_english_hls_cf4681936718973_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4247659" tvg-name="Atletico De Madrid Vs Deportivo De La Coruna" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4247659_53004_ATM_COR_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Atletico De Madrid Vs Deportivo De La Coruna
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4247659_english_hls_c0bfa3143224139_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4249201" tvg-name="Brighton And Hove Albion Women Vs West Ham United Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249201_53038_BHA-W_WHU-W_fc-app.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Brighton And Hove Albion Women Vs West Ham United Women
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249201_english_hls_0b616a65a763610_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4250158" tvg-name="Semi Finals" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Yonex-French-Open-2026_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Semi Finals
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250158_english_hls_6fe83d089b42758_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4249626" tvg-name="Day 6   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/BNP-Paribas-Fortis-European-Open_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 6   World Feed
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249626_english_hls_36a8c0fcd929601_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4250353" tvg-name="Day 3   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Butterfield-bermuda-golf_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 3   World Feed
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250353_english_hls_29318dfe2b32750_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="139504" tvg-name="Practice 3" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Old_Match_Card1.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Practice 3
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/139504_english_hls_1732b2bd9452122_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4247661" tvg-name="Valencia Cf Vs Villarreal Cf" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4247661_53004_VAL_VIL_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Valencia Cf Vs Villarreal Cf
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4247661_english_hls_739fac2fe242682_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/139980_english_hls_4fd0f7b58694482_1ta-di_h264/index.m3u8

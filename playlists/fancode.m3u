@@ -1,7 +1,7 @@
 #EXTM3U
-#DATE:- 24-10-2026 15:04:27 IST
+#DATE:- 24-10-2026 15:26:43 IST
 # Category: fancode
-# Total Channels: 7
+# Total Channels: 8
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
 #EXTINF:-1 tvg-id="4249282" tvg-name="New South Wales Vs Western Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249282_53072_WAU_NSW_FC-Web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | New South Wales Vs Western Australia
@@ -38,3 +38,8 @@ https://dai-fancode.pages.dev/mumbai/4250158_english_hls_6fe83d089b42758_1ta-di_
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4249843_english_hls_e915c1c41d32510_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4249612" tvg-name="Day 6   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-Web_1792479545067.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 6   World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249612_english_hls_4bb5d239f294482_1ta-di_h264/index.m3u8

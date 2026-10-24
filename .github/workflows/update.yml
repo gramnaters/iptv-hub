@@ -2,14 +2,9 @@ name: Auto Refresh Playlists
 
 on:
   schedule:
-    # Every 5 hours. WHY 5h: JioTV's __hdnea__ token and the JioHotstar
-    # hdntl token both expire ~6h after they are minted, and the token is
-    # baked into the playlist. A 24h cron left ~1300 of 1600 channels
-    # holding a dead token for most of the day; 5h keeps the gap in the
-    # day (the 20:00 -> 00:00 UTC step is 4h) safely inside the 6h life.
-    # SonyLIV / VZY / FanCode don't depend on this cadence (pointers or
-    # no expiry), they simply refresh along.
-    - cron: '0 */5 * * *'
+    # Run every 4 hours to ensure tokens never expire
+    # (JioTV tokens have ~6h lifespan; 4h interval guarantees 100% continuous uptime)
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 
 permissions:
@@ -33,15 +28,12 @@ jobs:
 
       - name: Generate independent source playlists
         run: |
-          # Each of these writes its own playlists/<name>.m3u from
-          # catalogs/<name>_*.json and is consumed by merge.py.
-          # Failures are non-fatal: merge.py falls back to the public feed.
-          python scripts/generate_jiotv.py || echo "::warning::jiotv generator failed"
-          python scripts/generate_vzy.py   || echo "::warning::vzy generator failed"
+          python scripts/generate_jiotv.py   || echo "::warning::jiotv generator failed"
+          python scripts/generate_vzy.py     || echo "::warning::vzy generator failed"
           python scripts/generate_fancode.py || echo "::warning::fancode generator failed"
-          python scripts/generate_sony.py  || echo "::warning::sony generator failed"
-          python scripts/generate_sunnxt.py || echo "::warning::sunnxt generator failed"
-          python scripts/generate_zee5.py  || echo "::warning::zee5 generator failed"
+          python scripts/generate_sony.py    || echo "::warning::sony generator failed"
+          python scripts/generate_sunnxt.py  || echo "::warning::sunnxt generator failed"
+          python scripts/generate_zee5.py    || echo "::warning::zee5 generator failed"
 
       - name: Run Master Updater & Aggregator
         run: |

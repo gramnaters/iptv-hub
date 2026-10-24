@@ -6,6 +6,7 @@ CATALOG_PATH = Path(__file__).resolve().parent.parent / "catalogs" / "zee5_catal
 PLAYLIST_PATH = Path(__file__).resolve().parent.parent / "playlists" / "zee5.m3u"
 USER_AGENT = "com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)"
 BASE_STREAM_URL = "https://zee.gramnaters.workers.dev/live"
+GROUP_LOGO = "https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg"
 
 def generate_playlist():
     if not CATALOG_PATH.exists():
@@ -33,7 +34,7 @@ def generate_playlist():
         if not cid or not name:
             continue
 
-        extinf = f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" tvg-category="{genre}" group-title="{group}",{name}'
+        extinf = f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" tvg-category="{genre}" group-title="{group}" group-logo="{GROUP_LOGO}",{name}'
         lines.append(extinf)
         lines.append(f'#EXTVLCOPT:http-user-agent={USER_AGENT}')
         lines.append(f'{BASE_STREAM_URL}/{cid}.m3u8')

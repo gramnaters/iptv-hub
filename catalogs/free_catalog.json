@@ -1,0 +1,200 @@
+[
+  {
+    "name": "Oggy and the Cockroaches",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Oggy_and_the_Cockroaches_Logo.webp",
+    "tvg_id": "kids-1",
+    "category": "",
+    "url": "https://live20.bozztv.com/giatvplayout7/giatv-210728/index.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Motu and Patlu",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://image.tmdb.org/t/p/original/6cVcX2hRaWsUYPXr0It4HkVcx1F.png",
+    "tvg_id": "kids-2",
+    "category": "",
+    "url": "https://live20.bozztv.com/giatvplayout7/giatv-209622/index.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Doraemon Live",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Doraemon_Logo2.png",
+    "tvg_id": "kids-3",
+    "category": "",
+    "url": "https://live20.bozztv.com/giatvplayout7/giatv-209902/index.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Shinchan 24/7",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Crayon_Shin-chan.png",
+    "tvg_id": "kids-4",
+    "category": "",
+    "url": "https://live20.bozztv.com/giatvplayout7/giatv-210780/tracks-v1a1/mono.ts.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Green TV",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://www.greengold.tv/assets/logo-small.png",
+    "tvg_id": "kids-5",
+    "category": "",
+    "url": "https://greengold.cdn.runn.tv/greengold/stream/grngld/manifest/1.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Shemaroo Josh",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://www.lyngsat.com/logo/tv/ss/shemaroo-josh-in.png",
+    "tvg_id": "kids-6",
+    "category": "",
+    "url": "https://airtelapp.shemaroo.com/shemarooChumbakTV/smil:shemarooChumbakTVadp.smil/chunklist_b1628000_sleng.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Goldmines 2",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://www.lyngsat.com/logo/tv/gg/goldmines-2-in.png",
+    "tvg_id": "kids-7",
+    "category": "",
+    "url": "https://cdn-2.pishow.tv/live/1460/master.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Goldmines Movies",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://yt3.googleusercontent.com/d66J-MMZ06-55gkF5maclPGB5f5j1L0SAs3iWnl3lhoswlWrJ67wD2a3mZGkgHgt-W3kMrIT=s900-c-k-c0x00ffffff-no-rj",
+    "tvg_id": "kids-8",
+    "category": "",
+    "url": "https://cdn-2.pishow.tv/live/1461/master.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Aaj Tak HD",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://www.lyngsat.com/logo/tv/aa/aaj-tak-in.png",
+    "tvg_id": "kids-9",
+    "category": "",
+    "url": "https://livehub-voidnet.onrender.com/cluster/streamcore/in/AAJTAK_REDIS.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Goldmines",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://www.lyngsat.com/logo/tv/gg/goldmines-in.png",
+    "tvg_id": "kids-10",
+    "category": "",
+    "url": "https://cdn.pishow.tv/ott/live/1459/master.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Jungle Book",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Jungle_Book_Logo.svg",
+    "tvg_id": "kids-11",
+    "category": "",
+    "url": "https://cc-4bhi5osabejc9.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-4bhi5osabejc9/junglebook.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Republic Bharat",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Republicbharatlogo.png",
+    "tvg_id": "kids-12",
+    "category": "",
+    "url": "https://vg-republictvlive.akamaized.net/ptnr-airtelxstream/title-Republic_Bharat/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/ac1dfd73-1c95-4462-9f42-be68edb6b7ff/main.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Zee News",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Zee_News_2025.svg",
+    "tvg_id": "kids-13",
+    "category": "",
+    "url": "https://dxfxzhqtgt09i.cloudfront.net/index.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Zee Uttar Pradesh Uttarakhand",
+    "group": "24/7 kids+Goldmines pack",
+    "logo": "https://www.tvlogo.org/india/zee-uttar-pradesh-uttarakhand-in.png",
+    "tvg_id": "kids-14",
+    "category": "",
+    "url": "https://duw35ict5q7th.cloudfront.net/index_1.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "WOW KIDZ Hindi",
+    "group": "WOW KIDZ",
+    "logo": "https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo",
+    "tvg_id": "wowkidz-hindi",
+    "category": "Kids",
+    "url": "https://yuppparoriglin.akamaized.net/181224/smil:wowkidzhindi.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b",
+    "headers": {}
+  },
+  {
+    "name": "WOW KIDZ Tamil",
+    "group": "WOW KIDZ",
+    "logo": "https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo",
+    "tvg_id": "wowkidz-tamil",
+    "category": "Kids",
+    "url": "https://yuppparoriglin.akamaized.net/181224/smil:wowkidztamil.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b",
+    "headers": {}
+  },
+  {
+    "name": "WOW KIDZ Telugu",
+    "group": "WOW KIDZ",
+    "logo": "https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo",
+    "tvg_id": "wowkidz-telugu",
+    "category": "Kids",
+    "url": "https://yuppparoriglin.akamaized.net/181224/smil:wowkidztelgu.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b",
+    "headers": {}
+  },
+  {
+    "name": "ODI Tri-Nation Series in UAE 2026 - Final - Afghanistan vs Zimbabwe",
+    "group": "Willow live events",
+    "logo": "https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.1399581a-e87b-45f3-ae53-faf4e42483fc/2/BOXART-16X9/en-US._UR1920,1080_.jpeg",
+    "tvg_id": "B0HFG5QN17",
+    "category": "Other",
+    "url": "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/jr2yukryn7/out/v1/2310db8f31c047c4b01ebd3ab96d815d/cenc.mpd",
+    "headers": {}
+  },
+  {
+    "name": "Dangal",
+    "group": "Dangal Play",
+    "logo": "https://dangaplay-json.s3.ap-south-1.amazonaws.com/Dangal_16x9.jpg",
+    "tvg_id": "dangalplay-dangal",
+    "category": "",
+    "url": "https://live-dangal.akamaized.net/liveabr/playlist.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Dangal2",
+    "group": "Dangal Play",
+    "logo": "https://dangaplay-json.s3.ap-south-1.amazonaws.com/Dangal2_16x9.jpg",
+    "tvg_id": "dangalplay-dangal2",
+    "category": "",
+    "url": "https://live-dangal2.akamaized.net/liveabr/playlist.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Bangla",
+    "group": "Dangal Play",
+    "logo": "https://dangaplay-json.s3.ap-south-1.amazonaws.com/entree10_16x9.jpg",
+    "tvg_id": "dangalplay-bangla",
+    "category": "",
+    "url": "https://live-bangla.akamaized.net/liveabr/playlist.m3u8",
+    "headers": {}
+  },
+  {
+    "name": "Bhojpuri",
+    "group": "Dangal Play",
+    "logo": "https://dangaplay-json.s3.ap-south-1.amazonaws.com/BhojpuriCinema_16x9.jpg",
+    "tvg_id": "dangalplay-bhojpuri",
+    "category": "",
+    "url": "https://live-bhojpuri.akamaized.net/liveabr/playlist.m3u8",
+    "headers": {}
+  }
+]

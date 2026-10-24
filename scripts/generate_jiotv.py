@@ -80,6 +80,44 @@ def _expiry_hours(cookie):
 def fetch_live_cookie():
     """Fetch a live __hdnea__ wildcard token with validation."""
     print("🔑 Fetching live JioTV token...")
+
+    # 1. PRIORITY 1: Direct Self-Minting via Personal JioTV Login
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import jio_auth
+        creds = None
+        # Check environment variable (e.g. GitHub Secrets)
+        if os.environ.get("JIOTV_CREDS"):
+            try:
+                creds = json.loads(os.environ["JIOTV_CREDS"])
+            except Exception:
+                pass
+        # Check local credentials files
+        if not creds:
+            for cpath in [
+                os.path.join(ROOT_DIR, "jiotv_creds.json"),
+                r"E:\JioTV\JIOTVServer-main\JIOTVServer-main\tokenData.jiotv"
+            ]:
+                if os.path.exists(cpath):
+                    try:
+                        with open(cpath, "r", encoding="utf-8") as f:
+                            creds = json.load(f)
+                            break
+                    except Exception:
+                        pass
+        if creds and creds.get("authToken"):
+            print("  🔑 [Priority 1] Attempting self-mint using personal JioTV account...")
+            minted = jio_auth.self_mint_token(creds)
+            if minted:
+                hrs = _expiry_hours(minted)
+                if hrs > 0.5:
+                    print(f"  🎉 [Priority 1] Successfully self-minted wildcard token ({hrs:.1f}h remaining)")
+                    return minted
+            print("  ⚠️ Personal JioTV self-mint unavailable (needs fresh login), rolling forward to fallback pool...")
+    except Exception as e:
+        print(f"  ⚠️ Error in personal self-mint check: {e}")
+
+    # 2. PRIORITY 2: Multi-Source Fallback Pool
     for src in TOKEN_SOURCES:
         try:
             print(f"  Checking {src['name']}...")

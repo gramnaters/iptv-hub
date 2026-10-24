@@ -33,6 +33,42 @@ const CORS = {
 
 /* ------------------------------------------------------------------ helpers */
 
+function formatIST(date) {
+  try {
+    return new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Kolkata",
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).format(date) + " IST";
+  } catch (e) {
+    return date.toISOString();
+  }
+}
+
+function parseTokenDetails(token) {
+  const expMatch = token && token.match(/exp=(\d+)/);
+  const aclMatch = token && token.match(/acl=([^~]+)/);
+  const idMatch = token && token.match(/id=([^~]+)/);
+  const dataMatch = token && token.match(/data=([^~]+)/);
+  const hmacMatch = token && token.match(/hmac=([a-f0-9]+)/);
+  const expSec = expMatch ? Number(expMatch[1]) : 0;
+  const expMs = expSec * 1000;
+  const expHuman = expMs ? formatIST(new Date(expMs)) : "";
+  return {
+    exp: String(expSec),
+    exp_human: expHuman,
+    acl: aclMatch ? aclMatch[1] : "/*",
+    id: idMatch ? idMatch[1] : "",
+    data: dataMatch ? dataMatch[1] : "",
+    hmac: hmacMatch ? hmacMatch[1] : ""
+  };
+}
+
 const tokenExp = (t) => {
   const m = t && t.match(/exp=(\d+)/);
   return m ? Number(m[1]) * 1000 : 0;
@@ -191,11 +227,19 @@ async function refresh(env, force) {
 /* ------------------------------------------------------------------ playlist */
 
 function buildPlaylist(hdntl) {
-  const lines = ["#EXTM3U x-tvg-url=\"https://avkb.short.gy/jioepg.xml.gz\""];
+  const lines = [
+    "#EXTM3U x-tvg-url=\"https://avkb.short.gy/jioepg.xml.gz\"",
+    "# JioHotstar Akamai Direct Playlist v2.5",
+    `# Total Channels: ${CHANNELS.length}`,
+    `# Generated: ${formatIST(new Date())}`,
+    hdntl ? `# Cookie: ${hdntl}` : "",
+    ""
+  ];
   for (const ch of CHANNELS) {
+    const cid = (ch.tvgId || ch.id || "").trim();
     const logo = ch.logo ? ` tvg-logo="${ch.logo}"` : "";
     const group = ch.group ? ` group-title="${ch.group}"` : "";
-    lines.push(`#EXTINF:-1 tvg-id="${ch.id}" tvg-name="${ch.name}"${logo}${group},${ch.name}`);
+    lines.push(`#EXTINF:-1 tvg-id="${cid}" tvg-name="${ch.name}"${logo}${group},${ch.name}`);
     if (ch.type === "dash") {
       lines.push("#KODIPROP:inputstream=inputstream.adaptive");
       lines.push("#KODIPROP:inputstream.adaptive.manifest_type=mpd");
@@ -217,12 +261,68 @@ function buildPlaylist(hdntl) {
   return lines.join("\n");
 }
 
+function buildDataJson(host, token, mintedAt, source) {
+  const expMs = tokenExp(token);
+  const expHuman = expMs ? formatIST(new Date(expMs)) : "";
+  const leftHours = expMs ? Number((Math.max(0, expMs - Date.now()) / 3600000).toFixed(2)) : 0;
+  const parsed = parseTokenDetails(token);
+
+  const channelsData = CHANNELS.map(ch => {
+    const item = {
+      name: ch.name,
+      slug: ch.tvgId || ch.id,
+      group: ch.group || "Entertainment",
+      type: ch.type || "hls",
+      logo: ch.logo || "",
+      url: ch.url,
+      headers: {
+        "User-Agent": USER_AGENT,
+        "Referer": REFERER,
+        "Origin": ORIGIN,
+        "Cookie": token || ""
+      }
+    };
+    if (ch.type === "dash" && ch.keyId && ch.key) {
+      item.license_type = "clearkey";
+      item.license_key = `${ch.keyId}:${ch.key}`;
+    }
+    return item;
+  });
+
+  return {
+    ok: true,
+    version: "2.5",
+    generated_at: formatIST(new Date()),
+    timezone: "Asia/Kolkata",
+    token_expires: expHuman,
+    expires_in_hours: leftHours,
+    total_channels: CHANNELS.length,
+    download_m3u: `https://${host}/playlist.m3u?download=1`,
+    view_m3u: `https://${host}/playlist.m3u`,
+    cdn: {
+      host: "jcevents.hotstar.com",
+      path_base: "/bpk-tv",
+      note: "Streams protected by Akamai hdntl token cookie. Cookie header required."
+    },
+    cookie: {
+      name: "hdntl",
+      full_value: token || "",
+      cookie_header: token ? `Cookie: ${token}` : "",
+      curl_flag: token ? `-b "${token}"` : "",
+      parsed: parsed,
+      notes: "Akamai hdntl token automatically minted via session."
+    },
+    channels: channelsData
+  };
+}
+
 /* --------------------------------------------------------------------- main */
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
+    const host = url.host;
 
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
 
@@ -260,12 +360,24 @@ export default {
 
     const state = await loadState(env);
 
-    // Root / or /playlist.m3u or /live.m3u -> Pure M3U playlist (tgaadi style)
-    return new Response(buildPlaylist(state.token), {
+    // Serve raw M3U playlist if ?m3u or /playlist.m3u or /live.m3u
+    if (url.searchParams.has("m3u") || path === "/playlist.m3u" || path === "/live.m3u") {
+      const isDownload = url.searchParams.has("download") || url.searchParams.get("download") === "1";
+      return new Response(buildPlaylist(state.token), {
+        headers: {
+          ...CORS,
+          "Content-Type": "application/vnd.apple.mpegurl; charset=utf-8",
+          "Content-Disposition": isDownload ? 'attachment; filename="jhs.m3u"' : 'inline; filename="jhs.m3u"',
+          "Cache-Control": "public, max-age=300",
+        },
+      });
+    }
+
+    // Root / or /data.json or /channels -> JSON API (premiumplugx style)
+    return new Response(JSON.stringify(buildDataJson(host, state.token, state.mintedAt, state.source), null, 2), {
       headers: {
         ...CORS,
-        "Content-Type": "application/vnd.apple.mpegurl; charset=utf-8",
-        "Content-Disposition": 'inline; filename="jhs.m3u"',
+        "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "public, max-age=300",
       },
     });

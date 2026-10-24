@@ -1,6 +1,6 @@
 import { CHANNELS } from "./channels.js";
 
-const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
+const USER_AGENT = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36";
 const KV_KEY = "token";
 
 const CORS = {
@@ -9,16 +9,39 @@ const CORS = {
   "Access-Control-Allow-Headers": "*",
 };
 
+function formatIST(date) {
+  try {
+    return new Intl.DateTimeFormat('en-IN', {
+      timeZone: 'Asia/Kolkata',
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false
+    }).format(date) + " IST";
+  } catch (e) {
+    return date.toISOString();
+  }
+}
+
 function parseExpiry(token) {
   const m = token && token.match(/exp=(\d+)/);
   return m ? Number(m[1]) * 1000 : 0;
 }
 
-function getRemainingHours(token) {
-  const exp = parseExpiry(token);
-  if (!exp) return "0.0h";
-  const leftMs = Math.max(0, exp - Date.now());
-  return `${(leftMs / 3600000).toFixed(1)}h`;
+function parseTokenDetails(token) {
+  const expMatch = token && token.match(/exp=(\d+)/);
+  const aclMatch = token && token.match(/acl=([^~]+)/);
+  const idMatch = token && token.match(/id=([^~]+)/);
+  const hmacMatch = token && token.match(/hmac=([a-f0-9]+)/);
+  const expSec = expMatch ? Number(expMatch[1]) : 0;
+  const expMs = expSec * 1000;
+  const expHuman = expMs ? formatIST(new Date(expMs)) : "";
+  return {
+    exp: String(expSec),
+    exp_human: expHuman,
+    acl: aclMatch ? aclMatch[1] : "/*",
+    id: idMatch ? idMatch[1] : "",
+    hmac: hmacMatch ? hmacMatch[1] : ""
+  };
 }
 
 async function mintToken() {
@@ -76,11 +99,76 @@ async function getOrRefreshToken(env, force = false) {
   }
 }
 
-function buildPlaylist(host) {
+function buildDataJson(host, token) {
+  const expMs = parseExpiry(token);
+  const leftMs = Math.max(0, expMs - Date.now());
+  const leftHours = Number((leftMs / 3600000).toFixed(2));
+  const parsed = parseTokenDetails(token);
+
+  const channelList = CHANNELS.map(ch => {
+    const m = (ch.streamUrl || "").match(/hls\/live\/(\d+)\/([^\/]+)\/master\.m3u8/);
+    const liveId = m ? m[1] : "";
+    const streamName = m ? m[2] : (ch.slug || ch.id);
+    const streamUrl = token ? `${ch.streamUrl}?${token}` : `https://${host}/${ch.slug}.m3u8`;
+
+    return {
+      name: ch.name,
+      slug: ch.slug || ch.id,
+      group: (ch.group || "Entertainment").replace("SonyLIV | ", "").replace("Sony LIV", "Entertainment"),
+      live_id: liveId,
+      stream: streamName,
+      url: streamUrl,
+      headers: {
+        "User-Agent": USER_AGENT,
+        "Referer": "https://www.sonyliv.com/",
+        "Origin": "https://www.sonyliv.com",
+        "Cookie": token || ""
+      }
+    };
+  });
+
+  return {
+    ok: true,
+    version: "2.5",
+    generated_at: formatIST(new Date()),
+    timezone: "Asia/Kolkata",
+    token_expires: parsed.exp_human,
+    expires_in_hours: leftHours,
+    total_channels: CHANNELS.length,
+    download_m3u: `https://${host}/playlist.m3u?download=1`,
+    view_m3u: `https://${host}/playlist.m3u`,
+    cdn: {
+      host: "dishmt.slivcdn.com",
+      source_url: `https://dishmt.slivcdn.com/hls/live/?${token}`,
+      path_base: "/hls/live",
+      note: "hdnea token embedded directly in every stream URL as ?hdnea=..."
+    },
+    cookie: {
+      name: "hdnea",
+      full_value: token || "",
+      cookie_header: token ? `Cookie: ${token}` : "",
+      curl_flag: token ? `-b "${token}"` : "",
+      parsed: parsed,
+      notes: "Akamai token. Already appended to each URL as ?hdnea=... — Cookie header optional."
+    },
+    channels: channelList,
+    debug: []
+  };
+}
+
+function buildPlaylist(host, token) {
+  const expMs = parseExpiry(token);
+  const expHuman = expMs ? formatIST(new Date(expMs)) : "";
+
   const lines = [
     "#EXTM3U",
-    `# Total Channels: ${CHANNELS.length}`,
-    `# Source: https://${host}`,
+    "# SonyLIV Direct CDN Playlist v2.5",
+    `# Generated  : ${formatIST(new Date())}`,
+    `# Token Exp  : ${expHuman}`,
+    "# CDN Host   : dishmt.slivcdn.com",
+    `# Channels   : ${CHANNELS.length}`,
+    "# Token embedded in each URL as ?hdnea=...",
+    token ? `# Cookie: ${token}` : "",
     ""
   ];
 
@@ -88,14 +176,19 @@ function buildPlaylist(host) {
     const slug = (ch.slug || ch.id || "").trim();
     const name = (ch.name || "").trim();
     const logo = (ch.logo || "").trim();
-    const group = (ch.group || "Sony LIV").trim();
+    const group = (ch.group || "SonyLIV Entertainment").trim();
     if (!slug || !name) continue;
 
+    const streamUrl = token ? `${ch.streamUrl}?${token}` : `https://${host}/${slug}.m3u8`;
+
     lines.push(
-      `#EXTINF:-1 tvg-id="${ch.id || slug}" tvg-name="${name}" tvg-logo="${logo}" group-title="${group}" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",${name}`
+      `#EXTINF:-1 tvg-id="${ch.id || slug}.sonyliv" tvg-name="${name}" tvg-logo="${logo}" group-title="${group}" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",${name}`
     );
     lines.push(`#EXTVLCOPT:http-user-agent=${USER_AGENT}`);
-    lines.push(`https://${host}/${slug}.m3u8`);
+    lines.push(`#EXTVLCOPT:http-referrer=https://www.sonyliv.com/`);
+    if (token) lines.push(`#EXTVLCOPT:http-cookie=${token}`);
+    lines.push(`#EXTHTTP:{"User-Agent":"${USER_AGENT}","Referrer":"https://www.sonyliv.com/","Origin":"https://www.sonyliv.com"${token ? ',"Cookie":"' + token + '"' : ''}}`);
+    lines.push(streamUrl);
     lines.push("");
   }
 
@@ -119,7 +212,7 @@ export default {
         return Response.json({
           ok: true,
           token: token.substring(0, 30) + "...",
-          expiresIn: getRemainingHours(token),
+          expiresIn: parseTokenDetails(token).exp_human,
           timestamp: new Date().toISOString()
         }, { headers: CORS });
       } catch (err) {
@@ -134,25 +227,26 @@ export default {
       console.warn("Could not load token:", e);
     }
 
-    // Root / or /playlist.m3u or /live.m3u -> Pure M3U playlist (tgaadi style)
-    if (path === "/" || path === "/playlist.m3u" || path === "/live.m3u") {
-      return new Response(buildPlaylist(host), {
+    // M3U Playlist if requested via ?m3u or /playlist.m3u or /live.m3u
+    if (url.searchParams.has("m3u") || path === "/playlist.m3u" || path === "/live.m3u") {
+      const isDownload = url.searchParams.has("download");
+      return new Response(buildPlaylist(host, token), {
         headers: {
           ...CORS,
-          "Content-Type": "application/vnd.apple.mpegurl",
-          "Content-Disposition": 'inline; filename="sonyliv.m3u"',
+          "Content-Type": "application/vnd.apple.mpegurl; charset=utf-8",
+          "Content-Disposition": isDownload ? 'attachment; filename="sonyliv.m3u"' : 'inline; filename="sonyliv.m3u"',
           "Cache-Control": "public, max-age=300",
         },
       });
     }
 
-    // Channel metadata JSON
-    if (path === "/channels.json") {
-      return new Response(JSON.stringify(CHANNELS, null, 2), {
+    // Root / or /data or /channels.json -> PremiumPlug-style JSON
+    if (path === "/" || path === "/data" || path === "/channels.json") {
+      return new Response(JSON.stringify(buildDataJson(host, token), null, 4), {
         headers: {
           ...CORS,
           "Content-Type": "application/json; charset=utf-8",
-          "Cache-Control": "public, max-age=600",
+          "Cache-Control": "public, max-age=60",
         },
       });
     }
@@ -165,7 +259,7 @@ export default {
         service: "sonyliv-worker",
         clean_url: `https://${host}`,
         channels: CHANNELS.length,
-        expiresIn: getRemainingHours(token),
+        expiresIn: parseTokenDetails(token).exp_human,
         ttl: exp ? Math.max(0, Math.floor((exp - Date.now()) / 1000)) : 0,
         status: token && exp > Date.now() ? "active" : "standby",
         timestamp: new Date().toISOString()

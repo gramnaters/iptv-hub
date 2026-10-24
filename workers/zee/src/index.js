@@ -9,10 +9,29 @@ const CORS = {
   "Access-Control-Allow-Headers": "*",
 };
 
+function formatIST(date) {
+  try {
+    return new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Kolkata",
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).format(date) + " IST";
+  } catch (e) {
+    return date.toISOString();
+  }
+}
+
 function buildPlaylist(host) {
   const lines = [
     "#EXTM3U",
+    "# ZEE5 Direct Stream Playlist v2.5",
     `# Total Channels: ${CHANNELS.length}`,
+    `# Generated: ${formatIST(new Date())}`,
     `# Source: https://${host}`,
     ""
   ];
@@ -29,11 +48,51 @@ function buildPlaylist(host) {
       `#EXTINF:-1 tvg-id="${cid}" tvg-name="${name}" tvg-logo="${logo}" tvg-category="${genre}" group-title="${group}" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",${name}`
     );
     lines.push(`#EXTVLCOPT:http-user-agent=${USER_AGENT}`);
+    lines.push(`#EXTVLCOPT:http-referrer=https://www.zee5.com/`);
+    lines.push(`#EXTHTTP:{"User-Agent":"${USER_AGENT}","Referrer":"https://www.zee5.com/","Origin":"https://www.zee5.com"}`);
     lines.push(`https://${host}/live/${cid}.m3u8`);
     lines.push("");
   }
 
   return lines.join("\n").trim() + "\n";
+}
+
+function buildDataJson(host) {
+  const channelsData = CHANNELS.map(ch => ({
+    name: ch.name,
+    slug: ch.id,
+    group: ch.group || ch.genre || "ZEE5 India",
+    genre: ch.genre || "Entertainment",
+    language: ch.language || "hi",
+    logo: ch.logo || "",
+    url: `https://${host}/live/${ch.id}.m3u8`,
+    headers: {
+      "User-Agent": USER_AGENT,
+      "Referer": "https://www.zee5.com/",
+      "Origin": "https://www.zee5.com"
+    }
+  }));
+
+  return {
+    ok: true,
+    version: "2.5",
+    generated_at: formatIST(new Date()),
+    timezone: "Asia/Kolkata",
+    total_channels: CHANNELS.length,
+    download_m3u: `https://${host}/playlist.m3u?download=1`,
+    view_m3u: `https://${host}/playlist.m3u`,
+    cdn: {
+      host: "z5ak-cmaflive.zee5.com",
+      path_base: "/cmaf/live",
+      note: "Streams dynamically resolve Akamai tokens on request via /live/:channel_id.m3u8"
+    },
+    cookie: {
+      name: "hdnts",
+      type: "Akamai Dynamic Token",
+      notes: "Dynamic token appended to 302 location when requesting /live/:id.m3u8"
+    },
+    channels: channelsData
+  };
 }
 
 export default {
@@ -46,13 +105,25 @@ export default {
       return new Response(null, { headers: CORS });
     }
 
-    // Root / or /playlist.m3u or /live.m3u -> Pure M3U playlist (tgaadi style)
-    if (path === "/" || path === "/playlist.m3u" || path === "/live.m3u") {
+    // Serve raw M3U playlist if ?m3u or /playlist.m3u or /live.m3u or ?download=1
+    if (url.searchParams.has("m3u") || path === "/playlist.m3u" || path === "/live.m3u") {
+      const isDownload = url.searchParams.has("download") || url.searchParams.get("download") === "1";
       return new Response(buildPlaylist(host), {
         headers: {
           ...CORS,
-          "Content-Type": "application/vnd.apple.mpegurl",
-          "Content-Disposition": 'inline; filename="zee5.m3u"',
+          "Content-Type": "application/vnd.apple.mpegurl; charset=utf-8",
+          "Content-Disposition": isDownload ? 'attachment; filename="zee5.m3u"' : 'inline; filename="zee5.m3u"',
+          "Cache-Control": "public, max-age=300",
+        },
+      });
+    }
+
+    // Root / or /channels or /data.json -> JSON API (premiumplugx style)
+    if (path === "/" || path === "/channels" || path === "/data.json") {
+      return new Response(JSON.stringify(buildDataJson(host), null, 2), {
+        headers: {
+          ...CORS,
+          "Content-Type": "application/json; charset=utf-8",
           "Cache-Control": "public, max-age=300",
         },
       });

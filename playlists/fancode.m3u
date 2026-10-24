@@ -1,20 +1,15 @@
 #EXTM3U
-#DATE:- 24-10-2026 04:15:27 IST
+#DATE:- 24-10-2026 08:05:39 IST
 # Category: fancode
-# Total Channels: 3
+# Total Channels: 2
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
-#EXTINF:-1 tvg-id="4249618" tvg-name="Day 5   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-Auvergne-Rhone-Alpes_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 5   World Feed
+#EXTINF:-1 tvg-id="4249285" tvg-name="Victoria Vs Tasmania" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249285_53072_TAS_VCT_FC-Web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Victoria Vs Tasmania
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249618_english_hls_bd306a0e4442012_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249285_english_hls_c101cf832389375_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="139979" tvg-name="Day 2" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-of-Australiaold-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 2
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/139979_english_hls_c7aa6f758469211_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="4250507" tvg-name="Opening Race" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/F2_Canada_web_1792770153782.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Opening Race
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250507_english_hls_44cd9f0fb737145_1ta-di_h264/index.m3u8

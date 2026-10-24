@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
 """
-generate_jiotv.py — Self-hosted, auto-updatable JioTV playlist generator.
-
-Fetches live __hdnea__ wildcard token from high-availability live endpoints
-using ultra-fast streaming (0.2s), matches against the channel catalog, and
-bakes fresh tokens and ClearKeys into playlists/jiotv.m3u.
-
-No Windows Task Scheduler or local machine required — runs in GitHub Actions
-and Cloudflare Workers for 100% free, 24/7 autonomous updates.
+generate_jiotv.py — JioTV Playlist Generator.
+Fetches active Akamai token, parses channel catalog, and generates playlists/jiotv.m3u.
 """
 import os
 import sys

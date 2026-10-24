@@ -2,26 +2,7 @@
  * jhs — JioHotstar live playlist, self-minting.
  *
  * The streams are gated by one Akamai `hdntl` token (acl=/*, 24h). It is minted
- * from the owner's Hotstar session:
- *
- *   POST https://www.hotstar.com/api/internal/bff/v2/start   (x2, session token)
- *     -> response contains a livetv.hotstar.com manifest URL
- *   GET  <that URL>
- *     -> Set-Cookie: hdntl=exp=...~acl=%2f*~id=...~hmac=...
- *
- * Why a browser: a plain Worker fetch is rejected by Akamai (403) from
- * Cloudflare's datacenter egress, same as GitHub Actions. Browser Run uses a
- * different egress and is accepted, so the mint runs in a headless page.
- *
- * Route map
- *   GET  /                 playlist (M3U). Every path except /status serves it.
- *   GET  /status           token freshness + channel count (JSON)
- *   POST /mint             force a mint now (Authorization: Bearer MINT_SECRET)
- *   cron (hourly)          mint only when the stored token has < 8h left
- *
- * Secrets
- *   HS_COOKIE     trimmed Hotstar cookie jar (sessionUserUP, deviceId, ...)
- *   MINT_SECRET   bearer token for POST /mint
+ * from the owner's Hotstar session via Cloudflare Browser Rendering Puppeteer.
  */
 
 import { CHANNELS } from "./channels.js";
@@ -29,7 +10,7 @@ import { USER_TOKEN as SEED_TOKEN, MINTED_AT as SEED_MINTED_AT } from "./token.j
 import puppeteer from "@cloudflare/puppeteer";
 
 const KV_KEY = "hs:token:v1";
-const MIN_TTL_MS = 8 * 60 * 60 * 1000; // mint when less than this is left
+const MIN_TTL_MS = 8 * 60 * 60 * 1000;
 const COOKIE_KEYS = ["deviceId", "userHID", "userPID", "userCountryCode", "sessionUserUP", "userUP"];
 
 const USER_AGENT = "Hotstar;in.startv.hotstar/25.02.24.8.11169@Premium Plugx(Android/15)";
@@ -39,8 +20,6 @@ const ORIGIN = "https://www.hotstar.com";
 const APP_UA = "Hotstar;in.startv.hotstar/25.02.24.8.11169";
 const WEB_CLIENT = "platform:web;app_version:26.09.23.1;browser:Chrome;schema_version:0.0.1";
 const BFF = "https://www.hotstar.com/api/internal/bff/v2/start";
-// Any cheap page on the site works: it only exists to give the BFF fetch a
-// same-origin context. Loading the real home page costs seconds of billed time.
 const ORIGIN_URL = "https://www.hotstar.com/robots.txt";
 
 const CAPS = { ads: ["non_ssai", "ssai"], audio_channel: ["stereo"], container: ["fmp4", "fmp4br", "ts"], dvr: ["short"], dynamic_range: ["sdr"], encryption: ["plain"], ladder: ["web", "tv", "phone"], package: ["dash", "hls"], resolution: ["sd", "hd", "fhd"], video_codec: ["h264"], video_codec_non_secure: ["h265", "h264"] };
@@ -59,24 +38,28 @@ const tokenExp = (t) => {
   return m ? Number(m[1]) * 1000 : 0;
 };
 
+const tokenTtl = (t) => Math.max(0, tokenExp(t) - Date.now());
+
 const stateOf = (token, mintedAt, source) => {
-  const exp = tokenExp(token);
+  const expMs = tokenExp(token);
+  const leftMs = Math.max(0, expMs - Date.now());
   return {
-    ok: true,
+    ok: leftMs > 0,
     source,
     mintedAt,
-    exp: exp ? new Date(exp).toISOString() : null,
-    expiresInHours: exp ? Number(((exp - Date.now()) / 3.6e6).toFixed(2)) : null,
+    exp: expMs ? new Date(expMs).toISOString() : null,
+    expiresInHours: Number((leftMs / 3600000).toFixed(2)),
     totalChannels: CHANNELS.length,
   };
 };
 
+/* ----------------------------------------------------------------------- kv */
+
 async function loadState(env) {
   try {
-    const raw = await env.HS_CACHE.get(KV_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (parsed && parsed.token) return { token: parsed.token, mintedAt: parsed.mintedAt, source: "kv" };
+    const raw = await env.HS_CACHE.get(KV_KEY, "json");
+    if (raw && raw.token && tokenTtl(raw.token) > 0) {
+      return { token: raw.token, mintedAt: raw.mintedAt, source: "kv" };
     }
   } catch (e) {
     console.warn("kv read failed:", e && e.message);
@@ -87,7 +70,6 @@ async function loadState(env) {
 async function storeToken(env, token) {
   const mintedAt = new Date().toISOString();
   await env.HS_CACHE.put(KV_KEY, JSON.stringify({ token, mintedAt }), {
-    // keep a copy well past the token life so /status can always explain itself
     expirationTtl: 60 * 60 * 24 * 30,
   });
   return mintedAt;
@@ -95,7 +77,6 @@ async function storeToken(env, token) {
 
 /* --------------------------------------------------------------------- mint */
 
-// Runs inside the headless page: needs a same-origin context for the BFF calls.
 async function mintInPage(args) {
   const { dl, session, jar, client } = args;
   const headers = (tok, extra) => Object.assign({
@@ -138,93 +119,84 @@ async function mintInPage(args) {
 }
 
 async function mintWithBrowser(env) {
-  const jar = JSON.parse(env.HS_COOKIE || "{}");
-  if (!jar.sessionUserUP) throw new Error("HS_COOKIE missing sessionUserUP");
+  if (!env.MYBROWSER) throw new Error("MYBROWSER binding missing");
+  const rawCookie = env.HS_COOKIE;
+  if (!rawCookie) throw new Error("HS_COOKIE secret missing");
 
-  const id = env.MINT_ID || "1540072843";
-  const dl = "/in/shows/x/" + id + "/live/watch?client_capabilities=" +
-    encodeURIComponent(JSON.stringify(CAPS)) + "&drm_parameters=" +
-    encodeURIComponent(JSON.stringify(DRM)) + "&request_features=consent_supported";
+  let jar = {};
+  try {
+    jar = JSON.parse(rawCookie);
+  } catch {
+    for (const line of rawCookie.split(/\r?\n/)) {
+      const p = line.split("\t");
+      if (p.length >= 7) jar[p[5]] = p[6].trim();
+    }
+  }
+  const session = jar.sessionUserUP || jar.userUP || jar.fresh_userUP;
+  if (!session) throw new Error("no sessionUserUP in HS_COOKIE");
 
-  const browser = await puppeteer.launch(env.BROWSER);
+  const probe = CHANNELS[0];
+  const dl =
+    `/in/shows/${probe.slug || "star-sports-1-hd"}/${probe.id}/live/watch` +
+    `?client_capabilities=${encodeURIComponent(JSON.stringify(CAPS))}` +
+    `&drm_parameters=${encodeURIComponent(JSON.stringify(DRM))}&request_features=consent_supported`;
+
+  const browser = await puppeteer.launch(env.MYBROWSER);
   try {
     const page = await browser.newPage();
-    const cdp = await page.createCDPSession();
-    await cdp.send("Network.enable");
+    await page.setUserAgent(APP_UA);
+    await page.setCookie(
+      ...COOKIE_KEYS.filter((k) => jar[k]).map((name) => ({
+        name,
+        value: jar[name],
+        domain: ".hotstar.com",
+        path: "/",
+      })),
+    );
 
-    // keep the billed session short: only the JSON/XHR traffic matters
-    await page.setRequestInterception(true);
-    page.on("request", (req) => {
-      const u = req.url();
-      // Akamai only issues the real wildcard token when the manifest request
-      // looks like a media sub-request from the site. Without the Referer it
-      // answers 403 with a decoy hdntl that fails on playback.
-      if (u.includes("hotstar.com/") && (u.startsWith("https://livetv.") || u.startsWith("https://live09p.") || u.startsWith("https://jcevents."))) {
-        req.continue({ headers: { "User-Agent": USER_AGENT, Referer: REFERER, Origin: ORIGIN, Accept: "*/*" } }).catch(() => {});
-        return;
-      }
-      const type = req.resourceType();
-      const drop = type === "image" || type === "font" || type === "media" || type === "stylesheet";
-      (drop ? req.abort() : req.continue()).catch(() => {});
-    });
-
-    const cookies = COOKIE_KEYS.filter((k) => jar[k]).map((k) => ({
-      name: k, value: String(jar[k]), domain: ".hotstar.com", path: "/", secure: true,
-    }));
-    if (cookies.length) await page.setCookie(...cookies);
-
-    await page.goto(ORIGIN_URL, { waitUntil: "domcontentloaded", timeout: 45000 });
-
-    const res = await page.evaluate(mintInPage, { dl, session: jar.sessionUserUP, jar, client: WEB_CLIENT });
-    if (!res || res.error) throw new Error(res ? res.error : "page mint returned nothing");
-
-    // The manifest itself answers 403 for a headless UA, but the CDN still
-    // hands back the wildcard token in Set-Cookie. That is all we need.
-    try {
-      await page.goto(res.manifestUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
-    } catch (e) {
-      console.warn("manifest navigation:", e && e.message);
+    await page.goto(ORIGIN_URL, { waitUntil: "domcontentloaded", timeout: 25000 });
+    const res = await page.evaluate(mintInPage, { dl, session, jar, client: WEB_CLIENT });
+    if (!res || !res.manifestUrl) {
+      throw new Error((res && res.error) || "empty evaluate response");
     }
 
-    const all = await cdp.send("Network.getAllCookies");
-    const hd = (all.cookies || []).find((c) => c.name === "hdntl");
-    if (!hd || !hd.value) throw new Error("no hdntl cookie after manifest fetch");
-    const token = "hdntl=" + hd.value;
-    if (!tokenExp(token)) throw new Error("hdntl cookie has no exp claim");
-    return token;
+    const intercepted = await page.evaluate(async (url) => {
+      const r = await fetch(url, { method: "GET", credentials: "include" });
+      return { status: r.status };
+    }, res.manifestUrl);
+
+    const cookies = await page.cookies("https://hotstar.com", "https://akamaized.net");
+    const h = cookies.find((c) => c.name === "hdntl");
+    if (!h || !h.value) {
+      throw new Error(`no hdntl cookie set (status was ${intercepted.status})`);
+    }
+
+    return "hdntl=" + h.value;
   } finally {
-    try { await browser.close(); } catch {}
+    await browser.close().catch(() => {});
   }
 }
 
 async function refresh(env, force) {
   const current = await loadState(env);
-  const leftMs = tokenExp(current.token) - Date.now();
-  if (!force && leftMs > MIN_TTL_MS) {
-    return { skipped: true, expiresInHours: Number((leftMs / 3.6e6).toFixed(2)) };
+  const left = tokenTtl(current.token);
+  if (!force && left > MIN_TTL_MS) {
+    return { minted: false, reason: "ttl-ok", leftHours: Number((left / 3600000).toFixed(2)) };
   }
-  const started = Date.now();
   const token = await mintWithBrowser(env);
   const mintedAt = await storeToken(env, token);
-  const out = {
-    minted: true,
-    mintedAt,
-    expiresInHours: Number(((tokenExp(token) - Date.now()) / 3.6e6).toFixed(2)),
-    tookMs: Date.now() - started,
-  };
-  console.log("mint ok", JSON.stringify(out));
-  return out;
+  return { minted: true, mintedAt, exp: new Date(tokenExp(token)).toISOString() };
 }
 
-/* ----------------------------------------------------------------- playlist */
+/* ------------------------------------------------------------------ playlist */
 
 function buildPlaylist(hdntl) {
-  const lines = ["#EXTM3U", "# JioHotstar Channels", "# 100% Self-Hosted & Self-Dependent Playlist (Your Cookies)", ""];
+  const lines = ["#EXTM3U x-tvg-url=\"https://avkb.short.gy/jioepg.xml.gz\""];
   for (const ch of CHANNELS) {
-    const idAttr = ch.tvgId ? `tvg-id="${ch.tvgId}" ` : "";
-    lines.push(`#EXTINF:-1 ${idAttr}tvg-name="${ch.name}" tvg-logo="${ch.logo}" group-title="${ch.group}", ${ch.name}`);
-    const isMpd = ch.type === "mpd" || ch.url.includes(".mpd");
-    if (isMpd) {
+    const logo = ch.logo ? ` tvg-logo="${ch.logo}"` : "";
+    const group = ch.group ? ` group-title="${ch.group}"` : "";
+    lines.push(`#EXTINF:-1 tvg-id="${ch.id}" tvg-name="${ch.name}"${logo}${group},${ch.name}`);
+    if (ch.type === "dash") {
       lines.push("#KODIPROP:inputstream=inputstream.adaptive");
       lines.push("#KODIPROP:inputstream.adaptive.manifest_type=mpd");
       if (ch.keyId && ch.key) {
@@ -245,12 +217,154 @@ function buildPlaylist(hdntl) {
   return lines.join("\n");
 }
 
+function renderJhsDashboard(host, state) {
+  const hrs = state.expiresInHours ? state.expiresInHours + " hours" : "Active";
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JioHotstar • Live Stream Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060913;
+      --card: #0d1326;
+      --border: #182240;
+      --primary: #2563eb;
+      --accent: #38bdf8;
+      --text: #f8fafc;
+      --text-dim: #94a3b8;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; padding-bottom: 60px; }
+    .header { border-bottom: 1px solid var(--border); background: rgba(13,19,38,0.85); backdrop-filter: blur(12px); padding: 16px 24px; position: sticky; top:0; z-index:50; }
+    .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .brand-icon { font-size: 22px; background: linear-gradient(135deg, #1e40af, #0284c7); width: 40px; height: 40px; border-radius: 10px; display:flex; align-items:center; justify-content:center; }
+    .badge { display: flex; align-items: center; gap: 8px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #34d399; font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 999px; }
+    .dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; }
+    .container { max-width: 1100px; margin: 32px auto 0; padding: 0 20px; }
+    .hero { text-align: center; margin-bottom: 32px; }
+    .hero h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+    .hero p { color: var(--text-dim); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+    .stat-label { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+    .stat-val { font-size: 1.6rem; font-weight: 800; color: #fff; }
+    .endpoints { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 36px; }
+    .copy-box { display: flex; gap: 8px; background: #05070e; border: 1px solid var(--border); border-radius: 10px; padding: 4px 6px 4px 12px; align-items: center; margin-top: 12px; }
+    .copy-input { background: transparent; border: none; color: #7dd3fc; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; flex: 1; outline: none; }
+    .btn-copy { background: #1e293b; color: #fff; border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+    .btn-copy:hover { background: var(--primary); }
+    .channels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; max-height: 480px; overflow-y: auto; padding-right: 6px; }
+    .ch-card { background: #070a14; border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; }
+    .ch-logo { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; background: #111827; }
+    .ch-name { font-weight: 600; font-size: 0.88rem; }
+    .ch-group { font-size: 0.75rem; color: var(--text-dim); }
+    .toast { position: fixed; bottom: 24px; right: 24px; background: #10b981; color: #fff; padding: 12px 20px; border-radius: 10px; font-weight: 600; opacity: 0; transform: translateY(20px); transition: all 0.3s; z-index: 100; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    footer { text-align: center; margin-top: 50px; color: var(--text-dim); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="brand">
+        <div class="brand-icon">⭐</div>
+        <div>
+          <h1 style="font-size:1.15rem; font-weight:800;">JioHotstar Live</h1>
+          <span style="font-size:0.75rem; color:var(--text-dim);">Puppeteer Autonomous Minter</span>
+        </div>
+      </a>
+      <div class="badge">
+        <div class="dot"></div>
+        <span>${CHANNELS.length} Channels Live</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <h2>Live TV & Sports Streaming Engine</h2>
+      <p>Autonomous Akamai token self-minting powered by Cloudflare Browser Rendering</p>
+    </div>
+
+    <div class="stats">
+      <div class="card">
+        <div class="stat-label">Total Channels</div>
+        <div class="stat-val">${CHANNELS.length}</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Token Status</div>
+        <div class="stat-val" style="color:#34d399;">Active</div>
+        <div style="font-size:0.75rem; color:var(--text-dim); margin-top:4px;">${hrs} remaining</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Auto Refresh</div>
+        <div class="stat-val" style="color:#38bdf8;">Hourly Cron</div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:14px; font-size:1.15rem;">⚡ Stream Playlist Endpoints</h3>
+    <div class="endpoints">
+      <div class="card">
+        <h4 style="font-size:0.95rem; font-weight:700;">⭐ Master JioHotstar Playlist (M3U)</h4>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-top:4px;">Direct M3U feed with baked Akamai hdntl cookie headers.</p>
+        <div class="copy-box">
+          <input type="text" readonly class="copy-input" id="u-m3u" value="https://${host}/playlist.m3u">
+          <button class="btn-copy" onclick="copy('u-m3u')">Copy</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4 style="font-size:0.95rem; font-weight:700;">📊 Token Freshness Status (JSON)</h4>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-top:4px;">Real-time KV token expiration timestamp & health.</p>
+        <div class="copy-box">
+          <input type="text" readonly class="copy-input" id="u-status" value="https://${host}/status">
+          <button class="btn-copy" onclick="copy('u-status')">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:36px;">
+      <h3 style="margin-bottom:16px; font-size:1.15rem;">📺 Included Live Channels</h3>
+      <div class="channels-grid">
+        ${CHANNELS.map(c => `
+          <div class="ch-card">
+            <img src="${c.logo || 'https://www.hotstar.com/favicon.ico'}" class="ch-logo" onerror="this.src='https://www.hotstar.com/favicon.ico'">
+            <div>
+              <div class="ch-name">${c.name}</div>
+              <div class="ch-group">${c.group || 'Live TV'}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <footer>JioHotstar Live Engine • Community IPTV Hub</footer>
+  </div>
+  <div id="toast" class="toast">Link copied!</div>
+  <script>
+    function copy(id) {
+      navigator.clipboard.writeText(document.getElementById(id).value);
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    }
+  </script>
+</body>
+</html>`;
+}
+
 /* --------------------------------------------------------------------- main */
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const path = url.pathname;
+    const path = url.pathname.replace(/\/+$/, "") || "/";
+    const accept = request.headers.get("Accept") || "";
 
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
 
@@ -277,6 +391,14 @@ export default {
     }
 
     const state = await loadState(env);
+
+    // Serve HTML Dashboard on root for browser visits
+    if (path === "/" && accept.includes("text/html")) {
+      return new Response(renderJhsDashboard(url.host, state), {
+        headers: { ...CORS, "Content-Type": "text/html; charset=utf-8" }
+      });
+    }
+
     return new Response(buildPlaylist(state.token), {
       headers: {
         ...CORS,

@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 """
-jio_auth.py — Native JioTV Authentication & Wildcard Token Minter.
-
-Handles:
-1. Mobile number OTP request & verification.
-2. Auto-refreshing playback authToken using refreshToken.
-3. Direct self-minting of the Akamai __hdnea__ wildcard token (acl=/*)
-   from Jio's official playback API.
+jio_auth.py — JioTV Authentication and Token Manager.
+Handles session verification, token auto-refresh, and live stream token minting.
 """
 import os
 import sys

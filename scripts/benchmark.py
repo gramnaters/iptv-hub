@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-benchmark_all_sources.py — Comprehensive end-to-end verification of all IPTV Hub sources & workers.
+benchmark.py — Stream and endpoint validation test suite.
 """
 import os
 import sys

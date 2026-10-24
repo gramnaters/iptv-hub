@@ -1,0 +1,946 @@
+export const CHANNELS = [
+  {
+    "id": "0-9-pictures",
+    "name": "&Pictures",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-pictures/channel_list/360x2036af1e5bd11784d5089ee0fa175f2b267.png"
+  },
+  {
+    "id": "0-9-tvpictureshd",
+    "name": "&Pictures HD",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-tvpictureshd/channel_list/360x203609bada5c461481caf00837b5fc88692.png"
+  },
+  {
+    "id": "0-9-tvhd_0",
+    "name": "&TV HD",
+    "genre": "Entertainment",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-tvhd_0/channel_list/360x203b8aa32da7b8d40e3a88a149166705dc1.png"
+  },
+  {
+    "id": "0-9-channel_1510237423",
+    "name": "&TV HD USA",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_1510237423/channel_list/360x203c2a1d92ca8da43b4afd29ad3e6b933e7.png"
+  },
+  {
+    "id": "0-9-209",
+    "name": "&xplorHD",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-209/channel_list/360x203d2a4069840764bd5beb44a0f86bf1ab3.png"
+  },
+  {
+    "id": "0-9-aajtak",
+    "name": "Aaj Tak",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-aajtak/channel_list/360x2033e789b21dd3c42079af3fa4a4c5a6576b594053e82124268bc5163a45b1126d4.png"
+  },
+  {
+    "id": "0-9-zeeanmolcinema",
+    "name": "Anmol Cinema",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeeanmolcinema/channel_list/360x203b1c1a240ca94435daaf689cb371bc50d.png"
+  },
+  {
+    "id": "0-9-bigganga",
+    "name": "Anmol Cinema 2",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-bigganga/channel_list/360x20389300d0c5de94cb582c2899511d0dbf1.png"
+  },
+  {
+    "id": "0-9-zeeanmol",
+    "name": "Anmol TV",
+    "genre": "Entertainment",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeeanmol/channel_list/360x203e6986aa651f94274b27fb88453e2295f.png"
+  },
+  {
+    "id": "0-9-200",
+    "name": "Asianet News",
+    "genre": "News",
+    "language": "ml",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-200/channel_list/360x203107604655d9c4a0e965bd7a726dd3ee8.png"
+  },
+  {
+    "id": "0-9-bigmagic_1786965389",
+    "name": "Big Magic",
+    "genre": "Entertainment",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-bigmagic_1786965389/channel_list/360x2032d681f33fc1f415a8b027e4913ee884a.png"
+  },
+  {
+    "id": "0-9-9z5938345",
+    "name": "Dagdusheth Halwai Ganpati Mandir",
+    "genre": "Devotional",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938345/channel_list/360x20344bf440154de4d97b2e5574457f45cdc.png"
+  },
+  {
+    "id": "0-9-255",
+    "name": "Good News Today",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-255/channel_list/360x2034b7d0f587bc34fe6b8f663f9a162e9b7d365bf379a4e40d492bf9c008b51262e.png"
+  },
+  {
+    "id": "0-9-9z5910524",
+    "name": "Great! Christmas",
+    "genre": "Movies",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5910524/channel_list/360x2039d822bc7578d4f4d8bdbdc9fa2cfe451.png"
+  },
+  {
+    "id": "0-9-9z5910243",
+    "name": "Great! Movies",
+    "genre": "Movies",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5910243/channel_list/360x203481e89b59c9041edb9880f2590f5d2c7.png"
+  },
+  {
+    "id": "0-9-9z5910523",
+    "name": "Great! Mystery",
+    "genre": "Movies",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5910523/channel_list/360x20325d22ec7419f410bb2fbabb576c32933.png"
+  },
+  {
+    "id": "0-9-indiatoday",
+    "name": "India Today",
+    "genre": "News",
+    "language": "en",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-indiatoday/channel_list/indiatoday11702d87d227b9dd482a88a0334f10363c11.png"
+  },
+  {
+    "id": "0-9-9z5938346",
+    "name": "Iskcon Vrindavan",
+    "genre": "Devotional",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938346/channel_list/360x2032677a6344f364aaa9291bca657d5507f.png"
+  },
+  {
+    "id": "0-9-9z5938349",
+    "name": "Kashi Vishwanath",
+    "genre": "Devotional",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938349/channel_list/360x2031ff0a5ecda3140b493e5df16a4f5280c.png"
+  },
+  {
+    "id": "0-9-9z5938347",
+    "name": "Ma Naina Devi",
+    "genre": "Devotional",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938347/channel_list/360x203af81d512ce0b48608c202b2526fdf455.png"
+  },
+  {
+    "id": "0-9-9z5938351",
+    "name": "Mahavir Mandir Patna",
+    "genre": "Devotional",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938351/channel_list/360x203b4a52c1015cb470c865b2567207d363f.png"
+  },
+  {
+    "id": "0-9-9z5942782",
+    "name": "NDTV",
+    "genre": "News",
+    "language": "en",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5942782/channel_list/360x2034b64a1f11f1f43cca98127a129bdbb58.png"
+  },
+  {
+    "id": "0-9-9z5942783",
+    "name": "NDTV India",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5942783/channel_list/360x20359b23e6a71ec4547b308c8f9ab8db082.png"
+  },
+  {
+    "id": "0-9-9z5942785",
+    "name": "NDTV Marathi",
+    "genre": "News",
+    "language": "mr",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5942785/channel_list/360x203a6144752bcda40c6ab02a0e93170a4ec.png"
+  },
+  {
+    "id": "0-9-9z5942784",
+    "name": "NDTV Profit",
+    "genre": "News",
+    "language": "en",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5942784/channel_list/360x203128e6a71e7b4439aa83a27216e198339.png"
+  },
+  {
+    "id": "0-9-261",
+    "name": "News 9",
+    "genre": "News",
+    "language": "en",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-261/channel_list/360x20362e0ae462ebf4f40859a2776a038186e.png"
+  },
+  {
+    "id": "0-9-9z5910525",
+    "name": "POP",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5910525/channel_list/360x203686a5967e5ab41658d3b641ff57e5492.png"
+  },
+  {
+    "id": "0-9-9z5910527",
+    "name": "POP UP",
+    "genre": "Kids",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5910527/channel_list/360x203fbdc7ea068d14bb6a7689fdf01fd44cf.png"
+  },
+  {
+    "id": "0-9-9z5946518",
+    "name": "Patna Sahib",
+    "genre": "Devotional",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5946518/channel_list/360x203739182e01a8242c799a7087969c4777a.png"
+  },
+  {
+    "id": "0-9-203",
+    "name": "Polimer News",
+    "genre": "News",
+    "language": "ta",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-203/channel_list/360x203a22e27576cdf4d769b8ed4f295c34733.png"
+  },
+  {
+    "id": "0-9-9z5938343",
+    "name": "Sai Baba, Shirdi",
+    "genre": "Devotional",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938343/channel_list/360x203d570027ea5f044b388859023999b3715.png"
+  },
+  {
+    "id": "0-9-zeesalaam",
+    "name": "Salaam TV",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeesalaam/channel_list/360x203c8d109ae96a645dab72b81f73244fe92.png"
+  },
+  {
+    "id": "0-9-9z5946519",
+    "name": "Shree Naga Sai  Temple - Coimbatore",
+    "genre": "Devotional",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5946519/channel_list/360x2037bb6e1de82af439587b2a06b3f952b94.png"
+  },
+  {
+    "id": "0-9-9z5938348",
+    "name": "Somnath Temple",
+    "genre": "Devotional",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938348/channel_list/360x203653b46a4d735464d8bbf13a39c7f75e8.png"
+  },
+  {
+    "id": "0-9-201",
+    "name": "Suvarna News",
+    "genre": "News",
+    "language": "kn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-201/channel_list/360x203a43c9a55c43b4f349d134ef9f38cc131.png"
+  },
+  {
+    "id": "0-9-378",
+    "name": "TV9 Bangla",
+    "genre": "News",
+    "language": "bn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-378/channel_list/360x20360c41e1235e24dadb085411bb6a81fee.png"
+  },
+  {
+    "id": "0-9-251",
+    "name": "TV9 Bharatvarsh",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-251/channel_list/360x20352e6393e55854bf68995213ec8f5e9c4.png"
+  },
+  {
+    "id": "0-9-260",
+    "name": "TV9 Gujarati",
+    "genre": "News",
+    "language": "gu",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-260/channel_list/360x203b9888f81dbd244cbb0fd28ba96b11c3c.png"
+  },
+  {
+    "id": "0-9-259",
+    "name": "TV9 Kannada",
+    "genre": "News",
+    "language": "kn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-259/channel_list/360x20390e3b4b89ab946e29847b29f9fccb411.png"
+  },
+  {
+    "id": "0-9-257",
+    "name": "TV9 Marathi",
+    "genre": "News",
+    "language": "mr",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-257/channel_list/360x203a77a41b9f09a4be68021edce6535c07d.png"
+  },
+  {
+    "id": "0-9-258",
+    "name": "TV9 Telugu",
+    "genre": "News",
+    "language": "te",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-258/channel_list/360x203254e76adfe5248f1904be9c860c325ea.png"
+  },
+  {
+    "id": "0-9-9z5910526",
+    "name": "Tiny Pop",
+    "genre": "Kids",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5910526/channel_list/360x2035b7a2783a8a34b8e9b34c3fe12ffd308.png"
+  },
+  {
+    "id": "0-9-wion",
+    "name": "WION",
+    "genre": "News",
+    "language": "en",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-wion/channel_list/360x203e15697a079f244d1b1baf7af2eb964bc.png"
+  },
+  {
+    "id": "0-9-9z51095521",
+    "name": "Z Athiradi",
+    "genre": "Movie",
+    "language": "ta",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51095521/channel_list/360x203fdf4796a901c41ea8f8fa4285d31ff1e25ef3daa57d54ddca5b984988c0a6fc8.png"
+  },
+  {
+    "id": "0-9-9z51072556",
+    "name": "Z Comedy Nation",
+    "genre": "Comedy",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51072556/channel_list/360x20341621f349aa64620ab93b70d3935d1d29fb22736bd414d2789920ea9fe11b078.png"
+  },
+  {
+    "id": "0-9-9z51072892",
+    "name": "Z Dil Se",
+    "genre": "Drama",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51072892/channel_list/360x2036012684c624c429cae055fb0c000983c.png"
+  },
+  {
+    "id": "0-9-9z51072893",
+    "name": "Z Horror Nights",
+    "genre": "Supernatural",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51072893/channel_list/360x2039d54a645d07642579f8f76b860ebe28c65ab8370e3be4954926713cdb9270710.png"
+  },
+  {
+    "id": "0-9-9z51095523",
+    "name": "Z Prematho",
+    "genre": "Movie",
+    "language": "te",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51095523/channel_list/360x203df9a90dcabde44ad8cb090f50a730661b6eef09cb89a478f9845ae104adccf74.png"
+  },
+  {
+    "id": "0-9-24ghantatv",
+    "name": "Zee 24 Ghanta",
+    "genre": "News",
+    "language": "bn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-24ghantatv/channel_list/zee24ghanta360x2039f73eed657d04b6b979a6814ea45a6db.png"
+  },
+  {
+    "id": "0-9-zee24kalak",
+    "name": "Zee 24 Kalak",
+    "genre": "News",
+    "language": "gu",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zee24kalak/channel_list/zee24zee24kalak360x2034b1001c338f0404b8f1d96ef5ccf7a3d.png"
+  },
+  {
+    "id": "0-9-zee24taas",
+    "name": "Zee 24 Taas",
+    "genre": "News",
+    "language": "mr",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zee24taas/channel_list/zee24taas360x20398a45db9f3bb4c29b0fbd1a7f50617ab.png"
+  },
+  {
+    "id": "0-9-zeeaction",
+    "name": "Zee Action",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeeaction/channel_list/360x203a7cb98dd34204f1098523c7261dd4bfe.png"
+  },
+  {
+    "id": "0-9-zeeaflam",
+    "name": "Zee Aflam",
+    "genre": "Movies",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeeaflam/channel_list/360x203b3dc77dea9c248e682db1f4594fe2054.png"
+  },
+  {
+    "id": "0-9-9z5817235",
+    "name": "Zee Aflam HD",
+    "genre": "Movies",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5817235/channel_list/360x20373a4fe90eefc478fb75b009fdabf5793.png"
+  },
+  {
+    "id": "0-9-zeealwan",
+    "name": "Zee Alwan",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeealwan/channel_list/360x20332306dded0784fd5a6ac84be958b0633.png"
+  },
+  {
+    "id": "0-9-9z5817234",
+    "name": "Zee Alwan HD",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5817234/channel_list/360x2030112c5e457cd4f1cb82aab67b50522d0.png"
+  },
+  {
+    "id": "0-9-9z5383484",
+    "name": "Zee Bangla",
+    "genre": "Entertainment",
+    "language": "bn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5383484/channel_list/360x203c2fb1409898c4f3483f083beaaec0854.png"
+  },
+  {
+    "id": "0-9-zeebangla",
+    "name": "Zee Bangla HD",
+    "genre": "Entertainment",
+    "language": "bn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeebangla/channel_list/360x203ed4a2a230922484b952434335babebcb.png"
+  },
+  {
+    "id": "0-9-366",
+    "name": "Zee Bangla International",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-366/channel_list/360x203fb14f9fc6e59424da45da18f51dc1cb2.png"
+  },
+  {
+    "id": "0-9-zeebanglacinema",
+    "name": "Zee Bangla Sonar",
+    "genre": "Movie",
+    "language": "bn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeebanglacinema/channel_list/360x2031edc8411ca24435ca7d2c30fc65dfdc3.png"
+  },
+  {
+    "id": "0-9-zeehindustan",
+    "name": "Zee Bharat",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeehindustan/channel_list/360x20377941d3cc0bd478bb8db941a1cb4e720.png"
+  },
+  {
+    "id": "0-9-zeebiharjharkhand",
+    "name": "Zee Bihar Jharkhand",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeebiharjharkhand/channel_list/360x2033a03ad2c8662458e8e9101fd3e4bc2d9.png"
+  },
+  {
+    "id": "0-9-zeebioskop",
+    "name": "Zee Bioskop",
+    "genre": "Movies",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeebioskop/channel_list/360x2030a5d0c124f8548c2b795077337d85390.png"
+  },
+  {
+    "id": "0-9-216",
+    "name": "Zee Biskope",
+    "genre": "Movie",
+    "language": "hr",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-216/channel_list/360x20336727c1e58824806b8c81e132b6bc699.png"
+  },
+  {
+    "id": "0-9-zeeclassic",
+    "name": "Zee Bollywood",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeeclassic/channel_list/360x203694675a9d6ea44638f3a027d7571f14d.png"
+  },
+  {
+    "id": "0-9-zeebusiness",
+    "name": "Zee Business",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeebusiness/channel_list/360x2034001e7be91db42bb8ec15b8bd074d20a.png"
+  },
+  {
+    "id": "0-9-9z51072553",
+    "name": "Zee Cine Classic",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51072553/channel_list/360x203b0970b6076bb4e64b5db41623c5abea97ec3e8ac5c9643f89c1d1d00ce6e88ee.png"
+  },
+  {
+    "id": "0-9-zeecinema",
+    "name": "Zee Cinema",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeecinema/channel_list/360x2034c943667087d4a1383d40a5a55b2bdf2.png"
+  },
+  {
+    "id": "0-9-zeecinemahd",
+    "name": "Zee Cinema HD",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeecinemahd/channel_list/360x2032123e39878fe48e1af5d3c64af1a8176.png"
+  },
+  {
+    "id": "0-9-zeecinemaintl",
+    "name": "Zee Cinema ME",
+    "genre": "Movies",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeecinemaintl/channel_list/360x20351e94cae087e4f4db75f7f4f05b969f7.png"
+  },
+  {
+    "id": "0-9-zeecinemauk",
+    "name": "Zee Cinema UK",
+    "genre": "Movies",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeecinemauk/channel_list/360x20379bee6689e79421c8efa8970ddf8a554.png"
+  },
+  {
+    "id": "0-9-179",
+    "name": "Zee Cinema USA",
+    "genre": "Movies",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-179/channel_list/360x2035422927c71e14a9e85c26eb0cbc4cc0e.png"
+  },
+  {
+    "id": "0-9-9z5383488",
+    "name": "Zee Cinemalu",
+    "genre": "Movie",
+    "language": "te",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5383488/channel_list/360x203bd8ac1f1c5df4e96ba68a6caf95d0221.png"
+  },
+  {
+    "id": "0-9-zeecinemalu",
+    "name": "Zee Cinemalu HD",
+    "genre": "Movie",
+    "language": "te",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeecinemalu/channel_list/360x203db1e3703e616450aa4ada2b08dc0f418.png"
+  },
+  {
+    "id": "0-9-176",
+    "name": "Zee Classic",
+    "genre": "Movie",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-176/channel_list/360x20322a767d4f5934eb1a48c4f37726da83b.png"
+  },
+  {
+    "id": "0-9-zeekalinganews",
+    "name": "Zee Delhi NCR Haryana",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeekalinganews/channel_list/360x2030f484d95b57b4c7b8484b0423a73eb18.png"
+  },
+  {
+    "id": "0-9-9z5383466",
+    "name": "Zee Kannada",
+    "genre": "Entertainment",
+    "language": "kn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5383466/channel_list/360x203fd84f95d96b84c9cb7dd4a0565953f08.png"
+  },
+  {
+    "id": "0-9-zeekannada",
+    "name": "Zee Kannada HD",
+    "genre": "Entertainment",
+    "language": "kn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeekannada/channel_list/360x2034758834fac66457f86cf02f0a04ec0a8.png"
+  },
+  {
+    "id": "0-9-129",
+    "name": "Zee Keralam HD",
+    "genre": "Entertainment",
+    "language": "ml",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-129/channel_list/360x203106bf8358c83491490283b224b41743b.png"
+  },
+  {
+    "id": "0-9-zeemadhyapradeshchat",
+    "name": "Zee Madhya Pradesh Chhattisgarh",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeemadhyapradeshchat/channel_list/360x203cacfbcb7b45943dcac37f5e23345477c.png"
+  },
+  {
+    "id": "0-9-9z5383486",
+    "name": "Zee Marathi",
+    "genre": "Entertainment",
+    "language": "mr",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5383486/channel_list/360x203eada4c7aa39e464f90dbad29ce30be3dc7218931f78c4175b5c36401a8be4729.png"
+  },
+  {
+    "id": "0-9-zeemarathi",
+    "name": "Zee Marathi HD",
+    "genre": "Entertainment",
+    "language": "mr",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeemarathi/channel_list/360x203b7bd7f7a0b26408fbd0683f4c2f25661.png"
+  },
+  {
+    "id": "0-9-channel_926372368",
+    "name": "Zee Marathi USA",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_926372368/channel_list/360x203a4721da60c354ba0b76e465ceb932374.png"
+  },
+  {
+    "id": "0-9-zeenews",
+    "name": "Zee News",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeenews/channel_list/360x2031f194601f5104a9c80c7ab9619760098.png"
+  },
+  {
+    "id": "0-9-9z583537",
+    "name": "Zee News Kannada",
+    "genre": "News",
+    "language": "kn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z583537/channel_list/360x203afcd78909c6c4591a11d0f88d233c3c3.png"
+  },
+  {
+    "id": "0-9-9z583538",
+    "name": "Zee News Telugu",
+    "genre": "News",
+    "language": "te",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z583538/channel_list/360x2039f85194877654194864030a44e7ddc0a.png"
+  },
+  {
+    "id": "0-9-channel_265145625",
+    "name": "Zee News Uttar Pradesh Uttrakhand",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_265145625/channel_list/360x2036fe907dd04ba41f7a6952261e47805f2.png"
+  },
+  {
+    "id": "0-9-9z5825786",
+    "name": "Zee One",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5825786/channel_list/360x203b1fb3f20bafb45fc831648cf1ded5c8e.png"
+  },
+  {
+    "id": "0-9-9z5829362",
+    "name": "Zee One French",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5829362/channel_list/360x203539bce564783472f80e85ba3df40f294.png"
+  },
+  {
+    "id": "0-9-161",
+    "name": "Zee One German",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-161/channel_list/360x203e631e2f3c1144831b6e5ba9e7cb55a1c.png"
+  },
+  {
+    "id": "0-9-241",
+    "name": "Zee Power HD",
+    "genre": "Entertainment",
+    "language": "kn",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-241/channel_list/360x2037b9eae05baac4e4fa2e0af4811f8ee86.png"
+  },
+  {
+    "id": "0-9-zeepunjabharyanahima",
+    "name": "Zee Punjab Haryana Himachal Pradesh",
+    "genre": "News",
+    "language": "pa",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeepunjabharyanahima/channel_list/360x20308630cb38d3d4866a435d90715e656c8.png"
+  },
+  {
+    "id": "0-9-215",
+    "name": "Zee Punjabi",
+    "genre": "Entertainment",
+    "language": "pa",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-215/channel_list/360x203434a0322e00445b9a47d19aab5a06541.png"
+  },
+  {
+    "id": "0-9-9z5950417",
+    "name": "Zee Punjabi HD UK",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5950417/channel_list/360x203bd5908379bca4f6a84b0f1a1942d9e50.png"
+  },
+  {
+    "id": "0-9-zeerajasthannews",
+    "name": "Zee Rajasthan News",
+    "genre": "News",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeerajasthannews/channel_list/360x2038b45f2fb59954d5897ccbdcd40717054.png"
+  },
+  {
+    "id": "0-9-sarthaktv",
+    "name": "Zee Sarthak",
+    "genre": "Entertainment",
+    "language": "or",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-sarthaktv/channel_list/360x203ec6f2054f88141c797e0e6ed1dcfe307.png"
+  },
+  {
+    "id": "0-9-9z51072894",
+    "name": "Zee South Flix",
+    "genre": "South dubbed",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51072894/channel_list/360x20371940869bfbf48bea25c2d58e0a6b77067dcc0c138bb4317b2dd43ff4a0a5741.png"
+  },
+  {
+    "id": "0-9-zeetv",
+    "name": "Zee TV",
+    "genre": "Entertainment",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeetv/channel_list/360x20329dce452ded640b1919b798eb6b57f0b.png"
+  },
+  {
+    "id": "0-9-zeetvapac",
+    "name": "Zee TV APAC HD",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeetvapac/channel_list/360x203ba09ccf2bfcf484c8c6401b014ce263b6fa99660e86a44b580a7980b6366c475.png"
+  },
+  {
+    "id": "0-9-9z5898964",
+    "name": "Zee TV DE",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5898964/channel_list/360x203ba09ccf2bfcf484c8c6401b014ce263bc7bbd8607dab404b99dcc2340cdb9a09.png"
+  },
+  {
+    "id": "0-9-zeetvhd",
+    "name": "Zee TV HD",
+    "genre": "Entertainment",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeetvhd/channel_list/360x203ba09ccf2bfcf484c8c6401b014ce263b.png"
+  },
+  {
+    "id": "0-9-channel_1017420475",
+    "name": "Zee TV HD Canada",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_1017420475/channel_list/360x2030cefbdb5dea24328a673ce1c1b313fa9.png"
+  },
+  {
+    "id": "0-9-zeetvuk",
+    "name": "Zee TV HD UK",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeetvuk/channel_list/360x20380aa7f4e22ee44fab63ba033854aa3f9.png"
+  },
+  {
+    "id": "0-9-channel_341994370",
+    "name": "Zee TV HD USA",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_341994370/channel_list/360x203886adaa6fb9b41b6b9d459d2aec15617.png"
+  },
+  {
+    "id": "0-9-tvme",
+    "name": "Zee TV ME",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-tvme/channel_list/360x20301a974fcc06b4e00a63cad03f3508e9a.png"
+  },
+  {
+    "id": "0-9-channel_1586895760",
+    "name": "Zee TV USA",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_1586895760/channel_list/360x203f2fd25cb2561488fbb14d212194de1ba.png"
+  },
+  {
+    "id": "0-9-9z5383489",
+    "name": "Zee Talkies",
+    "genre": "Movie",
+    "language": "mr",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5383489/channel_list/360x20336759bde8fec4390a2fc507aafa8cc63.png"
+  },
+  {
+    "id": "0-9-zeetalkies",
+    "name": "Zee Talkies HD",
+    "genre": "Movie",
+    "language": "mr",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeetalkies/channel_list/360x20386ab8f4a1d3c41758885c560c75818ea.png"
+  },
+  {
+    "id": "0-9-9z5383487",
+    "name": "Zee Tamil",
+    "genre": "Entertainment",
+    "language": "ta",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5383487/channel_list/360x203b417b3d8f44147cbb2f5b782eef203f6.png"
+  },
+  {
+    "id": "0-9-zeetamil",
+    "name": "Zee Tamil HD",
+    "genre": "Entertainment",
+    "language": "ta",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeetamil/channel_list/360x2036de81d431bca4dceaeaebc6d17be4fa6.png"
+  },
+  {
+    "id": "0-9-360",
+    "name": "Zee Tamil HD APAC",
+    "genre": "Entertainment",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-360/channel_list/360x2031c866f9b15d44e38b077973e3ab37e89.png"
+  },
+  {
+    "id": "0-9-9z5383485",
+    "name": "Zee Telugu",
+    "genre": "Entertainment",
+    "language": "te",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5383485/channel_list/360x2034740d4d9cc914f64a459315f4d27221d.png"
+  },
+  {
+    "id": "0-9-zeetelugu",
+    "name": "Zee Telugu HD",
+    "genre": "Entertainment",
+    "language": "te",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeetelugu/channel_list/360x20314c63d37c41847b3a93d47f599d33731.png"
+  },
+  {
+    "id": "0-9-224",
+    "name": "Zee Thirai HD",
+    "genre": "Movie",
+    "language": "ta",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-224/channel_list/360x20385c796ee8e984b18a25994f5eb8828d0.png"
+  },
+  {
+    "id": "0-9-zeeyuva",
+    "name": "Zee Yuva",
+    "genre": "Entertainment",
+    "language": "mr",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zeeyuva/channel_list/zee24yuva360x203b72ac2ae8fbe480a9d51f3d33fe3089a.png"
+  },
+  {
+    "id": "0-9-348",
+    "name": "Zee Zest HD",
+    "genre": "Lifestyle",
+    "language": "en",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-348/channel_list/360x20333fcf07b744341518375ae7ae35c08c7.png"
+  },
+  {
+    "id": "0-9-zing",
+    "name": "Zing",
+    "genre": "Music",
+    "language": "hi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-zing/channel_list/360x2033bff29dd5f574ea4b36a2269a35a612c.png"
+  },
+  {
+    "id": "0-9-channel_1643519345",
+    "name": "Zing USA",
+    "genre": "Music",
+    "language": "Hindi",
+    "group": "ZEE5 India",
+    "logo": "https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_1643519345/channel_list/360x20318fc8ebca3c74030a9ea5fbea92d13d7.png"
+  }
+];

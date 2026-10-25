@@ -68,12 +68,24 @@ def load_creds():
 
 
 def fetch_channels(creds):
-    headers = jio_auth.auth_headers(creds)
-    url = ("https://jiotvapi.cdn.jio.com/apis/v3.1/getMobileChannelList/get/"
-           "?langId=6&os=android&devicetype=phone&usertype=JIO&version=315&langId=6")
-    r = requests.get(url, headers=headers, timeout=30)
-    r.raise_for_status()
-    return r.json().get("result", [])
+    # 1. try the live channel list (works on residential IP, 450 on datacenter)
+    try:
+        headers = jio_auth.auth_headers(creds)
+        url = ("https://jiotvapi.cdn.jio.com/apis/v3.1/getMobileChannelList/get/"
+               "?langId=6&os=android&devicetype=phone&usertype=JIO&version=315&langId=6")
+        r = requests.get(url, headers=headers, timeout=30)
+        r.raise_for_status()
+        chans = r.json().get("result", [])
+        if chans:
+            return chans
+    except Exception:
+        pass
+    # 2. fall back to the baked snapshot (catalogs/jiotv_channels.json)
+    snap = os.path.join(ROOT_DIR, "catalogs", "jiotv_channels.json")
+    if os.path.exists(snap):
+        with open(snap, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return []
 
 
 def _getchannelurl(ch, creds):

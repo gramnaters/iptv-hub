@@ -25,7 +25,7 @@ EPG_URL = "https://avkb.short.gy/jioepg.xml.gz"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 
 # User's dedicated independent JioHotstar worker
-USER_JIOHOTSTAR_URL = "https://jhs.gramnaters.workers.dev/"
+USER_JIOHOTSTAR_URL = "https://jhs.gramnaters.workers.dev/playlist.m3u"
 
 # Upstream public feeds
 PUBLIC_PLUG_API = ""

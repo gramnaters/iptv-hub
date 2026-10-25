@@ -1,10 +1,20 @@
 #EXTM3U
-#DATE:- 25-10-2026 06:02:13 IST
+#DATE:- 25-10-2026 09:51:39 IST
 # Category: fancode
-# Total Channels: 1
+# Total Channels: 3
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
 #EXTINF:-1 tvg-id="139980" tvg-name="Race Day" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-of-Australiaold-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Race Day
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/139980_english_hls_4fd0f7b58694482_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4249845" tvg-name="Sydney Fc Vs Adelaide United" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249845_53101_SYD_ADL_fc-Web_1792223294286.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Sydney Fc Vs Adelaide United
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249845_english_hls_bf2f0076bc49928_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4250528" tvg-name="Race Day" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/JK-Tyre-_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Race Day
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250528_english_hls_5f5972517d95754_1ta-di_h264/index.m3u8

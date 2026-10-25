@@ -24,12 +24,30 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "jiotv.m3u")
 CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_catalog.json")
 
-# Token sources: priority ordered (Direct self-mint and our own Cloudflare worker edge)
+# Token sources: priority ordered (Direct self-mint, Cloudflare worker edge, and live mirrors)
 TOKEN_SOURCES = [
     {
         "name": "JTV Cloudflare Worker Edge",
         "url": "https://jtv.gramnaters.workers.dev/playlist.m3u",
         "type": "streaming_lines",
+        "timeout": 8
+    },
+    {
+        "name": "Live Cookie Mirror",
+        "url": "https://raw.githubusercontent.com/sportlive18/Sportlink-wtf/refs/heads/main/cookie.json",
+        "type": "json_flexible",
+        "timeout": 8
+    },
+    {
+        "name": "Live Stream Edge",
+        "url": "https://raw.githubusercontent.com/qwerty180506/Geo/refs/heads/main/jiotv_cf.m3u",
+        "type": "streaming_lines",
+        "timeout": 8
+    },
+    {
+        "name": "Reborn Edge Hub",
+        "url": "https://allinonereborn2.online/jstrweb2/cookies.json",
+        "type": "json_flexible",
         "timeout": 8
     }
 ]
@@ -259,6 +277,18 @@ def generate_jiotv_playlist():
     os.makedirs(os.path.dirname(OUTPUT_M3U), exist_ok=True)
     with open(OUTPUT_M3U, "w", encoding="utf-8") as f:
         f.write(content)
+
+    # Save to jiotv_cookie.json
+    cookie_file = os.path.join(ROOT_DIR, "catalogs", "jiotv_cookie.json")
+    try:
+        with open(cookie_file, "w", encoding="utf-8") as f:
+            json.dump({
+                "updated_at": get_ist_time(),
+                "source": "https://jtv.gramnaters.workers.dev",
+                "cookie": cookie
+            }, f, indent=2)
+    except Exception:
+        pass
 
     print(f"\n🎉 Successfully generated {OUTPUT_M3U} with {len(channels)} channels.")
     print(f"🔒 Cookie injected: {cookie[:40]}... ({_expiry_hours(cookie):.2f} h left)")

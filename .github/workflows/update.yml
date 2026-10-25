@@ -17,6 +17,23 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # JioTV blocks datacenter IPs (HTTP 450). Route the runner through a
+      # Tailscale exit node on the home (residential Indian) network so the
+      # channel-list + stream mint succeeds.
+      - name: Connect to Tailscale Exit Node
+        uses: tailscale/github-action@v3
+        with:
+          authkey: ${{ secrets.TS_AUTH_KEY }}
+          args: --exit-node=${{ secrets.TS_EXIT_NODE }} --exit-node-allow-lan-access=false
+
+      - name: Check IP
+        run: |
+          curl -s https://ipinfo.io/json | tee ip.json
+          if ! grep -q '"country": "IN"' ip.json; then
+            echo "::error::Exit IP is not Indian — Tailscale exit node not active"
+            exit 1
+          fi
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

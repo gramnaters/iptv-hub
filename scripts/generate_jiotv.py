@@ -1,239 +1,275 @@
 #!/usr/bin/env python3
 """
-generate_jiotv.py — 100% Independent JioTV Playlist Generator.
-Mints live Akamai token via personal credentials (jio_auth), or syncs from
-our own Cloudflare Worker edge (https://jtv.gramnaters.workers.dev/playlist.m3u)
-and local catalogs/jiotv_cookie.json.
-Generates playlists/jiotv.m3u using self-hosted catalogs/jiotv_catalog.json.
-Zero third-party scraper dependencies.
+generate_jiotv.py — Self-hosted JioTV playlist generator (mobile account).
+
+Flow:
+  1. Load mobile creds (jiotv_creds.json or JIOTV_CREDS env).
+  2. Refresh authToken + ssoToken (jio_auth.ensure_fresh).
+  3. Fetch the live channel list (v3.1).
+  4. Per channel, resolve a stream via getchannelurl (v2.1, BTS tier) then
+     fall back to mobile geturl (v1.1):
+       - clear HLS  -> emit as HLS (plays everywhere)
+       - Widevine DASH -> emit as DASH + Widevine license URL (Kodi / OTT
+         Navigator decrypt via their Widevine CDM)
+  5. Write playlists/jiotv.m3u.
+
+The BTS getchannelurl endpoint (tv.media.jio.com) returns premium channels
+(Sony/Star/Colors) that mobile geturl 403s, unlocking ~1040 of 1052 channels.
 """
 import os
 import sys
 import re
 import json
 import time
+import datetime
 import requests
-from datetime import datetime, timezone, timedelta
+from concurrent.futures import ThreadPoolExecutor
 
-# Ensure UTF-8 output
 if sys.stdout.encoding != 'utf-8':
     try:
         sys.stdout.reconfigure(encoding='utf-8')
     except Exception:
         pass
 
-IST = timezone(timedelta(hours=5, minutes=30))
-
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "jiotv.m3u")
-CATALOG_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_catalog.json")
 COOKIE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_cookie.json")
 
-# Our own dedicated Cloudflare Worker edge
-WORKER_EDGE_URL = "https://jtv.gramnaters.workers.dev/playlist.m3u"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import jio_auth  # noqa: E402
 
-USER_AGENT = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
-ORIGIN = "https://www.jiotv.com/"
-REFERER = "https://www.jiotv.com/"
+USER_AGENT_PLAYT = "plaYtv/7.1.8 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7"
+STB_UA = "JioTVPlus/2.8.4_2076/PlugX(PlugX;JioSTB) JioTvPlus-AndroidTv"
 
-def get_ist_time():
-    return datetime.now(IST).strftime("%d-%m-%Y %H:%M:%S IST")
+GENRE = {
+    8: "Sports", 5: "Entertainment", 6: "Movies", 12: "News", 13: "Music",
+    7: "Kids", 9: "Lifestyle", 10: "Infotainment", 15: "Devotional",
+    16: "Business", 17: "Educational", 18: "Shopping", 19: "JioDarshan",
+}
 
-def _expiry_hours(cookie):
-    m = re.search(r"~exp=(\d+)~", cookie or "")
-    if not m:
-        return -1.0
-    return (int(m.group(1)) - int(time.time())) / 3600.0
 
-def fetch_live_cookie():
-    """Fetch live __hdnea__ wildcard token using official APIs and self-hosted edge."""
-    print("🔑 Fetching live JioTV token...")
-
-    # 1. PRIORITY 1: Direct Self-Minting via Personal JioTV Login
-    try:
-        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-        import jio_auth
-        creds = None
-        if os.environ.get("JIOTV_CREDS"):
+def load_creds():
+    if os.environ.get("JIOTV_CREDS"):
+        try:
+            return json.loads(os.environ["JIOTV_CREDS"])
+        except Exception:
+            pass
+    for cpath in [
+        os.path.join(ROOT_DIR, "jiotv_creds.json"),
+        os.path.join(ROOT_DIR, "..", "jiotv_creds.json"),
+    ]:
+        if os.path.exists(cpath):
             try:
-                creds = json.loads(os.environ["JIOTV_CREDS"])
+                with open(cpath, "r", encoding="utf-8") as f:
+                    return json.load(f)
             except Exception:
                 pass
-        if not creds:
-            for cpath in [
-                os.path.join(ROOT_DIR, "jiotv_creds.json"),
-                os.path.join(ROOT_DIR, "..", "jiotv_creds.json")
-            ]:
-                if os.path.exists(cpath):
-                    try:
-                        with open(cpath, "r", encoding="utf-8") as f:
-                            creds = json.load(f)
-                            break
-                    except Exception:
-                        pass
-        if creds and creds.get("authToken"):
-            print("  🔑 [Priority 1] Attempting self-mint using personal JioTV account...")
-            minted = jio_auth.self_mint_token(creds)
-            if minted:
-                hrs = _expiry_hours(minted)
-                if hrs > 0.5:
-                    print(f"  🎉 [Priority 1] Successfully self-minted wildcard token ({hrs:.1f}h remaining)")
-                    return minted
-            print("  ⚠️ Personal JioTV self-mint unavailable, rolling forward...")
-    except Exception as e:
-        print(f"  ⚠️ Error in personal self-mint check: {e}")
+    return None
 
-    # 2. PRIORITY 2: Check our own Cloudflare Worker Edge
+
+def fetch_channels(creds):
+    headers = jio_auth.auth_headers(creds)
+    url = ("https://jiotvapi.cdn.jio.com/apis/v3.1/getMobileChannelList/get/"
+           "?langId=6&os=android&devicetype=phone&usertype=JIO&version=315&langId=6")
+    r = requests.get(url, headers=headers, timeout=30)
+    r.raise_for_status()
+    return r.json().get("result", [])
+
+
+def _getchannelurl(ch, creds):
+    """tv.media.jio.com getchannelurl v2.1 — returns HLS + DASH(Widevine) + license."""
+    cid = ch["channel_id"]
+    sso = creds.get("ssoToken", "")
+    sub = creds.get("subscriberId", "")
+    uni = creds.get("uniqueId", "")
+    dev = creds.get("deviceId", "3c6d6b5702fa09bd")
+    auth = creds.get("authToken", "")
+
     try:
-        print("  Checking JTV Cloudflare Worker Edge...")
-        with requests.get(WORKER_EDGE_URL, headers={"User-Agent": "Mozilla/5.0"}, stream=True, timeout=8) as r:
-            if r.status_code == 200:
-                for idx, line in enumerate(r.iter_lines()):
-                    if idx > 80:
-                        break
-                    if not line:
-                        continue
-                    decoded = line.decode("utf-8", errors="ignore")
-                    m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=/\*~hmac=[a-f0-9]+)', decoded)
-                    if m:
-                        cookie = m.group(1)
-                        hrs = _expiry_hours(cookie)
-                        if hrs > 0.5:
-                            print(f"  ✅ Got valid token from JTV Cloudflare Worker Edge ({hrs:.1f}h remaining)")
-                            return cookie
-    except Exception as e:
-        print(f"  ⚠️ Worker edge check warning: {e}")
+        r = requests.post(
+            "https://tv.media.jio.com/apis/v2.1/getchannelurl/getchannelurl",
+            json={"channel_id": str(cid), "stream_type": "Live"}, timeout=25,
+            headers={
+                "Content-Type": "application/json",
+                "User-Agent": STB_UA,
+                "appkey": "NzNiMDhlYzQyNjJm",
+                "ssotoken": sso, "deviceId": dev, "crmid": sub,
+                "uniqueId": uni, "subscriberId": sub,
+                "lbcookie": "1", "usergroup": "tvYR7NSNn7rymo3F",
+                "versionCode": "284", "accessToken": auth,
+            },
+        )
+    except Exception:
+        return None
+    if r.status_code != 200:
+        return None
+    return r.json()
 
-    # 3. PRIORITY 3: Check local saved cookie file
-    if os.path.exists(COOKIE_FILE):
-        try:
-            with open(COOKIE_FILE, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            cookie = data.get("cookie", "")
-            hrs = _expiry_hours(cookie)
-            if hrs > 0.5:
-                print(f"  🔄 Using local active token ({hrs:.1f}h remaining)")
-                return cookie
-        except Exception:
-            pass
 
-    # 4. PRIORITY 4: Check existing local playlist
-    if os.path.exists(OUTPUT_M3U):
-        try:
-            with open(OUTPUT_M3U, "r", encoding="utf-8") as f:
-                content = f.read(5000)
-            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=/\*~hmac=[a-f0-9]+)', content)
+def _mob_geturl(ch, creds):
+    """mobile geturl v1.1 — clear HLS for free tier."""
+    cid = ch["channel_id"]
+    sub = creds.get("subscriberId", "")
+    dev = creds.get("deviceId", "3c6d6b5702fa09bd")
+    sso = creds.get("ssoToken", "")
+    uni = creds.get("uniqueId", "")
+
+    begin = str(int(time.time() * 1000))
+    srno = datetime.datetime.now().strftime("%Y%m%d")
+
+    headers = jio_auth.auth_headers(creds)
+    headers["Content-Type"] = "application/x-www-form-urlencoded"
+    headers["channel_id"] = str(cid)
+
+    try:
+        r = requests.post(
+            "https://jiotvapi.media.jio.com/playback/apis/v1.1/geturl?langId=6",
+            headers=headers,
+            data=f"channel_id={cid}&stream_type=Seek&begin={begin}&srno={srno}",
+            timeout=25,
+        )
+    except Exception:
+        return None
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+
+def _strip_hdnea(url):
+    return re.sub(r"[?&](__hdnea__|hdnea)=[^&\s]+", "", url)
+
+
+def resolve(ch, creds):
+    """Return a playlist tuple (kind, url, cookie, license) or None.
+
+    kind is 'hls' (clear) or 'dash' (Widevine).
+
+    Priority:
+      1. mobile geturl v1.1 -> clear HLS Fallback (free tier, plays everywhere)
+      2. BTS getchannelurl v2.1 -> Widevine DASH + license (premium tier; the
+         BTS HLS is a stub with looping child manifests, so we use DASH)
+    """
+    cid = str(ch["channel_id"])
+
+    # --- 1. mobile clear HLS ---
+    md = _mob_geturl(ch, creds)
+    if md:
+        url = md.get("result", "")
+        if url:
+            try:
+                r2 = requests.get(url, headers={
+                    "User-Agent": USER_AGENT_PLAYT,
+                    "crmid": creds.get("subscriberId", ""),
+                    "deviceId": creds.get("deviceId", "3c6d6b5702fa09bd"),
+                    "devicetype": "phone", "os": "Android", "osVersion": "8.1.0",
+                    "ssotoken": creds.get("ssoToken", ""),
+                    "uniqueId": creds.get("uniqueId", ""),
+                    "usergroup": "tvYR7NSNn7rymo3F", "versionCode": "422",
+                }, timeout=15)
+            except Exception:
+                r2 = None
+            if r2 is not None and r2.status_code == 200 and "#EXT-X-KEY" not in r2.text:
+                sc = (r2.headers.get("set-cookie") or "").split(";")[0].strip()
+                if not sc.startswith("__hdnea__="):
+                    m = re.search(r'__hdnea__=([^&\s]+)', url)
+                    sc = f"__hdnea__={m.group(1)}" if m else ""
+                if sc:
+                    return ("hls", _strip_hdnea(url), sc, None)
+
+    # --- 2. BTS Widevine DASH (premium) ---
+    d = _getchannelurl(ch, creds)
+    if d:
+        mpd = d.get("mpd") or {}
+        mpd_url = mpd.get("result", "") if isinstance(mpd, dict) else ""
+        lic = mpd.get("key", "") if isinstance(mpd, dict) else ""
+        if mpd_url and lic:
+            tok = ""
+            m = re.search(r'__hdnea__=([^&\s]+)', mpd_url)
             if m:
-                cookie = m.group(1)
-                hrs = _expiry_hours(cookie)
-                if hrs > 0.5:
-                    print(f"  🔄 Retaining current local token ({hrs:.1f}h remaining)")
-                    return cookie
-        except Exception:
-            pass
+                tok = m.group(1)
+            cookie = f"__hdnea__={tok}" if tok else ""
+            return ("dash", mpd_url, cookie, lic)
 
-    return ""
+    return None
 
-def load_channels_catalog():
-    print("📡 Loading JioTV channel catalog from self-hosted storage...")
-    if os.path.exists(CATALOG_FILE):
-        try:
-            with open(CATALOG_FILE, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            print(f"  ✅ Loaded {len(data)} channels from {CATALOG_FILE}")
-            return data
-        except Exception as e:
-            print(f"  ❌ Error reading {CATALOG_FILE}: {e}")
-    return []
 
-def extract_drm_keys(channel):
-    key_id = channel.get("key_id") or channel.get("kid") or ""
-    key = channel.get("key") or ""
-    if not key_id and not key:
-        lic = channel.get("license_key") or ""
-        if ":" in lic:
-            parts = lic.split(":", 1)
-            key_id = parts[0].strip()
-            key = parts[1].strip()
-    return key_id, key
-
-def generate_jiotv_playlist():
-    channels = load_channels_catalog()
-    if not channels:
-        print("❌ No channels loaded. Aborting.")
+def generate():
+    creds = load_creds()
+    if not creds or not creds.get("authToken"):
+        print("❌ No JioTV mobile credentials (jiotv_creds.json / JIOTV_CREDS).")
         return False
 
-    cookie = fetch_live_cookie()
-    if not cookie:
-        print("❌ No valid __hdnea__ token found. Aborting.")
+    print("🔑 Refreshing JioTV tokens...")
+    creds = jio_auth.ensure_fresh(creds)
+    if not creds.get("authToken"):
+        print("❌ Token refresh failed — re-login required.")
         return False
 
-    now_ist = get_ist_time()
-    lines = [
-        "#EXTM3U",
-        f"#DATE:- {now_ist}",
-        "# Category: jiotv",
-        f"# Total Channels: {len(channels)}",
-        f"# Cookie: {cookie}",
-        ""
-    ]
+    print("📡 Fetching channel list...")
+    try:
+        channels = fetch_channels(creds)
+    except Exception as e:
+        print(f"❌ Channel list failed: {e}")
+        return False
+    print(f"  {len(channels)} channels in catalog")
 
-    for ch in channels:
-        cid = str(ch.get("id") or ch.get("tvg-id") or "")
-        name = ch.get("name") or ch.get("channel-name") or "JioTV Channel"
-        cat = ch.get("group") or ch.get("group-title") or ch.get("category") or "General"
-        logo = ch.get("logo") or ch.get("tvg-logo") or ""
-        url = ch.get("url") or ch.get("mpd_url") or ""
-        key_id, key = extract_drm_keys(ch)
+    print("🔧 Resolving streams (BTS → mobile fallback)...")
+    out = []
+    with ThreadPoolExecutor(max_workers=12) as ex:
+        for i, res in enumerate(ex.map(lambda ch: (ch, resolve(ch, creds)), channels), 1):
+            if res[1]:
+                out.append(res)
+            if i % 250 == 0:
+                print(f"  ... {i}/{len(channels)} done, {len(out)} resolved")
 
-        base_url = url.split("?")[0] if "?" in url else url
+    hls = sum(1 for _, (k, *_) in out if k == "hls")
+    dash = sum(1 for _, (k, *_) in out if k == "dash")
+    print(f"  resolved: {len(out)} ({hls} HLS, {dash} DASH-Widevine)")
+
+    if len(out) < 50:
+        print("❌ Too few channels — aborting.")
+        return False
+
+    lines = ["#EXTM3U", f"# Total Channels: {len(out)}", ""]
+    for ch, (kind, url, cookie, lic) in out:
+        name = ch["channel_name"]
+        category = GENRE.get(ch.get("channelCategoryId"), "Other")
+        logo = "https://jiotv.catchup.cdn.jio.com/dare_images/images/" + ch.get("logoUrl", "")
+        cid = str(ch["channel_id"])
 
         lines.append(
             f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" '
-            f'group-title="JioTV - {cat}",${name}'
+            f'group-title="JioTV - {category}",{name}'
         )
-
-        is_dash = ".mpd" in base_url.lower()
-        if is_dash:
+        if kind == "hls":
+            lines.append(f"#EXTVLCOPT:http-user-agent={STB_UA}")
+            lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
+            lines.append(url)
+        else:  # dash
             lines.append("#KODIPROP:inputstream=inputstream.adaptive")
             lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-            if key_id and key:
-                lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
-                lines.append(f"#KODIPROP:inputstream.adaptive.license_key={key_id}:{key}")
-
-        lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
-        lines.append(f"#EXTVLCOPT:http-referrer={REFERER}")
-        lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
-
-        header_dict = {
-            "User-Agent": USER_AGENT,
-            "Origin": ORIGIN,
-            "Referer": REFERER,
-            "Cookie": cookie
-        }
-        lines.append(f"#EXTHTTP:{json.dumps(header_dict, ensure_ascii=False)}")
-        lines.append(f"{base_url}?{cookie}")
+            lines.append("#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha")
+            lines.append(f"#KODIPROP:inputstream.adaptive.license_key={lic}")
+            lines.append(f"#EXTVLCOPT:http-user-agent={STB_UA}")
+            lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
+            lines.append(url)
         lines.append("")
 
-    content = "\n".join(lines)
     os.makedirs(os.path.dirname(OUTPUT_M3U), exist_ok=True)
     with open(OUTPUT_M3U, "w", encoding="utf-8") as f:
-        f.write(content)
+        f.write("\n".join(lines) + "\n")
 
-    # Save to cookie cache
     try:
         with open(COOKIE_FILE, "w", encoding="utf-8") as f:
-            json.dump({
-                "updated_at": get_ist_time(),
-                "source": "https://jtv.gramnaters.workers.dev",
-                "cookie": cookie
-            }, f, indent=2)
+            json.dump({"updated_at": datetime.datetime.now().isoformat(),
+                       "total": len(out), "hls": hls, "dash": dash,
+                       "catalog": len(channels)}, f, indent=2)
     except Exception:
         pass
 
-    print(f"\n🎉 Successfully generated {OUTPUT_M3U} with {len(channels)} channels.")
-    print(f"🔒 Cookie injected: {cookie[:40]}... ({_expiry_hours(cookie):.2f} h left)")
+    print(f"✅ Wrote {OUTPUT_M3U} with {len(out)} channels ({hls} HLS, {dash} DASH).")
     return True
 
+
 if __name__ == "__main__":
-    sys.exit(0 if generate_jiotv_playlist() else 1)
+    sys.exit(0 if generate() else 1)

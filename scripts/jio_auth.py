@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """
-jio_auth.py — JioTV Authentication and Token Manager.
-Handles session verification, token auto-refresh, and live stream token minting.
+jio_auth.py — JioTV mobile account auth + token manager.
+
+Mirrors the current JioTV app (v7.1.8) request profile:
+  - appkey  NzNiMDhlYzQyNjJm
+  - versionCode 422, User-Agent okhttp/4.12.0
+  - OTP login (v1), accessToken refresh, ssoToken refresh.
+
+Used by generate_jiotv.py to keep the mobile session alive and mint
+per-channel clear-HLS stream tokens. No third-party services.
 """
 import os
 import sys
 import json
 import base64
-import re
 import time
 import requests
 
@@ -17,177 +23,193 @@ if sys.stdout.encoding != 'utf-8':
     except Exception:
         pass
 
-COMMON_HEADERS = {
+API = "https://jiotvapi.media.jio.com"
+APPKEY = "NzNiMDhlYzQyNjJm"
+VERSION_CODE = "422"
+USER_AGENT_OKHTTP = "okhttp/4.12.0"
+DEVICE_ID_DEFAULT = "3c6d6b5702fa09bd"
+
+BASE_HEADERS = {
+    "appkey": APPKEY,
     "devicetype": "phone",
-    "appname": "RJIL_JioTV",
     "os": "android",
-    "User-Agent": "okhttp/4.2.2",
-    "Accept-Encoding": "gzip",
+    "versionCode": VERSION_CODE,
+    "User-Agent": USER_AGENT_OKHTTP,
+    "lbcookie": "1",
+    "usertype": "JIO",
+    "usergroup": "tvYR7NSNn7rymo3F",
+    "languageId": "6",
+    "isott": "false",
 }
 
-def b64_encode(s: str) -> str:
+
+def b64(s: str) -> str:
     return base64.b64encode(s.encode("utf-8")).decode("utf-8")
 
+
 def send_otp(mobile: str) -> dict:
-    """Send OTP to the given 10-digit Indian mobile number."""
-    clean_mobile = mobile.strip().replace("+91", "").replace(" ", "")
-    payload = {"number": b64_encode("+91" + clean_mobile)}
-    headers = {**COMMON_HEADERS, "Content-Type": "application/json"}
-    
-    url = "https://jiotvapi.media.jio.com/userservice/apis/v1/loginotp/send"
-    try:
-        resp = requests.post(url, json=payload, headers=headers, timeout=10)
-        return {
-            "status_code": resp.status_code,
-            "success": resp.status_code == 200 or resp.status_code == 204,
-            "body": resp.text
-        }
-    except Exception as e:
-        return {"status_code": 0, "success": False, "error": str(e)}
-
-def verify_otp(mobile: str, otp: str) -> dict:
-    """Verify OTP and return persistent session credentials."""
-    clean_mobile = mobile.strip().replace("+91", "").replace(" ", "")
-    clean_otp = otp.strip()
-    
-    payload = {
-        "number": b64_encode("+91" + clean_mobile),
-        "otp": clean_otp,
-        "deviceInfo": {
-            "consumptionDeviceName": "SM-G935FD",
-            "info": {
-                "platform": {"name": "SM-G935FD"},
-                "androidId": "3c6d6b5702fa09bd",
-                "type": "android"
-            }
-        }
+    clean = mobile.strip().replace("+91", "").replace(" ", "")
+    payload = {"number": b64("+91" + clean)}
+    headers = {
+        "appname": "RJIL_JioTV",
+        "os": "android",
+        "devicetype": "phone",
+        "User-Agent": USER_AGENT_OKHTTP,
+        "Content-Type": "application/json",
     }
-    headers = {**COMMON_HEADERS, "Content-Type": "application/json"}
-    url = "https://jiotvapi.media.jio.com/userservice/apis/v1/loginotp/verify"
-    
     try:
-        resp = requests.post(url, json=payload, headers=headers, timeout=12)
-        data = resp.json()
-        d = data.get("data", data)
-        if d.get("authToken"):
-            return {
-                "success": True,
-                "creds": {
-                    "ssoToken": d.get("ssoToken"),
-                    "authToken": d.get("authToken"),
-                    "refreshToken": d.get("refreshToken"),
-                    "deviceId": "3c6d6b5702fa09bd",
-                    "subscriberId": d.get("sessionAttributes", {}).get("user", {}).get("subscriberId"),
-                    "uniqueId": d.get("sessionAttributes", {}).get("user", {}).get("unique")
-                }
-            }
-        else:
-            return {"success": False, "message": data.get("message", "Verification failed"), "raw": data}
+        r = requests.post(f"{API}/userservice/apis/v1/loginotp/send",
+                          json=payload, headers=headers, timeout=15)
+        return {"ok": r.status_code in (200, 204), "status": r.status_code, "body": r.text}
     except Exception as e:
-        return {"success": False, "error": str(e)}
+        return {"ok": False, "error": str(e)}
 
-def refresh_auth_token(creds: dict) -> dict:
-    """Refresh authToken using refreshToken."""
+
+def verify_otp(mobile: str, otp: str, device_id: str = DEVICE_ID_DEFAULT) -> dict:
+    clean = mobile.strip().replace("+91", "").replace(" ", "")
+    payload = {
+        "number": b64("+91" + clean),
+        "otp": otp.strip(),
+        "deviceInfo": {
+            "consumptionDeviceName": "SM-G930F",
+            "info": {
+                "type": "android",
+                "platform": {"name": "SM-G930F"},
+                "androidId": device_id,
+            },
+        },
+    }
+    headers = {
+        "appname": "RJIL_JioTV",
+        "os": "android",
+        "devicetype": "phone",
+        "User-Agent": USER_AGENT_OKHTTP,
+        "Content-Type": "application/json",
+    }
+    try:
+        r = requests.post(f"{API}/userservice/apis/v1/loginotp/verify",
+                          json=payload, headers=headers, timeout=15)
+        d = r.json()
+        if d.get("authToken"):
+            user = d.get("sessionAttributes", {}).get("user", {})
+            creds = {
+                "ssoToken": d.get("ssoToken"),
+                "authToken": d.get("authToken"),
+                "refreshToken": d.get("refreshToken"),
+                "deviceId": device_id,
+                "subscriberId": user.get("subscriberId"),
+                "uniqueId": user.get("unique"),
+            }
+            return {"ok": True, "creds": creds}
+        return {"ok": False, "message": d.get("message", "verification failed"), "raw": d}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+def refresh_access_token(creds: dict) -> dict:
+    """Refresh authToken using refreshToken (current JioTV v422 profile)."""
     refresh_tok = creds.get("refreshToken")
     if not refresh_tok:
-        return {"success": False, "message": "No refreshToken present"}
-        
+        return {"ok": False, "message": "no refreshToken"}
     payload = {
         "appName": "RJIL_JioTV",
-        "deviceId": creds.get("deviceId", "3c6d6b5702fa09bd"),
-        "refreshToken": refresh_tok
+        "deviceId": creds.get("deviceId", DEVICE_ID_DEFAULT),
+        "refreshToken": refresh_tok,
     }
     headers = {
         "devicetype": "phone",
-        "versionCode": "290",
+        "versionCode": VERSION_CODE,
         "os": "android",
         "Content-Type": "application/json; charset=utf-8",
-        "User-Agent": "okhttp/4.2.2"
+        "Host": "auth.media.jio.com",
+        "User-Agent": USER_AGENT_OKHTTP,
+        "accessToken": creds.get("authToken", ""),
     }
-    url = "https://auth.media.jio.com/tokenservice/apis/v1/refreshtoken?langId=6"
     try:
-        resp = requests.post(url, json=payload, headers=headers, timeout=10)
-        data = resp.json()
-        new_auth = data.get("authToken")
-        if new_auth:
-            creds["authToken"] = new_auth
-            if data.get("refreshToken"):
-                creds["refreshToken"] = data["refreshToken"]
-            return {"success": True, "authToken": new_auth}
-        return {"success": False, "message": data.get("message", "Refresh failed")}
+        r = requests.post("https://auth.media.jio.com/tokenservice/apis/v1/refreshtoken?langId=6",
+                          json=payload, headers=headers, timeout=15)
+        d = r.json()
+        if d.get("authToken"):
+            creds["authToken"] = d["authToken"]
+            return {"ok": True, "authToken": d["authToken"]}
+        return {"ok": False, "message": d.get("message", "refresh failed"), "raw": d}
     except Exception as e:
-        return {"success": False, "error": str(e)}
+        return {"ok": False, "error": str(e)}
 
-def self_mint_token(creds: dict, channel_id: str = "144") -> str:
-    """
-    Directly mint a live Akamai __hdnea__ wildcard token (acl=/*)
-    using Jio's official playback API.
-    """
-    url = "https://jiotvapi.media.jio.com/playback/apis/v1/geturl?langId=6"
+
+def refresh_sso_token(creds: dict) -> dict:
+    """Refresh ssoToken via tv.media.jio.com (current JioTV v422 profile)."""
+    sso = creds.get("ssoToken")
+    unique = creds.get("uniqueId")
+    device = creds.get("deviceId", DEVICE_ID_DEFAULT)
+    if not sso or not unique:
+        return {"ok": False, "message": "missing ssoToken/uniqueId"}
     headers = {
-        "appkey": "NzNiMDhlYzQyNjJm",
         "devicetype": "phone",
+        "versionCode": VERSION_CODE,
         "os": "android",
-        "deviceId": creds.get("deviceId", "3c6d6b5702fa09bd"),
-        "isott": "false",
-        "channel_id": channel_id,
-        "accesstoken": creds.get("authToken", ""),
-        "Content-Type": "application/x-www-form-urlencoded",
-        "User-Agent": "okhttp/4.2.2"
+        "Host": "tv.media.jio.com",
+        "User-Agent": USER_AGENT_OKHTTP,
+        "ssoToken": sso,
+        "uniqueid": unique,
+        "deviceid": device,
     }
-    body = f"stream_type=Seek&channel_id={channel_id}"
-    
     try:
-        resp = requests.post(url, headers=headers, data=body, timeout=10)
-        if resp.status_code == 419:
-            # Token expired, try refreshing
-            print("  🔄 Jio authToken expired (419), attempting auto-refresh...")
-            ref = refresh_auth_token(creds)
-            if ref.get("success"):
-                headers["accesstoken"] = creds["authToken"]
-                resp = requests.post(url, headers=headers, data=body, timeout=10)
-            else:
-                print(f"  ❌ Refresh failed: {ref.get('message')}")
-                return ""
-
-        if resp.status_code == 200:
-            data = resp.json()
-            result_url = data.get("result", "")
-            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=/\*~hmac=[a-f0-9]+)', result_url)
-            if m:
-                return m.group(1)
-            # Sometimes acl is specific to channel; match any valid __hdnea__
-            m2 = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=[^~&]+~hmac=[a-f0-9]+)', result_url)
-            if m2:
-                return m2.group(1)
-        else:
-            print(f"  ⚠️ Jio geturl returned status {resp.status_code}: {resp.text[:150]}")
+        r = requests.get("https://tv.media.jio.com/apis/v2.0/loginotp/refresh?langId=6",
+                         headers=headers, timeout=15)
+        d = r.json()
+        if d.get("ssoToken"):
+            creds["ssoToken"] = d["ssoToken"]
+            return {"ok": True, "ssoToken": d["ssoToken"]}
+        return {"ok": False, "message": "no ssoToken in response", "raw": d}
     except Exception as e:
-        print(f"  ⚠️ Error during self_mint_token: {e}")
-        
-    return ""
+        return {"ok": False, "error": str(e)}
+
+
+def ensure_fresh(creds: dict) -> dict:
+    """Refresh authToken (and ssoToken) if needed; returns the working creds."""
+    if creds.get("authToken"):
+        r = refresh_access_token(creds)
+        if r.get("ok"):
+            return creds
+    if creds.get("ssoToken"):
+        refresh_sso_token(creds)
+    return creds
+
+
+def auth_headers(creds: dict) -> dict:
+    """Authenticated headers for channel-list + geturl calls."""
+    h = dict(BASE_HEADERS)
+    if creds.get("authToken"):
+        h["accessToken"] = creds["authToken"]
+    if creds.get("ssoToken"):
+        h["ssotoken"] = creds["ssoToken"]
+    if creds.get("subscriberId"):
+        h["crmid"] = creds["subscriberId"]
+        h["subscriberId"] = creds["subscriberId"]
+        h["userId"] = creds["subscriberId"]
+    if creds.get("uniqueId"):
+        h["uniqueId"] = creds["uniqueId"]
+    return h
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage:")
-        print("  python jio_auth.py send <10-digit-mobile>")
-        print("  python jio_auth.py verify <10-digit-mobile> <otp>")
-        print("  python jio_auth.py mint <creds_json_file>")
+        print("  python jio_auth.py send <mobile>")
+        print("  python jio_auth.py verify <mobile> <otp> [deviceId]")
         sys.exit(1)
-        
     cmd = sys.argv[1].lower()
     if cmd == "send":
-        mobile = sys.argv[2]
-        res = send_otp(mobile)
-        print("Send OTP result:", res)
+        print(send_otp(sys.argv[2]))
     elif cmd == "verify":
         mobile = sys.argv[2]
         otp = sys.argv[3]
-        res = verify_otp(mobile, otp)
-        print("Verify OTP result:", res)
-    elif cmd == "mint":
-        creds_file = sys.argv[2]
-        with open(creds_file, "r", encoding="utf-8") as f:
-            c = json.load(f)
-        tok = self_mint_token(c)
-        print("Minted token:", tok)
+        device = sys.argv[4] if len(sys.argv) > 4 else DEVICE_ID_DEFAULT
+        res = verify_otp(mobile, otp, device)
+        if res.get("ok"):
+            out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "jiotv_creds.json")
+            with open(out, "w", encoding="utf-8") as f:
+                json.dump(res["creds"], f, indent=2)
+            print("saved to", out)
+        print(res)

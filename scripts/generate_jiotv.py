@@ -206,6 +206,32 @@ def resolve(ch, creds):
     return None
 
 
+def _ensure_wvd():
+    """Return a usable .wvd path, decoding JIOTV_WVD (base64) if set.
+
+    Decoding in Python avoids shell `echo | base64 -d` breaking on long secrets.
+    """
+    path = os.path.join(ROOT_DIR, "device.wvd")
+    env = (os.environ.get("JIOTV_WVD") or "").strip()
+    if env:
+        try:
+            import base64 as _b64
+            s = "".join(env.split())
+            data = _b64.b64decode(s + "=" * (-len(s) % 4))
+            if len(data) > 100:
+                with open(path, "wb") as f:
+                    f.write(data)
+                return path
+        except Exception as e:
+            print(f"  ⚠️ JIOTV_WVD decode failed: {e}")
+    if os.path.exists(path) and os.path.getsize(path) > 100:
+        return path
+    alt = os.path.join(ROOT_DIR, "wvd", "device.wvd")
+    if os.path.exists(alt) and os.path.getsize(alt) > 100:
+        return alt
+    return None
+
+
 def generate():
     creds = load_creds()
     if not creds or not creds.get("authToken"):
@@ -227,17 +253,22 @@ def generate():
     print(f"  {len(channels)} channels in catalog")
 
     # Locate the .wvd device file (Widevine L3 CDM) for ClearKey extraction.
-    wvd_path = os.environ.get("JIOTV_WVD")
-    if not wvd_path:
-        for p in [os.path.join(ROOT_DIR, "device.wvd"),
-                  os.path.join(ROOT_DIR, "wvd", "device.wvd")]:
-            if os.path.exists(p):
-                wvd_path = p
-                break
+    # Prefer decoding JIOTV_WVD (base64) in Python — shell `echo | base64 -d`
+    # mangles long secrets. Falls back to a local device.wvd if present.
+    wvd_path = _ensure_wvd()
+    if wvd_path:
+        import hashlib
+        try:
+            h = hashlib.sha256(open(wvd_path, "rb").read()).hexdigest()[:16]
+            print(f"  .wvd: {wvd_path} ({os.path.getsize(wvd_path)}B, sha256:{h})")
+        except Exception:
+            pass
+    else:
+        print("  ⚠️ No .wvd (JIOTV_WVD) — ClearKey extraction disabled")
 
     print("🔧 Resolving streams (BTS → mobile fallback)...")
     out = []
-    with ThreadPoolExecutor(max_workers=12) as ex:
+    with ThreadPoolExecutor(max_workers=32) as ex:
         for i, res in enumerate(ex.map(lambda ch: (ch, resolve(ch, creds)), channels), 1):
             if res[1]:
                 out.append(res)
@@ -277,7 +308,7 @@ def generate():
 
         extracted = []
         done = 0
-        with ThreadPoolExecutor(max_workers=10) as ex:
+        with ThreadPoolExecutor(max_workers=16) as ex:
             for ch, res in ex.map(_extract, out):
                 extracted.append((ch, res))
                 done += 1

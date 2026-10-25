@@ -257,29 +257,35 @@ def generate():
         print(f"🔓 Extracting ClearKey for {dash} premium channels (pywidevine + .wvd)...")
         import generate_jiotv_keys as jk
 
-        def _extract(ch, kind, url, cookie, lic):
+        def _extract(item):
+            ch, (kind, url, cookie, lic) = item
             if kind != "dash":
-                return kind, url, cookie, lic
+                return ch, (kind, url, cookie, lic)
             try:
                 pssh = jk.get_pssh(url, cookie)
                 if not pssh:
-                    return "dash", url, cookie, lic
+                    return ch, ("dash", url, cookie, lic)
                 keys = jk.extract_keys(wvd_path, pssh, lic, cookie, creds, str(ch["channel_id"]))
                 if not keys:
-                    return "dash", url, cookie, lic
+                    return ch, ("dash", url, cookie, lic)
                 first = keys[0]
                 kid_hex = base64.urlsafe_b64decode(first["kid"] + "==").hex()
                 key_hex = base64.urlsafe_b64decode(first["k"] + "==").hex()
-                return "clearkey", url, cookie, f"{kid_hex}:{key_hex}"
+                return ch, ("clearkey", url, cookie, f"{kid_hex}:{key_hex}")
             except Exception:
-                return "dash", url, cookie, lic
+                return ch, ("dash", url, cookie, lic)
 
         extracted = []
-        for ch, (kind, url, cookie, lic) in out:
-            if kind == "dash":
-                time.sleep(0.25)  # avoid license-server rate limiting
-            extracted.append((ch, _extract(ch, kind, url, cookie, lic)))
+        done = 0
+        with ThreadPoolExecutor(max_workers=10) as ex:
+            for ch, res in ex.map(_extract, out):
+                extracted.append((ch, res))
+                done += 1
+                if done % 50 == 0:
+                    print(f"  ... {done}/{len(out)} key-extracted")
         out = extracted
+        clear_early = sum(1 for _, (k, *_) in out if k == "clearkey")
+        print(f"  ClearKey extracted: {clear_early}/{dash}")
 
     clear = sum(1 for _, (k, *_) in out if k == "clearkey")
     dash_remaining = sum(1 for _, (k, *_) in out if k == "dash")

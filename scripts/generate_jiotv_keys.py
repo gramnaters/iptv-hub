@@ -88,7 +88,7 @@ def get_premium(ch, creds):
     try:
         r = requests.post(
             "https://tv.media.jio.com/apis/v2.1/getchannelurl/getchannelurl",
-            json={"channel_id": cid, "stream_type": "Live"}, timeout=25,
+            json={"channel_id": cid, "stream_type": "Live"}, timeout=15,
             headers={
                 "Content-Type": "application/json", "User-Agent": STB_UA,
                 "appkey": "NzNiMDhlYzQyNjJm", "ssotoken": sso, "deviceId": dev,
@@ -117,7 +117,7 @@ def get_premium(ch, creds):
 def get_pssh(mpd_url, cookie):
     r = requests.get(mpd_url, headers={
         "User-Agent": STB_UA, "Cookie": cookie,
-    }, timeout=20)
+    }, timeout=10)
     if r.status_code != 200:
         return None
     m = re.search(r'<cenc:pssh[^>]*>([^<]+)</cenc:pssh>', r.text)
@@ -164,7 +164,7 @@ def extract_keys(wvd_path, pssh, license_url, cookie, creds, channel_id):
             "Content-Type": "application/octet-stream",
             "Cookie": cookie,
         }
-        r = requests.post(license_url, data=challenge, headers=headers, timeout=30)
+        r = requests.post(license_url, data=challenge, headers=headers, timeout=20)
         if r.status_code != 200:
             return None
         cdm.parse_license(session_id, r.content)

@@ -1,8 +1,8 @@
 #EXTM3U
-#DATE:- 25-10-2026 09:51:39 IST
-# Category: VZY Live
+#DATE:- 25-10-2026 17:50:32 IST
+# Category: vzy
 # Total Channels: 48
-# Source: Direct CloudFront Kaltura CDN with ClearKeys
+# Source: https://vzyweb.42web.io/api.php (live)
 
 #EXTINF:-1 tvg-id="9487112" tvg-name="&Pictures HD" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/75364a7b9f09477b9ee80016a6440b6b/version/0" tvg-category="Movies" group-title="VZY" group-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0" type="dash",&Pictures HD
 #KODIPROP:inputstream=inputstream.adaptive

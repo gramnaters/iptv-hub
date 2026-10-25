@@ -8,12 +8,6 @@ const CORS = {
   "Access-Control-Allow-Headers": "*",
 };
 
-const LIVE_TOKEN_URLS = [
-  "https://raw.githubusercontent.com/sportlive18/Sportlink-wtf/refs/heads/main/cookie.json",
-  "https://raw.githubusercontent.com/qwerty180506/Geo/refs/heads/main/jiotv_cf.m3u",
-  "https://allinonereborn2.online/jstrweb2/cookies.json"
-];
-
 let inMemoryJioToken = "";
 let inMemoryJioExp = 0;
 
@@ -50,7 +44,7 @@ async function mintJioLiveToken(creds) {
   if (inMemoryJioToken && inMemoryJioExp - Date.now() > 1800000) {
     return inMemoryJioToken;
   }
-  if (!creds || !creds.authToken) return null;
+  if (!creds || !creds.authToken) return inMemoryJioToken || null;
 
   const fetchToken = async (token) => {
     const getUrlPayload = new URLSearchParams({
@@ -94,39 +88,7 @@ async function mintJioLiveToken(creds) {
       }
     }
   } catch (e) {}
-  return null;
-}
-
-async function fetchLiveToken() {
-  for (const u of LIVE_TOKEN_URLS) {
-    try {
-      const res = await fetch(u, { headers: { "User-Agent": "Mozilla/5.0" }, cf: { cacheTtl: 300 } });
-      if (!res.ok) continue;
-      const text = await res.text();
-      const m = text.match(/(__hdnea__=st=\d+~exp=(\d+)~acl=[^~"'\r\n\s]+~hmac=[a-f0-9]+)/);
-      if (m) {
-        const expSec = parseInt(m[2], 10);
-        const expMs = expSec * 1000;
-        if (expMs - Date.now() > 1800000) {
-          inMemoryJioToken = m[1];
-          inMemoryJioExp = expMs;
-          return inMemoryJioToken;
-        }
-      }
-    } catch (e) {}
-  }
   return inMemoryJioToken || null;
-}
-
-async function getOrMintJioToken(creds) {
-  if (inMemoryJioToken && inMemoryJioExp - Date.now() > 1800000) {
-    return inMemoryJioToken;
-  }
-  if (creds && creds.authToken) {
-    const personalTok = await mintJioLiveToken(creds);
-    if (personalTok) return personalTok;
-  }
-  return await fetchLiveToken();
 }
 
 function buildJioPlaylist(host, token = "") {
@@ -201,14 +163,14 @@ export default {
 
     // 2. Health & Status check
     if (p === "/health" || p === "/status") {
-      const activeToken = await getOrMintJioToken(creds);
+      const activeToken = inMemoryJioToken || (creds && (await mintJioLiveToken(creds)));
       return Response.json({
         ok: true,
         service: "jtv",
         status: "healthy",
         channels: CHANNELS.length,
         has_live_token: Boolean(activeToken),
-        token_expires_in: inMemoryJioExp ? Math.max(0, Math.floor((inMemoryJioExp - Date.now()) / 1000)) + "s" : "N/A",
+        personal_account_active: Boolean(creds && creds.authToken),
         endpoints: {
           data_json: `https://${host}/`,
           live_m3u: `https://${host}/live.m3u`,
@@ -225,11 +187,9 @@ export default {
       const channelId = playMatch[1];
       try {
         if (!creds || !creds.authToken) {
-          // If no personal credentials, redirect to direct DASH stream with live wildcard token
-          const token = await getOrMintJioToken(creds);
           const channel = CHANNELS.find(c => c["tvg-id"] === channelId);
           if (channel && channel.mpd_url) {
-            const redirectUrl = token ? `${channel.mpd_url}?${token}` : channel.mpd_url;
+            const redirectUrl = inMemoryJioToken ? `${channel.mpd_url}?${inMemoryJioToken}` : channel.mpd_url;
             return Response.redirect(redirectUrl, 302);
           }
           return new Response("Channel not found\n", { status: 404, headers: CORS });
@@ -283,7 +243,10 @@ export default {
     // 4. M3U Playlists (/live.m3u, /playlist.m3u, /personal.m3u, /jiotv.m3u)
     if (p === "/live.m3u" || p === "/playlist.m3u" || p === "/personal.m3u" || p === "/jiotv.m3u" || url.searchParams.has("m3u")) {
       try {
-        const token = await getOrMintJioToken(creds);
+        let token = inMemoryJioToken;
+        if (!token && creds) {
+          token = await mintJioLiveToken(creds);
+        }
         const playlistText = buildJioPlaylist(host, token || "");
         return new Response(playlistText, {
           status: 200,

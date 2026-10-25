@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """
-generate_jiotv.py — JioTV Playlist Generator.
-Fetches active Akamai token, parses channel catalog, and generates playlists/jiotv.m3u.
+generate_jiotv.py — 100% Independent JioTV Playlist Generator.
+Mints live Akamai token via personal credentials (jio_auth), or syncs from
+our own Cloudflare Worker edge (https://jtv.gramnaters.workers.dev/playlist.m3u)
+and local catalogs/jiotv_cookie.json.
+Generates playlists/jiotv.m3u using self-hosted catalogs/jiotv_catalog.json.
+Zero third-party scraper dependencies.
 """
 import os
 import sys
@@ -22,41 +26,11 @@ IST = timezone(timedelta(hours=5, minutes=30))
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "jiotv.m3u")
-CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_catalog.json")
+CATALOG_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_catalog.json")
+COOKIE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_cookie.json")
 
-# Token sources: priority ordered (Direct self-mint, Cloudflare worker edge, and live mirrors)
-TOKEN_SOURCES = [
-    {
-        "name": "JTV Cloudflare Worker Edge",
-        "url": "https://jtv.gramnaters.workers.dev/playlist.m3u",
-        "type": "streaming_lines",
-        "timeout": 8
-    },
-    {
-        "name": "Live Cookie Mirror",
-        "url": "https://raw.githubusercontent.com/sportlive18/Sportlink-wtf/refs/heads/main/cookie.json",
-        "type": "json_flexible",
-        "timeout": 8
-    },
-    {
-        "name": "Live Stream Edge",
-        "url": "https://raw.githubusercontent.com/qwerty180506/Geo/refs/heads/main/jiotv_cf.m3u",
-        "type": "streaming_lines",
-        "timeout": 8
-    },
-    {
-        "name": "Reborn Edge Hub",
-        "url": "https://allinonereborn2.online/jstrweb2/cookies.json",
-        "type": "json_flexible",
-        "timeout": 8
-    }
-]
-
-# Channel catalog sources
-CHANNELS_CATALOG = [
-    "https://raw.githubusercontent.com/qwerty180506/json/refs/heads/main/Geoplus.json",
-    "https://jjtvxweb.pages.dev/jstr4web.json"
-]
+# Our own dedicated Cloudflare Worker edge
+WORKER_EDGE_URL = "https://jtv.gramnaters.workers.dev/playlist.m3u"
 
 USER_AGENT = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
 ORIGIN = "https://www.jiotv.com/"
@@ -72,7 +46,7 @@ def _expiry_hours(cookie):
     return (int(m.group(1)) - int(time.time())) / 3600.0
 
 def fetch_live_cookie():
-    """Fetch a live __hdnea__ wildcard token with validation."""
+    """Fetch live __hdnea__ wildcard token using official APIs and self-hosted edge."""
     print("🔑 Fetching live JioTV token...")
 
     # 1. PRIORITY 1: Direct Self-Minting via Personal JioTV Login
@@ -80,17 +54,15 @@ def fetch_live_cookie():
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         import jio_auth
         creds = None
-        # Check environment variable (e.g. GitHub Secrets)
         if os.environ.get("JIOTV_CREDS"):
             try:
                 creds = json.loads(os.environ["JIOTV_CREDS"])
             except Exception:
                 pass
-        # Check local credentials files
         if not creds:
             for cpath in [
                 os.path.join(ROOT_DIR, "jiotv_creds.json"),
-                r"E:\JioTV\JIOTVServer-main\JIOTVServer-main\tokenData.jiotv"
+                os.path.join(ROOT_DIR, "..", "jiotv_creds.json")
             ]:
                 if os.path.exists(cpath):
                     try:
@@ -107,58 +79,47 @@ def fetch_live_cookie():
                 if hrs > 0.5:
                     print(f"  🎉 [Priority 1] Successfully self-minted wildcard token ({hrs:.1f}h remaining)")
                     return minted
-            print("  ⚠️ Personal JioTV self-mint unavailable (needs fresh login), rolling forward to fallback pool...")
+            print("  ⚠️ Personal JioTV self-mint unavailable, rolling forward...")
     except Exception as e:
         print(f"  ⚠️ Error in personal self-mint check: {e}")
 
-    # 2. PRIORITY 2: Multi-Source Fallback Pool
-    for src in TOKEN_SOURCES:
+    # 2. PRIORITY 2: Check our own Cloudflare Worker Edge
+    try:
+        print("  Checking JTV Cloudflare Worker Edge...")
+        with requests.get(WORKER_EDGE_URL, headers={"User-Agent": "Mozilla/5.0"}, stream=True, timeout=8) as r:
+            if r.status_code == 200:
+                for idx, line in enumerate(r.iter_lines()):
+                    if idx > 80:
+                        break
+                    if not line:
+                        continue
+                    decoded = line.decode("utf-8", errors="ignore")
+                    m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=/\*~hmac=[a-f0-9]+)', decoded)
+                    if m:
+                        cookie = m.group(1)
+                        hrs = _expiry_hours(cookie)
+                        if hrs > 0.5:
+                            print(f"  ✅ Got valid token from JTV Cloudflare Worker Edge ({hrs:.1f}h remaining)")
+                            return cookie
+    except Exception as e:
+        print(f"  ⚠️ Worker edge check warning: {e}")
+
+    # 3. PRIORITY 3: Check local saved cookie file
+    if os.path.exists(COOKIE_FILE):
         try:
-            print(f"  Checking {src['name']}...")
-            cookie = ""
+            with open(COOKIE_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            cookie = data.get("cookie", "")
+            hrs = _expiry_hours(cookie)
+            if hrs > 0.5:
+                print(f"  🔄 Using local active token ({hrs:.1f}h remaining)")
+                return cookie
+        except Exception:
+            pass
 
-            if src["type"] == "streaming_lines":
-                # Ultra-fast line-by-line stream read (0.2s without downloading 2.5MB)
-                with requests.get(src["url"], headers={"User-Agent": "Mozilla/5.0"}, stream=True, timeout=src["timeout"]) as r:
-                    if r.status_code == 200:
-                        for idx, line in enumerate(r.iter_lines()):
-                            if idx > 80:  # Token is always in first ~20 lines
-                                break
-                            if not line:
-                                continue
-                            decoded = line.decode("utf-8", errors="ignore")
-                            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=/\*~hmac=[a-f0-9]+)', decoded)
-                            if m:
-                                cookie = m.group(1)
-                                break
-
-            elif src["type"] == "json_flexible":
-                r = requests.get(src["url"], headers={"User-Agent": "Mozilla/5.0"}, timeout=src["timeout"])
-                if r.status_code == 200:
-                    data = r.json()
-                    # Handle both list and dict formats
-                    items = data if isinstance(data, list) else [data]
-                    for it in items:
-                        if isinstance(it, dict):
-                            c = it.get("cookie", "") or it.get("jioToken", "")
-                            if c.startswith("__hdnea__="):
-                                cookie = c.strip()
-                                break
-
-            if cookie:
-                hrs = _expiry_hours(cookie)
-                if hrs > 0.5:
-                    print(f"  ✅ Got valid token from {src['name']} ({hrs:.1f}h remaining)")
-                    return cookie
-                else:
-                    print(f"  ⚠️ Token from {src['name']} expired or expiring soon ({hrs:.1f}h)")
-        except Exception as e:
-            print(f"  ⚠️ Error from {src['name']}: {e}")
-
-    # Fallback to existing playlist token if still valid
+    # 4. PRIORITY 4: Check existing local playlist
     if os.path.exists(OUTPUT_M3U):
         try:
-            print("  Checking existing local playlist for active token...")
             with open(OUTPUT_M3U, "r", encoding="utf-8") as f:
                 content = f.read(5000)
             m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=/\*~hmac=[a-f0-9]+)', content)
@@ -173,51 +134,36 @@ def fetch_live_cookie():
 
     return ""
 
-def fetch_channels_catalog():
-    print("📡 Fetching JioTV channel catalog...")
-    for src in CHANNELS_CATALOG:
+def load_channels_catalog():
+    print("📡 Loading JioTV channel catalog from self-hosted storage...")
+    if os.path.exists(CATALOG_FILE):
         try:
-            r = requests.get(src, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
-            r.raise_for_status()
-            data = r.json()
-            if isinstance(data, list) and len(data) > 0:
-                print(f"  ✅ Loaded {len(data)} channels from {src.split('/')[-1]}")
-                os.makedirs(os.path.dirname(CATALOG_CACHE_FILE), exist_ok=True)
-                with open(CATALOG_CACHE_FILE, "w", encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False)
-                return data
-        except Exception as e:
-            print(f"  ⚠️ Error loading {src}: {e}")
-
-    # Fallback to cached catalog
-    if os.path.exists(CATALOG_CACHE_FILE):
-        try:
-            with open(CATALOG_CACHE_FILE, "r", encoding="utf-8") as f:
+            with open(CATALOG_FILE, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            print(f"  🔄 Using cached channel catalog ({len(data)} channels)")
+            print(f"  ✅ Loaded {len(data)} channels from {CATALOG_FILE}")
             return data
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"  ❌ Error reading {CATALOG_FILE}: {e}")
     return []
 
 def extract_drm_keys(channel):
-    key_id = channel.get("keyId") or ""
+    key_id = channel.get("key_id") or channel.get("kid") or ""
     key = channel.get("key") or ""
-    if not key_id and isinstance(channel.get("clearkey"), dict) and channel.get("clearkey"):
-        try:
-            key_id, key = next(iter(channel["clearkey"].items()))
-        except StopIteration:
-            pass
+    if not key_id and not key:
+        lic = channel.get("license_key") or ""
+        if ":" in lic:
+            parts = lic.split(":", 1)
+            key_id = parts[0].strip()
+            key = parts[1].strip()
     return key_id, key
 
 def generate_jiotv_playlist():
-    cookie = fetch_live_cookie()
-    channels = fetch_channels_catalog()
-
+    channels = load_channels_catalog()
     if not channels:
-        print("❌ Could not load channel catalog. Aborting.")
+        print("❌ No channels loaded. Aborting.")
         return False
 
+    cookie = fetch_live_cookie()
     if not cookie:
         print("❌ No valid __hdnea__ token found. Aborting.")
         return False
@@ -226,25 +172,25 @@ def generate_jiotv_playlist():
     lines = [
         "#EXTM3U",
         f"#DATE:- {now_ist}",
-        f"# Category: jiotv",
+        "# Category: jiotv",
         f"# Total Channels: {len(channels)}",
+        f"# Cookie: {cookie}",
         ""
     ]
 
     for ch in channels:
-        cid = str(ch.get("id") or "")
-        name = ch.get("name") or "JioTV Channel"
-        cat = ch.get("group") or ch.get("category") or "General"
-        logo = ch.get("logo") or ""
-        url = ch.get("url") or ""
+        cid = str(ch.get("id") or ch.get("tvg-id") or "")
+        name = ch.get("name") or ch.get("channel-name") or "JioTV Channel"
+        cat = ch.get("group") or ch.get("group-title") or ch.get("category") or "General"
+        logo = ch.get("logo") or ch.get("tvg-logo") or ""
+        url = ch.get("url") or ch.get("mpd_url") or ""
         key_id, key = extract_drm_keys(ch)
 
-        # Base stream URL without old query params
         base_url = url.split("?")[0] if "?" in url else url
 
         lines.append(
             f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" '
-            f'group-title="JioTV - {cat}",{name}'
+            f'group-title="JioTV - {cat}",${name}'
         )
 
         is_dash = ".mpd" in base_url.lower()
@@ -255,7 +201,6 @@ def generate_jiotv_playlist():
                 lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
                 lines.append(f"#KODIPROP:inputstream.adaptive.license_key={key_id}:{key}")
 
-        # Kodi & VLC headers
         lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
         lines.append(f"#EXTVLCOPT:http-referrer={REFERER}")
         lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
@@ -267,10 +212,7 @@ def generate_jiotv_playlist():
             "Cookie": cookie
         }
         lines.append(f"#EXTHTTP:{json.dumps(header_dict, ensure_ascii=False)}")
-
-        # Inject fresh cookie into stream URL query params as well
-        stream_url = f"{base_url}?{cookie}"
-        lines.append(stream_url)
+        lines.append(f"{base_url}?{cookie}")
         lines.append("")
 
     content = "\n".join(lines)
@@ -278,10 +220,9 @@ def generate_jiotv_playlist():
     with open(OUTPUT_M3U, "w", encoding="utf-8") as f:
         f.write(content)
 
-    # Save to jiotv_cookie.json
-    cookie_file = os.path.join(ROOT_DIR, "catalogs", "jiotv_cookie.json")
+    # Save to cookie cache
     try:
-        with open(cookie_file, "w", encoding="utf-8") as f:
+        with open(COOKIE_FILE, "w", encoding="utf-8") as f:
             json.dump({
                 "updated_at": get_ist_time(),
                 "source": "https://jtv.gramnaters.workers.dev",

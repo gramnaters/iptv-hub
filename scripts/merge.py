@@ -28,7 +28,7 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 USER_JIOHOTSTAR_URL = "https://jhs.gramnaters.workers.dev/"
 
 # Upstream public feeds
-PUBLIC_PLUG_API = "https://plugxvipplaylist.lovable.app/api/playlist"
+PUBLIC_PLUG_API = ""
 
 # Independent local sources: scripts/generate_*.py -> playlists/*.m3u
 # When one of these loads, its group is skipped in the public feed so the
@@ -77,7 +77,7 @@ LOCAL_OVERRIDES = [
         "group": None,  # keep the group-title carried by the file itself
     },
     {
-        "name": "JioTV (allinonereborn cookie)",
+        "name": "JioTV (direct self-hosted)",
         "file": os.path.join(PLAYLISTS_DIR, "jiotv.m3u"),
         "min_channels": 100,
         "plug_groups": None,  # None => skip every group starting with "Jio TV+"
@@ -239,13 +239,14 @@ def main():
         print(f"✅ {src['name']}: {len(blocks)} channels loaded from {os.path.basename(src['file'])}")
 
     # -------------------------------------------------------------
-    # 3. Fetch Public Feeds (ZEE5, SunNXT, Dangal, Kids, SonyLIV, ...)
+    # 3. Fetch Public Feeds (Disabled: 100% Independent Self-Hosted)
     # -------------------------------------------------------------
-    print(f"\n📡 Fetching comprehensive catalog from {PUBLIC_PLUG_API}...")
-    plug_text = fetch_content(PUBLIC_PLUG_API)
-
-    plug_blocks = extract_channel_blocks(plug_text) if plug_text else []
-    print(f"✅ Loaded {len(plug_blocks)} total public channel items")
+    plug_blocks = []
+    if PUBLIC_PLUG_API:
+        print(f"\n📡 Fetching comprehensive catalog from {PUBLIC_PLUG_API}...")
+        plug_text = fetch_content(PUBLIC_PLUG_API)
+        plug_blocks = extract_channel_blocks(plug_text) if plug_text else []
+        print(f"✅ Loaded {len(plug_blocks)} total public channel items")
 
     # Accumulate public-feed channels, skipping any category we already have
     # from an independent local source (no duplicates).

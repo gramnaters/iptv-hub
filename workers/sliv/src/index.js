@@ -93,35 +93,7 @@ async function getOrRefreshToken(env, force = false) {
     }
   }
 
-  // 1. Try upstream high-availability token resolver first for instant live 100% valid token
-  try {
-    const fallbackRes = await fetch("https://premiumplugx.com/Sliv/sony_playlist.php", {
-      headers: { "User-Agent": USER_AGENT },
-      cf: { cacheTtl: 300 }
-    });
-    if (fallbackRes.ok) {
-      const fbData = await fallbackRes.json();
-      const fbToken = fbData?.cookie?.full_value || "";
-      if (fbToken) {
-        const exp = parseExpiry(fbToken);
-        if (exp - Date.now() > 1800000) {
-          inMemoryToken = fbToken;
-          inMemoryExp = exp;
-          if (env.SONY_CACHE) {
-            try {
-              const ttlSec = Math.max(60, Math.floor((exp - Date.now()) / 1000));
-              await env.SONY_CACHE.put(KV_KEY, fbToken, { expirationTtl: ttlSec });
-            } catch (kvErr) {}
-          }
-          return fbToken;
-        }
-      }
-    }
-  } catch (e) {
-    console.warn("Upstream token fetch warning:", e.message);
-  }
-
-  // 2. Try minting via SonyLIV official API
+  // Direct 100% independent minting via SonyLIV official API
   try {
     const freshToken = await mintToken();
     if (freshToken) {

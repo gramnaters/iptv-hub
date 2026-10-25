@@ -1,7 +1,8 @@
 import { CHANNELS } from "./channels.js";
 
 const USER_AGENT = "com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)";
-const UPSTREAM_BASE = "http://premiumplug.fun/tee/zee5.php";
+const CDN_HOST = "z5ak-cmaflive.zee5.com";
+const CDN_BASE = `https://${CDN_HOST}/cmaf/live`;
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -26,7 +27,8 @@ function formatIST(date) {
   }
 }
 
-function buildPlaylist(host) {
+function buildPlaylist(host, token = "") {
+  const tokenQuery = token ? (token.startsWith("?") ? token : (token.startsWith("hdnts=") ? `?${token}` : `?hdnts=${token}`)) : "";
   const lines = [
     "#EXTM3U",
     "# ZEE5 Direct Stream Playlist v2.5",
@@ -50,14 +52,19 @@ function buildPlaylist(host) {
     lines.push(`#EXTVLCOPT:http-user-agent=${USER_AGENT}`);
     lines.push(`#EXTVLCOPT:http-referrer=https://www.zee5.com/`);
     lines.push(`#EXTHTTP:{"User-Agent":"${USER_AGENT}","Referrer":"https://www.zee5.com/","Origin":"https://www.zee5.com"}`);
-    lines.push(`https://${host}/live/${cid}.m3u8`);
+    if (tokenQuery) {
+      lines.push(`${CDN_BASE}/${cid}/master.m3u8${tokenQuery}`);
+    } else {
+      lines.push(`https://${host}/live/${cid}.m3u8`);
+    }
     lines.push("");
   }
 
   return lines.join("\n").trim() + "\n";
 }
 
-function buildDataJson(host) {
+function buildDataJson(host, token = "") {
+  const tokenQuery = token ? (token.startsWith("?") ? token : (token.startsWith("hdnts=") ? `?${token}` : `?hdnts=${token}`)) : "";
   const channelsData = CHANNELS.map(ch => ({
     name: ch.name,
     slug: ch.id,
@@ -65,7 +72,8 @@ function buildDataJson(host) {
     genre: ch.genre || "Entertainment",
     language: ch.language || "hi",
     logo: ch.logo || "",
-    url: `https://${host}/live/${ch.id}.m3u8`,
+    url: tokenQuery ? `${CDN_BASE}/${ch.id}/master.m3u8${tokenQuery}` : `https://${host}/live/${ch.id}.m3u8`,
+    cdn_direct: `${CDN_BASE}/${ch.id}/master.m3u8`,
     headers: {
       "User-Agent": USER_AGENT,
       "Referer": "https://www.zee5.com/",
@@ -82,14 +90,15 @@ function buildDataJson(host) {
     download_m3u: `https://${host}/playlist.m3u?download=1`,
     view_m3u: `https://${host}/playlist.m3u`,
     cdn: {
-      host: "z5ak-cmaflive.zee5.com",
+      host: CDN_HOST,
       path_base: "/cmaf/live",
-      note: "Streams dynamically resolve Akamai tokens on request via /live/:channel_id.m3u8"
+      pattern: `${CDN_BASE}/{channel_id}/master.m3u8`,
+      note: "Streams resolve directly via official ZEE5 CMAF CDN"
     },
     cookie: {
       name: "hdnts",
       type: "Akamai Dynamic Token",
-      notes: "Dynamic token appended to 302 location when requesting /live/:id.m3u8"
+      active: Boolean(token)
     },
     channels: channelsData
   };
@@ -105,10 +114,12 @@ export default {
       return new Response(null, { headers: CORS });
     }
 
+    const token = env.ZEE5_TOKEN || "";
+
     // Serve raw M3U playlist if ?m3u or /playlist.m3u or /live.m3u or ?download=1
     if (url.searchParams.has("m3u") || path === "/playlist.m3u" || path === "/live.m3u") {
       const isDownload = url.searchParams.has("download") || url.searchParams.get("download") === "1";
-      return new Response(buildPlaylist(host), {
+      return new Response(buildPlaylist(host, token), {
         headers: {
           ...CORS,
           "Content-Type": "application/vnd.apple.mpegurl; charset=utf-8",
@@ -120,7 +131,7 @@ export default {
 
     // Root / or /channels or /data.json -> Structured JSON API
     if (path === "/" || path === "/channels" || path === "/data.json") {
-      return new Response(JSON.stringify(buildDataJson(host), null, 2), {
+      return new Response(JSON.stringify(buildDataJson(host, token), null, 2), {
         headers: {
           ...CORS,
           "Content-Type": "application/json; charset=utf-8",
@@ -146,6 +157,7 @@ export default {
         clean_url: `https://${host}`,
         channels: CHANNELS.length,
         status: "active",
+        token_configured: Boolean(token),
         timestamp: new Date().toISOString()
       }, { headers: CORS });
     }
@@ -157,45 +169,16 @@ export default {
     }
 
     const channelId = match[1];
-    const targetUrl = `${UPSTREAM_BASE}/${channelId}.m3u8`;
+    const tokenQuery = token ? (token.startsWith("?") ? token : (token.startsWith("hdnts=") ? `?${token}` : `?hdnts=${token}`)) : "";
+    const directStreamUrl = `${CDN_BASE}/${channelId}/master.m3u8${tokenQuery}`;
 
-    try {
-      const upstreamRes = await fetch(targetUrl, {
-        method: "GET",
-        headers: {
-          "User-Agent": USER_AGENT,
-        },
-        redirect: "manual",
-      });
-
-      const location = upstreamRes.headers.get("location");
-      if (location && (upstreamRes.status === 302 || upstreamRes.status === 301)) {
-        return new Response(null, {
-          status: 302,
-          headers: {
-            ...CORS,
-            "Location": location,
-            "Cache-Control": "no-store, no-cache, must-revalidate",
-          },
-        });
-      }
-
-      const body = await upstreamRes.arrayBuffer();
-      const headers = new Headers(upstreamRes.headers);
-      for (const [k, v] of Object.entries(CORS)) {
-        headers.set(k, v);
-      }
-      headers.set("Cache-Control", "no-store");
-      return new Response(body, {
-        status: upstreamRes.status,
-        headers,
-      });
-
-    } catch (err) {
-      return new Response(`Error resolving stream: ${err.message}\n`, {
-        status: 502,
-        headers: CORS,
-      });
-    }
+    return new Response(null, {
+      status: 302,
+      headers: {
+        ...CORS,
+        "Location": directStreamUrl,
+        "Cache-Control": "no-store, no-cache, must-revalidate",
+      },
+    });
   },
 };

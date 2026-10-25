@@ -24,30 +24,12 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "jiotv.m3u")
 CATALOG_CACHE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_catalog.json")
 
-# Token sources: priority ordered
+# Token sources: priority ordered (Direct self-mint and our own Cloudflare worker edge)
 TOKEN_SOURCES = [
-    {
-        "name": "Live Edge Streaming API",
-        "url": "https://plugxvipplaylist.lovable.app/api/playlist",
-        "type": "streaming_lines",
-        "timeout": 10
-    },
     {
         "name": "JTV Cloudflare Worker Edge",
         "url": "https://jtv.gramnaters.workers.dev/playlist.m3u",
         "type": "streaming_lines",
-        "timeout": 8
-    },
-    {
-        "name": "Sportlink Mirror",
-        "url": "https://raw.githubusercontent.com/sportlive18/Sportlink-wtf/refs/heads/main/cookie.json",
-        "type": "json_flexible",
-        "timeout": 8
-    },
-    {
-        "name": "AllInOne Reborn Hub",
-        "url": "https://allinonereborn2.online/jstrweb2/cookies.json",
-        "type": "json_flexible",
         "timeout": 8
     }
 ]

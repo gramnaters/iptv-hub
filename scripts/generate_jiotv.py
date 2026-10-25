@@ -20,6 +20,7 @@ import os
 import sys
 import re
 import json
+import base64
 import time
 import datetime
 import requests
@@ -225,6 +226,15 @@ def generate():
         return False
     print(f"  {len(channels)} channels in catalog")
 
+    # Locate the .wvd device file (Widevine L3 CDM) for ClearKey extraction.
+    wvd_path = os.environ.get("JIOTV_WVD")
+    if not wvd_path:
+        for p in [os.path.join(ROOT_DIR, "device.wvd"),
+                  os.path.join(ROOT_DIR, "wvd", "device.wvd")]:
+            if os.path.exists(p):
+                wvd_path = p
+                break
+
     print("🔧 Resolving streams (BTS → mobile fallback)...")
     out = []
     with ThreadPoolExecutor(max_workers=12) as ex:
@@ -236,11 +246,44 @@ def generate():
 
     hls = sum(1 for _, (k, *_) in out if k == "hls")
     dash = sum(1 for _, (k, *_) in out if k == "dash")
-    print(f"  resolved: {len(out)} ({hls} HLS, {dash} DASH-Widevine)")
+    print(f"  resolved: {len(out)} ({hls} HLS, {dash} DASH)")
 
     if len(out) < 50:
         print("❌ Too few channels — aborting.")
         return False
+
+    # --- ClearKey extraction for DASH (premium) channels ---
+    if dash and wvd_path:
+        print(f"🔓 Extracting ClearKey for {dash} premium channels (pywidevine + .wvd)...")
+        import generate_jiotv_keys as jk
+
+        def _extract(ch, kind, url, cookie, lic):
+            if kind != "dash":
+                return kind, url, cookie, lic
+            try:
+                pssh = jk.get_pssh(url, cookie)
+                if not pssh:
+                    return "dash", url, cookie, lic
+                keys = jk.extract_keys(wvd_path, pssh, lic, cookie, creds, str(ch["channel_id"]))
+                if not keys:
+                    return "dash", url, cookie, lic
+                first = keys[0]
+                kid_hex = base64.urlsafe_b64decode(first["kid"] + "==").hex()
+                key_hex = base64.urlsafe_b64decode(first["k"] + "==").hex()
+                return "clearkey", url, cookie, f"{kid_hex}:{key_hex}"
+            except Exception:
+                return "dash", url, cookie, lic
+
+        extracted = []
+        for ch, (kind, url, cookie, lic) in out:
+            if kind == "dash":
+                time.sleep(0.25)  # avoid license-server rate limiting
+            extracted.append((ch, _extract(ch, kind, url, cookie, lic)))
+        out = extracted
+
+    clear = sum(1 for _, (k, *_) in out if k == "clearkey")
+    dash_remaining = sum(1 for _, (k, *_) in out if k == "dash")
+    print(f"  clearkey: {clear}, dash(no key): {dash_remaining}")
 
     lines = ["#EXTM3U", f"# Total Channels: {len(out)}", ""]
     for ch, (kind, url, cookie, lic) in out:
@@ -257,7 +300,15 @@ def generate():
             lines.append(f"#EXTVLCOPT:http-user-agent={STB_UA}")
             lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
             lines.append(url)
-        else:  # dash
+        elif kind == "clearkey":
+            lines.append("#KODIPROP:inputstream=inputstream.adaptive")
+            lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
+            lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
+            lines.append(f"#KODIPROP:inputstream.adaptive.license_key={lic}")
+            lines.append(f"#EXTVLCOPT:http-user-agent={STB_UA}")
+            lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
+            lines.append(url)
+        else:  # dash (Widevine fallback, no extracted key)
             lines.append("#KODIPROP:inputstream=inputstream.adaptive")
             lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
             lines.append("#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha")

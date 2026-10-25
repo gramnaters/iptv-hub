@@ -24,12 +24,14 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install requests pycryptodome
+          pip install requests pycryptodome pywidevine
 
       - name: Generate independent source playlists
         env:
           JIOTV_CREDS: ${{ secrets.JIOTV_CREDS }}
+          JIOTV_WVD: ${{ secrets.JIOTV_WVD }}
         run: |
+          if [ -n "$JIOTV_WVD" ]; then echo "$JIOTV_WVD" | base64 -d > device.wvd; fi
           python scripts/generate_jiotv.py   || echo "::warning::jiotv generator failed"
           python scripts/generate_vzy.py     || echo "::warning::vzy generator failed"
           python scripts/generate_fancode.py || echo "::warning::fancode generator failed"

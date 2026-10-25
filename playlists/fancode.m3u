@@ -1,20 +1,50 @@
 #EXTM3U
-#DATE:- 25-10-2026 09:51:39 IST
+#DATE:- 25-10-2026 18:38:14 IST
 # Category: fancode
-# Total Channels: 3
+# Total Channels: 9
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
-#EXTINF:-1 tvg-id="139980" tvg-name="Race Day" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Grand-Prix-of-Australiaold-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Race Day
+#EXTINF:-1 tvg-id="4250516" tvg-name="United Arab Emirates Vs Netherlands" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/ICC-CWC-League_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | United Arab Emirates Vs Netherlands
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/139980_english_hls_4fd0f7b58694482_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250516_english_hls_794c5fa68798836_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4249845" tvg-name="Sydney Fc Vs Adelaide United" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249845_53101_SYD_ADL_fc-Web_1792223294286.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Sydney Fc Vs Adelaide United
+#EXTINF:-1 tvg-id="4250341" tvg-name="Jersey Vs Kenya" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Jersey Vs Kenya
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249845_english_hls_bf2f0076bc49928_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250341_english_hls_c58feffa0698348_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="4250528" tvg-name="Race Day" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/JK-Tyre-_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Race Day
+#EXTINF:-1 tvg-id="4250342" tvg-name="Denmark Vs Papua New Guinea" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Denmark Vs Papua New Guinea
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250528_english_hls_5f5972517d95754_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250342_english_hls_9a7010219d23415_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4250486" tvg-name="Emirates Red Vs Emirates Blues" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250486_53130_EMR_EMB_fc-web_1792412929389.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Emirates Red Vs Emirates Blues
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250486_english_hls_ff87bb499147285_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4249768" tvg-name="Nigeria Vs Uganda" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249768_53093_NGR_UGA_FC-Web_1792493252642.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Nigeria Vs Uganda
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249768_english_hls_eaae84509f5630_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4247662" tvg-name="Athletic Club Vs Getafe Cf" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4247662_53004_ATH_GEF_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Athletic Club Vs Getafe Cf
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4247662_english_hls_f5356a937d62956_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4249202" tvg-name="Crystal Palace Women Vs Chelsea F.c. Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249202_53038_CP-W_CHE-W_fc-app.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Crystal Palace Women Vs Chelsea F.c. Women
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249202_english_hls_59513ac5e836839_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4250110" tvg-name="Ce Sabadell Vs Tenerife" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250110_53017_CES_TFE_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Ce Sabadell Vs Tenerife
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250110_english_hls_4d48dae3cf7683_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4250159" tvg-name="Finals" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Yonex-French-Open-2026_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Finals
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250159_english_hls_f0bf5565811704_1ta-di_h264/index.m3u8

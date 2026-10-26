@@ -19,7 +19,13 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     except Exception:
         pass
 
-GENERATORS = ["generate_jiotv.py", "generate_zee5.py", "generate_vzy.py"]
+GENERATORS = [
+    "generate_jiotv.py",
+    "generate_zee5.py",
+    "generate_vzy.py",
+    "generate_sony.py",
+    "generate_fancode.py"
+]
 
 
 def log(msg):

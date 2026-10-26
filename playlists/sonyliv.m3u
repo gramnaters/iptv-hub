@@ -1,7 +1,7 @@
 #EXTM3U
-#DATE:- 26-10-2026 18:50:52 IST
+#DATE:- 26-10-2026 19:46:36 IST
 # Category: sonyliv
-# Total Channels: 27
+# Total Channels: 24
 # Source: SonyLIV Self-Hosted (Linear + Live Events)
 
 # SonyLIV — 22 channels — token via worker
@@ -73,27 +73,12 @@ https://sliv.gramnaters.workers.dev/sony-ten-5.m3u8
 https://sliv.gramnaters.workers.dev/bbc-earth.m3u8
 
 # --- SonyLIV Live Sports Events ---
-#EXTINF:-1 tvg-id="sonyliv.event.1090550650_ENG" tvg-name="Mohun Bagan Super Giant vs Chennaiyin FC - 26 Oct 2026 [ENG]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026665/1792352683390172_ISL26_MohunBaganSG_vs_ChennaiyinFC_live_landscape_thumb.jpg" tvg-language="ENG" tvg-category="Football" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Mohun Bagan Super Giant vs Chennaiyin FC - 26 Oct 2026 [ENG]
+#EXTINF:-1 tvg-id="sonyliv.event.1090550650" tvg-name="MG Indian Super League 2026-27" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026665/1792352683390172_ISL26_MohunBaganSG_vs_ChennaiyinFC_live_landscape_thumb.jpg" tvg-language="ENG, HIN, TAM, BEN" tvg-category="Sports" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",MG Indian Super League 2026-27
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 #EXTVLCOPT:http-referrer=https://www.sonyliv.com/
-https://sonydaime.akamaized.net/hls/live/2120303/Footlive2610/ENG/std_lrh-800300010.m3u8?hdnea=exp=1793063692~acl=/*~id=90335302692842013860820403133276~hmac=85ff956cc87d748ed69ae9355de193f2dacbb2772c4558cfd6e1a1676773f7f5
+https://sonymtmnew.akamaized.net/v1/master/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaT33a6prod-PlaybackConfig/2120303/Footlive2610/ENG/std_lrl-800300010.m3u8?tracking_params=https://e138b425de774612937f377e0fdfb880.mediatailor.ap-south-1.amazonaws.com/v1/session/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaT33a6prod-PlaybackConfig/master.m3u8&adServer=GAM&hdnea=exp=1793024497~acl=/*~id=39757408555563524813014936879052~hmac=1c3c3dba410c2762a360884d7468d673fc7df164465952737e5c8ad6dcabe8cf
 
-#EXTINF:-1 tvg-id="sonyliv.event.1090550650_HIN" tvg-name="Mohun Bagan Super Giant vs Chennaiyin FC - 26 Oct 2026 [HIN]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026665/1792352683390172_ISL26_MohunBaganSG_vs_ChennaiyinFC_live_landscape_thumb.jpg" tvg-language="HIN" tvg-category="Football" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Mohun Bagan Super Giant vs Chennaiyin FC - 26 Oct 2026 [HIN]
+#EXTINF:-1 tvg-id="sonyliv.event.1090550648" tvg-name="Salute Tiranga Cricket League (STCL) 2026" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026792/1792495920463308_UP_Dhurandhar_vs_Haryana_Lions_landscape_thumb.jpg" tvg-language="HIN" tvg-category="Sports" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Salute Tiranga Cricket League (STCL) 2026
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 #EXTVLCOPT:http-referrer=https://www.sonyliv.com/
-https://sonydaime.akamaized.net/hls/live/2120304/Footlive2610/HIN/std_lrh-800300010.m3u8?hdnea=exp=1793063692~acl=/*~id=90335302692842013860820403133276~hmac=85ff956cc87d748ed69ae9355de193f2dacbb2772c4558cfd6e1a1676773f7f5
-
-#EXTINF:-1 tvg-id="sonyliv.event.1090550650_BEN" tvg-name="Mohun Bagan Super Giant vs Chennaiyin FC - 26 Oct 2026 [BEN]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026665/1792352683390172_ISL26_MohunBaganSG_vs_ChennaiyinFC_live_landscape_thumb.jpg" tvg-language="BEN" tvg-category="Football" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Mohun Bagan Super Giant vs Chennaiyin FC - 26 Oct 2026 [BEN]
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://www.sonyliv.com/
-https://sonydaime.akamaized.net/hls/live/2120302/Footlive2610/BEN/std_lrh-800300010.m3u8?hdnea=exp=1793063692~acl=/*~id=90335302692842013860820403133276~hmac=85ff956cc87d748ed69ae9355de193f2dacbb2772c4558cfd6e1a1676773f7f5
-
-#EXTINF:-1 tvg-id="sonyliv.event.1090550650_TAM" tvg-name="Mohun Bagan Super Giant vs Chennaiyin FC - 26 Oct 2026 [TAM]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026665/1792352683390172_ISL26_MohunBaganSG_vs_ChennaiyinFC_live_landscape_thumb.jpg" tvg-language="TAM" tvg-category="Football" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Mohun Bagan Super Giant vs Chennaiyin FC - 26 Oct 2026 [TAM]
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://www.sonyliv.com/
-https://sonydaime.akamaized.net/hls/live/2120300/Footlive2610/TAM/std_lrh-800300010.m3u8?hdnea=exp=1793063692~acl=/*~id=90335302692842013860820403133276~hmac=85ff956cc87d748ed69ae9355de193f2dacbb2772c4558cfd6e1a1676773f7f5
-
-#EXTINF:-1 tvg-id="sonyliv.event.1090550648_HIN" tvg-name="UP Dhurandhar vs Haryana Lions - 26 Oct 2026 [HIN]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026792/1792495920463308_UP_Dhurandhar_vs_Haryana_Lions_landscape_thumb.jpg" tvg-language="HIN" tvg-category="Cricket" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",UP Dhurandhar vs Haryana Lions - 26 Oct 2026 [HIN]
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://www.sonyliv.com/
-https://sonydaime.akamaized.net/hls/live/2120301/criclive2610/HIN/std_lrh-800300010.m3u8?hdnea=exp=1793063692~acl=/*~id=90335302692842013860820403133276~hmac=85ff956cc87d748ed69ae9355de193f2dacbb2772c4558cfd6e1a1676773f7f5
+https://sonymtmnew.akamaized.net/v1/master/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaTe0ffprod-PlaybackConfig/2120301/criclive2610/HIN/std_lrl-800300010.m3u8?tracking_params=https://e138b425de774612937f377e0fdfb880.mediatailor.ap-south-1.amazonaws.com/v1/session/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaTe0ffprod-PlaybackConfig/master.m3u8&adServer=GAM&hdnea=exp=1793025998~acl=/*~id=41987816606572786516501201904948~hmac=a5e3a7f2e0256d215fa9c8472b88e3967fb6b37a5a6e2e6c87c25e4e9bdb534f

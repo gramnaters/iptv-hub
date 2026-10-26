@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-SonyLIV playlist generator with both Linear 24/7 Channels and Dynamic Live Sports Events.
+SonyLIV playlist generator with Linear 24/7 Channels and Native Live Sports Events.
+Directly extracts live events and mints official Akamai/DAI tokens from SonyLIV's APIs.
 """
 import os
 import re
@@ -55,10 +56,9 @@ CHANNELS = [
     ("bbc-earth", "BBC EARTH", "Infotainment", "English", "https://jiotvimages.cdn.jio.com/dare_images/images/Sony_BBC_Earth_HD.png", "2011907/SonyBBCEarthHD"),
 ]
 
-EVENT_SOURCES = [
-    "https://raw.githubusercontent.com/sayanpal514-hue/SONYLIV-AUTO-UPDATED-PLAYLIST/main/sonyliv.json",
-    "https://raw.githubusercontent.com/sportlive18/Sonyliv-Playlist-Autoupdate/main/sonyliv.json",
-    "https://raw.githubusercontent.com/drmlive/sliv-live-events/main/sonyliv.json",
+TRAY_URLS = [
+    "https://apiv3.sonyliv.com/AGL/4.9/R/ENG/WEB/IN/HR/TRAY/EXTCOLLECTION/224516?layout=spotlight_layout&from=0&to=20",
+    "https://apiv3.sonyliv.com/AGL/4.9/R/ENG/WEB/IN/HR/TRAY/EXTCOLLECTION/3937924064?layout=portrait_layout&from=0&to=20"
 ]
 
 
@@ -81,43 +81,93 @@ def mint_direct_token():
         return None
 
 
-def fetch_live_events():
-    """Fetch active SonyLIV live sports events."""
+def fetch_live_events_native():
+    """Directly fetch active SonyLIV live sports events and mint official tokens."""
     events = []
     seen = set()
 
-    for url in EVENT_SOURCES:
-        try:
-            r = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=10)
-            if r.status_code != 200:
-                continue
-            data = r.json()
-            matches = data.get("matches", [])
-            for m in matches:
-                if not m.get("isLive"):
-                    continue
-                cid = str(m.get("contentId", "")).strip()
-                if not cid or cid in seen:
-                    continue
-                seen.add(cid)
+    headers = {
+        "User-Agent": USER_AGENT,
+        "app_version": "3.6.86",
+        "Referer": SONY_REFERER,
+        "Origin": "https://www.sonyliv.com",
+        "Content-Type": "application/json"
+    }
 
-                name = m.get("match_name") or m.get("event_name")
-                stream_url = m.get("dai_url") or m.get("pub_url")
-                if not name or not stream_url:
+    raw_candidates = []
+    for tray_url in TRAY_URLS:
+        try:
+            r = requests.get(tray_url, headers={"User-Agent": USER_AGENT, "app_version": "3.6.86", "Referer": SONY_REFERER}, timeout=10)
+            if r.status_code == 200:
+                data = r.json()
+                for c in data.get("resultObj", {}).get("containers", []):
+                    meta = c.get("metadata", {})
+                    cid = meta.get("contentId")
+                    if cid and meta.get("isLive") and cid not in seen:
+                        seen.add(cid)
+                        raw_candidates.append({
+                            "id": str(cid),
+                            "title": meta.get("title") or "Live Sports",
+                            "tournament": meta.get("seo_title") or meta.get("title") or "SonyLIV Sports",
+                            "thumb": meta.get("emfAttributes", {}).get("landscape_thumb") or meta.get("emfAttributes", {}).get("thumbnail") or GROUP_LOGO
+                        })
+        except Exception as e:
+            print(f"  ⚠️ SonyLIV tray fetch error: {e}")
+
+    print(f"  Found {len(raw_candidates)} live sports candidates in SonyLIV spotlight trays")
+
+    for cand in raw_candidates:
+        cid = cand["id"]
+        title = cand["title"]
+        prev_url = f"{API_BASE}/AGL/5.0/R/ENG/WEB/IN/UP/CONTENT/VIDEOURL/VOD/{cid}/freepreview?contactId=1359193139"
+        payload = {
+            "actionType": "play",
+            "browser": "Chrome",
+            "deviceId": "3ad207c151e544d0a899f8b20caf15d4-1785671326584",
+            "os": "Windows",
+            "platform": "web",
+            "hasLAURLEnabled": True,
+            "adsParams": {"Idtype": "uuid", "Is_lat": "0", "ppid": "44023a12a37c7644c4341eb7941bfbc6", "preroll": "disable"}
+        }
+
+        try:
+            pr = requests.post(prev_url, json=payload, headers=headers, timeout=12)
+            if pr.status_code == 200:
+                res_obj = pr.json().get("resultObj", {})
+                vurl = res_obj.get("videoURL")
+                dai_key = res_obj.get("dai_asset_key")
+                stream_url = vurl
+                if not stream_url and dai_key:
+                    stream_url = f"https://dai.google.com/linear/hls/event/{dai_key}/master.m3u8"
+
+                if not stream_url:
                     continue
+
+                # Quick verification of stream manifest
+                try:
+                    vr = requests.get(stream_url, headers={"User-Agent": USER_AGENT, "Referer": SONY_REFERER}, timeout=8)
+                    if vr.status_code != 200:
+                        print(f"  ⚠️ Stream verification returned HTTP {vr.status_code} for {cid}")
+                        continue
+                except Exception as ve:
+                    print(f"  ⚠️ Stream verification failed for {cid}: {ve}")
+                    continue
+
+                langs = [l.get("audioLanguageName") for l in res_obj.get("audioLanguages", []) if l.get("audioLanguageName")]
+                lang_str = ", ".join(langs) if langs else "English"
 
                 events.append({
                     "id": cid,
-                    "name": name,
-                    "event_name": m.get("event_name", ""),
-                    "category": m.get("event_category", "Sports"),
-                    "lang": m.get("audioLanguageName", "English"),
-                    "logo": m.get("src") or GROUP_LOGO,
-                    "channel": m.get("broadcast_channel", ""),
+                    "name": title,
+                    "event_name": cand["tournament"],
+                    "category": "Sports",
+                    "lang": lang_str,
+                    "logo": cand["thumb"],
                     "url": stream_url
                 })
-        except Exception as e:
-            print(f"  ⚠️ Event source {url} fetch error: {e}")
+                print(f"  ✓ Minted native stream for [{cid}] {title}")
+        except Exception as ex:
+            print(f"  ⚠️ Error minting token for [{cid}]: {ex}")
 
     return events
 
@@ -152,10 +202,10 @@ def generate_playlist():
                 linear_lines.append(f"{CDN_BASE}/{path}/master.m3u8?{token}")
                 linear_lines.append("")
 
-    # Fetch dynamic live sports events
-    print("📡 Fetching active SonyLIV live sports events...")
-    live_events = fetch_live_events()
-    print(f"  Found {len(live_events)} active live events")
+    # Fetch dynamic live sports events natively
+    print("📡 Fetching active SonyLIV live sports events natively...")
+    live_events = fetch_live_events_native()
+    print(f"  Total verified native live events: {len(live_events)}")
 
     event_lines = []
     if live_events:

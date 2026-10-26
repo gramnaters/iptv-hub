@@ -2,8 +2,8 @@ name: Auto Refresh Playlists
 
 on:
   schedule:
-    # Run every 4 hours to ensure tokens never expire
-    - cron: '0 */4 * * *'
+    # Run every 2 hours to ensure sports events and tokens stay fresh
+    - cron: '0 */2 * * *'
   workflow_dispatch:
 
 permissions:

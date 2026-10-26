@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SonyLIV playlist generator.
+SonyLIV playlist generator with both Linear 24/7 Channels and Dynamic Live Sports Events.
 """
 import os
 import re
@@ -23,8 +23,10 @@ SLIV_PLAYLIST = "https://sliv.gramnaters.workers.dev/playlist.m3u"
 API_BASE = "https://apiv2.sonyliv.com"
 CDN_BASE = "https://dishmt.slivcdn.com/hls/live"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+SONY_REFERER = "https://www.sonyliv.com/"
 
 GROUP = "Sony LIV"
+EVENTS_GROUP = "Sonyliv events"
 GROUP_LOGO = "https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png"
 MIN_CHANNELS = 5
 
@@ -53,6 +55,12 @@ CHANNELS = [
     ("bbc-earth", "BBC EARTH", "Infotainment", "English", "https://jiotvimages.cdn.jio.com/dare_images/images/Sony_BBC_Earth_HD.png", "2011907/SonyBBCEarthHD"),
 ]
 
+EVENT_SOURCES = [
+    "https://raw.githubusercontent.com/sayanpal514-hue/SONYLIV-AUTO-UPDATED-PLAYLIST/main/sonyliv.json",
+    "https://raw.githubusercontent.com/sportlive18/Sonyliv-Playlist-Autoupdate/main/sonyliv.json",
+    "https://raw.githubusercontent.com/drmlive/sliv-live-events/main/sonyliv.json",
+]
+
 
 def mint_direct_token():
     try:
@@ -73,68 +81,121 @@ def mint_direct_token():
         return None
 
 
+def fetch_live_events():
+    """Fetch active SonyLIV live sports events."""
+    events = []
+    seen = set()
+
+    for url in EVENT_SOURCES:
+        try:
+            r = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=10)
+            if r.status_code != 200:
+                continue
+            data = r.json()
+            matches = data.get("matches", [])
+            for m in matches:
+                if not m.get("isLive"):
+                    continue
+                cid = str(m.get("contentId", "")).strip()
+                if not cid or cid in seen:
+                    continue
+                seen.add(cid)
+
+                name = m.get("match_name") or m.get("event_name")
+                stream_url = m.get("dai_url") or m.get("pub_url")
+                if not name or not stream_url:
+                    continue
+
+                events.append({
+                    "id": cid,
+                    "name": name,
+                    "event_name": m.get("event_name", ""),
+                    "category": m.get("event_category", "Sports"),
+                    "lang": m.get("audioLanguageName", "English"),
+                    "logo": m.get("src") or GROUP_LOGO,
+                    "channel": m.get("broadcast_channel", ""),
+                    "url": stream_url
+                })
+        except Exception as e:
+            print(f"  ⚠️ Event source {url} fetch error: {e}")
+
+    return events
+
+
 def generate_playlist():
-    print(f"📡 Fetching SonyLIV playlist from {SLIV_PLAYLIST}...")
-    text = ""
+    print(f"📡 Fetching SonyLIV linear playlist from {SLIV_PLAYLIST}...")
+    linear_lines = []
     try:
         r = requests.get(SLIV_PLAYLIST, timeout=20)
         if r.status_code == 200 and r.text.count("#EXTINF") >= MIN_CHANNELS:
-            text = r.text
+            for line in r.text.splitlines():
+                if line.startswith("#EXTM3U") or line.startswith("# Total") or line.startswith("# Source") or line.startswith("#DATE"):
+                    continue
+                if line.startswith("#EXTINF"):
+                    line = re.sub(
+                        r'group-title="[^"]*"',
+                        f'group-title="{GROUP}" group-logo="{GROUP_LOGO}"',
+                        line,
+                    )
+                linear_lines.append(line)
     except Exception as e:
         print(f"  ⚠️ Worker fetch error: {e}")
 
-    now_ist = datetime.now(IST).strftime("%d-%m-%Y %H:%M:%S IST")
-
-    if text and text.count("#EXTINF") >= MIN_CHANNELS:
-        count = text.count("#EXTINF")
-        body = []
-        for line in text.splitlines():
-            if line.startswith("#EXTM3U") or line.startswith("# Total") or line.startswith("# Source"):
-                continue
-            if line.startswith("#EXTINF"):
-                line = re.sub(
-                    r'group-title="[^"]*"',
-                    f'group-title="{GROUP}" group-logo="{GROUP_LOGO}"',
-                    line,
-                )
-            body.append(line)
-
-        lines = [
-            "#EXTM3U",
-            f"#DATE:- {now_ist}",
-            "# Category: sonyliv",
-            f"# Total Channels: {count}",
-            f"# Source: {SLIV_PLAYLIST}",
-            "",
-        ] + body
-    else:
+    if not linear_lines:
         print("  🔑 Fetching direct Sony API wildcard token...")
         token = mint_direct_token()
-        if not token:
-            print("  ❌ Direct token mint failed; keeping existing playlist")
-            return False
+        if token:
+            for cid, name, cat, lang, logo, path in CHANNELS:
+                extinf = f'#EXTINF:-1 tvg-id="{cid}.sonyliv" tvg-name="{name}" tvg-logo="{logo}" tvg-language="{lang}" tvg-category="{cat}" group-title="{GROUP}" group-logo="{GROUP_LOGO}",{name}'
+                linear_lines.append(extinf)
+                linear_lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
+                linear_lines.append(f"{CDN_BASE}/{path}/master.m3u8?{token}")
+                linear_lines.append("")
 
-        lines = [
-            "#EXTM3U",
-            f"#DATE:- {now_ist}",
-            "# Category: sonyliv",
-            f"# Total Channels: {len(CHANNELS)}",
-            "# Source: SonyLIV Direct API",
-            "",
-        ]
-        for cid, name, cat, lang, logo, path in CHANNELS:
-            extinf = f'#EXTINF:-1 tvg-id="{cid}.sonyliv" tvg-name="{name}" tvg-logo="{logo}" tvg-language="{lang}" tvg-category="{cat}" group-title="{GROUP}" group-logo="{GROUP_LOGO}",{name}'
-            lines.append(extinf)
-            lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
-            lines.append(f"{CDN_BASE}/{path}/master.m3u8?{token}")
-            lines.append("")
+    # Fetch dynamic live sports events
+    print("📡 Fetching active SonyLIV live sports events...")
+    live_events = fetch_live_events()
+    print(f"  Found {len(live_events)} active live events")
+
+    event_lines = []
+    if live_events:
+        event_lines.append("# --- SonyLIV Live Sports Events ---")
+        for ev in live_events:
+            tid = f"sonyliv.event.{ev['id']}"
+            name = ev["name"]
+            logo = ev["logo"]
+            lang = ev["lang"]
+            cat = ev["category"]
+            url = ev["url"]
+
+            extinf = (
+                f'#EXTINF:-1 tvg-id="{tid}" tvg-name="{name}" tvg-logo="{logo}" '
+                f'tvg-language="{lang}" tvg-category="{cat}" group-title="{EVENTS_GROUP}" group-logo="{GROUP_LOGO}",{name}'
+            )
+            event_lines.append(extinf)
+            event_lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
+            event_lines.append(f"#EXTVLCOPT:http-referrer={SONY_REFERER}")
+            event_lines.append(url)
+            event_lines.append("")
+
+    now_ist = datetime.now(IST).strftime("%d-%m-%Y %H:%M:%S IST")
+    total_count = (len(linear_lines) // 3) + len(live_events)
+
+    lines = [
+        "#EXTM3U",
+        f"#DATE:- {now_ist}",
+        "# Category: sonyliv",
+        f"# Total Channels: {total_count}",
+        f"# Source: SonyLIV Self-Hosted (Linear + Live Events)",
+        "",
+    ] + linear_lines + ([""] if event_lines else []) + event_lines
 
     os.makedirs(os.path.dirname(OUTPUT_M3U), exist_ok=True)
     with open(OUTPUT_M3U, "w", encoding="utf-8") as f:
         f.write("\n".join(lines).strip() + "\n")
 
     ch_count = open(OUTPUT_M3U, "r", encoding="utf-8").read().count("#EXTINF")
-    print(f"Generated {OUTPUT_M3U} ({ch_count} SonyLIV channels)")
+    print(f"Generated {OUTPUT_M3U} ({ch_count} total channels: {ch_count - len(live_events)} linear + {len(live_events)} live events)")
     return True
 
 

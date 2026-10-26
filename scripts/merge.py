@@ -67,7 +67,7 @@ LOCAL_OVERRIDES = [
     {
         "name": "ZEE5 (self-generated)",
         "file": os.path.join(PLAYLISTS_DIR, "zee5.m3u"),
-        "min_channels": 50,
+        "min_channels": 10,
         "plug_groups": ["ZEE5", "ZEE5 India", "ZEE5 Worldwide"],
         "group": None,  # keep the group-title carried by the file itself
     },
@@ -300,7 +300,7 @@ def main():
         "willow": ["Willow"],
         "prime": ["Prime Video"],
         "dangal": ["Dangal Play"],
-        "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ"],
+        "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ", "Kids"],
     }
 
     print("Writing individual playlists...")
@@ -357,8 +357,11 @@ def main():
         "JioTV - Unknown",
         "JioTV - Malyalam",
         # ZEE5
+        "ZEE5",
         "ZEE5 India",
         "ZEE5 Worldwide",
+        "Infotainment",
+        "Kids",
         "Sony LIV",
         "SunNXT",
         "24/7 kids+Goldmines pack",

@@ -357,11 +357,8 @@ def main():
         "JioTV - Unknown",
         "JioTV - Malyalam",
         # ZEE5
-        "ZEE5",
         "ZEE5 India",
         "ZEE5 Worldwide",
-        "Infotainment",
-        "Kids",
         "Sony LIV",
         "SunNXT",
         "24/7 kids+Goldmines pack",

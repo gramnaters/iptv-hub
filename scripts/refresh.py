@@ -24,7 +24,8 @@ GENERATORS = [
     "generate_zee5.py",
     "generate_vzy.py",
     "generate_sony.py",
-    "generate_fancode.py"
+    "generate_fancode.py",
+    "generate_free.py"
 ]
 
 

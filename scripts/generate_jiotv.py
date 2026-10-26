@@ -1,20 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_jiotv.py  Self-hosted JioTV playlist generator (mobile account).
-
-Flow:
-  1. Load mobile creds (jiotv_creds.json or JIOTV_CREDS env).
-  2. Refresh authToken + ssoToken (jio_auth.ensure_fresh).
-  3. Fetch the live channel list (v3.1).
-  4. Per channel, resolve a stream via getchannelurl (v2.1, BTS tier) then
-     fall back to mobile geturl (v1.1):
-       - clear HLS  -> emit as HLS (plays everywhere)
-       - Widevine DASH -> emit as DASH + Widevine license URL (Kodi / OTT
-         Navigator decrypt via their Widevine CDM)
-  5. Write playlists/jiotv.m3u.
-
-The BTS getchannelurl endpoint (tv.media.jio.com) returns premium channels
-(Sony/Star/Colors) that mobile geturl 403s, unlocking ~1040 of 1052 channels.
+JioTV playlist generator.
 """
 import os
 import sys
@@ -70,7 +56,7 @@ def load_creds():
 
 
 def fetch_channels(creds):
-    # 1. try the live channel list (works on residential IP, 450 on datacenter)
+    # Fetch live channel list
     try:
         headers = jio_auth.auth_headers(creds)
         url = ("https://jiotvapi.cdn.jio.com/apis/v3.1/getMobileChannelList/get/"
@@ -82,7 +68,7 @@ def fetch_channels(creds):
             return chans
     except Exception:
         pass
-    # 2. fall back to the baked snapshot (catalogs/jiotv_channels.json)
+    # Fallback to catalog snapshot
     snap = os.path.join(ROOT_DIR, "catalogs", "jiotv_channels.json")
     if os.path.exists(snap):
         with open(snap, "r", encoding="utf-8") as f:
@@ -91,7 +77,7 @@ def fetch_channels(creds):
 
 
 def _getchannelurl(ch, creds):
-    """tv.media.jio.com getchannelurl v2.1  returns HLS + DASH(Widevine) + license."""
+    """Fetch stream details from STB endpoint."""
     cid = ch["channel_id"]
     sso = creds.get("ssoToken", "")
     sub = creds.get("subscriberId", "")
@@ -121,7 +107,7 @@ def _getchannelurl(ch, creds):
 
 
 def _mob_geturl(ch, creds):
-    """mobile geturl v1.1  clear HLS for free tier."""
+    """Fetch stream details from mobile endpoint."""
     cid = ch["channel_id"]
     sub = creds.get("subscriberId", "")
     dev = creds.get("deviceId", "3c6d6b5702fa09bd")
@@ -253,9 +239,7 @@ def generate():
         return False
     print(f"  {len(channels)} channels in catalog")
 
-    # Locate the .wvd device file (Widevine L3 CDM) for ClearKey extraction.
-    # Prefer decoding JIOTV_WVD (base64) in Python  shell `echo | base64 -d`
-    # mangles long secrets. Falls back to a local device.wvd if present.
+    # Locate Widevine device file
     wvd_path = _ensure_wvd()
     if wvd_path:
         import hashlib
@@ -352,8 +336,7 @@ def generate():
         clear_early = sum(1 for _, (k, *_) in out if k == "clearkey")
         print(f"  ClearKey verified: {clear_early}/{dash} ({len(fresh)} new, {len(cache)} cached)")
 
-    # DASH entries without a key that matches the manifest are unplayable on
-    # this account. Keep them out of the playlist unless JIO_KEEP_DASH=1.
+    # Filter unkeyed DASH channels unless JIO_KEEP_DASH=1
     blocked = [(ch, t[1]) for ch, t in out if t[0] == "dash"]
     if blocked and os.environ.get("JIO_KEEP_DASH") != "1":
         out = [(ch, t) for ch, t in out if t[0] != "dash"]

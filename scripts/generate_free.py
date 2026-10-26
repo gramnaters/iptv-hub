@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Free channels playlist generator.
+"""
 import json
 import os
 import sys
@@ -63,7 +66,7 @@ def generate_playlist():
     with open(OUTPUT_M3U, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
-    print(f"✅ Generated {OUTPUT_M3U} ({len(channels)} free channels)")
+    print(f"Generated {OUTPUT_M3U} ({len(channels)} free channels)")
     return True
 
 

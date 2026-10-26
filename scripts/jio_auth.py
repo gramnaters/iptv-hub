@@ -1,14 +1,6 @@
 #!/usr/bin/env python3
 """
-jio_auth.py — JioTV mobile account auth + token manager.
-
-Mirrors the current JioTV app (v7.1.8) request profile:
-  - appkey  NzNiMDhlYzQyNjJm
-  - versionCode 422, User-Agent okhttp/4.12.0
-  - OTP login (v1), accessToken refresh, ssoToken refresh.
-
-Used by generate_jiotv.py to keep the mobile session alive and mint
-per-channel clear-HLS stream tokens. No third-party services.
+JioTV mobile authentication module.
 """
 import os
 import sys

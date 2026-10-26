@@ -34,12 +34,6 @@ Automated aggregator and stream engine for Live TV & Sports. Runs 100% autonomou
 
 ---
 
-## 🛠️ Architecture & Source Code
+## 🛠️ Architecture
 
-All Cloudflare Worker source code is housed in [`workers/`](file:///workers/):
-- **`workers/jtv`**: Autonomous JioTV Stream Engine + Personal Real-time Minter (`/live/:id.m3u8`).
-- **`workers/live`**: Master playlist edge caching and token self-healing router.
-- **`workers/jhs`**: JioHotstar token minter powered by Cloudflare Browser Rendering Puppeteer.
-- **`workers/zee`**: ZEE5 Live Stream resolving proxy.
-
-Automated updates are scheduled every 4 hours via GitHub Actions (`.github/workflows/update.yml`), keeping all tokens permanently rolled forward.
+Automated updates are scheduled every 4 hours via GitHub Actions (`.github/workflows/update.yml`), keeping playlist sources and tokens refreshed autonomously in the cloud without requiring local PC uptime.

@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
-"""Refresh every self-hosted source, rebuild Combined.m3u and push.
-
-Run from Task Scheduler every ~25 minutes while the machine is online.
-JioTV premium URLs and ZEE5 playback tokens expire after roughly an hour,
-so the playlist has to be re-minted on that cadence.
+"""
+IPTV playlist refresh runner.
 """
 import argparse
 import datetime

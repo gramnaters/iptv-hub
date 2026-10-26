@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Master IPTV playlist merge and aggregation engine.
+"""
 import os
 import sys
 import re
@@ -24,15 +27,14 @@ EPG_URL = "https://avkb.short.gy/jioepg.xml.gz"
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 
-# User's dedicated independent JioHotstar worker
+# JioHotstar source URL
 USER_JIOHOTSTAR_URL = "https://jhs.gramnaters.workers.dev/playlist.m3u"
 
 # Upstream public feeds
 PUBLIC_PLUG_API = ""
 
 # Independent local sources: scripts/generate_*.py -> playlists/*.m3u
-# When one of these loads, its group is skipped in the public feed so the
-# independent copy wins and there are no duplicates.
+# Local playlist configurations
 LOCAL_OVERRIDES = [
     {
         "name": "VZY",
@@ -112,7 +114,7 @@ def fetch_content(url, timeout=35, retries=2):
             return r.text
         except Exception as e:
             if attempt == retries - 1:
-                print(f"⚠️ Error fetching {url}: {e}")
+                print(f"Error fetching {url}: {e}")
             time.sleep(2)
     return ""
 
@@ -134,7 +136,7 @@ def extract_channel_blocks(raw_text):
     return blocks
 
 def clean_watermarks_from_block(block):
-    """Purge unwanted watermarks or promotional metadata from blocks."""
+    """Remove unwanted watermarks or promotional metadata."""
     cleaned = []
     watermark_patterns = [
         r'DOCTOR\s*STRANGE',
@@ -164,11 +166,11 @@ def load_local_playlist(path, min_channels=1):
         with open(path, "r", encoding="utf-8") as f:
             text = f.read()
     except Exception as e:
-        print(f"⚠️ Could not read {path}: {e}")
+        print(f"Could not read {path}: {e}")
         return []
     blocks = extract_channel_blocks(text)
     if len(blocks) < min_channels:
-        print(f"⚠️ {os.path.basename(path)} has only {len(blocks)} channels (needs >= {min_channels}), ignoring")
+        print(f"{os.path.basename(path)} has only {len(blocks)} channels (needs >= {min_channels}), ignoring")
         return []
     return [clean_watermarks_from_block(b) for b in blocks]
 
@@ -191,9 +193,7 @@ def classify_jiohotstar(blocks, out):
 
 
 def main():
-    print("=" * 60)
-    print(f"🚀 Master IPTV Auto-Updater starting at {get_current_ist()}")
-    print("=" * 60)
+    print(f"Master IPTV Auto-Updater starting at {get_current_ist()}")
     os.makedirs(PLAYLISTS_DIR, exist_ok=True)
 
     all_channels_by_group = {}
@@ -201,14 +201,14 @@ def main():
     # -------------------------------------------------------------
     # 1. Fetch User's Independent JioHotstar Feed (own JioHotstar group)
     # -------------------------------------------------------------
-    print(f"\n⭐ Fetching independent JioHotstar from {USER_JIOHOTSTAR_URL}...")
+    print(f"Fetching JioHotstar from {USER_JIOHOTSTAR_URL}...")
     jhs_text = fetch_content(USER_JIOHOTSTAR_URL)
     if jhs_text:
         jhs_blocks = [clean_watermarks_from_block(b) for b in extract_channel_blocks(jhs_text)]
         classify_jiohotstar(jhs_blocks, all_channels_by_group)
-        print(f"✅ Loaded {len(jhs_blocks)} independent JioHotstar channels")
+        print(f"Loaded {len(jhs_blocks)} independent JioHotstar channels")
     else:
-        print("⚠️ Could not load independent JioHotstar, check worker status")
+        print("Could not load independent JioHotstar, check worker status")
 
     # -------------------------------------------------------------
     # 2. Independent local sources (channels/*.json -> playlists/*.m3u)
@@ -219,11 +219,11 @@ def main():
     skip_from_plug.add("zee5 india")
     skip_jiotv_from_plug = False      # "Jio TV+ *" groups
 
-    print("\n🔒 Loading independent local sources...")
+    print("Loading local sources...")
     for src in LOCAL_OVERRIDES:
         blocks = load_local_playlist(src["file"], src["min_channels"])
         if not blocks:
-            print(f"⚠️ {src['name']}: local playlist unavailable -> falling back to public feed")
+            print(f"{src['name']}: local playlist unavailable -> falling back to public feed")
             continue
         if src["group"]:
             all_channels_by_group.setdefault(src["group"], []).extend(blocks)
@@ -236,7 +236,7 @@ def main():
         else:
             for g in src["plug_groups"]:
                 skip_from_plug.add(g.lower())
-        print(f"✅ {src['name']}: {len(blocks)} channels loaded from {os.path.basename(src['file'])}")
+        print(f"{src['name']}: {len(blocks)} channels loaded from {os.path.basename(src['file'])}")
 
     # -------------------------------------------------------------
     # 3. Fetch Public Feeds (Disabled: 100% Independent Self-Hosted)
@@ -246,7 +246,7 @@ def main():
         print(f"\n📡 Fetching comprehensive catalog from {PUBLIC_PLUG_API}...")
         plug_text = fetch_content(PUBLIC_PLUG_API)
         plug_blocks = extract_channel_blocks(plug_text) if plug_text else []
-        print(f"✅ Loaded {len(plug_blocks)} total public channel items")
+        print(f"Loaded {len(plug_blocks)} total public channel items")
 
     # Accumulate public-feed channels, skipping any category we already have
     # from an independent local source (no duplicates).
@@ -263,7 +263,7 @@ def main():
         cleaned_b = clean_watermarks_from_block(b)
         all_channels_by_group.setdefault(grp, []).append(cleaned_b)
     if skipped_groups:
-        print(f"⏭️  Skipped {len(skipped_groups)} public-feed group(s) (local copy wins or category disabled): {', '.join(sorted(skipped_groups))}")
+        print(f"Skipped {len(skipped_groups)} public-feed group(s) (local copy wins or category disabled): {', '.join(sorted(skipped_groups))}")
 
     # -------------------------------------------------------------
     # 3. Add Extra Feeds (Willow, Prime Video)
@@ -285,7 +285,7 @@ def main():
                     else:
                         norm_b.append(l)
                 norm_eblocks.append(clean_watermarks_from_block(norm_b))
-            print(f"✅ Loaded {len(norm_eblocks)} channels from {name}")
+            print(f"Loaded {len(norm_eblocks)} channels from {name}")
             all_channels_by_group.setdefault(cfg["group"], []).extend(norm_eblocks)
 
     # -------------------------------------------------------------
@@ -303,7 +303,7 @@ def main():
         "kids": ["24/7 kids+Goldmines pack", "WOW KIDZ"],
     }
 
-    print("\n💾 Writing individual playlists to playlists/...")
+    print("Writing individual playlists...")
     for filename, group_names in individual_categories.items():
         cat_blocks = []
         for g in group_names:
@@ -321,7 +321,7 @@ def main():
     # -------------------------------------------------------------
     # 5. Assemble Master Combined.m3u
     # -------------------------------------------------------------
-    print("\n📦 Generating Master Combined.m3u...")
+    print("Generating Master Combined.m3u...")
 
     # Canonical order of groups (matches the plugx public feed ordering)
     PRIORITY_GROUPS = [
@@ -402,17 +402,15 @@ def main():
     # Write root Combined.m3u
     with open(COMBINED_M3U, "w", encoding="utf-8") as f:
         f.write(combined_content)
-    print(f"✅ Saved root Combined.m3u: {len(combined_content)} bytes ({total_combined_channels} channels)")
+    print(f"Saved root Combined.m3u: {len(combined_content)} bytes ({total_combined_channels} channels)")
 
     # Also write playlists/Combined.m3u for backwards compatibility
     playlists_combined = os.path.join(PLAYLISTS_DIR, "Combined.m3u")
     with open(playlists_combined, "w", encoding="utf-8") as f:
         f.write(combined_content)
-    print(f"✅ Saved playlists/Combined.m3u")
+    print(f"Saved playlists/Combined.m3u")
 
-    print("\n" + "=" * 60)
-    print(f"🎉 MASTER PLAYLIST GENERATED: {total_combined_channels} CHANNELS!")
-    print("=" * 60)
+    print(f"Master playlist generated: {total_combined_channels} channels.")
 
 if __name__ == "__main__":
     main()

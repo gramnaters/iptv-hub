@@ -1,12 +1,6 @@
 #!/usr/bin/env python3
-"""VZY (Dish TV) live TV generator.
-
-The CDN serves each channel three ways: a Widevine/PlayReady DASH
-manifest, a FairPlay HLS manifest and, for free-to-air channels, a plain
-HLS manifest. Only the plain HLS variant is playable without a DRM
-licence, so that is what this generator keeps.
-
-Nothing here depends on third-party key feeds.
+"""
+VZY live TV playlist generator.
 """
 import json
 import os

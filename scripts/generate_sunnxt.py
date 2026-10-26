@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+SunNXT playlist generator.
+"""
 import os
 import sys
 import json
@@ -34,7 +37,7 @@ def fetch_live_pwa_catalog():
             data = r.json()
             return data.get("results", [])
     except Exception as e:
-        print(f"⚠️ Notice: Could not sync with SunNXT PWA API: {e}")
+        print(f"Could not sync with SunNXT PWA API: {e}")
     return []
 
 def check_stream_health(channel):
@@ -51,12 +54,10 @@ def check_stream_health(channel):
         return channel, False, str(e)
 
 def generate_playlist():
-    print("=" * 60)
-    print(f"🚀 SunNXT Health Checker & Generator [{get_current_ist_str()}]")
-    print("=" * 60)
+    print(f"SunNXT Generator [{get_current_ist_str()}]")
 
     if not os.path.exists(CATALOG_FILE):
-        print(f"❌ Error: Catalog file {CATALOG_FILE} not found!")
+        print(f"Error: Catalog file {CATALOG_FILE} not found!")
         return
 
     with open(CATALOG_FILE, "r", encoding="utf-8") as f:

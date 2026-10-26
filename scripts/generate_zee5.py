@@ -1,12 +1,6 @@
 #!/usr/bin/env python3
-"""ZEE5 India live TV generator.
-
-Mints a guest playback token per channel through ZEE5's own
-singlePlayback API and writes the returned HLS URL (with a fresh hdnts
-token, ~50 min) to playlists/zee5.m3u.
-
-Free channels come back with drm="" and play on any player. Premium
-channels answer error 3804 unless the account carries a subscription.
+"""
+ZEE5 playlist generator.
 """
 import json
 import os
@@ -33,7 +27,7 @@ API = "https://spapi.zee5.com/singlePlayback/getDetails/secure"
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36")
 
-# Long-lived web platform token (ZEE5 ttl = 86400000 s).
+# Web platform token
 PLATFORM_TOKEN = (
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."
     "eyJwbGF0Zm9ybV9jb2RlIjoiV2ViQCQhdDM4NzEyIiwiaXNzdWVkQXQiOiIyMDI1LTEwLTIyVDAzOjQ4OjA1LjAyOVoiLCJwcm9kdWN0X2NvZGUiOiJ6ZWU1QDk3NSIsInR0bCI6ODY0MDAwMDAsImlhdCI6MTc2MTEwNDg4NX0."

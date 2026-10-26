@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+FanCode playlist generator.
+"""
 import os
 import sys
 import re
@@ -32,7 +35,7 @@ def fetch_text(url, timeout=20):
         r.raise_for_status()
         return r.text
     except Exception as e:
-        print(f"⚠️ Error fetching {url}: {e}")
+        print(f"Error fetching {url}: {e}")
         return ""
 
 
@@ -129,7 +132,7 @@ def generate_fancode_playlist():
     with open(OUTPUT_M3U, "w", encoding="utf-8") as f:
         f.write(content)
 
-    print(f"✅ Generated {OUTPUT_M3U} ({len(entries)} FanCode matches)")
+    print(f"Generated {OUTPUT_M3U} ({len(entries)} FanCode matches)")
     for e in entries[:3]:
         print(f"   - {e['name']} -> {e['url'][:90]}")
 

@@ -1,20 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_jiotv_keys.py — Extract Widevine content keys for JioTV premium (BTS)
-channels using pywidevine + a .wvd device file, and emit ClearKey.
-
-Flow per premium channel:
-  1. getchannelurl (v2.1) -> mpd.result (DASH MPD) + mpd.key (license URL)
-  2. fetch MPD -> extract the Widevine PSSH (cenc:pssh)
-  3. pywidevine Cdm -> challenge the license URL -> content keys (kid:k)
-  4. emit as ClearKey (license_key = kid:k), playable on any player.
-
-The __hdnea__ cookie (from getchannelurl) is carried per channel so the CDN
-serves the MPD + license. Output matches the ji otvpluspro.json / StreamFlex
-format: { contentId, name, mpd, cookie, key }.
-
-Usage:
-  python generate_jiotv_keys.py --wvd path/to/device.wvd [--out catalogs/jiotv_keys.json]
+JioTV Widevine key extraction utility.
 """
 import os
 import sys

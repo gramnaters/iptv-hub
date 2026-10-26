@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+SonyLIV playlist generator.
+"""
 import os
 import re
 import sys
@@ -131,7 +134,7 @@ def generate_playlist():
         f.write("\n".join(lines).strip() + "\n")
 
     ch_count = open(OUTPUT_M3U, "r", encoding="utf-8").read().count("#EXTINF")
-    print(f"✅ Generated {OUTPUT_M3U} ({ch_count} SonyLIV channels)")
+    print(f"Generated {OUTPUT_M3U} ({ch_count} SonyLIV channels)")
     return True
 
 

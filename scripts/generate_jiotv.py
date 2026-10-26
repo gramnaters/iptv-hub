@@ -43,9 +43,76 @@ def expiry_hours(cookie):
     return (int(m.group(1)) - int(time.time())) / 3600.0
 
 
+def try_mint_direct_cookie():
+    """Attempt direct token minting if valid credentials exist."""
+    creds = None
+    if os.environ.get("JIOTV_CREDS"):
+        try:
+            creds = json.loads(os.environ["JIOTV_CREDS"])
+        except Exception:
+            pass
+    if not creds:
+        for p in [os.path.join(ROOT, "jiotv_creds.json"), os.path.join(ROOT, "..", "jiotv_creds.json")]:
+            if os.path.exists(p):
+                try:
+                    with open(p, "r", encoding="utf-8") as f:
+                        creds = json.load(f)
+                    break
+                except Exception:
+                    pass
+    if not creds:
+        return None
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import jio_auth
+        creds = jio_auth.ensure_fresh(creds)
+        auth_token = creds.get("authToken")
+        if not auth_token:
+            return None
+        payload = {"stream_type": "Seek", "channel_id": "144"}
+        headers = {
+            "appkey": "NzNiMDhlYzQyNjJm",
+            "devicetype": "phone",
+            "os": "android",
+            "deviceId": creds.get("deviceId", "3c6d6b5702fa09bd"),
+            "isott": "false",
+            "channel_id": "144",
+            "accesstoken": auth_token,
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "okhttp/4.2.2"
+        }
+        res = requests.post("https://jiotvapi.media.jio.com/playback/apis/v1/geturl?langId=6", data=payload, headers=headers, timeout=8)
+        if res.status_code == 200:
+            result_url = res.json().get("result", "")
+            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=[^~"\'\r\n\s]+~hmac=[a-f0-9]+)', result_url)
+            if m:
+                cookie = m.group(1)
+                if "acl=/*" in cookie:
+                    return cookie
+    except Exception:
+        pass
+    return None
+
+
 def fetch_live_cookie():
     """Fetch active __hdnea__ wildcard token."""
-    # 1. Check self-hosted Cloudflare Worker edge
+    # 1. Check local cookie file (fastest, prevents unnecessary external calls)
+    if os.path.exists(COOKIE_FILE):
+        try:
+            with open(COOKIE_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            cookie = data.get("cookie", "")
+            if expiry_hours(cookie) > 0.5:
+                return cookie
+        except Exception:
+            pass
+
+    # 2. Check direct native SIM minting
+    direct = try_mint_direct_cookie()
+    if direct and expiry_hours(direct) > 0.5:
+        return direct
+
+    # 3. Check self-hosted Cloudflare Worker edge
     try:
         r = requests.get(WORKER_EDGE_URL, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
         if r.status_code == 200:
@@ -57,18 +124,7 @@ def fetch_live_cookie():
     except Exception:
         pass
 
-    # 2. Check local cookie file
-    if os.path.exists(COOKIE_FILE):
-        try:
-            with open(COOKIE_FILE, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            cookie = data.get("cookie", "")
-            if expiry_hours(cookie) > 0.5:
-                return cookie
-        except Exception:
-            pass
-
-    # 3. Fallback to active stream token
+    # 4. Fallback to active stream token
     try:
         r = requests.get(FALLBACK_TOKEN_URL, timeout=12)
         if r.status_code == 200:
@@ -80,7 +136,7 @@ def fetch_live_cookie():
     except Exception:
         pass
 
-    # 4. Existing local playlist
+    # 5. Existing local playlist
     if os.path.exists(OUT):
         try:
             with open(OUT, "r", encoding="utf-8") as f:

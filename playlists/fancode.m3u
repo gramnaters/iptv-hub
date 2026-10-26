@@ -1,7 +1,7 @@
 #EXTM3U
-#DATE:- 26-10-2026 19:53:40 IST
+#DATE:- 26-10-2026 20:28:10 IST
 # Category: fancode
-# Total Channels: 7
+# Total Channels: 6
 # Source: FanCode Self-Hosted Live Sports Events
 
 #EXTINF:-1 tvg-id="fancode.4250488" tvg-name="Abu Dhabi vs Emirates Red" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250488_53130_ABD_EMR_fc-web_1792412929301.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Abu Dhabi vs Emirates Red
@@ -33,8 +33,3 @@ https://dai-fancode.pages.dev/mumbai/4249642_english_hls_e0c44eb71522883_1ta-di_
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250531_english_hls_92c2ef723b55655_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4250355" tvg-name="Sudurpaschim Royals Vs Lumbini Lions" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250355_53124_LBL_SPR_fc-Web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Sudurpaschim Royals Vs Lumbini Lions
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250355_english_hls_7b5a55758122143_1ta-di_h264/index.m3u8

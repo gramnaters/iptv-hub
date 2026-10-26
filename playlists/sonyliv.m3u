@@ -1,7 +1,7 @@
 #EXTM3U
-#DATE:- 26-10-2026 21:05:50 IST
+#DATE:- 26-10-2026 21:14:16 IST
 # Category: sonyliv
-# Total Channels: 22
+# Total Channels: 24
 # Source: SonyLIV Self-Hosted (Linear + Live Events)
 
 # SonyLIV — 22 channels — token via worker
@@ -71,3 +71,14 @@ https://sliv.gramnaters.workers.dev/sony-ten-5.m3u8
 #EXTINF:-1 tvg-id="bbc-earth.sonyliv" tvg-name="BBC EARTH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_BBC_Earth_HD.png" tvg-language="English" tvg-category="Infotainment" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",BBC EARTH
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://sliv.gramnaters.workers.dev/bbc-earth.m3u8
+
+# --- SonyLIV Live Sports Events ---
+#EXTINF:-1 tvg-id="sonyliv.event.1090550650" tvg-name="MG Indian Super League 2026-27" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026665/1792352683390172_ISL26_MohunBaganSG_vs_ChennaiyinFC_live_landscape_thumb.jpg" tvg-language="ENG, HIN, TAM, BEN" tvg-category="Sports" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",MG Indian Super League 2026-27
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://www.sonyliv.com/
+https://sonymtmnew.akamaized.net/v1/master/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaT33a6prod-PlaybackConfig/2120303/Footlive2610/ENG/std_lrl-800300010.m3u8?tracking_params=https://e138b425de774612937f377e0fdfb880.mediatailor.ap-south-1.amazonaws.com/v1/session/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaT33a6prod-PlaybackConfig/master.m3u8&adServer=GAM&hdnea=exp=1793029757~acl=/*~id=45650403032744394418112449714771~hmac=88937515694d11fb50c87de25f51b20e4b301f1cb0356c69fdbb53a8e362d519
+
+#EXTINF:-1 tvg-id="sonyliv.event.1090550648" tvg-name="Salute Tiranga Cricket League (STCL) 2026" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026792/1792495920463308_UP_Dhurandhar_vs_Haryana_Lions_landscape_thumb.jpg" tvg-language="HIN" tvg-category="Sports" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Salute Tiranga Cricket League (STCL) 2026
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://www.sonyliv.com/
+https://sonymtmnew.akamaized.net/v1/master/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaTe0ffprod-PlaybackConfig/2120301/criclive2610/HIN/std_lrl-800300010.m3u8?tracking_params=https://e138b425de774612937f377e0fdfb880.mediatailor.ap-south-1.amazonaws.com/v1/session/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaTe0ffprod-PlaybackConfig/master.m3u8&adServer=GAM&hdnea=exp=1793031257~acl=/*~id=88319500613328365885387148452801~hmac=8d58602c6c0071045a2a3d4f999e647a207f947a86aa825fe46aadf2a91812d0

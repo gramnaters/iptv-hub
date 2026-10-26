@@ -1,10 +1,15 @@
 #EXTM3U
-#DATE:- 26-10-2026 16:19:32 IST
+#DATE:- 26-10-2026 16:30:20 IST
 # Category: fancode
-# Total Channels: 1
+# Total Channels: 2
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
-#EXTINF:-1 tvg-id="4250530" tvg-name="Uttrakhand Stars Vs Chandigarh Chargers" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-Web_1792997982624.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Uttrakhand Stars Vs Chandigarh Chargers
+#EXTINF:-1 tvg-id="4250530" tvg-name="Uttrakhand Stars Vs Chandigarh Chargers" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250530_53137_UTS_CC_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Uttrakhand Stars Vs Chandigarh Chargers
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250530_english_hls_a6cfaa994270147_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4249642" tvg-name="Iwb Court 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Iwb Court 1
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249642_english_hls_e0c44eb71522883_1ta-di_h264/index.m3u8

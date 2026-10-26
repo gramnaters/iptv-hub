@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_jiotv.py — Self-hosted JioTV playlist generator (mobile account).
+generate_jiotv.py  Self-hosted JioTV playlist generator (mobile account).
 
 Flow:
   1. Load mobile creds (jiotv_creds.json or JIOTV_CREDS env).
@@ -35,6 +35,7 @@ if sys.stdout.encoding != 'utf-8':
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "jiotv.m3u")
 COOKIE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_cookie.json")
+KEY_CACHE = os.path.join(ROOT_DIR, "catalogs", "jiotv_keys.json")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import jio_auth  # noqa: E402
@@ -90,7 +91,7 @@ def fetch_channels(creds):
 
 
 def _getchannelurl(ch, creds):
-    """tv.media.jio.com getchannelurl v2.1 — returns HLS + DASH(Widevine) + license."""
+    """tv.media.jio.com getchannelurl v2.1  returns HLS + DASH(Widevine) + license."""
     cid = ch["channel_id"]
     sso = creds.get("ssoToken", "")
     sub = creds.get("subscriberId", "")
@@ -120,7 +121,7 @@ def _getchannelurl(ch, creds):
 
 
 def _mob_geturl(ch, creds):
-    """mobile geturl v1.1 — clear HLS for free tier."""
+    """mobile geturl v1.1  clear HLS for free tier."""
     cid = ch["channel_id"]
     sub = creds.get("subscriberId", "")
     dev = creds.get("deviceId", "3c6d6b5702fa09bd")
@@ -223,7 +224,7 @@ def _ensure_wvd():
                     f.write(data)
                 return path
         except Exception as e:
-            print(f"  ⚠️ JIOTV_WVD decode failed: {e}")
+            print(f"  ! JIOTV_WVD decode failed: {e}")
     if os.path.exists(path) and os.path.getsize(path) > 100:
         return path
     alt = os.path.join(ROOT_DIR, "wvd", "device.wvd")
@@ -235,25 +236,25 @@ def _ensure_wvd():
 def generate():
     creds = load_creds()
     if not creds or not creds.get("authToken"):
-        print("❌ No JioTV mobile credentials (jiotv_creds.json / JIOTV_CREDS).")
+        print(" No JioTV mobile credentials (jiotv_creds.json / JIOTV_CREDS).")
         return False
 
-    print("🔑 Refreshing JioTV tokens...")
+    print(" Refreshing JioTV tokens...")
     creds = jio_auth.ensure_fresh(creds)
     if not creds.get("authToken"):
-        print("❌ Token refresh failed — re-login required.")
+        print(" Token refresh failed - re-login required.")
         return False
 
-    print("📡 Fetching channel list...")
+    print(" Fetching channel list...")
     try:
         channels = fetch_channels(creds)
     except Exception as e:
-        print(f"❌ Channel list failed: {e}")
+        print(f" Channel list failed: {e}")
         return False
     print(f"  {len(channels)} channels in catalog")
 
     # Locate the .wvd device file (Widevine L3 CDM) for ClearKey extraction.
-    # Prefer decoding JIOTV_WVD (base64) in Python — shell `echo | base64 -d`
+    # Prefer decoding JIOTV_WVD (base64) in Python  shell `echo | base64 -d`
     # mangles long secrets. Falls back to a local device.wvd if present.
     wvd_path = _ensure_wvd()
     if wvd_path:
@@ -264,9 +265,9 @@ def generate():
         except Exception:
             pass
     else:
-        print("  ⚠️ No .wvd (JIOTV_WVD) — ClearKey extraction disabled")
+        print("  ! No .wvd (JIOTV_WVD) - ClearKey extraction disabled")
 
-    print("🔧 Resolving streams (BTS → mobile fallback)...")
+    print(" Resolving streams (BTS -> mobile fallback)...")
     out = []
     with ThreadPoolExecutor(max_workers=32) as ex:
         for i, res in enumerate(ex.map(lambda ch: (ch, resolve(ch, creds)), channels), 1):
@@ -280,43 +281,68 @@ def generate():
     print(f"  resolved: {len(out)} ({hls} HLS, {dash} DASH)")
 
     if len(out) < 50:
-        print("❌ Too few channels — aborting.")
+        print(" Too few channels - aborting.")
         return False
 
     # --- ClearKey extraction for DASH (premium) channels ---
     if dash and wvd_path:
-        print(f"🔓 Extracting ClearKey for {dash} premium channels (pywidevine + .wvd)...")
+        print(f" Extracting ClearKey for {dash} premium channels (pywidevine + .wvd)...")
         import generate_jiotv_keys as jk
+
+        cache = {}
+        if os.path.exists(KEY_CACHE):
+            try:
+                with open(KEY_CACHE, encoding="utf-8") as f:
+                    cache = json.load(f)
+            except Exception:
+                cache = {}
 
         def _extract(item):
             ch, (kind, url, cookie, lic) = item
             if kind != "dash":
-                return ch, (kind, url, cookie, lic)
+                return ch, (kind, url, cookie, lic, None)
+            cid = str(ch["channel_id"])
             try:
                 pssh = jk.get_pssh(url, cookie)
                 if not pssh:
-                    return ch, ("dash", url, cookie, lic)
-                keys = jk.extract_keys(wvd_path, pssh, lic, cookie, creds, str(ch["channel_id"]))
+                    raise ValueError("no pssh")
+                keys = jk.extract_keys(wvd_path, pssh, lic, cookie, creds, cid)
                 if not keys:
-                    return ch, ("dash", url, cookie, lic)
+                    raise ValueError("no keys")
                 first = keys[0]
                 kid_hex = base64.urlsafe_b64decode(first["kid"] + "==").hex()
                 key_hex = base64.urlsafe_b64decode(first["k"] + "==").hex()
-                return ch, ("clearkey", url, cookie, f"{kid_hex}:{key_hex}")
+                return ch, ("clearkey", url, cookie, f"{kid_hex}:{key_hex}", f"{kid_hex}:{key_hex}")
             except Exception:
-                return ch, ("dash", url, cookie, lic)
+                # A known-good key is better than a Widevine URL most players can't open.
+                cached = cache.get(cid)
+                if cached:
+                    return ch, ("clearkey", url, cookie, cached, None)
+                return ch, ("dash", url, cookie, lic, None)
 
         extracted = []
+        fresh = {}
         done = 0
         with ThreadPoolExecutor(max_workers=16) as ex:
             for ch, res in ex.map(_extract, out):
-                extracted.append((ch, res))
+                kind, url, cookie, lic, newkey = res
+                if newkey:
+                    fresh[str(ch["channel_id"])] = newkey
+                extracted.append((ch, (kind, url, cookie, lic)))
                 done += 1
                 if done % 50 == 0:
                     print(f"  ... {done}/{len(out)} key-extracted")
         out = extracted
+
+        if fresh:
+            cache.update(fresh)
+            try:
+                with open(KEY_CACHE, "w", encoding="utf-8") as f:
+                    json.dump(cache, f, indent=2)
+            except Exception:
+                pass
         clear_early = sum(1 for _, (k, *_) in out if k == "clearkey")
-        print(f"  ClearKey extracted: {clear_early}/{dash}")
+        print(f"  ClearKey ready: {clear_early}/{dash} ({len(fresh)} freshly minted, {len(cache)} cached)")
 
     clear = sum(1 for _, (k, *_) in out if k == "clearkey")
     dash_remaining = sum(1 for _, (k, *_) in out if k == "dash")
@@ -367,7 +393,7 @@ def generate():
     except Exception:
         pass
 
-    print(f"✅ Wrote {OUTPUT_M3U} with {len(out)} channels ({hls} HLS, {dash} DASH).")
+    print(f" Wrote {OUTPUT_M3U} with {len(out)} channels ({hls} HLS, {dash} DASH).")
     return True
 
 

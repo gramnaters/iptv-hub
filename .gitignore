@@ -20,3 +20,10 @@ desktop.ini
 
 # Widevine device keys (secrets) - never commit
 *.wvd
+
+# local refresh logs
+logs/
+
+# wrangler build state
+.wrangler/
+

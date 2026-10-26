@@ -124,16 +124,19 @@ def resolve_native_stream(item, platform_token, dd_token):
             data = json.loads(resp.read().decode("utf-8"))
             vt = data.get("keyOsDetails", {}).get("video_token")
             if vt:
-                # Get best logo
-                images = item.get("image_url", {}) or item.get("list_image", "")
+                # Extract official Akamai CDN logo
+                img_dict = item.get("image", {})
+                ch_list = img_dict.get("channel_list") if isinstance(img_dict, dict) else ""
+                list_img = item.get("list_image", "")
+
                 logo = ""
-                if isinstance(images, dict):
-                    logo = images.get("16:9") or images.get("9:16") or ""
-                elif isinstance(images, str):
-                    logo = images
-                if not logo and item.get("image"):
-                    logo = "https://akamaividz2.zee5.com/image/upload/resources/" + item.get("image")
-                if not logo:
+                if ch_list:
+                    img_name = ch_list if ch_list.endswith(".png") else f"{ch_list}.png"
+                    logo = f"https://akamaividz2.zee5.com/image/upload/resources/{cid}/channel_list/{img_name}"
+                elif list_img:
+                    img_name = list_img if list_img.endswith(".png") or list_img.endswith(".jpg") else f"{list_img}.png"
+                    logo = f"https://akamaividz2.zee5.com/image/upload/resources/{cid}/list/{img_name}"
+                else:
                     logo = GROUP_LOGO
 
                 genres = item.get("genres", [])

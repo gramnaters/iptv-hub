@@ -26,6 +26,7 @@ GENERATORS = ["generate_jiotv.py", "generate_zee5.py", "generate_vzy.py"]
 
 
 def log(msg):
+    msg = msg.encode("ascii", "replace").decode("ascii")
     line = f"[{datetime.datetime.now():%Y-%m-%d %H:%M:%S}] {msg}"
     print(line, flush=True)
     os.makedirs(LOGDIR, exist_ok=True)

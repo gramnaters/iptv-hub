@@ -302,21 +302,29 @@ def generate():
             if kind != "dash":
                 return ch, (kind, url, cookie, lic, None)
             cid = str(ch["channel_id"])
+            mpd_kid = ""
             try:
+                r = requests.get(url, headers={"User-Agent": STB_UA, "Cookie": cookie}, timeout=12)
+                if r.status_code != 200:
+                    raise ValueError("mpd " + str(r.status_code))
+                mpd_kids = {k.replace("-", "").lower()
+                            for k in re.findall(r'default_KID="([0-9a-fA-F\-]+)"', r.text)}
+                mpd_kid = next(iter(mpd_kids), "")
                 pssh = jk.get_pssh(url, cookie)
-                if not pssh:
-                    raise ValueError("no pssh")
+                if not pssh or not mpd_kids:
+                    raise ValueError("no pssh/kid")
                 keys = jk.extract_keys(wvd_path, pssh, lic, cookie, creds, cid)
                 if not keys:
                     raise ValueError("no keys")
-                first = keys[0]
-                kid_hex = base64.urlsafe_b64decode(first["kid"] + "==").hex()
-                key_hex = base64.urlsafe_b64decode(first["k"] + "==").hex()
-                return ch, ("clearkey", url, cookie, f"{kid_hex}:{key_hex}", f"{kid_hex}:{key_hex}")
+                for k in keys:
+                    kid_hex = base64.urlsafe_b64decode(k["kid"] + "==").hex()
+                    key_hex = base64.urlsafe_b64decode(k["k"] + "==").hex()
+                    if kid_hex in mpd_kids:
+                        return ch, ("clearkey", url, cookie, f"{kid_hex}:{key_hex}", f"{kid_hex}:{key_hex}")
+                raise ValueError("kid mismatch")
             except Exception:
-                # A known-good key is better than a Widevine URL most players can't open.
                 cached = cache.get(cid)
-                if cached:
+                if cached and cached.split(":")[0] in mpd_kids:
                     return ch, ("clearkey", url, cookie, cached, None)
                 return ch, ("dash", url, cookie, lic, None)
 
@@ -342,7 +350,22 @@ def generate():
             except Exception:
                 pass
         clear_early = sum(1 for _, (k, *_) in out if k == "clearkey")
-        print(f"  ClearKey ready: {clear_early}/{dash} ({len(fresh)} freshly minted, {len(cache)} cached)")
+        print(f"  ClearKey verified: {clear_early}/{dash} ({len(fresh)} new, {len(cache)} cached)")
+
+    # DASH entries without a key that matches the manifest are unplayable on
+    # this account. Keep them out of the playlist unless JIO_KEEP_DASH=1.
+    blocked = [(ch, t[1]) for ch, t in out if t[0] == "dash"]
+    if blocked and os.environ.get("JIO_KEEP_DASH") != "1":
+        out = [(ch, t) for ch, t in out if t[0] != "dash"]
+        try:
+            with open(os.path.join(ROOT_DIR, "catalogs", "jiotv_premium_blocked.json"), "w",
+                      encoding="utf-8") as f:
+                json.dump([{"channel_id": str(ch["channel_id"]), "channel_name": ch["channel_name"],
+                            "reason": "license keys do not match manifest kid"} for ch, _ in blocked],
+                          f, indent=2, ensure_ascii=False)
+        except Exception:
+            pass
+        print(f"  dropped {len(blocked)} DASH channels without a usable key")
 
     clear = sum(1 for _, (k, *_) in out if k == "clearkey")
     dash_remaining = sum(1 for _, (k, *_) in out if k == "dash")

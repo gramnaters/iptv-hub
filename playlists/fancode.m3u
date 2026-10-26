@@ -1,10 +1,15 @@
 #EXTM3U
-#DATE:- 26-10-2026 16:30:20 IST
+#DATE:- 26-10-2026 17:31:55 IST
 # Category: fancode
-# Total Channels: 2
+# Total Channels: 4
 # Source: https://raw.githubusercontent.com/doctor-8trange/zyphx8/refs/heads/main/data/fancode.m3u
 
-#EXTINF:-1 tvg-id="4250530" tvg-name="Uttrakhand Stars Vs Chandigarh Chargers" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250530_53137_UTS_CC_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Uttrakhand Stars Vs Chandigarh Chargers
+#EXTINF:-1 tvg-id="4250355" tvg-name="Sudurpaschim Royals Vs Lumbini Lions" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250355_53124_LBL_SPR_fc-Web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Sudurpaschim Royals Vs Lumbini Lions
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250355_english_hls_7b5a55758122143_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4250530" tvg-name="Uttrakhand Stars Vs Chandigarh Chargers" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250530_53137_UTS_CC_FC-Web_1793010710896.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Uttrakhand Stars Vs Chandigarh Chargers
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250530_english_hls_a6cfaa994270147_1ta-di_h264/index.m3u8
@@ -13,3 +18,8 @@ https://dai-fancode.pages.dev/mumbai/4250530_english_hls_a6cfaa994270147_1ta-di_
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4249642_english_hls_e0c44eb71522883_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="4250544" tvg-name="Day 5   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Butterfield-bermuda-golf_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",ENG | Day 5   World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250544_english_hls_ed0773f7de27327_1ta-di_h264/index.m3u8

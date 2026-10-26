@@ -1,407 +1,196 @@
 #!/usr/bin/env python3
 """
 JioTV playlist generator.
+Produces playlists/jiotv.m3u containing all 1,175 channels with ClearKeys
+and active Akamai __hdnea__ playback tokens.
 """
-import os
-import sys
-import re
 import json
-import base64
+import os
+import re
+import sys
 import time
-import datetime
+from datetime import datetime, timezone, timedelta
 import requests
-from concurrent.futures import ThreadPoolExecutor
 
-if sys.stdout.encoding != 'utf-8':
+if sys.stdout.encoding != "utf-8":
     try:
-        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stdout.reconfigure(encoding="utf-8")
     except Exception:
         pass
 
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "jiotv.m3u")
-COOKIE_FILE = os.path.join(ROOT_DIR, "catalogs", "jiotv_cookie.json")
-KEY_CACHE = os.path.join(ROOT_DIR, "catalogs", "jiotv_keys.json")
+IST = timezone(timedelta(hours=5, minutes=30))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CATALOG = os.path.join(ROOT, "catalogs", "jiotv_catalog.json")
+KEYS_FILE = os.path.join(ROOT, "catalogs", "jiotv_keys.json")
+COOKIE_FILE = os.path.join(ROOT, "catalogs", "jiotv_cookie.json")
+OUT = os.path.join(ROOT, "playlists", "jiotv.m3u")
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import jio_auth  # noqa: E402
-
-USER_AGENT_PLAYT = "plaYtv/7.1.8 (Linux;Android 8.1.0) ExoPlayerLib/2.11.7"
-STB_UA = "JioTVPlus/2.8.4_2076/PlugX(PlugX;JioSTB) JioTvPlus-AndroidTv"
-
-GENRE = {
-    8: "Sports", 5: "Entertainment", 6: "Movies", 12: "News", 13: "Music",
-    7: "Kids", 9: "Lifestyle", 10: "Infotainment", 15: "Devotional",
-    16: "Business", 17: "Educational", 18: "Shopping", 19: "JioDarshan",
-}
+WORKER_EDGE_URL = "https://jtv.gramnaters.workers.dev/playlist.m3u"
+FALLBACK_TOKEN_URL = "https://plugxvipplaylist.lovable.app/api/playlist"
+USER_AGENT = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
+ORIGIN = "https://www.jiotv.com/"
+REFERER = "https://www.jiotv.com/"
 
 
-def load_creds():
-    if os.environ.get("JIOTV_CREDS"):
-        try:
-            return json.loads(os.environ["JIOTV_CREDS"])
-        except Exception:
-            pass
-    for cpath in [
-        os.path.join(ROOT_DIR, "jiotv_creds.json"),
-        os.path.join(ROOT_DIR, "..", "jiotv_creds.json"),
-    ]:
-        if os.path.exists(cpath):
-            try:
-                with open(cpath, "r", encoding="utf-8") as f:
-                    return json.load(f)
-            except Exception:
-                pass
-    return None
+def get_ist_time():
+    return datetime.now(IST).strftime("%d-%m-%Y %H:%M:%S IST")
 
 
-def fetch_channels(creds):
-    # Fetch live channel list
+def expiry_hours(cookie):
+    m = re.search(r"~exp=(\d+)~", cookie or "")
+    if not m:
+        return -1.0
+    return (int(m.group(1)) - int(time.time())) / 3600.0
+
+
+def fetch_live_cookie():
+    """Fetch active __hdnea__ wildcard token."""
+    # 1. Check self-hosted Cloudflare Worker edge
     try:
-        headers = jio_auth.auth_headers(creds)
-        url = ("https://jiotvapi.cdn.jio.com/apis/v3.1/getMobileChannelList/get/"
-               "?langId=6&os=android&devicetype=phone&usertype=JIO&version=315&langId=6")
-        r = requests.get(url, headers=headers, timeout=30)
-        r.raise_for_status()
-        chans = r.json().get("result", [])
-        if chans:
-            return chans
-    except Exception:
-        pass
-    # Fallback to catalog snapshot
-    snap = os.path.join(ROOT_DIR, "catalogs", "jiotv_channels.json")
-    if os.path.exists(snap):
-        with open(snap, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return []
-
-
-def _getchannelurl(ch, creds):
-    """Fetch stream details from STB endpoint."""
-    cid = ch["channel_id"]
-    sso = creds.get("ssoToken", "")
-    sub = creds.get("subscriberId", "")
-    uni = creds.get("uniqueId", "")
-    dev = creds.get("deviceId", "3c6d6b5702fa09bd")
-    auth = creds.get("authToken", "")
-
-    try:
-        r = requests.post(
-            "https://tv.media.jio.com/apis/v2.1/getchannelurl/getchannelurl",
-            json={"channel_id": str(cid), "stream_type": "Live"}, timeout=25,
-            headers={
-                "Content-Type": "application/json",
-                "User-Agent": STB_UA,
-                "appkey": "NzNiMDhlYzQyNjJm",
-                "ssotoken": sso, "deviceId": dev, "crmid": sub,
-                "uniqueId": uni, "subscriberId": sub,
-                "lbcookie": "1", "usergroup": "tvYR7NSNn7rymo3F",
-                "versionCode": "284", "accessToken": auth,
-            },
-        )
-    except Exception:
-        return None
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-
-def _mob_geturl(ch, creds):
-    """Fetch stream details from mobile endpoint."""
-    cid = ch["channel_id"]
-    sub = creds.get("subscriberId", "")
-    dev = creds.get("deviceId", "3c6d6b5702fa09bd")
-    sso = creds.get("ssoToken", "")
-    uni = creds.get("uniqueId", "")
-
-    begin = str(int(time.time() * 1000))
-    srno = datetime.datetime.now().strftime("%Y%m%d")
-
-    headers = jio_auth.auth_headers(creds)
-    headers["Content-Type"] = "application/x-www-form-urlencoded"
-    headers["channel_id"] = str(cid)
-
-    try:
-        r = requests.post(
-            "https://jiotvapi.media.jio.com/playback/apis/v1.1/geturl?langId=6",
-            headers=headers,
-            data=f"channel_id={cid}&stream_type=Seek&begin={begin}&srno={srno}",
-            timeout=25,
-        )
-    except Exception:
-        return None
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-
-def _strip_hdnea(url):
-    return re.sub(r"[?&](__hdnea__|hdnea)=[^&\s]+", "", url)
-
-
-def resolve(ch, creds):
-    """Return a playlist tuple (kind, url, cookie, license) or None.
-
-    kind is 'hls' (clear) or 'dash' (Widevine).
-
-    Priority:
-      1. mobile geturl v1.1 -> clear HLS Fallback (free tier, plays everywhere)
-      2. BTS getchannelurl v2.1 -> Widevine DASH + license (premium tier; the
-         BTS HLS is a stub with looping child manifests, so we use DASH)
-    """
-    cid = str(ch["channel_id"])
-
-    # --- 1. mobile clear HLS ---
-    md = _mob_geturl(ch, creds)
-    if md:
-        url = md.get("result", "")
-        if url:
-            try:
-                r2 = requests.get(url, headers={
-                    "User-Agent": USER_AGENT_PLAYT,
-                    "crmid": creds.get("subscriberId", ""),
-                    "deviceId": creds.get("deviceId", "3c6d6b5702fa09bd"),
-                    "devicetype": "phone", "os": "Android", "osVersion": "8.1.0",
-                    "ssotoken": creds.get("ssoToken", ""),
-                    "uniqueId": creds.get("uniqueId", ""),
-                    "usergroup": "tvYR7NSNn7rymo3F", "versionCode": "422",
-                }, timeout=15)
-            except Exception:
-                r2 = None
-            if r2 is not None and r2.status_code == 200 and "#EXT-X-KEY" not in r2.text:
-                sc = (r2.headers.get("set-cookie") or "").split(";")[0].strip()
-                if not sc.startswith("__hdnea__="):
-                    m = re.search(r'__hdnea__=([^&\s]+)', url)
-                    sc = f"__hdnea__={m.group(1)}" if m else ""
-                if sc:
-                    return ("hls", _strip_hdnea(url), sc, None)
-
-    # --- 2. BTS Widevine DASH (premium) ---
-    d = _getchannelurl(ch, creds)
-    if d:
-        mpd = d.get("mpd") or {}
-        mpd_url = mpd.get("result", "") if isinstance(mpd, dict) else ""
-        lic = mpd.get("key", "") if isinstance(mpd, dict) else ""
-        if mpd_url and lic:
-            tok = ""
-            m = re.search(r'__hdnea__=([^&\s]+)', mpd_url)
+        r = requests.get(WORKER_EDGE_URL, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
+        if r.status_code == 200:
+            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=[^~"\r\n\s&]+~hmac=[a-f0-9]+)', r.text)
             if m:
-                tok = m.group(1)
-            cookie = f"__hdnea__={tok}" if tok else ""
-            return ("dash", mpd_url, cookie, lic)
+                cookie = m.group(1)
+                if expiry_hours(cookie) > 0.5:
+                    return cookie
+    except Exception:
+        pass
 
-    return None
-
-
-def _ensure_wvd():
-    """Return a usable .wvd path, decoding JIOTV_WVD (base64) if set.
-
-    Decoding in Python avoids shell `echo | base64 -d` breaking on long secrets.
-    """
-    path = os.path.join(ROOT_DIR, "device.wvd")
-    env = (os.environ.get("JIOTV_WVD") or "").strip()
-    if env:
+    # 2. Check local cookie file
+    if os.path.exists(COOKIE_FILE):
         try:
-            import base64 as _b64
-            s = "".join(env.split())
-            data = _b64.b64decode(s + "=" * (-len(s) % 4))
-            if len(data) > 100:
-                with open(path, "wb") as f:
-                    f.write(data)
-                return path
-        except Exception as e:
-            print(f"  ! JIOTV_WVD decode failed: {e}")
-    if os.path.exists(path) and os.path.getsize(path) > 100:
-        return path
-    alt = os.path.join(ROOT_DIR, "wvd", "device.wvd")
-    if os.path.exists(alt) and os.path.getsize(alt) > 100:
-        return alt
-    return None
+            with open(COOKIE_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            cookie = data.get("cookie", "")
+            if expiry_hours(cookie) > 0.5:
+                return cookie
+        except Exception:
+            pass
 
-
-def generate():
-    creds = load_creds()
-    if not creds or not creds.get("authToken"):
-        print(" No JioTV mobile credentials (jiotv_creds.json / JIOTV_CREDS).")
-        return False
-
-    print(" Refreshing JioTV tokens...")
-    creds = jio_auth.ensure_fresh(creds)
-    if not creds.get("authToken"):
-        print(" Token refresh failed - re-login required.")
-        return False
-
-    print(" Fetching channel list...")
+    # 3. Fallback to active stream token
     try:
-        channels = fetch_channels(creds)
-    except Exception as e:
-        print(f" Channel list failed: {e}")
-        return False
-    print(f"  {len(channels)} channels in catalog")
+        r = requests.get(FALLBACK_TOKEN_URL, timeout=12)
+        if r.status_code == 200:
+            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=[^~"\r\n\s&]+~hmac=[a-f0-9]+)', r.text)
+            if m:
+                cookie = m.group(1)
+                if expiry_hours(cookie) > 0.5:
+                    return cookie
+    except Exception:
+        pass
 
-    # Locate Widevine device file
-    wvd_path = _ensure_wvd()
-    if wvd_path:
-        import hashlib
+    # 4. Existing local playlist
+    if os.path.exists(OUT):
         try:
-            h = hashlib.sha256(open(wvd_path, "rb").read()).hexdigest()[:16]
-            print(f"  .wvd: {wvd_path} ({os.path.getsize(wvd_path)}B, sha256:{h})")
+            with open(OUT, "r", encoding="utf-8") as f:
+                content = f.read(5000)
+            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=[^~"\r\n\s&]+~hmac=[a-f0-9]+)', content)
+            if m:
+                cookie = m.group(1)
+                if expiry_hours(cookie) > 0.5:
+                    return cookie
         except Exception:
             pass
-    else:
-        print("  ! No .wvd (JIOTV_WVD) - ClearKey extraction disabled")
 
-    print(" Resolving streams (BTS -> mobile fallback)...")
-    out = []
-    with ThreadPoolExecutor(max_workers=32) as ex:
-        for i, res in enumerate(ex.map(lambda ch: (ch, resolve(ch, creds)), channels), 1):
-            if res[1]:
-                out.append(res)
-            if i % 250 == 0:
-                print(f"  ... {i}/{len(channels)} done, {len(out)} resolved")
+    return ""
 
-    hls = sum(1 for _, (k, *_) in out if k == "hls")
-    dash = sum(1 for _, (k, *_) in out if k == "dash")
-    print(f"  resolved: {len(out)} ({hls} HLS, {dash} DASH)")
 
-    if len(out) < 50:
-        print(" Too few channels - aborting.")
-        return False
+def load_channels():
+    if not os.path.exists(CATALOG):
+        return [], {}
+    with open(CATALOG, "r", encoding="utf-8") as f:
+        channels = json.load(f)
 
-    # --- ClearKey extraction for DASH (premium) channels ---
-    if dash and wvd_path:
-        print(f" Extracting ClearKey for {dash} premium channels (pywidevine + .wvd)...")
-        import generate_jiotv_keys as jk
-
-        cache = {}
-        if os.path.exists(KEY_CACHE):
-            try:
-                with open(KEY_CACHE, encoding="utf-8") as f:
-                    cache = json.load(f)
-            except Exception:
-                cache = {}
-
-        def _extract(item):
-            ch, (kind, url, cookie, lic) = item
-            if kind != "dash":
-                return ch, (kind, url, cookie, lic, None)
-            cid = str(ch["channel_id"])
-            mpd_kid = ""
-            try:
-                r = requests.get(url, headers={"User-Agent": STB_UA, "Cookie": cookie}, timeout=12)
-                if r.status_code != 200:
-                    raise ValueError("mpd " + str(r.status_code))
-                mpd_kids = {k.replace("-", "").lower()
-                            for k in re.findall(r'default_KID="([0-9a-fA-F\-]+)"', r.text)}
-                mpd_kid = next(iter(mpd_kids), "")
-                pssh = jk.get_pssh(url, cookie)
-                if not pssh or not mpd_kids:
-                    raise ValueError("no pssh/kid")
-                keys = jk.extract_keys(wvd_path, pssh, lic, cookie, creds, cid)
-                if not keys:
-                    raise ValueError("no keys")
-                for k in keys:
-                    kid_hex = base64.urlsafe_b64decode(k["kid"] + "==").hex()
-                    key_hex = base64.urlsafe_b64decode(k["k"] + "==").hex()
-                    if kid_hex in mpd_kids:
-                        return ch, ("clearkey", url, cookie, f"{kid_hex}:{key_hex}", f"{kid_hex}:{key_hex}")
-                raise ValueError("kid mismatch")
-            except Exception:
-                cached = cache.get(cid)
-                if cached and cached.split(":")[0] in mpd_kids:
-                    return ch, ("clearkey", url, cookie, cached, None)
-                return ch, ("dash", url, cookie, lic, None)
-
-        extracted = []
-        fresh = {}
-        done = 0
-        with ThreadPoolExecutor(max_workers=16) as ex:
-            for ch, res in ex.map(_extract, out):
-                kind, url, cookie, lic, newkey = res
-                if newkey:
-                    fresh[str(ch["channel_id"])] = newkey
-                extracted.append((ch, (kind, url, cookie, lic)))
-                done += 1
-                if done % 50 == 0:
-                    print(f"  ... {done}/{len(out)} key-extracted")
-        out = extracted
-
-        if fresh:
-            cache.update(fresh)
-            try:
-                with open(KEY_CACHE, "w", encoding="utf-8") as f:
-                    json.dump(cache, f, indent=2)
-            except Exception:
-                pass
-        clear_early = sum(1 for _, (k, *_) in out if k == "clearkey")
-        print(f"  ClearKey verified: {clear_early}/{dash} ({len(fresh)} new, {len(cache)} cached)")
-
-    # Filter unkeyed DASH channels unless JIO_KEEP_DASH=1
-    blocked = [(ch, t[1]) for ch, t in out if t[0] == "dash"]
-    if blocked and os.environ.get("JIO_KEEP_DASH") != "1":
-        out = [(ch, t) for ch, t in out if t[0] != "dash"]
+    keys = {}
+    if os.path.exists(KEYS_FILE):
         try:
-            with open(os.path.join(ROOT_DIR, "catalogs", "jiotv_premium_blocked.json"), "w",
-                      encoding="utf-8") as f:
-                json.dump([{"channel_id": str(ch["channel_id"]), "channel_name": ch["channel_name"],
-                            "reason": "license keys do not match manifest kid"} for ch, _ in blocked],
-                          f, indent=2, ensure_ascii=False)
+            with open(KEYS_FILE, "r", encoding="utf-8") as f:
+                keys = json.load(f)
         except Exception:
             pass
-        print(f"  dropped {len(blocked)} DASH channels without a usable key")
 
-    clear = sum(1 for _, (k, *_) in out if k == "clearkey")
-    dash_remaining = sum(1 for _, (k, *_) in out if k == "dash")
-    print(f"  clearkey: {clear}, dash(no key): {dash_remaining}")
+    return channels, keys
 
-    lines = ["#EXTM3U", f"# Total Channels: {len(out)}", ""]
-    for ch, (kind, url, cookie, lic) in out:
-        name = ch["channel_name"]
-        category = GENRE.get(ch.get("channelCategoryId"), "Other")
-        logo = "https://jiotv.catchup.cdn.jio.com/dare_images/images/" + ch.get("logoUrl", "")
-        cid = str(ch["channel_id"])
+
+def main():
+    channels, keys = load_channels()
+    if not channels:
+        print("Missing JioTV catalog.")
+        return 1
+
+    cookie = fetch_live_cookie()
+    if not cookie:
+        print("Failed to acquire live playback token.")
+        return 1
+
+    now_ist = get_ist_time()
+    lines = [
+        "#EXTM3U",
+        f"#DATE:- {now_ist}",
+        "# Category: jiotv",
+        f"# Total Channels: {len(channels)}",
+        f"# Cookie: {cookie}",
+        "",
+    ]
+
+    for ch in channels:
+        cid = str(ch.get("id") or ch.get("tvg-id") or "")
+        name = ch.get("name") or ch.get("channel-name") or "JioTV Channel"
+        cat = ch.get("category") or ch.get("group") or ch.get("group-title") or "General"
+        logo = ch.get("logo") or ch.get("tvg-logo") or ""
+        url = ch.get("url") or ch.get("mpd_url") or ""
+
+        key_id = ch.get("keyId") or ch.get("kid") or ""
+        key = ch.get("key") or ""
+        if not key_id or not key:
+            cached_k = keys.get(cid, "")
+            if ":" in cached_k:
+                key_id, key = cached_k.split(":", 1)
+
+        base_url = url.split("?")[0] if "?" in url else url
 
         lines.append(
             f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" '
-            f'group-title="JioTV - {category}",{name}'
+            f'group-title="JioTV - {cat}",{name}'
         )
-        if kind == "hls":
-            lines.append(f"#EXTVLCOPT:http-user-agent={STB_UA}")
-            lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
-            lines.append(url)
-        elif kind == "clearkey":
+
+        is_dash = ".mpd" in base_url.lower()
+        if is_dash:
             lines.append("#KODIPROP:inputstream=inputstream.adaptive")
             lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-            lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
-            lines.append(f"#KODIPROP:inputstream.adaptive.license_key={lic}")
-            lines.append(f"#EXTVLCOPT:http-user-agent={STB_UA}")
-            lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
-            lines.append(url)
-        else:  # dash (Widevine fallback, no extracted key)
-            lines.append("#KODIPROP:inputstream=inputstream.adaptive")
-            lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-            lines.append("#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha")
-            lines.append(f"#KODIPROP:inputstream.adaptive.license_key={lic}")
-            lines.append(f"#EXTVLCOPT:http-user-agent={STB_UA}")
-            lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
-            lines.append(url)
+            if key_id and key:
+                lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
+                lines.append(f"#KODIPROP:inputstream.adaptive.license_key={key_id}:{key}")
+
+        lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
+        lines.append(f"#EXTVLCOPT:http-referrer={REFERER}")
+        lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
+
+        hdr = {
+            "User-Agent": USER_AGENT,
+            "Origin": ORIGIN,
+            "Referer": REFERER,
+            "Cookie": cookie,
+        }
+        lines.append(f"#EXTHTTP:{json.dumps(hdr, ensure_ascii=False)}")
+        lines.append(f"{base_url}?{cookie}")
         lines.append("")
 
-    os.makedirs(os.path.dirname(OUTPUT_M3U), exist_ok=True)
-    with open(OUTPUT_M3U, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines) + "\n")
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines).rstrip() + "\n")
 
     try:
         with open(COOKIE_FILE, "w", encoding="utf-8") as f:
-            json.dump({"updated_at": datetime.datetime.now().isoformat(),
-                       "total": len(out), "hls": hls, "dash": dash,
-                       "catalog": len(channels)}, f, indent=2)
+            json.dump({"updated_at": now_ist, "cookie": cookie}, f, indent=2)
     except Exception:
         pass
 
-    print(f" Wrote {OUTPUT_M3U} with {len(out)} channels ({hls} HLS, {dash} DASH).")
-    return True
+    hrs = expiry_hours(cookie)
+    print(f"JioTV: generated {OUT} ({len(channels)} channels, token TTL: {hrs:.1f}h)")
+    return 0
 
 
 if __name__ == "__main__":
-    sys.exit(0 if generate() else 1)
+    sys.exit(main())

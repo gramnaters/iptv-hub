@@ -1,44 +1,4 @@
 {
-  "updated_at": "26-10-2026 11:00:20 UTC",
-  "playable": 14,
-  "states": {
-    "drm:SAMPLE-AES": 34,
-    "clear": 14
-  },
-  "drm_only": [
-    "&Pictures HD",
-    "&Tv HD",
-    "Anmol Cinema 2",
-    "Big Magic",
-    "ET Now",
-    "Times Now",
-    "Unite8 Sports 1 HD",
-    "Unite8 Sports 2 HD",
-    "Wion",
-    "Zee 24 GHANTA",
-    "Zee Action",
-    "Zee Anmol",
-    "Zee Anmol Cinema",
-    "Zee Bangla HD",
-    "Zee Bangla Sonar",
-    "Zee Biskope",
-    "Zee Bollywood",
-    "Zee Cinema HD",
-    "Zee Cinemalu HD",
-    "Zee Classic",
-    "Zee Kannada HD",
-    "Zee Keralam HD",
-    "Zee Marathi HD",
-    "Zee Power",
-    "ZEE PUNJABI",
-    "Zee Sarthak",
-    "Zee Talkies HD",
-    "Zee Telugu HD",
-    "Zee Thirai",
-    "ZEE TV HD",
-    "Zee Yuva",
-    "Zee Zest",
-    "Zing",
-    "Zoom"
-  ]
+  "updated_at": "26-10-2026 12:01:55 UTC",
+  "total": 48
 }

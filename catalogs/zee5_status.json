@@ -1,44 +1,5 @@
 {
-  "updated_at": "26-10-2026 10:57:32 UTC",
-  "playable": 55,
-  "states": {
-    "premium": 33,
-    "geo": 30,
-    "clear": 55
-  },
-  "premium": [
-    "&Pictures",
-    "&Pictures HD",
-    "&TV HD",
-    "&xplorHD",
-    "Zee Bangla",
-    "Zee Bangla HD",
-    "Zee Bangla Sonar",
-    "Zee Bollywood",
-    "Zee Cinema",
-    "Zee Cinema HD",
-    "Zee Cinemalu",
-    "Zee Cinemalu HD",
-    "Zee Classic",
-    "Zee Kannada",
-    "Zee Kannada HD",
-    "Zee Keralam HD",
-    "Zee Marathi",
-    "Zee Marathi HD",
-    "Zee Power HD",
-    "Zee Punjabi",
-    "Zee Sarthak",
-    "Zee TV",
-    "Zee TV HD",
-    "Zee Talkies",
-    "Zee Talkies HD",
-    "Zee Tamil",
-    "Zee Tamil HD",
-    "Zee Telugu",
-    "Zee Telugu HD",
-    "Zee Thirai HD",
-    "Zee Yuva",
-    "Zee Zest HD",
-    "Zing"
-  ]
+  "updated_at": "26-10-2026 12:01:59 UTC",
+  "playable": 118,
+  "source": "https://zee.gramnaters.workers.dev/playlist.m3u"
 }

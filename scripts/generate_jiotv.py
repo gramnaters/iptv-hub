@@ -25,11 +25,15 @@ KEYS_FILE = os.path.join(ROOT, "catalogs", "jiotv_keys.json")
 COOKIE_FILE = os.path.join(ROOT, "catalogs", "jiotv_cookie.json")
 OUT = os.path.join(ROOT, "playlists", "jiotv.m3u")
 
-WORKER_EDGE_URL = "https://jtv.gramnaters.workers.dev/playlist.m3u"
-FALLBACK_TOKEN_URL = "https://plugxvipplaylist.lovable.app/api/playlist"
+PUBLIC_COOKIE_SOURCES = [
+    "https://raw.githubusercontent.com/sportlive18/Sportlink-wtf/refs/heads/main/cookie.json",
+    "https://raw.githubusercontent.com/qwerty180506/Geo/refs/heads/main/jiotv_cf.m3u",
+    "https://raw.githubusercontent.com/purupc00-dev/Gmax-JioTV/refs/heads/main/Playlists/JioTV_S10.m3u",
+    "https://allinonereborn2.online/jstrweb2/cookies.json",
+    "https://jtv.gramnaters.workers.dev/playlist.m3u",
+]
 USER_AGENT = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
 ORIGIN = "https://www.jiotv.com/"
-REFERER = "https://www.jiotv.com/"
 
 
 def get_ist_time():
@@ -46,6 +50,7 @@ def expiry_hours(cookie):
 def try_mint_direct_cookie():
     """Attempt direct token minting if valid credentials exist."""
     creds = None
+    creds_path = None
     if os.environ.get("JIOTV_CREDS"):
         try:
             creds = json.loads(os.environ["JIOTV_CREDS"])
@@ -57,6 +62,7 @@ def try_mint_direct_cookie():
                 try:
                     with open(p, "r", encoding="utf-8") as f:
                         creds = json.load(f)
+                    creds_path = p
                     break
                 except Exception:
                     pass
@@ -66,6 +72,12 @@ def try_mint_direct_cookie():
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         import jio_auth
         creds = jio_auth.ensure_fresh(creds)
+        if creds_path and creds.get("authToken"):
+            try:
+                with open(creds_path, "w", encoding="utf-8") as f:
+                    json.dump(creds, f, indent=2)
+            except Exception:
+                pass
         auth_token = creds.get("authToken")
         if not auth_token:
             return None
@@ -112,36 +124,35 @@ def fetch_live_cookie():
     if direct and expiry_hours(direct) > 0.5:
         return direct
 
-    # 3. Check self-hosted Cloudflare Worker edge
-    try:
-        r = requests.get(WORKER_EDGE_URL, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
-        if r.status_code == 200:
-            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=[^~"\r\n\s&]+~hmac=[a-f0-9]+)', r.text)
-            if m:
-                cookie = m.group(1)
-                if expiry_hours(cookie) > 0.5:
-                    return cookie
-    except Exception:
-        pass
+    # 3. Check public live cookie feeds
+    for src in PUBLIC_COOKIE_SOURCES:
+        try:
+            r = requests.get(src, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
+            if r.status_code == 200:
+                # Search for wildcard __hdnea__ token
+                matches = re.findall(r'(__hdnea__=st=\d+~exp=(\d+)~acl=/\*~hmac=[a-f0-9]+)', r.text)
+                for full_cookie, exp_str in matches:
+                    if expiry_hours(full_cookie) > 0.5:
+                        print(f"JioTV: Acquired active wildcard token from {src[:50]}... (TTL: {expiry_hours(full_cookie):.1f}h)")
+                        return full_cookie
+                # Also check JSON structure if present
+                try:
+                    data = r.json()
+                    c = data.get("cookie", "") if isinstance(data, dict) else ""
+                    if c and "acl=/*" in c and expiry_hours(c) > 0.5:
+                        print(f"JioTV: Acquired active token from JSON {src[:50]}... (TTL: {expiry_hours(c):.1f}h)")
+                        return c
+                except Exception:
+                    pass
+        except Exception as e:
+            continue
 
-    # 4. Fallback to active stream token
-    try:
-        r = requests.get(FALLBACK_TOKEN_URL, timeout=12)
-        if r.status_code == 200:
-            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=[^~"\r\n\s&]+~hmac=[a-f0-9]+)', r.text)
-            if m:
-                cookie = m.group(1)
-                if expiry_hours(cookie) > 0.5:
-                    return cookie
-    except Exception:
-        pass
-
-    # 5. Existing local playlist
+    # 4. Existing local playlist
     if os.path.exists(OUT):
         try:
             with open(OUT, "r", encoding="utf-8") as f:
                 content = f.read(5000)
-            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=[^~"\r\n\s&]+~hmac=[a-f0-9]+)', content)
+            m = re.search(r'(__hdnea__=st=\d+~exp=\d+~acl=/\*~hmac=[a-f0-9]+)', content)
             if m:
                 cookie = m.group(1)
                 if expiry_hours(cookie) > 0.5:
@@ -205,6 +216,8 @@ def main():
                 key_id, key = cached_k.split(":", 1)
 
         base_url = url.split("?")[0] if "?" in url else url
+        if "jiotvpllive.cdn.jio.com" in base_url:
+            base_url = base_url.replace("jiotvpllive.cdn.jio.com", "jiotvmblive.cdn.jio.com").replace("_BTS", "_MOB")
 
         lines.append(
             f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" '
@@ -220,13 +233,11 @@ def main():
                 lines.append(f"#KODIPROP:inputstream.adaptive.license_key={key_id}:{key}")
 
         lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
-        lines.append(f"#EXTVLCOPT:http-referrer={REFERER}")
         lines.append(f"#EXTVLCOPT:http-cookie={cookie}")
 
         hdr = {
             "User-Agent": USER_AGENT,
             "Origin": ORIGIN,
-            "Referer": REFERER,
             "Cookie": cookie,
         }
         lines.append(f"#EXTHTTP:{json.dumps(hdr, ensure_ascii=False)}")

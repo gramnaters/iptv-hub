@@ -80,10 +80,7 @@ LOCAL_OVERRIDES = [
 ]
 
 JIOTV_GROUP_PREFIX = "Jio TV+"
-PPX_JIOTV = "https://premiumplugx.com/gibt/shoebpl.php"
 PPX_ZEE5 = "https://premiumplugx.me/jee/zee5.php?m3u"
-JIOTV_UA = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
-CLEARKEY_RE = re.compile(r"^[0-9a-fA-F]{32}:[0-9a-fA-F]{32}(,[0-9a-fA-F]{32}:[0-9a-fA-F]{32})*$")
 
 EXTRA_FEEDS = {
     "Willow": {
@@ -186,62 +183,8 @@ def classify_jiohotstar(blocks, out):
         out.setdefault("JioHotstar", []).append(set_block_group(b, "JioHotstar"))
 
 
-def _exp(cookie):
-    m = re.search(r"exp=(\d+)", cookie or "")
-    return int(m.group(1)) if m else 0
-
-
 def fetch_ppx():
     os.makedirs(PLAYLISTS_DIR, exist_ok=True)
-    raw = fetch_content(PPX_JIOTV, timeout=40)
-    items = json.loads(raw) if raw else []
-    seen, channels = set(), []
-    for it in items if isinstance(items, list) else []:
-        cid = str(it.get("id") or "").strip()
-        url = str(it.get("mpd_url") or "").split("?")[0]
-        if not cid or not url or cid in seen:
-            continue
-        seen.add(cid)
-        cookie = str((it.get("headers") or {}).get("cookie") or "").strip()
-        key = str(it.get("clearkey") or "").strip()
-        channels.append({
-            "id": cid,
-            "name": str(it.get("name") or "JioTV").strip(),
-            "group": str(it.get("group") or "General").strip(),
-            "logo": str(it.get("logo") or "").strip(),
-            "url": url,
-            "cookie": cookie,
-            "key": key if CLEARKEY_RE.match(key) else "",
-            "dash": url.lower().endswith(".mpd") or ".mpd" in url.lower(),
-        })
-    now = time.time()
-    wild = [c["cookie"] for c in channels if "acl=/*" in c["cookie"]]
-    wild.sort(key=_exp, reverse=True)
-    if wild and _exp(wild[0]) > now:
-        for ch in channels:
-            if ch["cookie"] and _exp(ch["cookie"]) <= now and ".cdn.jio.com/" in ch["url"]:
-                ch["cookie"] = wild[0]
-    lines = ["#EXTM3U", f"# {len(channels)}"]
-    for ch in channels:
-        lines.append(
-            f'#EXTINF:-1 tvg-id="{ch["id"]}" tvg-name="{ch["name"]}" tvg-logo="{ch["logo"]}" '
-            f'group-title="JioTV - {ch["group"]}",{ch["name"]}'
-        )
-        if ch["dash"]:
-            lines.append("#KODIPROP:inputstream=inputstream.adaptive")
-            lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-            if ch["key"]:
-                lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
-                lines.append(f"#KODIPROP:inputstream.adaptive.license_key={ch['key']}")
-        lines.append(f"#EXTVLCOPT:http-user-agent={JIOTV_UA}")
-        if ch["cookie"]:
-            lines.append(f"#EXTVLCOPT:http-cookie={ch['cookie']}")
-        lines.append(f"{ch['url']}?{ch['cookie']}" if ch["cookie"] else ch["url"])
-    path = os.path.join(PLAYLISTS_DIR, "jiotv.m3u")
-    with open(path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines) + "\n")
-    print(f"JioTV {len(channels)}")
-
     zee = fetch_content(PPX_ZEE5, timeout=40)
     if zee and zee.count("#EXTINF") >= 10:
         with open(os.path.join(PLAYLISTS_DIR, "zee5.m3u"), "w", encoding="utf-8") as f:

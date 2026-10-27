@@ -19,6 +19,7 @@ SOURCES = {
     "fancode": ("generate_fancode.py", "fancode.m3u", 1),
     "sunnxt":  ("generate_sunnxt.py",  "sunnxt.m3u",  6),
     "free":    ("generate_free.py",    "free.m3u",    6),
+    "jiotv":   ("generate_jiotv_public.py", "jiotv.m3u", 1),
 }
 MARGIN = 90 * 60
 EXP_RE = re.compile(r"(?:exp|Expires)(?:=|%3D)(\d{10})")

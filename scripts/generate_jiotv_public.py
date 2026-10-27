@@ -6,7 +6,7 @@ import sys
 
 import requests
 
-CHANNELS_URL = "https://sportlink-jtv.pages.dev/ztv.json"
+CHANNELS_URL = "https://raw.githubusercontent.com/qwerty180506/json/refs/heads/main/Geoplus.json"
 COOKIE_URL = "https://allinonereborn2.online/jstrweb2/cookies.json"
 SPORTS_URL = "https://allinonereborn2.online/jtv-fetch/jstarcookie/cookie.json"
 UA = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"

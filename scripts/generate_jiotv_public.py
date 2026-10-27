@@ -7,7 +7,6 @@ import sys
 import requests
 
 CHANNELS_URL = "https://raw.githubusercontent.com/qwerty180506/json/refs/heads/main/Geoplus.json"
-GROUPS_URL = "https://plugxvipplaylist.lovable.app/api/playlist"
 COOKIE_URL = "https://allinonereborn2.online/jstrweb2/cookies.json"
 SPORTS_URL = "https://allinonereborn2.online/jtv-fetch/jstarcookie/cookie.json"
 UA = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
@@ -71,31 +70,15 @@ def quote(value):
     return str(value or "").replace('"', "'")
 
 
-def reference_groups():
-    try:
-        text = requests.get(GROUPS_URL, timeout=40).text
-    except requests.RequestException:
-        return {}
-    found = {}
-    for block in text.split("#EXTINF")[1:]:
-        cid = re.search(r'tvg-id="([^"]*)"', block)
-        group = re.search(r'group-title="([^"]*)"', block)
-        if cid and group and cid.group(1):
-            found[cid.group(1)] = group.group(1)
-    return found
-
-
-def group_of(channel, groups):
-    cid = str(channel.get("id") or "")
-    name = groups.get(cid) or channel.get("category") or channel.get("group") or "Other"
+def group_of(channel):
+    name = channel.get("category") or channel.get("group") or "Other"
     if name == "Malyalam":
         name = "Malayalam"
-    return name
+    return f"JioTV | {name}"
 
 
 def main():
     channels = get_json(CHANNELS_URL)
-    groups = reference_groups()
     cookie = normal_cookie(get_json(COOKIE_URL))
     sports = sports_urls(get_json(SPORTS_URL))
     if not isinstance(channels, list) or not cookie:
@@ -120,7 +103,7 @@ def main():
             hosts["other"] += 1
         name = quote(ch.get("name") or "JioTV")
         logo = quote(ch.get("logo") or "")
-        group = quote(group_of(ch, groups))
+        group = quote(group_of(ch))
         lines.append(
             f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" group-title="{group}",{name}'
         )
@@ -136,7 +119,7 @@ def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
-    print(f"{sum(hosts.values())} channels {hosts} sports={len(sports)} groups={len(groups)} -> {OUT}")
+    print(f"{sum(hosts.values())} channels {hosts} sports={len(sports)} -> {OUT}")
 
 
 if __name__ == "__main__":

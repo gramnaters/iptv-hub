@@ -28,7 +28,7 @@ EPG_URL = "https://avkb.short.gy/jioepg.xml.gz"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 
 # JioHotstar source URL
-USER_JIOHOTSTAR_URL = "https://jhs.gramnaters.workers.dev/playlist.m3u"
+USER_JIOHOTSTAR_URL = os.environ.get("JHS_URL", "")
 
 # Upstream public feeds
 PUBLIC_PLUG_API = ""
@@ -201,8 +201,11 @@ def main():
     # -------------------------------------------------------------
     # 1. Fetch User's Independent JioHotstar Feed (own JioHotstar group)
     # -------------------------------------------------------------
-    print(f"Fetching JioHotstar from {USER_JIOHOTSTAR_URL}...")
-    jhs_text = fetch_content(USER_JIOHOTSTAR_URL)
+    print("Fetching JioHotstar...")
+    jhs_text = fetch_content(USER_JIOHOTSTAR_URL) if USER_JIOHOTSTAR_URL else ""
+    if not jhs_text and os.path.exists(os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u")):
+        with open(os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u"), encoding="utf-8") as f:
+            jhs_text = f.read()
     if jhs_text:
         jhs_blocks = [clean_watermarks_from_block(b) for b in extract_channel_blocks(jhs_text)]
         classify_jiohotstar(jhs_blocks, all_channels_by_group)

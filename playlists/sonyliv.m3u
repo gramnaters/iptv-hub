@@ -1,7 +1,7 @@
 #EXTM3U
-#DATE:- 27-10-2026 18:02:49 IST
+#DATE:- 27-10-2026 18:57:55 IST
 # Category: sonyliv
-# Total Channels: 22
+# Total Channels: 23
 # Source: SonyLIV Self-Hosted (Linear + Live Events)
 
 # SonyLIV — 22 channels — token via worker
@@ -71,3 +71,9 @@ https://sliv.gramnaters.workers.dev/sony-ten-5.m3u8
 #EXTINF:-1 tvg-id="bbc-earth.sonyliv" tvg-name="BBC EARTH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_BBC_Earth_HD.png" tvg-language="English" tvg-category="Infotainment" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",BBC EARTH
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://sliv.gramnaters.workers.dev/bbc-earth.m3u8
+
+# --- SonyLIV Live Sports Events ---
+#EXTINF:-1 tvg-id="sonyliv.event.1090550786" tvg-name="Salute Tiranga Cricket League (STCL) 2026" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000027434/1793041312495594_STCL26_delhi_vs_haryana_landscape_thumb.jpg" tvg-language="HIN" tvg-category="Sports" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Salute Tiranga Cricket League (STCL) 2026
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://www.sonyliv.com/
+https://sonymtmnew.akamaized.net/v1/master/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaTa083prod-PlaybackConfig/2120305/criclive2710/HIN/std_lrl-800300010.m3u8?tracking_params=https://e138b425de774612937f377e0fdfb880.mediatailor.ap-south-1.amazonaws.com/v1/session/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaTa083prod-PlaybackConfig/master.m3u8&adServer=GAM&hdnea=exp=1793109475~acl=/*~id=86385619165662619909512274044727~hmac=55e9985f3323de960040851f942d13334a620ba849c80b9889235970d6bae82a

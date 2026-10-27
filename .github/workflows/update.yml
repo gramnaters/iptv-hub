@@ -1,65 +1,40 @@
-name: Auto Refresh Playlists
+name: refresh
 
 on:
   schedule:
-    # Hourly, off the top of the hour: GitHub delays/drops busy :00 schedules, and the
-    # JioTV/ZEE5 tokens arrive with only ~5.5h left, so 2-hourly runs let them lapse.
     - cron: '17 * * * *'
   workflow_dispatch:
+    inputs:
+      only:
+        description: sources (comma list, empty = whatever is due)
+        default: ''
 
 permissions:
   contents: write
 
-jobs:
-  update-playlists:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+concurrency:
+  group: refresh
+  cancel-in-progress: false
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
-      - name: Install Dependencies
-        run: |
-          pip install requests pycryptodome pywidevine
-
-      - name: Generate independent source playlists
+      - run: pip install requests pycryptodome pywidevine
+      - name: refresh due sources
         env:
           JIOTV_CREDS: ${{ secrets.JIOTV_CREDS }}
           JIOTV_WVD: ${{ secrets.JIOTV_WVD }}
+          JTV_URL: ${{ secrets.JTV_URL }}
+          SLIV_URL: ${{ secrets.SLIV_URL }}
+          JHS_URL: ${{ secrets.JHS_URL }}
           PYTHONUNBUFFERED: "1"
         run: |
-          echo "=== 1. Generating JioTV ==="
-          python scripts/generate_jiotv.py   || echo "::warning::jiotv generator failed"
-          echo "=== 2. Generating VZY ==="
-          python scripts/generate_vzy.py     || echo "::warning::vzy generator failed"
-          echo "=== 3. Generating FanCode ==="
-          python scripts/generate_fancode.py || echo "::warning::fancode generator failed"
-          echo "=== 4. Generating SonyLIV ==="
-          python scripts/generate_sony.py    || echo "::warning::sony generator failed"
-          echo "=== 5. Generating SunNXT ==="
-          python scripts/generate_sunnxt.py  || echo "::warning::sunnxt generator failed"
-          echo "=== 6. Generating ZEE5 ==="
-          python scripts/generate_zee5.py    || echo "::warning::zee5 generator failed"
-
-      - name: Run Master Updater & Aggregator
-        run: |
-          python scripts/merge.py
-
-      - name: Commit and Push Updated Playlists
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add Combined.m3u playlists/ catalogs/
-          if git diff --staged --quiet; then
-            echo "No changes in playlists."
-          else
-            git commit -m "Auto-refreshed master playlist [$(date -u +'%Y-%m-%d %H:%M:%S UTC')]"
-            git push origin HEAD || {
-              git pull --rebase --autostash origin main
-              git push origin HEAD
-            }
-          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          python scripts/refresh.py --only "${{ github.event.inputs.only }}"

@@ -1,7 +1,7 @@
 #EXTM3U
-#DATE:- 27-10-2026 18:02:48 IST
+#DATE:- 27-10-2026 18:57:50 IST
 # Category: fancode
-# Total Channels: 12
+# Total Channels: 11
 # Source: FanCode Self-Hosted Live Sports Events
 
 #EXTINF:-1 tvg-id="fancode.4249783" tvg-name="South Africa vs Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/AUS-vs-SA-test_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",South Africa vs Australia
@@ -24,16 +24,6 @@ https://dai-fancode.pages.dev/mumbai/4250333_english_hls_13eab2201f23744_1ta-di_
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250517_english_hls_c6aadfde282620_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250344" tvg-name="Kuwait vs Jersey" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Kuwait vs Jersey
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250344_english_hls_de2fcdd6e014877_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4248723" tvg-name="Kyoto Sanga vs Newcastle Jets" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248723_53053_KYS_NJ_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Kyoto Sanga vs Newcastle Jets
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4248723_english_hls_380992af4276697_1ta-di_h264/index.m3u8
-
 #EXTINF:-1 tvg-id="fancode.4248725" tvg-name="Ratchaburi vs Kashiwa Reysol" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248725_53053_RAT_REY_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Ratchaburi vs Kashiwa Reysol
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
@@ -43,6 +33,11 @@ https://dai-fancode.pages.dev/mumbai/4248725_english_hls_f67d4623c384869_1ta-di_
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4248724_english_hls_5572b29afe77534_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4249643" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249643_english_hls_c14cffe8e137141_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="fancode.4249650" tvg-name="IWB Court 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",IWB Court 1
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 JioTV playlist generator.
 Produces playlists/jiotv.m3u containing all 1,175 channels with ClearKeys
@@ -30,8 +30,7 @@ PUBLIC_COOKIE_SOURCES = [
     "https://raw.githubusercontent.com/qwerty180506/Geo/refs/heads/main/jiotv_cf.m3u",
     "https://raw.githubusercontent.com/purupc00-dev/Gmax-JioTV/refs/heads/main/Playlists/JioTV_S10.m3u",
     "https://allinonereborn2.online/jstrweb2/cookies.json",
-    "https://jtv.gramnaters.workers.dev/playlist.m3u",
-]
+] + ([os.environ["JTV_URL"]] if os.environ.get("JTV_URL") else [])
 # Premium/BTS channels (Zee, &TV, Star on jiotvpllive) reject the wildcard token and
 # only play with a token whose acl is scoped to that channel's own path.
 PER_CHANNEL_SOURCE = "https://premiumplugx.com/gibt/shoebpl.php"
@@ -137,14 +136,14 @@ def fetch_live_cookie():
                 matches = re.findall(r'(__hdnea__=st=\d+~exp=(\d+)~acl=/\*~hmac=[a-f0-9]+)', r.text)
                 for full_cookie, exp_str in matches:
                     if expiry_hours(full_cookie) > 0.5:
-                        print(f"JioTV: Acquired active wildcard token from {src[:50]}... (TTL: {expiry_hours(full_cookie):.1f}h)")
+                        print(f"JioTV: Acquired active wildcard token from source {PUBLIC_COOKIE_SOURCES.index(src) + 1} (TTL: {expiry_hours(full_cookie):.1f}h)")
                         return full_cookie
                 # Also check JSON structure if present
                 try:
                     data = r.json()
                     c = data.get("cookie", "") if isinstance(data, dict) else ""
                     if c and "acl=/*" in c and expiry_hours(c) > 0.5:
-                        print(f"JioTV: Acquired active token from JSON {src[:50]}... (TTL: {expiry_hours(c):.1f}h)")
+                        print(f"JioTV: Acquired active token from JSON source {PUBLIC_COOKIE_SOURCES.index(src) + 1} (TTL: {expiry_hours(c):.1f}h)")
                         return c
                 except Exception:
                     pass

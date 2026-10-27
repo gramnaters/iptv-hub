@@ -1,0 +1,37 @@
+{
+ "jiotv": {
+  "last": 1793107622,
+  "updated": "2026-10-27 13:27 UTC",
+  "expires": "2026-10-27 18:00 UTC"
+ },
+ "sony": {
+  "last": 1793107675,
+  "updated": "2026-10-27 13:27 UTC",
+  "expires": "2026-10-27 13:57 UTC"
+ },
+ "zee5": {
+  "last": 1793107687,
+  "updated": "2026-10-27 13:28 UTC",
+  "expires": "2026-10-27 13:52 UTC"
+ },
+ "vzy": {
+  "last": 1793107658,
+  "updated": "2026-10-27 13:27 UTC",
+  "expires": null
+ },
+ "fancode": {
+  "last": 1793107670,
+  "updated": "2026-10-27 13:27 UTC",
+  "expires": null
+ },
+ "sunnxt": {
+  "last": 1793107673,
+  "updated": "2026-10-27 13:27 UTC",
+  "expires": null
+ },
+ "free": {
+  "last": 1793107673,
+  "updated": "2026-10-27 13:27 UTC",
+  "expires": "2028-03-05 19:51 UTC"
+ }
+}

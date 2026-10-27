@@ -1,9 +1,16 @@
 *creds*.json
 tokenData.jiotv
 session.json
-# Runtime token caches - never commit.
-# The JioTV __hdnea__ token lives ~6 h while the workflow runs every 24 h,
 catalogs/jiotv_cookie.json
+
+# local tools / research
+*.md
+!README.md
+scripts/_*.py
+scripts/jtvplus_extract.py
+scripts/fetch_zee5_catalog.py
+catalogs/jtvplus_*
+catalogs/zee5_full_map.json
 
 # Python
 __pycache__/

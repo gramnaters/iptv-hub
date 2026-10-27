@@ -20,7 +20,7 @@ IST = timezone(timedelta(hours=5, minutes=30))
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_M3U = os.path.join(ROOT_DIR, "playlists", "sonyliv.m3u")
 
-SLIV_PLAYLIST = "https://sliv.gramnaters.workers.dev/playlist.m3u"
+SLIV_PLAYLIST = os.environ.get("SLIV_URL", "")
 API_BASE = "https://apiv2.sonyliv.com"
 CDN_BASE = "https://dishmt.slivcdn.com/hls/live"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
@@ -173,10 +173,12 @@ def fetch_live_events_native():
 
 
 def generate_playlist():
-    print(f"📡 Fetching SonyLIV linear playlist from {SLIV_PLAYLIST}...")
+    print("📡 Fetching SonyLIV linear playlist...")
     linear_lines = []
     try:
-        r = requests.get(SLIV_PLAYLIST, timeout=20)
+        r = requests.get(SLIV_PLAYLIST, timeout=20) if SLIV_PLAYLIST else None
+        if r is None:
+            raise RuntimeError("SLIV_URL not set")
         if r.status_code == 200 and r.text.count("#EXTINF") >= MIN_CHANNELS:
             for line in r.text.splitlines():
                 if line.startswith("#EXTM3U") or line.startswith("# Total") or line.startswith("# Source") or line.startswith("#DATE"):

@@ -1,5 +1,5 @@
 #EXTM3U
-#DATE:- 27-10-2026 18:03:01 IST
+#DATE:- 27-10-2026 18:58:07 IST
 # Category: jiohotstar
 # Total Channels: 146
 
@@ -476,12 +476,16 @@ https://livetv.hotstar.com/mp2/gec-india-1540057051/aa1fac3acfc244b4bbed73575a4a
 https://livetv.hotstar.com/mp2/gec-india-1540057081/5c13f17d142c4963a1c7bd54fcd421d5/index.mpd
 
 #EXTINF:-1 tvg-id="star_plus_hd" tvg-name="Star Plus HD" tvg-logo="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/658/920658-h.jpg" group-title="JioHotstar",Star Plus HD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=17a6e6ef02f74d9bbce4640371d40000:7a89315d2ec84875901dce2d3044556c
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)
 #EXTVLCOPT:http-referrer=https://www.hotstar.com/
 #EXTVLCOPT:http-extra-headers=Origin: https://www.hotstar.com
 #EXTVLCOPT:http-cookie=hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1
 #EXTHTTP:{"Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/","Cookie":"hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1"}
-https://livetv.hotstar.com/mp2/gec-india-1540005587/d70f7444749a46988107a08c1bea5c54/index.mpd
+https://livetv.hotstar.com/mp1/gec-india-1540057045/a73567ab8abd4680bc8206dd0c625cb0/index.mpd
 
 #EXTINF:-1 tvg-id="asianet_digital" tvg-name="Asianet Digital" tvg-logo="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/7408/1782289617408-h.jpg" group-title="JioHotstar",Asianet Digital
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)
@@ -993,7 +997,7 @@ https://jcevents.hotstar.com/bpk-tv/JS_News18India/JioHotstar/JS_News18India.m3u
 #EXTVLCOPT:http-extra-headers=Origin: https://www.hotstar.com
 #EXTVLCOPT:http-cookie=hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1
 #EXTHTTP:{"Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/","Cookie":"hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1"}
-https://jcevents.hotstar.com/bpk-tv/JS_News18PunjabHaryana/JioHotstar/JS_News18PunjabHaryana.m3u8
+https://nw18live.cdn.jio.com/bpk-tv/News18_Punjab_Haryana_HP_NW18_MOB/output01/index.m3u8
 
 #EXTINF:-1 tvg-id="news18_lokmat" tvg-name="News18 Lokmat" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/IBN_Lokmat.png" group-title="JioHotstar",News18 Lokmat
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)
@@ -1009,7 +1013,7 @@ https://jcevents.hotstar.com/bpk-tv/JS_News18Lokmat/JioHotstar/JS_News18Lokmat.m
 #EXTVLCOPT:http-extra-headers=Origin: https://www.hotstar.com
 #EXTVLCOPT:http-cookie=hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1
 #EXTHTTP:{"Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/","Cookie":"hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1"}
-https://jcevents.hotstar.com/bpk-tv/JS_News18Tamilnadu/JioHotstar/JS_News18Tamilnadu.m3u8
+https://nw18live.cdn.jio.com/bpk-tv/News18_Tamil_Nadu_NW18_MOB/output01/index.m3u8
 
 #EXTINF:-1 tvg-id="cnbc_bazaar" tvg-name="CNBC Bazaar" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/whatsapp16x9-1693491956187.jpg" group-title="JioHotstar",CNBC Bazaar
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)
@@ -1065,7 +1069,7 @@ https://jcevents.hotstar.com/bpk-tv/JS_News18AssamNorthEast/JioHotstar/JS_News18
 #EXTVLCOPT:http-extra-headers=Origin: https://www.hotstar.com
 #EXTVLCOPT:http-cookie=hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1
 #EXTHTTP:{"Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/","Cookie":"hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1"}
-https://jcevents.hotstar.com/bpk-tv/JS_News18JKLH/JioHotstar/JS_News18JKLH.m3u8
+https://nw18live.cdn.jio.com/bpk-tv/News18_JKLH_NW18_MOB/output01/index.m3u8
 
 #EXTINF:-1 tvg-id="news18_rajasthan" tvg-name="News18 Rajasthan" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/ETV_RAJASTHAN.png" group-title="JioHotstar",News18 Rajasthan
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)

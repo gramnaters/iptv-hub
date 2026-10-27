@@ -1,5 +1,5 @@
 #EXTM3U
-# Generated: 27-10-2026 12:32:32 UTC
+# Generated: 27-10-2026 13:27:38 UTC
 # Total Channels: 48
 # Source: live (https://vzyweb.42web.io/api.php)
 
@@ -7,7 +7,7 @@
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=45fd5a743c584b7b81227362caa60aed:64b15a67298d5cdfbfdef7988e1f966f
+#KODIPROP:inputstream.adaptive.license_key=45fd5a743c584b7b81227362caa60aed:c99b18651799c9fca890d81011a069e7
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d2o8pibksxtln6.cloudfront.net/live/media/And_Pictures_HD/dash/And_Pictures_HD.mpd
 
@@ -147,7 +147,7 @@ https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Action/dash/Zee_Action.mpd
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=ecf09573987e435198110c8340fbd8af:12205c8d902eb5e170b0bf23605f5b15
+#KODIPROP:inputstream.adaptive.license_key=ecf09573987e435198110c8340fbd8af:8341fc6595e6c30cd834625f34d6bb6e
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Anmol/dash/Zee_Anmol.mpd
 
@@ -255,7 +255,7 @@ https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Power_SD/dash/Zee_Power_SD.
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=d0abecd2d90f4e719e0da0b517e125d7:b55b0f91c15bf35a90b270dfd2f616ab
+#KODIPROP:inputstream.adaptive.license_key=d0abecd2d90f4e719e0da0b517e125d7:3f8ced033063b0e108dc2e65ec6cbcce
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_PUNJABI/dash/ZEE_PUNJABI.mpd
 

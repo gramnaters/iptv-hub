@@ -1,6 +1,6 @@
 #EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz" url-tvg="https://avkb.short.gy/jioepg.xml.gz" refresh="86400"
-#DATE:- 27-10-2026 18:03:01 IST
-# Total Channels: 1498
+#DATE:- 27-10-2026 18:58:07 IST
+# Total Channels: 1554
 
 # ===== JioTV - Entertainment (38 Channels) =====
 #EXTINF:-1 tvg-id="144" tvg-name="Colors HD" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsHD.png" group-title="JioTV - Entertainment",Colors HD
@@ -11557,6 +11557,337 @@ https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Zest_SD/dash/Zee_Zest_SD.mp
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.5 (Linux;Android 14) ExoPlayerLib/2.11.7
 https://d1g8wgjurz8via.cloudfront.net/bpk-tv/Zing/default/manifest.mpd
 
+# ===== ZEE5 Worldwide (55 Channels) =====
+#EXTINF:-1 tvg-id="0-9-9z51072894" tvg-name="Zee South Flix" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51072894/channel_list/360x20371940869bfbf48bea25c2d58e0a6b77067dcc0c138bb4317b2dd43ff4a0a5741.png" tvg-category="South dubbed" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee South Flix
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://zee5.cdn.runn.tv/zfast/stream/zeesfl/playlist.m3u8?hdnts=st=1793106178~exp=1793109178~acl=/zfast/stream/zeesfl/*~id=33374c52-b6c1-4446-86aa-cb50e58c5ecb~data=non-ssai_33374c52-b6c1-4446-86aa-cb50e58c5ecb~hmac=e2d629da3cc4efb0c2df53fcfd21733608def62ac9a76ddb1945e0d756950924&req_id=non-ssai_33374c52-b6c1-4446-86aa-cb50e58c5ecb
+
+#EXTINF:-1 tvg-id="0-9-zeerajasthannews" tvg-name="Zee Rajasthan News" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeerajasthannews/channel_list/360x2038b45f2fb59954d5897ccbdcd40717054.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee Rajasthan News
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Rajasthan-News-SD/master/master.m3u8?hdnts=st=1793106179~exp=1793109179~acl=/out/v1/ZEE5_Live_Channels/Zee-Rajasthan-News-SD/master/*~id=d3444cc3-7b3a-4008-b3d9-73378f24caf7~data=non-ssai_d3444cc3-7b3a-4008-b3d9-73378f24caf7~hmac=2c3d4facf2520c3a4929d6e1040c09012e2cd591d6965cef4c1d25623e909e9d&req_id=non-ssai_d3444cc3-7b3a-4008-b3d9-73378f24caf7
+
+#EXTINF:-1 tvg-id="0-9-zeepunjabharyanahima" tvg-name="Zee Punjab Haryana Himachal Pradesh" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeepunjabharyanahima/channel_list/360x20308630cb38d3d4866a435d90715e656c8.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee Punjab Haryana Himachal Pradesh
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Punjab-Haryana-Himachal-Pradesh-SD/master/master.m3u8?hdnts=st=1793106180~exp=1793109180~acl=/out/v1/ZEE5_Live_Channels/Zee-Punjab-Haryana-Himachal-Pradesh-SD/master/*~id=529d52de-ad1e-4bc1-8390-132ce1488b83~data=non-ssai_529d52de-ad1e-4bc1-8390-132ce1488b83~hmac=38a9180b642d87aae8a3110c860d05f33b5a0bf8318e89b911393aa097254fbd&req_id=non-ssai_529d52de-ad1e-4bc1-8390-132ce1488b83
+
+#EXTINF:-1 tvg-id="0-9-channel_265145625" tvg-name="Zee News Uttar Pradesh Uttrakhand" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-channel_265145625/channel_list/360x2036fe907dd04ba41f7a6952261e47805f2.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee News Uttar Pradesh Uttrakhand
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-News-UttarPradesh-Uttrakhand-SD/master/master.m3u8?hdnts=st=1793106180~exp=1793109180~acl=/out/v1/ZEE5_Live_Channels/Zee-News-UttarPradesh-Uttrakhand-SD/master/*~id=b0d0f841-6913-4b85-8a58-3e64e18ff633~data=non-ssai_b0d0f841-6913-4b85-8a58-3e64e18ff633~hmac=71c28848e8e3fd8bab1509db29839a8f8f88f6c59c461f7889cad1cede4280ab&req_id=non-ssai_b0d0f841-6913-4b85-8a58-3e64e18ff633
+
+#EXTINF:-1 tvg-id="0-9-9z583538" tvg-name="Zee News Telugu" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z583538/channel_list/360x2039f85194877654194864030a44e7ddc0a.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee News Telugu
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-News-Telugu-SD/master/master.m3u8?hdnts=st=1793106180~exp=1793109180~acl=/out/v1/ZEE5_Live_Channels/Zee-News-Telugu-SD/master/*~id=fa05f80d-e24a-4350-b7ac-a83a0252aa2e~data=non-ssai_fa05f80d-e24a-4350-b7ac-a83a0252aa2e~hmac=b6861accdb481e5d2f260790f1436b08a4fad95737abc2e1f93307a2204d2287&req_id=non-ssai_fa05f80d-e24a-4350-b7ac-a83a0252aa2e
+
+#EXTINF:-1 tvg-id="0-9-9z583537" tvg-name="Zee News Kannada" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z583537/channel_list/360x203afcd78909c6c4591a11d0f88d233c3c3.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee News Kannada
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-News-Kannada-SD/master/master.m3u8?hdnts=st=1793106180~exp=1793109180~acl=/out/v1/ZEE5_Live_Channels/Zee-News-Kannada-SD/master/*~id=e033adc2-68eb-4a05-8a4f-40329e1790e0~data=non-ssai_e033adc2-68eb-4a05-8a4f-40329e1790e0~hmac=0ce6c7a58deaddd26d5f93c6cbfa843df4c02b7ce6eca6b3ff091eb85468b93e&req_id=non-ssai_e033adc2-68eb-4a05-8a4f-40329e1790e0
+
+#EXTINF:-1 tvg-id="0-9-zeenews" tvg-name="Zee News" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeenews/channel_list/360x2031f194601f5104a9c80c7ab9619760098.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee News
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5ak-cmaflive.zee5.com/cmaf/live/2105510/ZEENEWSELE/master.m3u8?hdnts=st=1793106180~exp=1793109180~acl=/cmaf/live/2105510/ZEENEWSELE/*~id=9d6a2334-4e5b-4afd-a020-c407ecae5610~data=non-ssai_9d6a2334-4e5b-4afd-a020-c407ecae5610~hmac=c71d2d97e3ad680f6dfd693a1301a3960a8079be7af62c1473c7eb36b9836c60&req_id=non-ssai_9d6a2334-4e5b-4afd-a020-c407ecae5610
+
+#EXTINF:-1 tvg-id="0-9-zeemadhyapradeshchat" tvg-name="Zee Madhya Pradesh Chhattisgarh" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeemadhyapradeshchat/channel_list/360x203cacfbcb7b45943dcac37f5e23345477c.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee Madhya Pradesh Chhattisgarh
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Madhya-Pradesh-Chhattisgarh-SD/master/master.m3u8?hdnts=st=1793106180~exp=1793109180~acl=/out/v1/ZEE5_Live_Channels/Zee-Madhya-Pradesh-Chhattisgarh-SD/master/*~id=50d651b5-3d52-4719-99f8-17a4a6642950~data=non-ssai_50d651b5-3d52-4719-99f8-17a4a6642950~hmac=c175ba3b925b228b5bd7a6d44fbd18c332967eb1df50757b421ba811f3d8099e&req_id=non-ssai_50d651b5-3d52-4719-99f8-17a4a6642950
+
+#EXTINF:-1 tvg-id="0-9-zeekalinganews" tvg-name="Zee Delhi NCR Haryana" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeekalinganews/channel_list/360x2030f484d95b57b4c7b8484b0423a73eb18.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee Delhi NCR Haryana
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-DelhiNCRHaryana-News-SD/master/master.m3u8?hdnts=st=1793106181~exp=1793109181~acl=/out/v1/ZEE5_Live_Channels/Zee-DelhiNCRHaryana-News-SD/master/*~id=53684db5-b3b1-4784-9f1e-3e76270f49fa~data=non-ssai_53684db5-b3b1-4784-9f1e-3e76270f49fa~hmac=27b9612a73dc220f7ac71c88032586b5816fc72a4146a070bce286a391708ff0&req_id=non-ssai_53684db5-b3b1-4784-9f1e-3e76270f49fa
+
+#EXTINF:-1 tvg-id="0-9-9z51072553" tvg-name="Zee Cine Classic" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51072553/channel_list/360x203b0970b6076bb4e64b5db41623c5abea97ec3e8ac5c9643f89c1d1d00ce6e88ee.png" tvg-category="Movie" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee Cine Classic
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://zee5.cdn.runn.tv/zfast/stream/zeecin/playlist.m3u8?hdnts=st=1793106181~exp=1793109181~acl=/zfast/stream/zeecin/*~id=cfd063cf-82fc-4232-9d78-bfd4f2c39b3c~data=non-ssai_cfd063cf-82fc-4232-9d78-bfd4f2c39b3c~hmac=804ef70b9dc9392ecdb6c9b7b0b73c335a164acaba7b79447ef086ee67edebb1&req_id=non-ssai_cfd063cf-82fc-4232-9d78-bfd4f2c39b3c
+
+#EXTINF:-1 tvg-id="0-9-zeebusiness" tvg-name="Zee Business" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeebusiness/channel_list/360x2034001e7be91db42bb8ec15b8bd074d20a.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee Business
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Business-News-SD/master/master.m3u8?hdnts=st=1793106181~exp=1793109181~acl=/out/v1/ZEE5_Live_Channels/Zee-Business-News-SD/master/*~id=b95748b9-6756-4365-8950-d23ec49b75b8~data=non-ssai_b95748b9-6756-4365-8950-d23ec49b75b8~hmac=148b069cc81860d530f307cbf38736bf0cc1c534dceb8f4c3914a392a3d3054a&req_id=non-ssai_b95748b9-6756-4365-8950-d23ec49b75b8
+
+#EXTINF:-1 tvg-id="0-9-216" tvg-name="Zee Biskope" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-216/channel_list/360x20336727c1e58824806b8c81e132b6bc699.png" tvg-category="Movie" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee Biskope
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Biskope-SD/master/master.m3u8?hdnts=st=1793106181~exp=1793109181~acl=/out/v1/ZEE5_Live_Channels/Zee-Biskope-SD/master/*~id=600afb7a-aff1-44d6-9526-bb163c5325a8~data=non-ssai_600afb7a-aff1-44d6-9526-bb163c5325a8~hmac=b7bf31ec4a03b27a1d9e5e2defdf2bad177365ad89fbb00d8da741fd09b06d7d&req_id=non-ssai_600afb7a-aff1-44d6-9526-bb163c5325a8
+
+#EXTINF:-1 tvg-id="0-9-zeebiharjharkhand" tvg-name="Zee Bihar Jharkhand" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeebiharjharkhand/channel_list/360x2033a03ad2c8662458e8e9101fd3e4bc2d9.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee Bihar Jharkhand
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Bihar-Jharkhand-SD/master/master.m3u8?hdnts=st=1793106182~exp=1793109182~acl=/out/v1/ZEE5_Live_Channels/Zee-Bihar-Jharkhand-SD/master/*~id=c7074505-bd4a-4678-b71d-52f48b4186a6~data=non-ssai_c7074505-bd4a-4678-b71d-52f48b4186a6~hmac=8ff730644c09db5581d56e47ffd9a737d643fcdfbc09247a8a8bdaf4991d1f7a&req_id=non-ssai_c7074505-bd4a-4678-b71d-52f48b4186a6
+
+#EXTINF:-1 tvg-id="0-9-zeehindustan" tvg-name="Zee Bharat" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeehindustan/channel_list/360x20377941d3cc0bd478bb8db941a1cb4e720.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee Bharat
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Bharat-News-SD/master/master.m3u8?hdnts=st=1793106182~exp=1793109182~acl=/out/v1/ZEE5_Live_Channels/Zee-Bharat-News-SD/master/*~id=8da64916-6afe-457c-b848-0d613cdea111~data=non-ssai_8da64916-6afe-457c-b848-0d613cdea111~hmac=26f3e286a89c792bd4ed5915528753b0fa386cb9782c9d97d086e616355a109e&req_id=non-ssai_8da64916-6afe-457c-b848-0d613cdea111
+
+#EXTINF:-1 tvg-id="0-9-zeeaction" tvg-name="Zee Action" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeeaction/channel_list/360x203a7cb98dd34204f1098523c7261dd4bfe.png" tvg-category="Movie" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee Action
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Action-SD/master/master.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/out/v1/ZEE5_Live_Channels/Zee-Action-SD/master/*~id=c543989c-0da7-4147-b77b-084c78236062~data=non-ssai_c543989c-0da7-4147-b77b-084c78236062~hmac=f30ccc9d214f76233e29e87252a98e88a1725f1f966c36fed6fcf0e5d94c7679&req_id=non-ssai_c543989c-0da7-4147-b77b-084c78236062
+
+#EXTINF:-1 tvg-id="0-9-zee24taas" tvg-name="Zee 24 Taas" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zee24taas/channel_list/zee24taas360x20398a45db9f3bb4c29b0fbd1a7f50617ab.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee 24 Taas
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-24Taas-News-SD/master/master.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/out/v1/ZEE5_Live_Channels/Zee-24Taas-News-SD/master/*~id=febb6426-796a-4123-aea1-565bfbc2ab11~data=non-ssai_febb6426-796a-4123-aea1-565bfbc2ab11~hmac=9c48f4e0862b38f5f0e7316d45ea277f50a6d56694350be105e6dd26c6b1e2ab&req_id=non-ssai_febb6426-796a-4123-aea1-565bfbc2ab11
+
+#EXTINF:-1 tvg-id="0-9-zee24kalak" tvg-name="Zee 24 Kalak" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zee24kalak/channel_list/zee24zee24kalak360x2034b1001c338f0404b8f1d96ef5ccf7a3d.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee 24 Kalak
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-24-Kalak-SD/master/master.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/out/v1/ZEE5_Live_Channels/Zee-24-Kalak-SD/master/*~id=4c2fd32c-0440-47fa-988e-809b308ecffa~data=non-ssai_4c2fd32c-0440-47fa-988e-809b308ecffa~hmac=bc71c8213af84e2c393d7487c5287a15125ac01de432c8ea97d5f139d140b32e&req_id=non-ssai_4c2fd32c-0440-47fa-988e-809b308ecffa
+
+#EXTINF:-1 tvg-id="0-9-24ghantatv" tvg-name="Zee 24 Ghanta" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-24ghantatv/channel_list/zee24ghanta360x2039f73eed657d04b6b979a6814ea45a6db.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Zee 24 Ghanta
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-24Ghanta-News-SD/master/master.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/out/v1/ZEE5_Live_Channels/Zee-24Ghanta-News-SD/master/*~id=35622733-43c1-4022-9076-3be2570f7be6~data=non-ssai_35622733-43c1-4022-9076-3be2570f7be6~hmac=1400f452e7f29f5398b2e902651f5d8466866a530421a427b5839671d3796923&req_id=non-ssai_35622733-43c1-4022-9076-3be2570f7be6
+
+#EXTINF:-1 tvg-id="0-9-9z51095523" tvg-name="Z Prematho" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51095523/channel_list/360x203df9a90dcabde44ad8cb090f50a730661b6eef09cb89a478f9845ae104adccf74.png" tvg-category="Movie" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Z Prematho
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://zee5.cdn.runn.tv/zfast/stream/zeeprema/playlist.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/zfast/stream/zeeprema/*~id=61797e99-063a-40b2-98b0-993c8f747570~data=non-ssai_61797e99-063a-40b2-98b0-993c8f747570~hmac=dde310d1722e6ea79bfef37ff6790415a4826a84cdc7987e2d04d041c44dfef8&req_id=non-ssai_61797e99-063a-40b2-98b0-993c8f747570
+
+#EXTINF:-1 tvg-id="0-9-9z51072893" tvg-name="Z Horror Nights" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51072893/channel_list/360x2039d54a645d07642579f8f76b860ebe28c65ab8370e3be4954926713cdb9270710.png" tvg-category="Supernatural" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Z Horror Nights
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://zee5.cdn.runn.tv/zfast/stream/zeehor/playlist.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/zfast/stream/zeehor/*~id=79b34de3-aff4-4519-9e62-3e21030a8a8a~data=non-ssai_79b34de3-aff4-4519-9e62-3e21030a8a8a~hmac=ddea5eb4a6697f12ad7750799e80d12e4861442a386c5252c78c15f92da4f924&req_id=non-ssai_79b34de3-aff4-4519-9e62-3e21030a8a8a
+
+#EXTINF:-1 tvg-id="0-9-9z51072892" tvg-name="Z Dil Se" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51072892/channel_list/360x2036012684c624c429cae055fb0c000983c.png" tvg-category="Drama" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Z Dil Se
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://zee5.cdn.runn.tv/zfast/stream/zeedil/playlist.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/zfast/stream/zeedil/*~id=0297bbb5-1bcf-4ad3-8bf0-4c3accb55b4c~data=non-ssai_0297bbb5-1bcf-4ad3-8bf0-4c3accb55b4c~hmac=e5a4fed57aba30412ef7e7b57ff3befff226ea131b28bee65f96d3508d773806&req_id=non-ssai_0297bbb5-1bcf-4ad3-8bf0-4c3accb55b4c
+
+#EXTINF:-1 tvg-id="0-9-9z51072556" tvg-name="Z Comedy Nation" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51072556/channel_list/360x20341621f349aa64620ab93b70d3935d1d29fb22736bd414d2789920ea9fe11b078.png" tvg-category="Comedy" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Z Comedy Nation
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://zee5.cdn.runn.tv/zfast/stream/zeecom/playlist.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/zfast/stream/zeecom/*~id=2adb8630-dc5c-4f74-982a-5c31e26d34f6~data=non-ssai_2adb8630-dc5c-4f74-982a-5c31e26d34f6~hmac=54273aa5724bb0d0fba419daf6cb82615d0cff6ea7ed937c0d5ce4b0edbc192f&req_id=non-ssai_2adb8630-dc5c-4f74-982a-5c31e26d34f6
+
+#EXTINF:-1 tvg-id="0-9-9z51095521" tvg-name="Z Athiradi" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z51095521/channel_list/360x203fdf4796a901c41ea8f8fa4285d31ff1e25ef3daa57d54ddca5b984988c0a6fc8.png" tvg-category="Movie" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Z Athiradi
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://zee5.cdn.runn.tv/zfast/stream/zeeathd/playlist.m3u8?hdnts=st=1793106184~exp=1793109184~acl=/zfast/stream/zeeathd/*~id=016c1e2e-7cb1-42f8-b502-d2a2f5b2436c~data=non-ssai_016c1e2e-7cb1-42f8-b502-d2a2f5b2436c~hmac=350ddd921296601a98847aea35c6aabcbc5f581099d8f6ef898d419339bff5c6&req_id=non-ssai_016c1e2e-7cb1-42f8-b502-d2a2f5b2436c
+
+#EXTINF:-1 tvg-id="0-9-wion" tvg-name="WION" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-wion/channel_list/360x203e15697a079f244d1b1baf7af2eb964bc.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",WION
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/WION-News-SD/master/master.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/out/v1/ZEE5_Live_Channels/WION-News-SD/master/*~id=ebaeb6fd-83cd-423d-9a33-e0843e8785e1~data=non-ssai_ebaeb6fd-83cd-423d-9a33-e0843e8785e1~hmac=1c3dd0d04972406308cc9291e81420ba074087fa79b51f71f9a21df54f48bb0b&req_id=non-ssai_ebaeb6fd-83cd-423d-9a33-e0843e8785e1
+
+#EXTINF:-1 tvg-id="0-9-258" tvg-name="TV9 Telugu" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-258/channel_list/360x203254e76adfe5248f1904be9c860c325ea.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",TV9 Telugu
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-TELUGU-HD/index/index.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/out/v1/ZEE5_Live_Channels/TV9-TELUGU-HD/index/*~id=3f0b860a-0c0e-4988-913a-6df819897d48~data=non-ssai_3f0b860a-0c0e-4988-913a-6df819897d48~hmac=991fbd55c84e4515a0a1dead5ade84fbfde1cc03abc96742bf123eb14b8126c4&req_id=non-ssai_3f0b860a-0c0e-4988-913a-6df819897d48
+
+#EXTINF:-1 tvg-id="0-9-257" tvg-name="TV9 Marathi" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-257/channel_list/360x203a77a41b9f09a4be68021edce6535c07d.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",TV9 Marathi
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-MARATHI-HD/index/index.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/out/v1/ZEE5_Live_Channels/TV9-MARATHI-HD/index/*~id=87a505be-fcde-4fd1-bd55-090bf38c21eb~data=non-ssai_87a505be-fcde-4fd1-bd55-090bf38c21eb~hmac=00a2cba7a97f57b2c498e88fdb90ebf4afe81ad6f689cdd03d0c4f4ced191b58&req_id=non-ssai_87a505be-fcde-4fd1-bd55-090bf38c21eb
+
+#EXTINF:-1 tvg-id="0-9-259" tvg-name="TV9 Kannada" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-259/channel_list/360x20390e3b4b89ab946e29847b29f9fccb411.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",TV9 Kannada
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-KANNADA-HD/index/index.m3u8?hdnts=st=1793106183~exp=1793109183~acl=/out/v1/ZEE5_Live_Channels/TV9-KANNADA-HD/index/*~id=aa1ab320-da57-4c9a-94d9-ddc3d514c0d1~data=non-ssai_aa1ab320-da57-4c9a-94d9-ddc3d514c0d1~hmac=483eda2670f4ad82d8dcf1a8e6936dd3fbc72d50b9be248cbfced0a475b43c75&req_id=non-ssai_aa1ab320-da57-4c9a-94d9-ddc3d514c0d1
+
+#EXTINF:-1 tvg-id="0-9-260" tvg-name="TV9 Gujarati" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-260/channel_list/360x203b9888f81dbd244cbb0fd28ba96b11c3c.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",TV9 Gujarati
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-GUJARATI-HD/index/index.m3u8?hdnts=st=1793106184~exp=1793109184~acl=/out/v1/ZEE5_Live_Channels/TV9-GUJARATI-HD/index/*~id=95bc1f96-73ea-4401-807b-828c9959cf3a~data=non-ssai_95bc1f96-73ea-4401-807b-828c9959cf3a~hmac=f6b704029ab9a06aebe28dc31234f0f8d075b4cf7b1ef9d27068aea66491f65e&req_id=non-ssai_95bc1f96-73ea-4401-807b-828c9959cf3a
+
+#EXTINF:-1 tvg-id="0-9-251" tvg-name="TV9 Bharatvarsh" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-251/channel_list/360x20352e6393e55854bf68995213ec8f5e9c4.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",TV9 Bharatvarsh
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-BHARATVARSH-HD/index/index.m3u8?hdnts=st=1793106184~exp=1793109184~acl=/out/v1/ZEE5_Live_Channels/TV9-BHARATVARSH-HD/index/*~id=c1fdb373-5b1b-488e-b4fb-8a1d47de46e8~data=non-ssai_c1fdb373-5b1b-488e-b4fb-8a1d47de46e8~hmac=56b0f9e27c6e41c3805a5a959bd36b3ab753b072f3a4f7d6e702deeaedb1c8cc&req_id=non-ssai_c1fdb373-5b1b-488e-b4fb-8a1d47de46e8
+
+#EXTINF:-1 tvg-id="0-9-378" tvg-name="TV9 Bangla" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-378/channel_list/360x20360c41e1235e24dadb085411bb6a81fee.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",TV9 Bangla
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-BANGLA-HD/index/index.m3u8?hdnts=st=1793106184~exp=1793109184~acl=/out/v1/ZEE5_Live_Channels/TV9-BANGLA-HD/index/*~id=14d434fb-8b15-48c5-9d28-7e6de2b0bcff~data=non-ssai_14d434fb-8b15-48c5-9d28-7e6de2b0bcff~hmac=12013c1fb189d3ae0ebfb82209e27ad287b2babcf54b9895336115fafc31da56&req_id=non-ssai_14d434fb-8b15-48c5-9d28-7e6de2b0bcff
+
+#EXTINF:-1 tvg-id="0-9-201" tvg-name="Suvarna News" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-201/channel_list/360x203a43c9a55c43b4f349d134ef9f38cc131.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Suvarna News
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Suvarna-News-HD/index/index.m3u8?hdnts=st=1793106184~exp=1793109184~acl=/out/v1/ZEE5_Live_Channels/Suvarna-News-HD/index/*~id=4bc38641-28c5-486e-a796-6e6a6b9a4ca1~data=non-ssai_4bc38641-28c5-486e-a796-6e6a6b9a4ca1~hmac=1477380cdb08184b88db0d18c201e89793a2f45ba01c100ac3ef0af3d874f85c&req_id=non-ssai_4bc38641-28c5-486e-a796-6e6a6b9a4ca1
+
+#EXTINF:-1 tvg-id="0-9-9z5938348" tvg-name="Somnath Temple" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938348/channel_list/360x203653b46a4d735464d8bbf13a39c7f75e8.png" tvg-category="Devotional" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Somnath Temple
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://cam.pc.cdn.bitgravity.com/cam/live/somnath1/Zee_Media/playlist.m3u8?e=0&h=a1d9787fc190186f1efe4ab43963c585?hdnts=st=1793106184~exp=1793109184~acl=/cam/live/somnath1/Zee_Media/*~id=2c9a8579-66d9-4e38-8728-0831d3572886~data=non-ssai_2c9a8579-66d9-4e38-8728-0831d3572886~hmac=640b72df75f5ca3c3c964c3901c70c9e16a94b20bad5bfe2f5b9080e24cd2051&req_id=non-ssai_2c9a8579-66d9-4e38-8728-0831d3572886
+
+#EXTINF:-1 tvg-id="0-9-9z5946519" tvg-name="Shree Naga Sai  Temple - Coimbatore" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5946519/channel_list/360x2037bb6e1de82af439587b2a06b3f952b94.png" tvg-category="Devotional" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Shree Naga Sai  Temple - Coimbatore
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://cam.pc.cdn.bitgravity.com/cam/live/feed88_1/Zee_Media/playlist.m3u8?e=0&h=89eb034d3f6cd8321c983dc3885eab18?hdnts=st=1793106184~exp=1793109184~acl=/cam/live/feed88_1/Zee_Media/*~id=da09d427-3ed2-4132-9a71-bce5dd31a9e5~data=non-ssai_da09d427-3ed2-4132-9a71-bce5dd31a9e5~hmac=b86f64f7f864cc92e17e164361092f4d81b0884a0927dd1253ba9edf5ee42eac&req_id=non-ssai_da09d427-3ed2-4132-9a71-bce5dd31a9e5
+
+#EXTINF:-1 tvg-id="0-9-zeesalaam" tvg-name="Salaam TV" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeesalaam/channel_list/360x203c8d109ae96a645dab72b81f73244fe92.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Salaam TV
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Salaam-SD/master/master.m3u8?hdnts=st=1793106184~exp=1793109184~acl=/out/v1/ZEE5_Live_Channels/Zee-Salaam-SD/master/*~id=b869f1e1-5faf-45cf-b76d-7a422209440c~data=non-ssai_b869f1e1-5faf-45cf-b76d-7a422209440c~hmac=c717c2abb7777919aa28b79bb3da11fc725c04a824feed5c077c886b73a804c8&req_id=non-ssai_b869f1e1-5faf-45cf-b76d-7a422209440c
+
+#EXTINF:-1 tvg-id="0-9-9z5938343" tvg-name="Sai Baba, Shirdi" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938343/channel_list/360x203d570027ea5f044b388859023999b3715.png" tvg-category="Devotional" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Sai Baba, Shirdi
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://cam.pc.cdn.bitgravity.com/cam/live/feed008/Zee_Media/playlist.m3u8?e=0&h=1e076b716048330f3a02481fcee07265?hdnts=st=1793106184~exp=1793109184~acl=/cam/live/feed008/Zee_Media/*~id=b18fed74-1fd7-42b2-bfe3-fedaa4cc1977~data=non-ssai_b18fed74-1fd7-42b2-bfe3-fedaa4cc1977~hmac=14cef6828b15161e3bc4bcbe07c6d1d3e8633686fbee69450861291fba83881a&req_id=non-ssai_b18fed74-1fd7-42b2-bfe3-fedaa4cc1977
+
+#EXTINF:-1 tvg-id="0-9-203" tvg-name="Polimer News" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-203/channel_list/360x203a22e27576cdf4d769b8ed4f295c34733.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Polimer News
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/POLIMER_TV_PLAYOUT/index/index.m3u8?hdnts=st=1793106185~exp=1793109185~acl=/out/v1/ZEE5_Live_Channels/POLIMER_TV_PLAYOUT/index/*~id=a0c93cba-524f-4778-9d3a-ebc203d4045f~data=non-ssai_a0c93cba-524f-4778-9d3a-ebc203d4045f~hmac=3a2c27381825ba439371dc1279fb4096e94ec466a069e9b138f71e52a6ba8f56&req_id=non-ssai_a0c93cba-524f-4778-9d3a-ebc203d4045f
+
+#EXTINF:-1 tvg-id="0-9-9z5946518" tvg-name="Patna Sahib" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5946518/channel_list/360x203739182e01a8242c799a7087969c4777a.png" tvg-category="Devotional" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Patna Sahib
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://cam.pc.cdn.bitgravity.com/cam/live/gurudwara_patnasahib/Zee_Media/playlist.m3u8?e=0&h=bb304d25e95fd8ce8b6be9684a241195?hdnts=st=1793106185~exp=1793109185~acl=/cam/live/gurudwara_patnasahib/Zee_Media/*~id=b8d17a21-26b5-4157-80ac-d781d0b112bb~data=non-ssai_b8d17a21-26b5-4157-80ac-d781d0b112bb~hmac=50eb8cd98c5ab1d6e1d15f6e8b50aaef9dba8c105db8466fb8d5be7ce4b19c01&req_id=non-ssai_b8d17a21-26b5-4157-80ac-d781d0b112bb
+
+#EXTINF:-1 tvg-id="0-9-261" tvg-name="News 9" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-261/channel_list/360x20362e0ae462ebf4f40859a2776a038186e.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",News 9
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-NEWS9/index/index.m3u8?hdnts=st=1793106185~exp=1793109185~acl=/out/v1/ZEE5_Live_Channels/TV9-NEWS9/index/*~id=6e5bf5c0-dd6e-4eaf-87c0-22155d55e90e~data=non-ssai_6e5bf5c0-dd6e-4eaf-87c0-22155d55e90e~hmac=b6fb064aed781fc9e64910cf9e1a702beed08d5908bb7cd1e381bd88fa2d1a8a&req_id=non-ssai_6e5bf5c0-dd6e-4eaf-87c0-22155d55e90e
+
+#EXTINF:-1 tvg-id="0-9-9z5942784" tvg-name="NDTV Profit" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5942784/channel_list/360x203128e6a71e7b4439aa83a27216e198339.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",NDTV Profit
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/NDTV_PROFIT_HD/index/index.m3u8?hdnts=st=1793106185~exp=1793109185~acl=/out/v1/ZEE5_Live_Channels/NDTV_PROFIT_HD/index/*~id=c1e34e98-cb6c-44fe-8c28-1b6c51fff9be~data=non-ssai_c1e34e98-cb6c-44fe-8c28-1b6c51fff9be~hmac=6049a5b9c4f18207a60d6eb839f12d6941b1fe56d3714ede746b19295da175c5&req_id=non-ssai_c1e34e98-cb6c-44fe-8c28-1b6c51fff9be
+
+#EXTINF:-1 tvg-id="0-9-9z5942785" tvg-name="NDTV Marathi " tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5942785/channel_list/360x203a6144752bcda40c6ab02a0e93170a4ec.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",NDTV Marathi
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5ak-cmaflive.zee5.com/cmaf/live/2105526/NDTV-MARATHI-HD/index.m3u8?hdnts=st=1793106185~exp=1793109185~acl=/cmaf/live/2105526/NDTV-MARATHI-HD/*~id=886ddae9-282d-40f4-a889-545f5729c030~data=non-ssai_886ddae9-282d-40f4-a889-545f5729c030~hmac=296dac49b27546a9e807607f4b3a56c6a397480a1a36739628556d2ff1069004&req_id=non-ssai_886ddae9-282d-40f4-a889-545f5729c030
+
+#EXTINF:-1 tvg-id="0-9-9z5942783" tvg-name="NDTV India" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5942783/channel_list/360x20359b23e6a71ec4547b308c8f9ab8db082.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",NDTV India
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5ak-cmaflive.zee5.com/cmaf/live/2105525/NDTV-INDIA-HD/index.m3u8?hdnts=st=1793106185~exp=1793109185~acl=/cmaf/live/2105525/NDTV-INDIA-HD/*~id=4d64fd9f-40e2-4251-8d9f-e173d1f202b8~data=non-ssai_4d64fd9f-40e2-4251-8d9f-e173d1f202b8~hmac=9d33a281e5e2ac78ad3791ea2069a254334cacba9cb597ee4e1e443d43309f6c&req_id=non-ssai_4d64fd9f-40e2-4251-8d9f-e173d1f202b8
+
+#EXTINF:-1 tvg-id="0-9-9z5942782" tvg-name="NDTV" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5942782/channel_list/360x2034b64a1f11f1f43cca98127a129bdbb58.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",NDTV
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/NDTV_24x7_HD/index/index.m3u8?hdnts=st=1793106186~exp=1793109186~acl=/out/v1/ZEE5_Live_Channels/NDTV_24x7_HD/index/*~id=13154952-8dc3-420c-a118-011b5538a379~data=non-ssai_13154952-8dc3-420c-a118-011b5538a379~hmac=c376bfbca32d43e08fa25a605ad58bb79822aa57318c534e1df12eaf9b41d7e4&req_id=non-ssai_13154952-8dc3-420c-a118-011b5538a379
+
+#EXTINF:-1 tvg-id="0-9-9z5938351" tvg-name="Mahavir Mandir Patna" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938351/channel_list/360x203b4a52c1015cb470c865b2567207d363f.png" tvg-category="Devotional" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Mahavir Mandir Patna
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://cam.pc.cdn.bitgravity.com/cam/live/PatnaHanuman/Zee_Media/playlist.m3u8?e=0&h=0ad4bfc5e187efbc0489c47db7c20b2f?hdnts=st=1793106185~exp=1793109185~acl=/cam/live/PatnaHanuman/Zee_Media/*~id=821b901f-1f0b-4a7a-8c6a-ecab37ffc112~data=non-ssai_821b901f-1f0b-4a7a-8c6a-ecab37ffc112~hmac=64e09c07aaaae50eef79d5d09d6d4cfe2714e200276905da44264ffa4620e540&req_id=non-ssai_821b901f-1f0b-4a7a-8c6a-ecab37ffc112
+
+#EXTINF:-1 tvg-id="0-9-9z5938347" tvg-name="Ma Naina Devi" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938347/channel_list/360x203af81d512ce0b48608c202b2526fdf455.png" tvg-category="Devotional" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Ma Naina Devi
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://cam.pc.cdn.bitgravity.com/cam/live/Nainadevi/Zee_Media/playlist.m3u8?e=0&h=0bc1a9085c61739d2e7f5c9696f0d580?hdnts=st=1793106185~exp=1793109185~acl=/cam/live/Nainadevi/Zee_Media/*~id=421c3251-4341-4682-a77c-b36c56cd0f3b~data=non-ssai_421c3251-4341-4682-a77c-b36c56cd0f3b~hmac=ae08b5229a8f332bc714db9025896df30d65ea71d212d52626718f692da0f324&req_id=non-ssai_421c3251-4341-4682-a77c-b36c56cd0f3b
+
+#EXTINF:-1 tvg-id="0-9-9z5938349" tvg-name="Kashi Vishwanath" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938349/channel_list/360x2031ff0a5ecda3140b493e5df16a4f5280c.png" tvg-category="Devotional" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Kashi Vishwanath
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://cam.pc.cdn.bitgravity.com/cam/live/Kashi_Vishwanath/Zee_Media/playlist.m3u8?e=0&h=f8fc672c5c1a5ac4230f5f4793d77b90?hdnts=st=1793106185~exp=1793109185~acl=/cam/live/Kashi_Vishwanath/Zee_Media/*~id=3aa45973-560a-45ad-a118-33b36bf99dc3~data=non-ssai_3aa45973-560a-45ad-a118-33b36bf99dc3~hmac=c6b7cefa0180a6af1843b270fcdf515055ae18a601a40c9487f89ac004f286b3&req_id=non-ssai_3aa45973-560a-45ad-a118-33b36bf99dc3
+
+#EXTINF:-1 tvg-id="0-9-9z5938346" tvg-name="Iskcon Vrindavan" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938346/channel_list/360x2032677a6344f364aaa9291bca657d5507f.png" tvg-category="Devotional" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Iskcon Vrindavan
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://cam.pc.cdn.bitgravity.com/cam/live/feed023/Zee_Media/playlist.m3u8?e=0&h=b01d178188e02c84ac3babca2f52ccfa?hdnts=st=1793106185~exp=1793109185~acl=/cam/live/feed023/Zee_Media/*~id=79df37e8-9727-4768-a58e-010a893e380c~data=non-ssai_79df37e8-9727-4768-a58e-010a893e380c~hmac=b3c0de2adabe54ea51b3ba76c4e66d4f91042218154de1a7358688095b3e9018&req_id=non-ssai_79df37e8-9727-4768-a58e-010a893e380c
+
+#EXTINF:-1 tvg-id="0-9-indiatoday" tvg-name="India Today" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-indiatoday/channel_list/indiatoday11702d87d227b9dd482a88a0334f10363c11.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",India Today
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/India-Today-HD/index/index.m3u8?hdnts=st=1793106185~exp=1793109185~acl=/out/v1/ZEE5_Live_Channels/India-Today-HD/index/*~id=2e303609-9b9b-4ad2-b0f5-fe2893513494~data=non-ssai_2e303609-9b9b-4ad2-b0f5-fe2893513494~hmac=280ff2a4fe5eab3530321fe0d5b17bf134e93c0e2f43608c03f64f79955ae17f&req_id=non-ssai_2e303609-9b9b-4ad2-b0f5-fe2893513494
+
+#EXTINF:-1 tvg-id="0-9-255" tvg-name="Good News Today" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-255/channel_list/360x2034b7d0f587bc34fe6b8f663f9a162e9b7d365bf379a4e40d492bf9c008b51262e.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Good News Today
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Good-News-Today-HD/index/index.m3u8?hdnts=st=1793106186~exp=1793109186~acl=/out/v1/ZEE5_Live_Channels/Good-News-Today-HD/index/*~id=de97307c-cbf9-4186-946b-4aa7b29c9a7f~data=non-ssai_de97307c-cbf9-4186-946b-4aa7b29c9a7f~hmac=c467d03a226a917e9ac98258fc850dfecf967cb8c939f15d090e3d896dbc27d5&req_id=non-ssai_de97307c-cbf9-4186-946b-4aa7b29c9a7f
+
+#EXTINF:-1 tvg-id="0-9-9z5938345" tvg-name="Dagdusheth Halwai Ganpati Mandir" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-9z5938345/channel_list/360x20344bf440154de4d97b2e5574457f45cdc.png" tvg-category="Devotional" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Dagdusheth Halwai Ganpati Mandir
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://cam.pc.cdn.bitgravity.com/cam/live/dagdusheth1/Zee_Media/playlist.m3u8?e=0&h=5f04be0dbe998cfe63128b888ae5d823?hdnts=st=1793106186~exp=1793109186~acl=/cam/live/dagdusheth1/Zee_Media/*~id=c87c21d4-daae-400e-aaa4-2552543e4683~data=non-ssai_c87c21d4-daae-400e-aaa4-2552543e4683~hmac=aad7cef498d5d23b4dc68a900b78a500f6f5024c8307c3160d7da62cbb89a27e&req_id=non-ssai_c87c21d4-daae-400e-aaa4-2552543e4683
+
+#EXTINF:-1 tvg-id="0-9-bigmagic_1786965389" tvg-name="Big Magic" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-bigmagic_1786965389/channel_list/360x2032d681f33fc1f415a8b027e4913ee884a.png" tvg-category="Entertainment" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Big Magic
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Big-Magic-SD/master/master.m3u8?hdnts=st=1793106186~exp=1793109186~acl=/out/v1/ZEE5_Live_Channels/Big-Magic-SD/master/*~id=653a127f-346e-4486-8813-f019be8d78f5~data=non-ssai_653a127f-346e-4486-8813-f019be8d78f5~hmac=ae6ce640f5364804fcfbcc9ccd8b05d98541e13b34547618cfb666973e7e0b05&req_id=non-ssai_653a127f-346e-4486-8813-f019be8d78f5
+
+#EXTINF:-1 tvg-id="0-9-200" tvg-name="Asianet News" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-200/channel_list/360x203107604655d9c4a0e965bd7a726dd3ee8.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Asianet News
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Asianet-News-HD/index/index.m3u8?hdnts=st=1793106186~exp=1793109186~acl=/out/v1/ZEE5_Live_Channels/Asianet-News-HD/index/*~id=bc1a3cc6-89a5-45fb-9280-aace75bb06a2~data=non-ssai_bc1a3cc6-89a5-45fb-9280-aace75bb06a2~hmac=12c1d233bbaeec3a4e40c8f27f2e8ff91788ee25ea05ad6f2e650eddd5fa8fec&req_id=non-ssai_bc1a3cc6-89a5-45fb-9280-aace75bb06a2
+
+#EXTINF:-1 tvg-id="0-9-zeeanmol" tvg-name="Anmol TV" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeeanmol/channel_list/360x203e6986aa651f94274b27fb88453e2295f.png" tvg-category="Entertainment" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Anmol TV
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Anmol-SD/master/master.m3u8?hdnts=st=1793106187~exp=1793109187~acl=/out/v1/ZEE5_Live_Channels/Zee-Anmol-SD/master/*~id=f615e24a-a382-4666-a6d3-29668c393c2d~data=non-ssai_f615e24a-a382-4666-a6d3-29668c393c2d~hmac=e1bc182ebf522e2686fb593a2a85d304402f403cc897323b26b4d09d035cca72&req_id=non-ssai_f615e24a-a382-4666-a6d3-29668c393c2d
+
+#EXTINF:-1 tvg-id="0-9-bigganga" tvg-name="Anmol Cinema 2" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-bigganga/channel_list/360x20389300d0c5de94cb582c2899511d0dbf1.png" tvg-category="Movie" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Anmol Cinema 2
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Ganga-Zee-Anmol-Cinema-2-SD/master/master.m3u8?hdnts=st=1793106186~exp=1793109186~acl=/out/v1/ZEE5_Live_Channels/Zee-Ganga-Zee-Anmol-Cinema-2-SD/master/*~id=c478b3f7-868d-4a49-9658-3f17393e6373~data=non-ssai_c478b3f7-868d-4a49-9658-3f17393e6373~hmac=7784ee02aa0ddbb490b856024e2e2311d3eea97609719435c98ec41f5a1b4855&req_id=non-ssai_c478b3f7-868d-4a49-9658-3f17393e6373
+
+#EXTINF:-1 tvg-id="0-9-zeeanmolcinema" tvg-name="Anmol Cinema" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-zeeanmolcinema/channel_list/360x203b1c1a240ca94435daaf689cb371bc50d.png" tvg-category="Movie" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Anmol Cinema
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Anmol-Cinema-SD/master/master.m3u8?hdnts=st=1793106186~exp=1793109186~acl=/out/v1/ZEE5_Live_Channels/Zee-Anmol-Cinema-SD/master/*~id=88a661be-57f6-4c49-a7cc-8efbd84f2a8d~data=non-ssai_88a661be-57f6-4c49-a7cc-8efbd84f2a8d~hmac=28f9c0d80f3167c6b44e0168bdba662c3b0600c3846d1f177eb6bf35e18bac4a&req_id=non-ssai_88a661be-57f6-4c49-a7cc-8efbd84f2a8d
+
+#EXTINF:-1 tvg-id="0-9-aajtak" tvg-name="Aaj Tak" tvg-logo="https://akamaividz2.zee5.com/image/upload/resources/0-9-aajtak/channel_list/360x2033e789b21dd3c42079af3fa4a4c5a6576b594053e82124268bc5163a45b1126d4.png" tvg-category="News" group-title="ZEE5 Worldwide" group-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",Aaj Tak
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+#EXTVLCOPT:http-referrer=https://www.zee5.com/
+#EXTHTTP:{"User-Agent":"com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)","Referer":"https://www.zee5.com/"}
+https://z5ak-cmaflive.zee5.com/cmaf/live/2105503/AAJTAKHDNEWSELE/index.m3u8?hdnts=st=1793106186~exp=1793109186~acl=/cmaf/live/2105503/AAJTAKHDNEWSELE/*~id=70e9e0b3-0d1e-46f4-aae1-97cc91d5f7ae~data=non-ssai_70e9e0b3-0d1e-46f4-aae1-97cc91d5f7ae~hmac=945ca69dc326cd59d87f02a221c1f0e62cde4a804d76061a545693dfcd69dc53&req_id=non-ssai_70e9e0b3-0d1e-46f4-aae1-97cc91d5f7ae
+
 # ===== Sony LIV (22 Channels) =====
 #EXTINF:-1 tvg-id="sony-hd.sonyliv" tvg-name="SONY HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_HD.png" tvg-language="Hindi" tvg-category="Entertainment" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
@@ -11645,6 +11976,7 @@ https://sliv.gramnaters.workers.dev/sony-ten-5.m3u8
 #EXTINF:-1 tvg-id="bbc-earth.sonyliv" tvg-name="BBC EARTH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_BBC_Earth_HD.png" tvg-language="English" tvg-category="Infotainment" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",BBC EARTH
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://sliv.gramnaters.workers.dev/bbc-earth.m3u8
+# --- SonyLIV Live Sports Events ---
 
 # ===== SunNXT (34 Channels) =====
 #EXTINF:-1 tvg-id="sun-194408" tvg-name="Sun TV" tvg-logo="https://sund-images.sunnxt.com/194408/640x360_SunTV_194408_2617a80e-4f90-42fa-b13a-acc8d7c97f9e.jpg" group-title="SunNXT" group-logo="https://upload.wikimedia.org/wikipedia/en/d/d5/Sun_NXT_logo_small.png" type="dash",Sun TV
@@ -12463,12 +12795,16 @@ https://livetv.hotstar.com/mp2/gec-india-1540057051/aa1fac3acfc244b4bbed73575a4a
 https://livetv.hotstar.com/mp2/gec-india-1540057081/5c13f17d142c4963a1c7bd54fcd421d5/index.mpd
 
 #EXTINF:-1 tvg-id="star_plus_hd" tvg-name="Star Plus HD" tvg-logo="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/658/920658-h.jpg" group-title="JioHotstar",Star Plus HD
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=17a6e6ef02f74d9bbce4640371d40000:7a89315d2ec84875901dce2d3044556c
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)
 #EXTVLCOPT:http-referrer=https://www.hotstar.com/
 #EXTVLCOPT:http-extra-headers=Origin: https://www.hotstar.com
 #EXTVLCOPT:http-cookie=hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1
 #EXTHTTP:{"Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/","Cookie":"hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1"}
-https://livetv.hotstar.com/mp2/gec-india-1540005587/d70f7444749a46988107a08c1bea5c54/index.mpd
+https://livetv.hotstar.com/mp1/gec-india-1540057045/a73567ab8abd4680bc8206dd0c625cb0/index.mpd
 
 #EXTINF:-1 tvg-id="asianet_digital" tvg-name="Asianet Digital" tvg-logo="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/7408/1782289617408-h.jpg" group-title="JioHotstar",Asianet Digital
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)
@@ -12980,7 +13316,7 @@ https://jcevents.hotstar.com/bpk-tv/JS_News18India/JioHotstar/JS_News18India.m3u
 #EXTVLCOPT:http-extra-headers=Origin: https://www.hotstar.com
 #EXTVLCOPT:http-cookie=hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1
 #EXTHTTP:{"Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/","Cookie":"hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1"}
-https://jcevents.hotstar.com/bpk-tv/JS_News18PunjabHaryana/JioHotstar/JS_News18PunjabHaryana.m3u8
+https://nw18live.cdn.jio.com/bpk-tv/News18_Punjab_Haryana_HP_NW18_MOB/output01/index.m3u8
 
 #EXTINF:-1 tvg-id="news18_lokmat" tvg-name="News18 Lokmat" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/IBN_Lokmat.png" group-title="JioHotstar",News18 Lokmat
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)
@@ -12996,7 +13332,7 @@ https://jcevents.hotstar.com/bpk-tv/JS_News18Lokmat/JioHotstar/JS_News18Lokmat.m
 #EXTVLCOPT:http-extra-headers=Origin: https://www.hotstar.com
 #EXTVLCOPT:http-cookie=hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1
 #EXTHTTP:{"Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/","Cookie":"hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1"}
-https://jcevents.hotstar.com/bpk-tv/JS_News18Tamilnadu/JioHotstar/JS_News18Tamilnadu.m3u8
+https://nw18live.cdn.jio.com/bpk-tv/News18_Tamil_Nadu_NW18_MOB/output01/index.m3u8
 
 #EXTINF:-1 tvg-id="cnbc_bazaar" tvg-name="CNBC Bazaar" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/whatsapp16x9-1693491956187.jpg" group-title="JioHotstar",CNBC Bazaar
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)
@@ -13052,7 +13388,7 @@ https://jcevents.hotstar.com/bpk-tv/JS_News18AssamNorthEast/JioHotstar/JS_News18
 #EXTVLCOPT:http-extra-headers=Origin: https://www.hotstar.com
 #EXTVLCOPT:http-cookie=hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1
 #EXTHTTP:{"Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/","Cookie":"hdntl=exp=1793149208~acl=%2f*~id=4f005d49aa5ae53db86b0d8a1ad854be~data=hdntl~hmac=350290e76242af3188a85cbc93debc4062356df8fa0e725abdbfc94f214d9fc1"}
-https://jcevents.hotstar.com/bpk-tv/JS_News18JKLH/JioHotstar/JS_News18JKLH.m3u8
+https://nw18live.cdn.jio.com/bpk-tv/News18_JKLH_NW18_MOB/output01/index.m3u8
 
 #EXTINF:-1 tvg-id="news18_rajasthan" tvg-name="News18 Rajasthan" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/ETV_RAJASTHAN.png" group-title="JioHotstar",News18 Rajasthan
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169(Android/15)
@@ -13163,7 +13499,7 @@ https://livetv.hotstar.com/mp2/gec-india-1540068778/894041da6b2144bfab552b7ee942
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=45fd5a743c584b7b81227362caa60aed:64b15a67298d5cdfbfdef7988e1f966f
+#KODIPROP:inputstream.adaptive.license_key=45fd5a743c584b7b81227362caa60aed:c99b18651799c9fca890d81011a069e7
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d2o8pibksxtln6.cloudfront.net/live/media/And_Pictures_HD/dash/And_Pictures_HD.mpd
 
@@ -13303,7 +13639,7 @@ https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Action/dash/Zee_Action.mpd
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=ecf09573987e435198110c8340fbd8af:12205c8d902eb5e170b0bf23605f5b15
+#KODIPROP:inputstream.adaptive.license_key=ecf09573987e435198110c8340fbd8af:8341fc6595e6c30cd834625f34d6bb6e
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Anmol/dash/Zee_Anmol.mpd
 
@@ -13411,7 +13747,7 @@ https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Power_SD/dash/Zee_Power_SD.
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=d0abecd2d90f4e719e0da0b517e125d7:b55b0f91c15bf35a90b270dfd2f616ab
+#KODIPROP:inputstream.adaptive.license_key=d0abecd2d90f4e719e0da0b517e125d7:3f8ced033063b0e108dc2e65ec6cbcce
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_PUNJABI/dash/ZEE_PUNJABI.mpd
 
@@ -13487,7 +13823,7 @@ https://d2o8pibksxtln6.cloudfront.net/live/media/Zing/dash/Zing.mpd
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d2o8pibksxtln6.cloudfront.net/live/media/Zoom/dash/Zoom.mpd
 
-# ===== FanCode (12 Channels) =====
+# ===== FanCode (11 Channels) =====
 #EXTINF:-1 tvg-id="fancode.4249783" tvg-name="South Africa vs Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/AUS-vs-SA-test_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",South Africa vs Australia
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
@@ -13508,16 +13844,6 @@ https://dai-fancode.pages.dev/mumbai/4250333_english_hls_13eab2201f23744_1ta-di_
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250517_english_hls_c6aadfde282620_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250344" tvg-name="Kuwait vs Jersey" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Kuwait vs Jersey
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250344_english_hls_de2fcdd6e014877_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4248723" tvg-name="Kyoto Sanga vs Newcastle Jets" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248723_53053_KYS_NJ_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Kyoto Sanga vs Newcastle Jets
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4248723_english_hls_380992af4276697_1ta-di_h264/index.m3u8
-
 #EXTINF:-1 tvg-id="fancode.4248725" tvg-name="Ratchaburi vs Kashiwa Reysol" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248725_53053_RAT_REY_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Ratchaburi vs Kashiwa Reysol
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
@@ -13527,6 +13853,11 @@ https://dai-fancode.pages.dev/mumbai/4248725_english_hls_f67d4623c384869_1ta-di_
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4248724_english_hls_5572b29afe77534_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4249643" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249643_english_hls_c14cffe8e137141_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="fancode.4249650" tvg-name="IWB Court 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",IWB Court 1
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
@@ -13554,48 +13885,27 @@ https://dai-fancode.pages.dev/mumbai/4250534_english_hls_9b25ee3f6638203_1ta-di_
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=71c9587a489e14e4463fb01f0951bc69:2e5fcd0b450696f14c9f065364b6787b
-https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/jcogtjna1p/out/v1/49e48e49b1b74230bc32c008303e962f/cenc.mpd
+https://ss-ott.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/jcogtjna1p/out/v1/49e48e49b1b74230bc32c008303e962f/cenc.mpd
 
 #EXTINF:-1 tvg-id="B0HKDPRJRS" tvg-name="Australia tour of South Africa 2026 - 3rd Test - South Africa vs Australia" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.20a790a3-51e9-4ec1-9a8b-cb632845af2d/2/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow",Australia tour of South Africa 2026 - 3rd Test - South Africa vs Australia
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=bdc52b31dcf25b0515a61fb9d0f444a2:468ae45daef1021713e7ea869a340f96
-https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/mdzi0aespt/out/v1/ebc753f4d4af40e481e5506bad35eb42/cenc.mpd
+https://otte.cache.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/mdzi0aespt/out/v1/ebc753f4d4af40e481e5506bad35eb42/cenc.mpd
 
 # ===== Willow live events (1 Channels) =====
 #EXTINF:-1 tvg-id="B0HFG5QN17" tvg-name="ODI Tri-Nation Series in UAE 2026 - Final - Afghanistan vs Zimbabwe" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.1399581a-e87b-45f3-ae53-faf4e42483fc/2/BOXART-16X9/en-US._UR1920,1080_.jpeg" tvg-category="Other" group-title="Willow live events",ODI Tri-Nation Series in UAE 2026 - Final - Afghanistan vs Zimbabwe
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/jr2yukryn7/out/v1/2310db8f31c047c4b01ebd3ab96d815d/cenc.mpd
 
-# ===== Prime Video (5 Channels) =====
+# ===== Prime Video (6 Channels) =====
 #EXTINF:-1 tvg-id="B0H37FB27F" tvg-name="Predator European Championships: Spain" tvg-logo="https://images-na.ssl-images-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.447494d8-1dc7-4b08-89c7-f04ce02111ea/10/BOXART-16X9/en-US._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/a-f/freewithads/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kv053498f62d21803ffcbf28da234cfe9f_SX624_FMjpg_.jpeg" group-title="Prime Video",Predator European Championships: Spain
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=18ebe4e0e59f5ff07ed9879c4c0e0008:e172cb6887761bf883aa925e173e7b67
-https://dash-ott.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/g4ydvmoa9t/out/v1/73c73d5ac64146c2b7b133cac333a24c/cenc.mpd
-
-#EXTINF:-1 tvg-id="B0HP69Z4HT" tvg-name="The Morning Drive" tvg-logo="https://images-na.ssl-images-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.7086bb27-816e-4519-a9f1-6537cf41f24b/2/BOXART-16X9/en-US._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/a-f/freewithads/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kv053498f62d21803ffcbf28da234cfe9f_SX624_FMjpg_.jpeg" group-title="Prime Video",The Morning Drive
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=e14535ab02e4065cc846047f1feee48d:a51c5c164f9a6b0ae751afeec7f85052
-https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/uenudg4x6g/out/v1/8b25f245771b4e5698d914b941c54982/cenc.mpd
-
-#EXTINF:-1 tvg-id="B0HN2PT7BB" tvg-name="Pakistan ODI Tri-Series 2026 - 5th Match - Pakistan vs Sri Lanka" tvg-logo="https://images-na.ssl-images-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.1751377a-8a97-41ca-8cfe-a48a200fae9c/4/BOXART-16X9/en-US._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/s-z/willowtv/logos/channels-logo-white-stacked.png%7C0,0,1920,1080+0,0,1920,1080+1724,885,117,117_kvebed36e78eaa0330f200bb6045a52aca_SX624_FMjpg_.jpeg" group-title="Prime Video",Pakistan ODI Tri-Series 2026 - 5th Match - Pakistan vs Sri Lanka
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=71c9587a489e14e4463fb01f0951bc69:2e5fcd0b450696f14c9f065364b6787b
-https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/jcogtjna1p/out/v1/49e48e49b1b74230bc32c008303e962f/cenc.mpd
-
-#EXTINF:-1 tvg-id="B0HKDPRJRS" tvg-name="Australia tour of South Africa 2026 - 3rd Test - South Africa vs Australia" tvg-logo="https://images-na.ssl-images-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.20a790a3-51e9-4ec1-9a8b-cb632845af2d/2/BOXART-16X9/en-US._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/s-z/willowtv/logos/channels-logo-white-stacked.png%7C0,0,1920,1080+0,0,1920,1080+1724,885,117,117_kvebed36e78eaa0330f200bb6045a52aca_SX624_FMjpg_.jpeg" group-title="Prime Video",Australia tour of South Africa 2026 - 3rd Test - South Africa vs Australia
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=bdc52b31dcf25b0515a61fb9d0f444a2:468ae45daef1021713e7ea869a340f96
-https://dash-ott.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/yi1ah9sgsj/out/v1/ffe37797429b4ed28810e8d7735124fc/cenc.mpd
+https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/g4ydvmoa9t/out/v1/73c73d5ac64146c2b7b133cac333a24c/cenc.mpd
 
 #EXTINF:-1 tvg-id="B0HJ9YNQ91" tvg-name="South Africa vs. Australia" tvg-logo="https://images-na.ssl-images-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.1548c248-86f6-444f-94a6-0c2291f771c2/4/BOXART-16X9/en-US._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/a-f/freewithads/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kv053498f62d21803ffcbf28da234cfe9f_SX624_FMjpg_.jpeg" group-title="Prime Video",South Africa vs. Australia
 #KODIPROP:inputstream=inputstream.adaptive
@@ -13603,6 +13913,34 @@ https://dash-ott.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/yi1ah9sg
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=290e09c837da78d5cd961978d390515c:b748836c71e6a4ca68ef5b5652db6247
 https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/tll6uwepxa/out/v1/a7f67cbb33df46539312956427343886/cenc.mpd
+
+#EXTINF:-1 tvg-id="B0HP69Z4HT" tvg-name="The Morning Drive" tvg-logo="https://images-na.ssl-images-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.7086bb27-816e-4519-a9f1-6537cf41f24b/2/BOXART-16X9/en-US._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/a-f/freewithads/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kv053498f62d21803ffcbf28da234cfe9f_SX624_FMjpg_.jpeg" group-title="Prime Video",The Morning Drive
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=e14535ab02e4065cc846047f1feee48d:a51c5c164f9a6b0ae751afeec7f85052
+https://otte.cache.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/uenudg4x6g/out/v1/8b25f245771b4e5698d914b941c54982/cenc.mpd
+
+#EXTINF:-1 tvg-id="B0HKDPRJRS" tvg-name="Australia tour of South Africa 2026 - 3rd Test - South Africa vs Australia" tvg-logo="https://images-na.ssl-images-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.20a790a3-51e9-4ec1-9a8b-cb632845af2d/2/BOXART-16X9/en-US._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/s-z/willowtv/logos/channels-logo-white-stacked.png%7C0,0,1920,1080+0,0,1920,1080+1724,885,117,117_kvebed36e78eaa0330f200bb6045a52aca_SX624_FMjpg_.jpeg" group-title="Prime Video",Australia tour of South Africa 2026 - 3rd Test - South Africa vs Australia
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=bdc52b31dcf25b0515a61fb9d0f444a2:468ae45daef1021713e7ea869a340f96
+https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/yi1ah9sgsj/out/v1/ffe37797429b4ed28810e8d7735124fc/cenc.mpd
+
+#EXTINF:-1 tvg-id="B0HMP6PGCL" tvg-name="Tennis Today Live-Basel-ATP & Vienna-ATP Early Rounds" tvg-logo="https://images-na.ssl-images-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.65b7ccd7-c5a2-4c95-b2fc-248251407e8f/7/BOXART-16X9/en-US._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/a-f/freewithads/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kv053498f62d21803ffcbf28da234cfe9f_SX624_FMjpg_.jpeg" group-title="Prime Video",Tennis Today Live-Basel-ATP & Vienna-ATP Early Rounds
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=59f50679c9e60963bd0cb6640992aaaa:8685817c4d31f322e08940feeae2855a
+https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/bfigtl960n/out/v1/5ba5484550e84681bff2e8ca994266c1/cenc.mpd
+
+#EXTINF:-1 tvg-id="B0HN2PT7BB" tvg-name="Pakistan ODI Tri-Series 2026 - 5th Match - Pakistan vs Sri Lanka" tvg-logo="https://images-na.ssl-images-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.1751377a-8a97-41ca-8cfe-a48a200fae9c/4/BOXART-16X9/en-US._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/s-z/willowtv/logos/channels-logo-white-stacked.png%7C0,0,1920,1080+0,0,1920,1080+1724,885,117,117_kvebed36e78eaa0330f200bb6045a52aca_SX624_FMjpg_.jpeg" group-title="Prime Video",Pakistan ODI Tri-Series 2026 - 5th Match - Pakistan vs Sri Lanka
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=71c9587a489e14e4463fb01f0951bc69:2e5fcd0b450696f14c9f065364b6787b
+https://dash-ott.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/jcogtjna1p/out/v1/49e48e49b1b74230bc32c008303e962f/cenc.mpd
 
 # ===== Dangal Play (4 Channels) =====
 #EXTINF:-1 tvg-id="dangalplay-dangal" tvg-name="Dangal" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/Dangal_16x9.jpg" group-title="Dangal Play",Dangal
@@ -13620,3 +13958,9 @@ https://live-bangla.akamaized.net/liveabr/playlist.m3u8
 #EXTINF:-1 tvg-id="dangalplay-bhojpuri" tvg-name="Bhojpuri" tvg-logo="https://dangaplay-json.s3.ap-south-1.amazonaws.com/BhojpuriCinema_16x9.jpg" group-title="Dangal Play",Bhojpuri
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 https://live-bhojpuri.akamaized.net/liveabr/playlist.m3u8
+
+# ===== Sonyliv events (1 Channels) =====
+#EXTINF:-1 tvg-id="sonyliv.event.1090550786" tvg-name="Salute Tiranga Cricket League (STCL) 2026" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000027434/1793041312495594_STCL26_delhi_vs_haryana_landscape_thumb.jpg" tvg-language="HIN" tvg-category="Sports" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",Salute Tiranga Cricket League (STCL) 2026
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://www.sonyliv.com/
+https://sonymtmnew.akamaized.net/v1/master/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaTa083prod-PlaybackConfig/2120305/criclive2710/HIN/std_lrl-800300010.m3u8?tracking_params=https://e138b425de774612937f377e0fdfb880.mediatailor.ap-south-1.amazonaws.com/v1/session/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaTa083prod-PlaybackConfig/master.m3u8&adServer=GAM&hdnea=exp=1793109475~acl=/*~id=86385619165662619909512274044727~hmac=55e9985f3323de960040851f942d13334a620ba849c80b9889235970d6bae82a

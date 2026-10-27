@@ -35,7 +35,7 @@ PUBLIC_COOKIE_SOURCES = [
 # Premium/BTS channels (Zee, &TV, Star on jiotvpllive) reject the wildcard token and
 # only play with a token whose acl is scoped to that channel's own path.
 PER_CHANNEL_SOURCE = "https://premiumplugx.com/gibt/shoebpl.php"
-CLEARKEY_RE = re.compile(r"^[0-9a-fA-F]{32}:[0-9a-fA-F]{32}$")
+CLEARKEY_RE = re.compile(r"^[0-9a-fA-F]{32}:[0-9a-fA-F]{32}(,[0-9a-fA-F]{32}:[0-9a-fA-F]{32})*$")
 USER_AGENT = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
 ORIGIN = "https://www.jiotv.com/"
 
@@ -168,21 +168,27 @@ def fetch_live_cookie():
 
 
 def fetch_channel_overrides():
-    """Map channel id -> (url, channel-scoped cookie, clearkey) for live per-channel tokens."""
+    """Return (id -> (url, channel-scoped cookie), id -> clearkey) from the per-channel feed.
+
+    Premium streams rotate between several KIDs, so their clearkey is a comma-separated
+    list of kid:key pairs; the cached single key in jiotv_keys.json does not decrypt them.
+    """
     try:
         r = requests.get(PER_CHANNEL_SOURCE, headers={"User-Agent": "Mozilla/5.0"}, timeout=20)
         items = r.json() if r.status_code == 200 else []
     except Exception:
-        return {}
-    overrides = {}
+        return {}, {}
+    streams, clearkeys = {}, {}
     for it in items if isinstance(items, list) else []:
+        cid = str(it.get("id"))
+        ck = (it.get("clearkey") or "").strip()
+        if CLEARKEY_RE.match(ck):
+            clearkeys[cid] = ck
         cookie = ((it.get("headers") or {}).get("cookie") or "").strip()
         url = (it.get("mpd_url") or "").split("?")[0]
-        if not url or "acl=/bpk-tv/" not in cookie or expiry_hours(cookie) <= 0.5:
-            continue
-        ck = it.get("clearkey") or ""
-        overrides[str(it.get("id"))] = (url, cookie, ck if CLEARKEY_RE.match(ck) else "")
-    return overrides
+        if url and "acl=/bpk-tv/" in cookie and expiry_hours(cookie) > 0.5:
+            streams[cid] = (url, cookie)
+    return streams, clearkeys
 
 
 def load_channels():
@@ -212,7 +218,7 @@ def main():
     if not cookie:
         print("Failed to acquire live playback token.")
         return 1
-    overrides = fetch_channel_overrides()
+    overrides, feed_keys = fetch_channel_overrides()
     used_overrides = 0
 
     now_ist = get_ist_time()
@@ -241,10 +247,9 @@ def main():
 
         base_url = url.split("?")[0] if "?" in url else url
         ch_cookie = cookie
+        license_key = feed_keys.get(cid) or (f"{key_id}:{key}" if key_id and key else "")
         if cid in overrides:
-            base_url, ch_cookie, ov_key = overrides[cid]
-            if ov_key:
-                key_id, key = ov_key.split(":", 1)
+            base_url, ch_cookie = overrides[cid]
             used_overrides += 1
         elif "jiotvpllive.cdn.jio.com" in base_url:
             base_url = base_url.replace("jiotvpllive.cdn.jio.com", "jiotvmblive.cdn.jio.com").replace("_BTS", "_MOB")
@@ -258,9 +263,9 @@ def main():
         if is_dash:
             lines.append("#KODIPROP:inputstream=inputstream.adaptive")
             lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-            if key_id and key:
+            if license_key:
                 lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
-                lines.append(f"#KODIPROP:inputstream.adaptive.license_key={key_id}:{key}")
+                lines.append(f"#KODIPROP:inputstream.adaptive.license_key={license_key}")
 
         lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
         lines.append(f"#EXTVLCOPT:http-cookie={ch_cookie}")

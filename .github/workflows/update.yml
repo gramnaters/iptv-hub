@@ -2,8 +2,9 @@ name: Auto Refresh Playlists
 
 on:
   schedule:
-    # Run every 2 hours to ensure sports events and tokens stay fresh
-    - cron: '0 */2 * * *'
+    # Hourly, off the top of the hour: GitHub delays/drops busy :00 schedules, and the
+    # JioTV/ZEE5 tokens arrive with only ~5.5h left, so 2-hourly runs let them lapse.
+    - cron: '17 * * * *'
   workflow_dispatch:
 
 permissions:

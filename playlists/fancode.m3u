@@ -1,40 +1,40 @@
 #EXTM3U
-#DATE:- 27-10-2026 09:23:10 IST
+#DATE:- 27-10-2026 15:08:40 IST
 # Category: fancode
 # Total Channels: 7
 # Source: FanCode Self-Hosted Live Sports Events
 
-#EXTINF:-1 tvg-id="fancode.4250489" tvg-name="Emirates Blues Vs Sharjah" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250489_53130_EMB_SHA_fc-web_1792412930086.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Emirates Blues Vs Sharjah
+#EXTINF:-1 tvg-id="fancode.4250356" tvg-name="Biratnagar Kings vs Chitwan Rhinos" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250356_53124_BK_CWR_fc-Web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Biratnagar Kings vs Chitwan Rhinos
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250489_english_hls_03580ea31262174_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250356_english_hls_8953a306e829984_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4248715" tvg-name="Air Force Sc Vs Pakhtakor Tashkent" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248715_53053_AFSC_PT_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Air Force Sc Vs Pakhtakor Tashkent
+#EXTINF:-1 tvg-id="fancode.4249783" tvg-name="South Africa vs Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/AUS-vs-SA-test_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",South Africa vs Australia
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4248715_english_hls_17127bb0fe40666_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249783_english_hls_97c5a4780083137_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4248717" tvg-name="Al Qadisiyah Vs Al Sadd" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248717_53053_ALQ_SDD_fc-web_1792670735783.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Al Qadisiyah Vs Al Sadd
+#EXTINF:-1 tvg-id="fancode.4250333" tvg-name="Namibia vs Ireland" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Namibia-vs-Ireland_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Namibia vs Ireland
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4248717_english_hls_ec4ce4a73734867_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250333_english_hls_13eab2201f23744_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249628" tvg-name="Day 1   World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Day 1   World Feed
+#EXTINF:-1 tvg-id="fancode.4250517" tvg-name="Netherlands vs Oman" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/ICC-CWC-League_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Netherlands vs Oman
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249628_english_hls_5f77957eed29537_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250517_english_hls_c6aadfde282620_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249635" tvg-name="Glaubandich Court" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Glaubandich Court
+#EXTINF:-1 tvg-id="fancode.4250344" tvg-name="Kuwait vs Jersey" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Kuwait vs Jersey
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249635_english_hls_f1c0d0326694191_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250344_english_hls_de2fcdd6e014877_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250545" tvg-name="Centre Court" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Centre Court
+#EXTINF:-1 tvg-id="fancode.4250343" tvg-name="Qatar vs Papua New Guinea" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Qatar vs Papua New Guinea
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250545_english_hls_3f7621985c77750_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250343_english_hls_72aa7342dc71840_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250546" tvg-name="World Feed 2" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed 2
+#EXTINF:-1 tvg-id="fancode.4250533" tvg-name="Haryana Hustlers vs Chandigarh Chargers" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250533_53137_HH_CC_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Haryana Hustlers vs Chandigarh Chargers
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250546_english_hls_999c99ff213863_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250533_english_hls_5eecbc9bf133650_1ta-di_h264/index.m3u8

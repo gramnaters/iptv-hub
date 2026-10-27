@@ -144,14 +144,6 @@
     "key": ""
   },
   {
-    "id": "sun-marathi-hd",
-    "name": "Sun Marathi HD",
-    "group": "Entertainment",
-    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0",
-    "url": "http://d1iwj24qiokrul.cloudfront.net/live/media/Sun_Marathi_HD/dash/Sun_Marathi_HD.mpd",
-    "key": "220559b79ec54013acab92370d2fa61e:88e31495f013d8914108c64a0dd0c845"
-  },
-  {
     "id": "times-now",
     "name": "Times Now",
     "group": "News",
@@ -221,7 +213,7 @@
     "group": "Entertainment",
     "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/dd74c3cd17ff4baca804bce74b811384/version/0",
     "url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Bangla_HD/dash/Zee_Bangla_HD.mpd",
-    "key": "ecf95a8633b54a5ab6a2c540ad64847c:63ff446bafec67e5be4c6e41a8b26a2f"
+    "key": "ecf95a8633b54a5ab6a2c540ad64847c:5bc489e966a9fc9541c7464394bc53ab"
   },
   {
     "id": "zee-bangla-sonar",

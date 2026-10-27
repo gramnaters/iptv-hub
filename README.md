@@ -9,8 +9,7 @@ Automated aggregator and stream engine for Live TV & Sports. Runs 100% autonomou
 | Endpoint | Description | Status |
 | :--- | :--- | :--- |
 | **`https://live.gramnaters.workers.dev`** | **⭐ Master Aggregated Playlist (1,600+ Channels)** | 🟢 24/7 Edge Cached & Self-Healing |
-| **`https://jtv.gramnaters.workers.dev/live.m3u`** | **🌟 100% Independent Self-Minting JioTV (Personal Login)** | 🟢 Zero 3rd party dependency |
-| **`https://jtv.gramnaters.workers.dev/playlist.m3u`** | **📡 Master JioTV Playlist (1,175 Channels with ClearKeys)** | 🟢 Real-time Edge Self-Healing |
+| **`https://jtv.gramnaters.workers.dev/playlist.m3u`** | **📡 JioTV Playlist (1,200+ Channels with ClearKeys, per-channel tokens from premiumplugx feed)** | 🟢 Rebuilt every 5 min · `/status` for token health |
 | **`https://jhs.gramnaters.workers.dev/playlist.m3u`** | **⭐ JioHotstar Live TV (146 Channels)** | 🟢 Headless Browser Self-Minted |
 
 ---

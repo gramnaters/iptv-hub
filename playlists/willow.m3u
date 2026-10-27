@@ -1,5 +1,5 @@
 #EXTM3U
-#DATE:- 27-10-2026 22:13:53 IST
+#DATE:- 27-10-2026 22:42:04 IST
 # Category: willow
 # Total Channels: 2
 
@@ -15,5 +15,5 @@ https://a96aivottlinear-a.akamaihd.net/OTTB/pdx-nitro/live/clients/dash/enc/mdzi
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=85e95a4fae22e02459252a03faaf3166:29334fa5e1d5708ed994f8bf74687933
-https://a96aivottlinear-a.akamaihd.net/OTTB/iad-nitro/live/clients/dash/enc/eieh0ekrzy/out/v1/2587259ec56e439086e501951f31ccf7/cenc.mpd
+https://dash-ott.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/eieh0ekrzy/out/v1/2587259ec56e439086e501951f31ccf7/cenc.mpd
 

@@ -3,12 +3,14 @@
 import os
 import re
 import sys
+import time
 
 import requests
 
 CHANNELS_URL = "https://raw.githubusercontent.com/qwerty180506/json/refs/heads/main/Geoplus.json"
 COOKIE_URL = "https://allinonereborn2.online/jstrweb2/cookies.json"
 SPORTS_URL = "https://allinonereborn2.online/jtv-fetch/jstarcookie/cookie.json"
+KEYS_URL = "https://premiumplugx.com/gibt/shoebpl.php"
 UA = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,8 +47,27 @@ def sports_urls(data):
             continue
         cid = str(item.get("channel_id") or "")
         url = item.get("final_url") or (item.get("error_details") or {}).get("final_url") or ""
-        if cid and url:
-            found[cid] = re.sub(r"/output/", "/WDVLive/", url, count=1, flags=re.I)
+        if not cid or not url:
+            continue
+        exp = re.search(r"exp=(\d+)", url)
+        if exp and int(exp.group(1)) <= time.time():
+            continue
+        found[cid] = re.sub(r"/output/", "/WDVLive/", url, count=1, flags=re.I)
+    return found
+
+
+def extra_keys():
+    try:
+        data = get_json(KEYS_URL)
+    except requests.RequestException:
+        return {}
+    found = {}
+    if not isinstance(data, list):
+        return found
+    for item in data:
+        key = str(item.get("clearkey") or "")
+        if re.fullmatch(r"(?:[0-9a-fA-F]{32}:[0-9a-fA-F]{32})(?:,[0-9a-fA-F]{32}:[0-9a-fA-F]{32})*", key):
+            found[str(item.get("id") or "")] = key
     return found
 
 
@@ -81,6 +102,7 @@ def main():
     channels = get_json(CHANNELS_URL)
     cookie = normal_cookie(get_json(COOKIE_URL))
     sports = sports_urls(get_json(SPORTS_URL))
+    fuller = extra_keys()
     if not isinstance(channels, list) or not cookie:
         sys.exit("catalog or cookie missing")
     lines = ["#EXTM3U"]
@@ -110,7 +132,9 @@ def main():
         if ".mpd" in final.lower() or ch.get("type") == "dash":
             lines.append("#KODIPROP:inputstream=inputstream.adaptive")
             lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-            key = keys_of(ch)
+            catalog_key = keys_of(ch)
+            other = fuller.get(cid, "")
+            key = other if other.count(":") > catalog_key.count(":") else catalog_key
             if key:
                 lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
                 lines.append(f"#KODIPROP:inputstream.adaptive.license_key={key}")
@@ -119,7 +143,7 @@ def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
-    print(f"{sum(hosts.values())} channels {hosts} sports={len(sports)} -> {OUT}")
+    print(f"{sum(hosts.values())} channels {hosts} sports={len(sports)} fuller={len(fuller)} -> {OUT}")
 
 
 if __name__ == "__main__":

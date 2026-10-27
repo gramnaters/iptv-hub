@@ -5,7 +5,7 @@
     "group": "Movies",
     "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/75364a7b9f09477b9ee80016a6440b6b/version/0",
     "url": "https://d2o8pibksxtln6.cloudfront.net/live/media/And_Pictures_HD/dash/And_Pictures_HD.mpd",
-    "key": "45fd5a743c584b7b81227362caa60aed:c99b18651799c9fca890d81011a069e7"
+    "key": "45fd5a743c584b7b81227362caa60aed:64b15a67298d5cdfbfdef7988e1f966f"
   },
   {
     "id": "tv-hd",
@@ -251,7 +251,7 @@
     "id": "zee-cinemalu-hd",
     "name": "Zee Cinemalu HD",
     "group": "Movies",
-    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b9ab293f61c24d7697352215c83ce463/version/0",
+    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a33211ad359a4cba8b23144e4081ff68/version/0",
     "url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Cinemalu_HD/dash/Zee_Cinemalu_HD.mpd",
     "key": "f4874e18626042a4bcc3f912471c1314:b9eff441e3593291eb072f9cd065ff23"
   },
@@ -309,7 +309,7 @@
     "group": "Entertainment",
     "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/600751eb0b714c9992c92d8bfc78e814/version/0",
     "url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_PUNJABI/dash/ZEE_PUNJABI.mpd",
-    "key": "d0abecd2d90f4e719e0da0b517e125d7:3f8ced033063b0e108dc2e65ec6cbcce"
+    "key": "d0abecd2d90f4e719e0da0b517e125d7:b55b0f91c15bf35a90b270dfd2f616ab"
   },
   {
     "id": "zee-sarthak",

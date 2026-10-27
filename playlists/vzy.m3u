@@ -1,5 +1,5 @@
 #EXTM3U
-# Generated: 27-10-2026 09:38:29 UTC
+# Generated: 27-10-2026 12:22:24 UTC
 # Total Channels: 48
 # Source: live (https://vzyweb.42web.io/api.php)
 
@@ -7,7 +7,7 @@
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=45fd5a743c584b7b81227362caa60aed:c99b18651799c9fca890d81011a069e7
+#KODIPROP:inputstream.adaptive.license_key=45fd5a743c584b7b81227362caa60aed:64b15a67298d5cdfbfdef7988e1f966f
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d2o8pibksxtln6.cloudfront.net/live/media/And_Pictures_HD/dash/And_Pictures_HD.mpd
 
@@ -199,7 +199,7 @@ https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Bollywood/dash/Zee_Bollywoo
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Cinema_HD/dash/Zee_Cinema_HD.mpd
 
-#EXTINF:-1 tvg-id="zee-cinemalu-hd" tvg-name="Zee Cinemalu HD" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b9ab293f61c24d7697352215c83ce463/version/0" tvg-category="Movies" group-title="VZY" group-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0" type="dash",Zee Cinemalu HD
+#EXTINF:-1 tvg-id="zee-cinemalu-hd" tvg-name="Zee Cinemalu HD" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a33211ad359a4cba8b23144e4081ff68/version/0" tvg-category="Movies" group-title="VZY" group-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0" type="dash",Zee Cinemalu HD
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
@@ -255,7 +255,7 @@ https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Power_SD/dash/Zee_Power_SD.
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=d0abecd2d90f4e719e0da0b517e125d7:3f8ced033063b0e108dc2e65ec6cbcce
+#KODIPROP:inputstream.adaptive.license_key=d0abecd2d90f4e719e0da0b517e125d7:b55b0f91c15bf35a90b270dfd2f616ab
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_PUNJABI/dash/ZEE_PUNJABI.mpd
 

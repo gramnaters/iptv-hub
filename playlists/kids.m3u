@@ -1,7 +1,7 @@
 #EXTM3U
-#DATE:- 27-10-2026 18:58:49 IST
+#DATE:- 27-10-2026 20:15:07 IST
 # Category: kids
-# Total Channels: 17
+# Total Channels: 19
 
 #EXTINF:-1 tvg-id="kids-1" tvg-name="Oggy and the Cockroaches" tvg-logo="https://commons.wikimedia.org/wiki/Special:Redirect/file/Oggy_and_the_Cockroaches_Logo.webp" group-title="24/7 kids+Goldmines pack",Oggy and the Cockroaches
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
@@ -70,4 +70,12 @@ https://yuppparoriglin.akamaized.net/181224/smil:wowkidztamil.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="wowkidz-telugu" tvg-name="WOW KIDZ Telugu" tvg-logo="https://yt3.ggpht.com/a/AATXAJytH39NO3s4QEpDhzrKSGGEg0tf1c6c29ZzsQ=s900-c-k-c0xffffffff-no-rj-mo" tvg-category="Kids" group-title="WOW KIDZ",WOW KIDZ Telugu
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 https://yuppparoriglin.akamaized.net/181224/smil:wowkidztelgu.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
+
+#EXTINF:-1 tvg-id="0-9-9z5910526" tvg-logo="https://akamaividz2.zee5.com/image/upload/w_auto,h_396,c_scale,f_webp,q_auto:eco/resources/0-9-9z5910526/list/1920x1080list167ee27b9ca34f9e9fedea9957e88b73.png" group-title="Kids", Tiny Pop
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+https://premiumplug.fun/tee/zee5.php/0-9-9z5910526.m3u8
+
+#EXTINF:-1 tvg-id="0-9-9z5910527" tvg-logo="https://akamaividz2.zee5.com/image/upload/w_auto,h_396,c_scale,f_webp,q_auto:eco/resources/0-9-9z5910527/list/1920x1080list8dc1ec2e49de47fd8100d7699181666c.png" group-title="Kids", POP UP
+#EXTVLCOPT:http-user-agent=com.graymatrix.did;Android TV;5.82.6(203230929);Android(10);Xiaomi(Redmi Note 8 Pro)
+https://premiumplug.fun/tee/zee5.php/0-9-9z5910527.m3u8
 

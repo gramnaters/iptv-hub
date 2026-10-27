@@ -81,7 +81,7 @@ LOCAL_OVERRIDES = [
 
 JIOTV_GROUP_PREFIX = "Jio TV+"
 PPX_JIOTV = "https://premiumplugx.com/gibt/shoebpl.php"
-PPX_ZEE5 = "https://premiumplug.fun/tee/zee5.php"
+PPX_ZEE5 = "https://premiumplugx.me/jee/zee5.php?m3u"
 JIOTV_UA = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
 CLEARKEY_RE = re.compile(r"^[0-9a-fA-F]{32}:[0-9a-fA-F]{32}(,[0-9a-fA-F]{32}:[0-9a-fA-F]{32})*$")
 

@@ -1,8 +1,0 @@
-name = "jtv"
-main = "src/index.js"
-compatibility_date = "2026-01-01"
-account_id = "5187ba2fa9d1d3c76911594de4a63a0d"
-workers_dev = true
-
-[observability]
-enabled = true

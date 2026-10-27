@@ -10,8 +10,14 @@ import requests
 CHANNELS_URL = "https://raw.githubusercontent.com/qwerty180506/json/refs/heads/main/Geoplus.json"
 COOKIE_URL = "https://allinonereborn2.online/jstrweb2/cookies.json"
 SPORTS_URL = "https://allinonereborn2.online/jtv-fetch/jstarcookie/cookie.json"
-KEYS_URL = "https://premiumplugx.com/gibt/shoebpl.php"
 UA = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
+# Jio does not list this channel. This CDN copy decrypts with no cookie.
+DIRECT = {
+    "472": (
+        "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/Andtvhd/default/manifest.mpd",
+        "67d18634ccb04875875c60fb8d9caaba:99a66471c09e4b8a8dc39a0de6803f75",
+    ),
+}
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "playlists", "jiotv.m3u")
@@ -56,21 +62,6 @@ def sports_urls(data):
     return found
 
 
-def extra_keys():
-    try:
-        data = get_json(KEYS_URL)
-    except requests.RequestException:
-        return {}
-    found = {}
-    if not isinstance(data, list):
-        return found
-    for item in data:
-        key = str(item.get("clearkey") or "")
-        if re.fullmatch(r"(?:[0-9a-fA-F]{32}:[0-9a-fA-F]{32})(?:,[0-9a-fA-F]{32}:[0-9a-fA-F]{32})*", key):
-            found[str(item.get("id") or "")] = key
-    return found
-
-
 def keys_of(channel):
     pairs = []
     if channel.get("keyId") and channel.get("key"):
@@ -102,7 +93,6 @@ def main():
     channels = get_json(CHANNELS_URL)
     cookie = normal_cookie(get_json(COOKIE_URL))
     sports = sports_urls(get_json(SPORTS_URL))
-    fuller = extra_keys()
     if not isinstance(channels, list) or not cookie:
         sys.exit("catalog or cookie missing")
     lines = ["#EXTM3U"]
@@ -112,8 +102,11 @@ def main():
             continue
         cid = str(ch.get("id") or "")
         base = ch.get("url") or ""
-        final = sports.get(cid)
-        if not final:
+        direct = DIRECT.get(cid)
+        final = None if direct else sports.get(cid)
+        if direct:
+            final = direct[0]
+        elif not final:
             if not base:
                 continue
             final = base + ("&" if "?" in base else "?") + cookie
@@ -132,9 +125,7 @@ def main():
         if ".mpd" in final.lower() or ch.get("type") == "dash":
             lines.append("#KODIPROP:inputstream=inputstream.adaptive")
             lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-            catalog_key = keys_of(ch)
-            other = fuller.get(cid, "")
-            key = other if other.count(":") > catalog_key.count(":") else catalog_key
+            key = direct[1] if direct else keys_of(ch)
             if key:
                 lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
                 lines.append(f"#KODIPROP:inputstream.adaptive.license_key={key}")
@@ -143,7 +134,7 @@ def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
-    print(f"{sum(hosts.values())} channels {hosts} sports={len(sports)} fuller={len(fuller)} -> {OUT}")
+    print(f"{sum(hosts.values())} channels {hosts} sports={len(sports)} -> {OUT}")
 
 
 if __name__ == "__main__":

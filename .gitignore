@@ -11,6 +11,7 @@ scripts/jtvplus_extract.py
 scripts/fetch_zee5_catalog.py
 catalogs/jtvplus_*
 catalogs/zee5_full_map.json
+playlists/jiotv_mobile.m3u
 
 # Python
 __pycache__/

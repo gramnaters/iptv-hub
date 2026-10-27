@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-"""
-VZY Live TV Playlist Generator.
-Fetches fresh ClearKey DRM keys dynamically from https://vzyweb.42web.io/api.php
-by solving the AES-128-CBC challenge, updates catalogs/vzy_catalog.json, and writes
-playlists/vzy.m3u with W3C ClearKeys (org.w3.clearkey).
-"""
 import json
 import os
 import re
@@ -42,7 +36,6 @@ GROUP_LOGO = (
 
 
 def solve_challenge():
-    """Solve the AES-128-CBC JS challenge on vzyweb to obtain valid session cookie."""
     if not HAS_DEPS:
         return None
     session = requests.Session()
@@ -73,7 +66,6 @@ def main():
     channels = []
     source = "cached"
 
-    # 1. Attempt dynamic live fetch
     live_data = solve_challenge()
     if live_data:
         source = "live (https://vzyweb.42web.io/api.php)"

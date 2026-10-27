@@ -1,12 +1,4 @@
 #!/usr/bin/env python3
-"""
-ZEE5 Native Generator.
-100% self-hosted & self-contained generator using official ZEE5 APIs:
-1. ZEE5 India: 32 pure CloudFront DASH channels with W3C ClearKeys from catalogs/zee5_catalog.json.
-2. ZEE5 Free & Fast Live Channels: Discovered directly from official ZEE5 Catalog API
-   (catalogapi.zee5.com) with native playback tokens minted from spapi.zee5.com.
-Zero third-party APIs or aggregator scrapers.
-"""
 import base64
 import json
 import os
@@ -171,7 +163,6 @@ def main():
         "",
     ]
 
-    # 1. ZEE5 India (32 Verified ClearKey Channels)
     for ch in india_channels:
         cid = ch.get("id", "")
         name = ch.get("name", "")
@@ -198,7 +189,6 @@ def main():
         lines.append(url)
         lines.append("")
 
-    # 2. ZEE5 Native Live Streams from Official API
     print("ZEE5: Minting live tokens natively from official ZEE5 APIs...")
     platform_token = get_platform_token()
     native_channels = []

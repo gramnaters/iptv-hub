@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
-"""
-Free channels playlist generator.
-"""
 import json
 import os
 import sys
 from datetime import datetime, timezone, timedelta
 
-# Ensure UTF-8 output
 if sys.stdout.encoding != 'utf-8':
     try:
         sys.stdout.reconfigure(encoding='utf-8')

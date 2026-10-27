@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-"""
-Master IPTV playlist merge and aggregation engine.
-"""
 import os
 import sys
 import re
@@ -10,7 +7,6 @@ import time
 import requests
 from datetime import datetime, timezone, timedelta
 
-# Ensure UTF-8 output
 if sys.stdout.encoding != 'utf-8':
     try:
         sys.stdout.reconfigure(encoding='utf-8')
@@ -27,14 +23,10 @@ EPG_URL = "https://avkb.short.gy/jioepg.xml.gz"
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 
-# JioHotstar source URL
 USER_JIOHOTSTAR_URL = os.environ.get("JHS_URL", "")
 
-# Upstream public feeds
 PUBLIC_PLUG_API = ""
 
-# Independent local sources: scripts/generate_*.py -> playlists/*.m3u
-# Local playlist configurations
 LOCAL_OVERRIDES = [
     {
         "name": "VZY",
@@ -93,12 +85,12 @@ EXTRA_FEEDS = {
     "Willow": {
         "url": "https://raw.githubusercontent.com/srhady/willow-event/refs/heads/main/live_sports.m3u",
         "group": "Willow",
-        "icon": "🏏"
+        "icon": ""
     },
     "Prime Video": {
         "url": "https://raw.githubusercontent.com/srhady/willow-event/refs/heads/main/primevideo_sports.m3u",
         "group": "Prime Video",
-        "icon": "🎥"
+        "icon": ""
     }
 }
 
@@ -136,7 +128,6 @@ def extract_channel_blocks(raw_text):
     return blocks
 
 def clean_watermarks_from_block(block):
-    """Remove unwanted watermarks or promotional metadata."""
     cleaned = []
     watermark_patterns = [
         r'DOCTOR\s*STRANGE',
@@ -159,7 +150,6 @@ def get_block_group(block):
     return "Other"
 
 def load_local_playlist(path, min_channels=1):
-    """Load blocks from a locally generated playlist (scripts/generate_*.py -> playlists/*.m3u)."""
     if not os.path.exists(path):
         return []
     try:
@@ -199,7 +189,6 @@ def main():
     all_channels_by_group = {}
 
     # -------------------------------------------------------------
-    # 1. Fetch User's Independent JioHotstar Feed (own JioHotstar group)
     # -------------------------------------------------------------
     print("Fetching JioHotstar...")
     jhs_text = fetch_content(USER_JIOHOTSTAR_URL) if USER_JIOHOTSTAR_URL else ""
@@ -214,7 +203,6 @@ def main():
         print("Could not load independent JioHotstar, check worker status")
 
     # -------------------------------------------------------------
-    # 2. Independent local sources (channels/*.json -> playlists/*.m3u)
     # -------------------------------------------------------------
     skip_from_plug = {"jiohotstar"}   # exact group names to take from local instead
     # ZEE5 India is produced by generate_zee5.py (zee5.m3u), so skip the public
@@ -242,11 +230,10 @@ def main():
         print(f"{src['name']}: {len(blocks)} channels loaded from {os.path.basename(src['file'])}")
 
     # -------------------------------------------------------------
-    # 3. Fetch Public Feeds (Disabled: 100% Independent Self-Hosted)
     # -------------------------------------------------------------
     plug_blocks = []
     if PUBLIC_PLUG_API:
-        print(f"\n📡 Fetching comprehensive catalog from {PUBLIC_PLUG_API}...")
+        print(f"\n Fetching comprehensive catalog from {PUBLIC_PLUG_API}...")
         plug_text = fetch_content(PUBLIC_PLUG_API)
         plug_blocks = extract_channel_blocks(plug_text) if plug_text else []
         print(f"Loaded {len(plug_blocks)} total public channel items")
@@ -269,7 +256,6 @@ def main():
         print(f"Skipped {len(skipped_groups)} public-feed group(s) (local copy wins or category disabled): {', '.join(sorted(skipped_groups))}")
 
     # -------------------------------------------------------------
-    # 3. Add Extra Feeds (Willow, Prime Video)
     # -------------------------------------------------------------
     for name, cfg in EXTRA_FEEDS.items():
         print(f"\n{cfg['icon']} Fetching {name} from {cfg['url']}...")
@@ -292,7 +278,6 @@ def main():
             all_channels_by_group.setdefault(cfg["group"], []).extend(norm_eblocks)
 
     # -------------------------------------------------------------
-    # 4. Save Individual Category/Service M3U Files in playlists/
     # -------------------------------------------------------------
     # Mapping for clean individual playlists.
     # NOTE: vzy / fancode / jiotv / sunnxt / sony / zee5 are deliberately
@@ -319,10 +304,9 @@ def main():
             f.write(f"# Total Channels: {len(cat_blocks)}\n\n")
             for b in cat_blocks:
                 f.write("\n".join(b) + "\n\n")
-        print(f"  📁 {filename}.m3u ({len(cat_blocks)} channels)")
+        print(f"{filename}.m3u ({len(cat_blocks)} channels)")
 
     # -------------------------------------------------------------
-    # 5. Assemble Master Combined.m3u
     # -------------------------------------------------------------
     print("Generating Master Combined.m3u...")
 

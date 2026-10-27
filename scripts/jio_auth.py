@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-"""
-JioTV mobile authentication module.
-"""
 import os
 import sys
 import json
@@ -99,7 +96,6 @@ def verify_otp(mobile: str, otp: str, device_id: str = DEVICE_ID_DEFAULT) -> dic
 
 
 def refresh_access_token(creds: dict) -> dict:
-    """Refresh authToken using refreshToken (current JioTV v422 profile)."""
     refresh_tok = creds.get("refreshToken")
     if not refresh_tok:
         return {"ok": False, "message": "no refreshToken"}
@@ -130,7 +126,6 @@ def refresh_access_token(creds: dict) -> dict:
 
 
 def refresh_sso_token(creds: dict) -> dict:
-    """Refresh ssoToken via tv.media.jio.com (current JioTV v422 profile)."""
     sso = creds.get("ssoToken")
     unique = creds.get("uniqueId")
     device = creds.get("deviceId", DEVICE_ID_DEFAULT)
@@ -159,7 +154,6 @@ def refresh_sso_token(creds: dict) -> dict:
 
 
 def ensure_fresh(creds: dict) -> dict:
-    """Refresh authToken (and ssoToken) if needed; returns the working creds."""
     if creds.get("authToken"):
         r = refresh_access_token(creds)
         if r.get("ok"):
@@ -170,7 +164,6 @@ def ensure_fresh(creds: dict) -> dict:
 
 
 def auth_headers(creds: dict) -> dict:
-    """Authenticated headers for channel-list + geturl calls."""
     h = dict(BASE_HEADERS)
     if creds.get("authToken"):
         h["accessToken"] = creds["authToken"]
@@ -188,8 +181,8 @@ def auth_headers(creds: dict) -> dict:
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage:")
-        print("  python jio_auth.py send <mobile>")
-        print("  python jio_auth.py verify <mobile> <otp> [deviceId]")
+        print("python jio_auth.py send <mobile>")
+        print("python jio_auth.py verify <mobile> <otp> [deviceId]")
         sys.exit(1)
     cmd = sys.argv[1].lower()
     if cmd == "send":

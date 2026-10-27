@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-SonyLIV playlist generator with Linear 24/7 Channels and Native Live Sports Events.
-Directly extracts live events and mints official Akamai/DAI tokens from SonyLIV's APIs.
-"""
 import os
 import re
 import sys
@@ -77,12 +73,11 @@ def mint_direct_token():
         m = re.search(r"[?&](hdnea=[^&]+)", vurl)
         return m.group(1) if m else None
     except Exception as e:
-        print(f"  ⚠️ Direct mint error: {e}")
+        print(f"Direct mint error: {e}")
         return None
 
 
 def fetch_live_events_native():
-    """Directly fetch active SonyLIV live sports events and mint official tokens."""
     events = []
     seen = set()
 
@@ -112,9 +107,9 @@ def fetch_live_events_native():
                             "thumb": meta.get("emfAttributes", {}).get("landscape_thumb") or meta.get("emfAttributes", {}).get("thumbnail") or GROUP_LOGO
                         })
         except Exception as e:
-            print(f"  ⚠️ SonyLIV tray fetch error: {e}")
+            print(f"SonyLIV tray fetch error: {e}")
 
-    print(f"  Found {len(raw_candidates)} live sports candidates in SonyLIV spotlight trays")
+    print(f"Found {len(raw_candidates)} live sports candidates in SonyLIV spotlight trays")
 
     for cand in raw_candidates:
         cid = cand["id"]
@@ -147,10 +142,10 @@ def fetch_live_events_native():
                 try:
                     vr = requests.get(stream_url, headers={"User-Agent": USER_AGENT, "Referer": SONY_REFERER}, timeout=8)
                     if vr.status_code != 200:
-                        print(f"  ⚠️ Stream verification returned HTTP {vr.status_code} for {cid}")
+                        print(f"Stream verification returned HTTP {vr.status_code} for {cid}")
                         continue
                 except Exception as ve:
-                    print(f"  ⚠️ Stream verification failed for {cid}: {ve}")
+                    print(f"Stream verification failed for {cid}: {ve}")
                     continue
 
                 langs = [l.get("audioLanguageName") for l in res_obj.get("audioLanguages", []) if l.get("audioLanguageName")]
@@ -165,15 +160,15 @@ def fetch_live_events_native():
                     "logo": cand["thumb"],
                     "url": stream_url
                 })
-                print(f"  ✓ Minted native stream for [{cid}] {title}")
+                print(f"✓ Minted native stream for [{cid}] {title}")
         except Exception as ex:
-            print(f"  ⚠️ Error minting token for [{cid}]: {ex}")
+            print(f"Error minting token for [{cid}]: {ex}")
 
     return events
 
 
 def generate_playlist():
-    print("📡 Fetching SonyLIV linear playlist...")
+    print("Fetching SonyLIV linear playlist...")
     linear_lines = []
     try:
         r = requests.get(SLIV_PLAYLIST, timeout=20) if SLIV_PLAYLIST else None
@@ -191,10 +186,10 @@ def generate_playlist():
                     )
                 linear_lines.append(line)
     except Exception as e:
-        print(f"  ⚠️ Worker fetch error: {e}")
+        print(f"Worker fetch error: {e}")
 
     if not linear_lines:
-        print("  🔑 Fetching direct Sony API wildcard token...")
+        print("Fetching direct Sony API wildcard token...")
         token = mint_direct_token()
         if token:
             for cid, name, cat, lang, logo, path in CHANNELS:
@@ -205,9 +200,9 @@ def generate_playlist():
                 linear_lines.append("")
 
     # Fetch dynamic live sports events natively
-    print("📡 Fetching active SonyLIV live sports events natively...")
+    print("Fetching active SonyLIV live sports events natively...")
     live_events = fetch_live_events_native()
-    print(f"  Total verified native live events: {len(live_events)}")
+    print(f"Total verified native live events: {len(live_events)}")
 
     event_lines = []
     if live_events:

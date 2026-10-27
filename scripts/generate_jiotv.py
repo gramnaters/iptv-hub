@@ -1,9 +1,4 @@
 ﻿#!/usr/bin/env python3
-"""
-JioTV playlist generator.
-Produces playlists/jiotv.m3u containing all 1,175 channels with ClearKeys
-and active Akamai __hdnea__ playback tokens.
-"""
 import json
 import os
 import re
@@ -51,7 +46,6 @@ def expiry_hours(cookie):
 
 
 def try_mint_direct_cookie():
-    """Attempt direct token minting if valid credentials exist."""
     creds = None
     creds_path = None
     if os.environ.get("JIOTV_CREDS"):
@@ -110,8 +104,6 @@ def try_mint_direct_cookie():
 
 
 def fetch_live_cookie():
-    """Fetch active __hdnea__ wildcard token."""
-    # 1. Check local cookie file (fastest, prevents unnecessary external calls)
     if os.path.exists(COOKIE_FILE):
         try:
             with open(COOKIE_FILE, "r", encoding="utf-8") as f:
@@ -122,12 +114,10 @@ def fetch_live_cookie():
         except Exception:
             pass
 
-    # 2. Check direct native SIM minting
     direct = try_mint_direct_cookie()
     if direct and expiry_hours(direct) > 0.5:
         return direct
 
-    # 3. Check public live cookie feeds
     for src in PUBLIC_COOKIE_SOURCES:
         try:
             r = requests.get(src, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
@@ -150,7 +140,6 @@ def fetch_live_cookie():
         except Exception as e:
             continue
 
-    # 4. Existing local playlist
     if os.path.exists(OUT):
         try:
             with open(OUT, "r", encoding="utf-8") as f:
@@ -167,11 +156,6 @@ def fetch_live_cookie():
 
 
 def fetch_channel_overrides():
-    """Return (id -> (url, channel-scoped cookie), id -> clearkey) from the per-channel feed.
-
-    Premium streams rotate between several KIDs, so their clearkey is a comma-separated
-    list of kid:key pairs; the cached single key in jiotv_keys.json does not decrypt them.
-    """
     try:
         r = requests.get(PER_CHANNEL_SOURCE, headers={"User-Agent": "Mozilla/5.0"}, timeout=20)
         items = r.json() if r.status_code == 200 else []

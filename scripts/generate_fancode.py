@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""
-FanCode playlist generator for live sports events.
-Natively discovers live matches directly from FanCode, mints/resolves stream URLs,
-verifies playback status (HTTP 200), and outputs player-compatible M3U playlists.
-"""
 import os
 import sys
 import re
@@ -12,7 +7,6 @@ import uuid
 import requests
 from datetime import datetime, timezone, timedelta
 
-# Ensure UTF-8 output
 if sys.stdout.encoding != 'utf-8':
     try:
         sys.stdout.reconfigure(encoding='utf-8')
@@ -31,7 +25,6 @@ GROUP_TITLE = "FanCode"
 GROUP_LOGO = "https://www.google.com/s2/favicons?domain=fancode.com&sz=128"
 PROXY_DOMAIN = "https://dai-fancode.pages.dev"
 
-# Official FanCode GraphQL query configuration
 FC_GRAPHQL = "https://www.fancode.com/graphql"
 FC_PERSISTED_HASH = "a1d17ed10aaddaaf4452ce04fc840eee8d44a26ef7762f5deaacd66d8c7560b3"
 
@@ -55,7 +48,6 @@ SUPPLEMENTARY_SOURCES = [
 
 
 def fetch_native_fancode_matches():
-    """Extract live matches directly from FanCode's official web application."""
     matches = {}
     try:
         r = requests.get('https://www.fancode.com/', headers={'User-Agent': WEB_UA}, timeout=10)
@@ -97,12 +89,11 @@ def fetch_native_fancode_matches():
                         'logo': logo
                     }
     except Exception as ex:
-        print(f"  ⚠️ FanCode native discovery error: {ex}")
+        print(f"FanCode native discovery error: {ex}")
     return matches
 
 
 def query_fancode_graphql_stream(match_id):
-    """Query official FanCode GraphQL FanLiveStreamDweb endpoint for stream URL."""
     headers = {
         'user-agent': WEB_UA,
         'accept': '*/*',
@@ -150,7 +141,6 @@ def query_fancode_graphql_stream(match_id):
 
 
 def verify_stream(url):
-    """Verify stream manifest returns HTTP 200 and valid HLS headers."""
     try:
         r = requests.get(url, headers={"User-Agent": DEFAULT_UA, "Referer": REFERER}, timeout=7)
         if r.status_code == 200 and ("#EXTM3U" in r.text or "#EXT-X-" in r.text):
@@ -161,7 +151,6 @@ def verify_stream(url):
 
 
 def parse_supplementary_m3u(text):
-    """Parse supplementary M3U lines for stream path fallback."""
     streams = {}
     cur_id, cur_name, cur_logo, cur_sport = "", "", "", "Sports"
     for raw in text.splitlines():
@@ -197,10 +186,9 @@ def parse_supplementary_m3u(text):
 
 
 def fetch_all_fancode_events():
-    """Aggregate live events with primary native discovery and verified streams."""
-    print("📡 Discovering live matches directly from FanCode...")
+    print("Discovering live matches directly from FanCode...")
     native_matches = fetch_native_fancode_matches()
-    print(f"  Found {len(native_matches)} active matches on FanCode homepage")
+    print(f"Found {len(native_matches)} active matches on FanCode homepage")
 
     # Fetch supplementary stream path map if direct GraphQL tokens require routing
     supplementary_map = {}
@@ -213,7 +201,7 @@ def fetch_all_fancode_events():
                     if mid not in supplementary_map:
                         supplementary_map[mid] = info
         except Exception as e:
-            print(f"  ⚠️ Supplementary source {src['name']} error: {e}")
+            print(f"Supplementary source {src['name']} error: {e}")
 
     events = []
     seen = set()
@@ -262,9 +250,9 @@ def fetch_all_fancode_events():
                 "logo": logo,
                 "url": stream_url
             })
-            print(f"  ✓ Verified [{mid}] {name} ({sport})")
+            print(f"✓ Verified [{mid}] {name} ({sport})")
         else:
-            print(f"  ⚠️ Stream verification failed for [{mid}] {name}")
+            print(f"Stream verification failed for [{mid}] {name}")
 
     return events
 
@@ -273,9 +261,9 @@ def generate_fancode_playlist():
     events = fetch_all_fancode_events()
 
     if not events:
-        print("  ⚠️ No active FanCode events discovered.")
+        print("No active FanCode events discovered.")
         if os.path.exists(OUTPUT_M3U) and os.path.getsize(OUTPUT_M3U) > 100:
-            print("  Keeping existing fancode.m3u")
+            print("Keeping existing fancode.m3u")
             return True
         return False
 

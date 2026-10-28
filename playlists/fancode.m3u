@@ -1,38 +1,53 @@
 #EXTM3U
-#DATE:- 28-10-2026 22:11:30 IST
+#DATE:- 29-10-2026 03:11:11 IST
 # Category: fancode
-# Total Channels: 7
+# Total Channels: 10
 # Source: FanCode Self-Hosted Live Sports Events
 
-#EXTINF:-1 tvg-id="fancode.4250491" tvg-name="Emirates Blues vs Abu Dhabi" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250491_53130_EMB_ABD_fc-web_1792412929359.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Emirates Blues vs Abu Dhabi
+#EXTINF:-1 tvg-id="fancode.4249712" tvg-name="Manchester City vs Brighton and Hove Albion" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249712_53016_MCI_BHA_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Manchester City vs Brighton and Hove Albion
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250491_english_hls_ef31c7005664929_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249712_english_hls_79a706788c25876_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4248989" tvg-name="Al-Nahda Club vs Al Rayyan" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248989_53057_ALN_RAY_fc-web_1789025066058.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Al-Nahda Club vs Al Rayyan
+#EXTINF:-1 tvg-id="fancode.4249716" tvg-name="Liverpool vs Chelsea" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249716_53016_LIV_CHE_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Liverpool vs Chelsea
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4248989_english_hls_f8e776923b57363_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249716_english_hls_dc760edd5a13591_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4248988" tvg-name="Al Jazira vs Al Muharraq" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248988_53057_ALJ_ALM_fc-web_1789025065524.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Al Jazira vs Al Muharraq
+#EXTINF:-1 tvg-id="fancode.4249713" tvg-name="Fulham vs Crystal Palace" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249713_53016_FUL_CRY_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Fulham vs Crystal Palace
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4248988_english_hls_8a8cd7e0a181161_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249713_english_hls_d8093e3f6523975_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249637" tvg-name="Glaubandich Court" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Glaubandich Court
+#EXTINF:-1 tvg-id="fancode.4249715" tvg-name="Sunderland vs Brentford" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249715_53016_SUN_BRE_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Sunderland vs Brentford
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249637_english_hls_dc36a35c8a10890_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249715_english_hls_598419ce737800_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249651" tvg-name="IWB Court 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",IWB Court 1
+#EXTINF:-1 tvg-id="fancode.4249714" tvg-name="Bournemouth vs Aston Villa" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249714_53016_BOU_AVL_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Bournemouth vs Aston Villa
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249651_english_hls_f9093ad69c81693_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249714_english_hls_2e4f8b22fb54805_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249630" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
+#EXTINF:-1 tvg-id="fancode.4249993" tvg-name="FC Bayern Munich vs 1. FC Magdeburg" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/FC_Sports_Default_Football-old-copy.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",FC Bayern Munich vs 1. FC Magdeburg
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249630_english_hls_b555b035dd59328_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249993_english_hls_7f603460f516651_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4249490" tvg-name="OL Lyonnes vs Inter Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249490_53078_OLY-W_INT-W_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",OL Lyonnes vs Inter Women
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249490_english_hls_94def54aa747178_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4249992" tvg-name="Bayer 04 Leverkusen vs 1. FC NÃ¼rnberg" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249992_53043_LEV_NUR_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Bayer 04 Leverkusen vs 1. FC NÃ¼rnberg
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249992_english_hls_394d7b6cfa31968_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4249489" tvg-name="Arsenal Women vs Benfica Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249489_53078_ARS-W_BEN-W_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Arsenal Women vs Benfica Women
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249489_english_hls_1e1d7caf3540298_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="fancode.4249644" tvg-name="N. Djokovic vs U. Humbert" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Djo_WEB.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",N. Djokovic vs U. Humbert
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1

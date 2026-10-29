@@ -1,8 +1,8 @@
 {
  "jiotv": {
-  "last": 1793290315,
-  "updated": "2026-10-29 16:11 UTC",
-  "expires": "2026-10-29 16:23 UTC"
+  "last": 1793308269,
+  "updated": "2026-10-29 21:11 UTC",
+  "expires": "2026-10-29 21:23 UTC"
  },
  "sony": {
   "last": 1793290291,
@@ -15,13 +15,13 @@
   "expires": null
  },
  "vzy": {
-  "last": 1793290293,
-  "updated": "2026-10-29 16:11 UTC",
+  "last": 1793308255,
+  "updated": "2026-10-29 21:10 UTC",
   "expires": null
  },
  "fancode": {
-  "last": 1793290305,
-  "updated": "2026-10-29 16:11 UTC",
+  "last": 1793308264,
+  "updated": "2026-10-29 21:11 UTC",
   "expires": null
  },
  "sunnxt": {

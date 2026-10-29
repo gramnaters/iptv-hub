@@ -1,45 +1,35 @@
 #EXTM3U
-#DATE:- 29-10-2026 21:41:45 IST
+#DATE:- 30-10-2026 02:41:04 IST
 # Category: fancode
-# Total Channels: 8
+# Total Channels: 6
 # Source: FanCode Self-Hosted Live Sports Events
 
-#EXTINF:-1 tvg-id="fancode.4249770" tvg-name="Afghanistan vs Zimbabwe" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/ZIM1.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Afghanistan vs Zimbabwe
+#EXTINF:-1 tvg-id="fancode.4249717" tvg-name="Everton vs Newcastle United" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249717_53016_EVE_NEW_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Everton vs Newcastle United
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249770_english_hls_d9a990baeb9644_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249717_english_hls_56768eb31379558_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250522" tvg-name="R Pancasari vs PV Sindhu" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rosy-Oktavia-Pancasari-vs-PV-Sindhu_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",R Pancasari vs PV Sindhu
+#EXTINF:-1 tvg-id="fancode.4249493" tvg-name="HB KÃ¸ge Women vs Barcelona Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249493_53078_KOG-W_BAR-W_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",HB KÃ¸ge Women vs Barcelona Women
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250522_english_hls_a264dda52960092_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249493_english_hls_9dd889a4e575816_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249638" tvg-name="Glaubandich Court" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Glaubandich Court
+#EXTINF:-1 tvg-id="fancode.4249494" tvg-name="Manchester City Women vs Paris Saint-Germain Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249494_53078_MCI-W_PSG-W_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Manchester City Women vs Paris Saint-Germain Women
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249638_english_hls_c0e21e5dc460514_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4249645" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249645_english_hls_4a573c125888268_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249494_english_hls_909a072ec77130_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="fancode.4249652" tvg-name="IWB Court 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",IWB Court 1
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4249652_english_hls_99fa8a4e1b71160_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249631" tvg-name="N. Basilashvili vs C. Alcaraz" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Alcaraz-vs-Nikoloz-Basilashvili-Open-Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",N. Basilashvili vs C. Alcaraz
+#EXTINF:-1 tvg-id="fancode.4249645" tvg-name="N. Djokovic vs J.L. Struff" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Djokov_Mini.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",N. Djokovic vs J.L. Struff
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249631_english_hls_c3d92b64f165761_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249645_english_hls_4a573c125888268_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249783" tvg-name="South Africa vs Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/AUS-vs-SA-test_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",South Africa vs Australia
+#EXTINF:-1 tvg-id="fancode.4250508" tvg-name="Day 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Golf_FC-Web_1792760641052.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Day 1
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249783_english_hls_97c5a4780098274_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4250607" tvg-name="Fairplay Court" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Fairplay Court
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250607_english_hls_514010e5a214434_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250508_english_hls_254b30342475381_1ta-di_h264/index.m3u8

@@ -1,5 +1,12 @@
 #EXTM3U
-#DATE:- 30-10-2026 02:41:14 IST
+#DATE:- 30-10-2026 06:34:59 IST
 # Category: willow
-# Total Channels: 0
+# Total Channels: 1
+
+#EXTINF:-1 tvg-id="B0HM4SBRL6" tvg-name="Hong Kong Sixes 2026 - 1st Match - Australia vs Hong Kong, China" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.812c8599-8c97-4a8d-8fff-9a44cafdcd21/3/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow",Hong Kong Sixes 2026 - 1st Match - Australia vs Hong Kong, China
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=f724cf13d135bee75e357780d1610060:7ce9d4c6df5638bbcb18926bf2a6bb4f
+https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/40puk0pr1m/out/v1/2b9a98a7b2b34546ae3730e22558228b/cenc.mpd
 

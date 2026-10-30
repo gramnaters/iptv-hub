@@ -1,35 +1,25 @@
 #EXTM3U
-#DATE:- 30-10-2026 02:41:04 IST
+#DATE:- 30-10-2026 06:34:49 IST
 # Category: fancode
-# Total Channels: 6
+# Total Channels: 4
 # Source: FanCode Self-Hosted Live Sports Events
 
-#EXTINF:-1 tvg-id="fancode.4249717" tvg-name="Everton vs Newcastle United" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249717_53016_EVE_NEW_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Everton vs Newcastle United
+#EXTINF:-1 tvg-id="fancode.4249669" tvg-name="Tasmania vs New South Wales" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249669_53087_TAS_NSW_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Tasmania vs New South Wales
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249717_english_hls_56768eb31379558_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249669_english_hls_0ad52e993394154_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249493" tvg-name="HB KÃ¸ge Women vs Barcelona Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249493_53078_KOG-W_BAR-W_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",HB KÃ¸ge Women vs Barcelona Women
+#EXTINF:-1 tvg-id="fancode.4249668" tvg-name="South Australia vs Western Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249668_53087_SAU_WAU_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",South Australia vs Western Australia
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249493_english_hls_9dd889a4e575816_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249668_english_hls_a2c3979ec983696_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249494" tvg-name="Manchester City Women vs Paris Saint-Germain Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249494_53078_MCI-W_PSG-W_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Manchester City Women vs Paris Saint-Germain Women
+#EXTINF:-1 tvg-id="fancode.4250307" tvg-name="Australia vs Hong Kong, China" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250307_53120_AUS_HK_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Australia vs Hong Kong, China
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249494_english_hls_909a072ec77130_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250307_english_hls_37a9a212eb16184_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249652" tvg-name="IWB Court 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",IWB Court 1
+#EXTINF:-1 tvg-id="fancode.139981" tvg-name="Day 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Petronas-Grand-Prix-of-Malaysia_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Day 1
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249652_english_hls_99fa8a4e1b71160_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4249645" tvg-name="N. Djokovic vs J.L. Struff" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Djokov_Mini.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",N. Djokovic vs J.L. Struff
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249645_english_hls_4a573c125888268_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4250508" tvg-name="Day 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Golf_FC-Web_1792760641052.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Day 1
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250508_english_hls_254b30342475381_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/139981_english_hls_dc18e2235392788_1ta-di_h264/index.m3u8

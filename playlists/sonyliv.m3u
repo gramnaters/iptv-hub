@@ -1,100 +1,73 @@
 #EXTM3U
-#DATE:- 30-10-2026 20:54:38 IST
+#DATE:- 31-10-2026 05:21:37 IST
 # Category: sonyliv
-# Total Channels: 30
+# Total Channels: 22
 # Source: SonyLIV Self-Hosted (Linear + Live Events)
 
+# SonyLIV — 22 channels — token via worker
 #EXTINF:-1 tvg-id="sony-hd.sonyliv" tvg-name="SONY HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_HD.png" tvg-language="Hindi" tvg-category="Entertainment" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011671/SETHD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-hd.m3u8
 #EXTINF:-1 tvg-id="sab-hd.sonyliv" tvg-name="SAB HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_SAB_HD.png" tvg-language="Hindi" tvg-category="Entertainment" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SAB HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011749/SABHD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sab-hd.m3u8
 #EXTINF:-1 tvg-id="sony-marathi.sonyliv" tvg-name="SONY MARATHI" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Marathi_SD.png" tvg-language="Marathi" tvg-category="Entertainment" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY MARATHI
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011740/SonyMarathi/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
-#EXTINF:-1 tvg-id="sony-pal.sonyliv" tvg-name="SONY PAL" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Pal.png" tvg-language="Hindi" tvg-category="Entertainment" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY PAL
+https://sliv.gramnaters.workers.dev/sony-marathi.m3u8
+#EXTINF:-1 tvg-id="sony-pal.sonyliv" tvg-name="SONY PAL" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Pal.png" tvg-language="Hindi" tvg-category="Movies" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY PAL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011741/SonyPalSD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-pal.m3u8
 #EXTINF:-1 tvg-id="sony-aath.sonyliv" tvg-name="SONY AATH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_aath.png" tvg-language="Bengali" tvg-category="Entertainment" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY AATH
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011641/SonyAathSD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-aath.m3u8
 #EXTINF:-1 tvg-id="sony-yay.sonyliv" tvg-name="SONY YAY" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Yay_Hindi.png" tvg-language="Hindi" tvg-category="Kids" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY YAY
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011746/SonyYaySD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-yay.m3u8
 #EXTINF:-1 tvg-id="sony-max-hd.sonyliv" tvg-name="SONY MAX HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Max_HD.png" tvg-language="Hindi" tvg-category="Movies" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY MAX HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011670/SonyMaxhd/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-max-hd.m3u8
 #EXTINF:-1 tvg-id="sony-max.sonyliv" tvg-name="SONY MAX" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Max_SD.png" tvg-language="Hindi" tvg-category="Movies" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY MAX
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011745/SonyMaxSD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-max.m3u8
 #EXTINF:-1 tvg-id="sony-max2.sonyliv" tvg-name="SONY MAX2" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_MAX2.png" tvg-language="Hindi" tvg-category="Movies" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY MAX2
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011908/MAX2/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-max2.m3u8
 #EXTINF:-1 tvg-id="sony-wah.sonyliv" tvg-name="SONY WAH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Wah.png" tvg-language="Hindi" tvg-category="Movies" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY WAH
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011906/SonyWah/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-wah.m3u8
 #EXTINF:-1 tvg-id="sony-pix-hd.sonyliv" tvg-name="SONY PIX HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Pix_HD.png" tvg-language="Hindi" tvg-category="Movies" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY PIX HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011748/PIXHD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-pix-hd.m3u8
 #EXTINF:-1 tvg-id="sony-ten-1-hd.sonyliv" tvg-name="SONY TEN 1 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_HD.png" tvg-language="English" tvg-category="Sports" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 1 HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011747/TEN1HD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-ten-1-hd.m3u8
 #EXTINF:-1 tvg-id="sony-ten-1.sonyliv" tvg-name="SONY TEN 1" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_1.png" tvg-language="English" tvg-category="Sports" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011739/TEN1SD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-ten-1.m3u8
 #EXTINF:-1 tvg-id="sony-ten-2-hd.sonyliv" tvg-name="SONY TEN 2 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten2_HD.png" tvg-language="English" tvg-category="Sports" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 2 HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2020434/TEN2HD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-ten-2-hd.m3u8
 #EXTINF:-1 tvg-id="sony-ten-2.sonyliv" tvg-name="SONY TEN 2" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten2_HD.png" tvg-language="English" tvg-category="Sports" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 2
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2020590/TEN2SD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-ten-2.m3u8
 #EXTINF:-1 tvg-id="sony-ten-3-hd.sonyliv" tvg-name="SONY TEN 3 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten3_HD.png" tvg-language="Hindi" tvg-category="Sports" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 3 HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2020591/TEN3HD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-ten-3-hd.m3u8
 #EXTINF:-1 tvg-id="sony-ten-3.sonyliv" tvg-name="SONY TEN 3" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten3_HD.png" tvg-language="Hindi" tvg-category="Sports" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 3
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2020592/TEN3SD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-ten-3.m3u8
 #EXTINF:-1 tvg-id="sony-ten-4-hd.sonyliv" tvg-name="SONY TEN 4 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_4_HD_Telugu.png" tvg-language="Hindi" tvg-category="Sports" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 4 HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2020589/ten4hd/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-ten-4-hd.m3u8
 #EXTINF:-1 tvg-id="sony-ten-4.sonyliv" tvg-name="SONY TEN 4" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_4_Telugu.png" tvg-language="Telugu" tvg-category="Sports" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 4
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2020437/ten4sd/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-ten-4.m3u8
 #EXTINF:-1 tvg-id="sony-ten-5-hd.sonyliv" tvg-name="SONY TEN 5 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Six_HD.png" tvg-language="Hindi" tvg-category="Sports" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 5 HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2020593/SONYSIXHD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-ten-5-hd.m3u8
 #EXTINF:-1 tvg-id="sony-ten-5.sonyliv" tvg-name="SONY TEN 5" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Six_HD.png" tvg-language="English" tvg-category="Sports" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",SONY TEN 5
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2020594/SONYSIXSD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
+https://sliv.gramnaters.workers.dev/sony-ten-5.m3u8
 #EXTINF:-1 tvg-id="bbc-earth.sonyliv" tvg-name="BBC EARTH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_BBC_Earth_HD.png" tvg-language="English" tvg-category="Infotainment" group-title="Sony LIV" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",BBC EARTH
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://dishmt.slivcdn.com/hls/live/2011907/SonyBBCEarthHD/master.m3u8?hdnea=exp=1793416959~acl=/*~id=02026400772819633071198869221327~hmac=7fc870c14c2c6699d84c14ef4958709b320f3c08a9e1644869b84fb562d0570d
-
-
-# --- SonyLIV Live Sports Events ---
-#EXTINF:-1 tvg-id="sonyliv.event.1090551180" tvg-name="MG Indian Super League 2026-27" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000026666/1792354036062910_ISL26_NorthEastUnitedFC_vs_BengaluruFC_landscape_thumb.jpg" tvg-language="ENG, HIN" tvg-category="Sports" group-title="Sonyliv events" group-logo="https://upload.wikimedia.org/wikipedia/commons/f/f7/SonyLIV_2020.png",MG Indian Super League 2026-27
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://www.sonyliv.com/
-https://liveakmt-m-lr.slivcdn.com/v1/master/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaT9b3bprod-PlaybackConfig/2119931/cricodi_3010/ENG/std_lrl-800300010.m3u8?tracking_params=https://e138b425de774612937f377e0fdfb880.mediatailor.ap-south-1.amazonaws.com/v1/session/0085f7057986fc2f8467089bb19b8b7e4f1bf8d7/mediaT9b3bprod-PlaybackConfig/master.m3u8&adServer=GAM&playerParams[ContentSegmentUrlPrefix]=akaminlivetv&hdnea=exp=1793374178~acl=/*~id=14405771604271249472405609176763~hmac=1c14f2f60a3c1f0d344ecbfb4bca4cac2dbfdb7c9d9f0d1f5465d56ffbfdaa26
+https://sliv.gramnaters.workers.dev/bbc-earth.m3u8

@@ -1,40 +1,15 @@
 #EXTM3U
-#DATE:- 31-10-2026 00:58:25 IST
+#DATE:- 31-10-2026 05:21:50 IST
 # Category: fancode
-# Total Channels: 7
+# Total Channels: 2
 # Source: FanCode Self-Hosted Live Sports Events
 
-#EXTINF:-1 tvg-id="fancode.139507" tvg-name="Practice 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Mexico_GP_FC_web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Practice 1
+#EXTINF:-1 tvg-id="fancode.4249669" tvg-name="Tasmania vs New South Wales" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249669_53087_TAS_NSW_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Tasmania vs New South Wales
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/139507_english_hls_98b512e1da34819_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249669_english_hls_0ad52e993378592_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250495" tvg-name="Dubai vs Emirates Blues" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250495_53130_DUB_EMB_fc-web_1792412930095.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Dubai vs Emirates Blues
+#EXTINF:-1 tvg-id="fancode.4249668" tvg-name="South Australia vs Western Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249668_53087_SAU_WAU_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",South Australia vs Western Australia
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250495_english_hls_68f22275454877_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4250272" tvg-name="Al-Shabab FC vs Al-Ahli Saudi FC" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250272_53025_ASF_AAS_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Al-Shabab FC vs Al-Ahli Saudi FC
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250272_english_hls_fac8dade1711476_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4250523" tvg-name="Quaterfinals" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Hylo-Open-2026_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Quaterfinals
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250523_english_hls_df9219e67c34239_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4249646" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Tennis_FC-We.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249646_english_hls_602e11646b22980_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4249632" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249632_english_hls_5043c1251292601_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4249639" tvg-name="Glaubandich Court" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Glaubandich Court
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249639_english_hls_6794afdacb61694_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249668_english_hls_a2c3979ec985476_1ta-di_h264/index.m3u8

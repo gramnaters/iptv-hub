@@ -1,0 +1,90 @@
+#EXTM3U
+# SonyLIV - self-key (self-minted hdnea)
+
+#EXTINF:-1 tvg-id="sony-hd.sonyliv" tvg-name="SONY HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_HD.png" tvg-language="Hindi" tvg-category="Entertainment" group-title="SonyLIV Entertainment",SONY HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011671/SETHD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sab-hd.sonyliv" tvg-name="SAB HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SAB_HD.png" tvg-language="Hindi" tvg-category="Entertainment" group-title="SonyLIV Entertainment",SAB HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011749/SABHD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-marathi.sonyliv" tvg-name="SONY MARATHI" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_MARATHI.png" tvg-language="Marathi" tvg-category="Entertainment" group-title="SonyLIV Entertainment",SONY MARATHI
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011740/SonyMarathi/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-pal.sonyliv" tvg-name="SONY PAL" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_PAL.png" tvg-language="Hindi" tvg-category="Movies" group-title="SonyLIV Movies",SONY PAL
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011741/SonyPalSD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-aath.sonyliv" tvg-name="SONY AATH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_AATH.png" tvg-language="Bengali" tvg-category="Entertainment" group-title="SonyLIV Entertainment",SONY AATH
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011641/SonyAathSD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-yay.sonyliv" tvg-name="SONY YAY" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_YAY.png" tvg-language="Hindi" tvg-category="Kids" group-title="SonyLIV Kids",SONY YAY
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011746/SonyYaySD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-max-hd.sonyliv" tvg-name="SONY MAX HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_MAX_HD.png" tvg-language="Hindi" tvg-category="Movies" group-title="SonyLIV Movies",SONY MAX HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011670/SonyMaxhd/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-max.sonyliv" tvg-name="SONY MAX" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_MAX.png" tvg-language="Hindi" tvg-category="Movies" group-title="SonyLIV Movies",SONY MAX
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011745/SonyMaxSD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-max2.sonyliv" tvg-name="SONY MAX2" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_MAX2.png" tvg-language="Hindi" tvg-category="Movies" group-title="SonyLIV Movies",SONY MAX2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011908/MAX2/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-wah.sonyliv" tvg-name="SONY WAH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_WAH.png" tvg-language="Hindi" tvg-category="Movies" group-title="SonyLIV Movies",SONY WAH
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011906/SonyWah/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-pix-hd.sonyliv" tvg-name="SONY PIX HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_PIX_HD.png" tvg-language="Hindi" tvg-category="Movies" group-title="SonyLIV Movies",SONY PIX HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011748/PIXHD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-ten-1-hd.sonyliv" tvg-name="SONY TEN 1 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_HD.png" tvg-language="English" tvg-category="Sports" group-title="SonyLIV Sports",SONY TEN 1 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011747/TEN1HD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-ten-1.sonyliv" tvg-name="SONY TEN 1" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Ten_1.png" tvg-language="English" tvg-category="Sports" group-title="SonyLIV Sports",SONY TEN 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011739/TEN1SD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-ten-2-hd.sonyliv" tvg-name="SONY TEN 2 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_TEN_2_HD.png" tvg-language="English" tvg-category="Sports" group-title="SonyLIV Sports",SONY TEN 2 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2020434/TEN2HD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-ten-2.sonyliv" tvg-name="SONY TEN 2" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_TEN_2.png" tvg-language="English" tvg-category="Sports" group-title="SonyLIV Sports",SONY TEN 2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2020590/TEN2SD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-ten-3-hd.sonyliv" tvg-name="SONY TEN 3 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_TEN_3_HD.png" tvg-language="Hindi" tvg-category="Sports" group-title="SonyLIV Sports",SONY TEN 3 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2020591/TEN3HD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-ten-3.sonyliv" tvg-name="SONY TEN 3" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_TEN_3.png" tvg-language="Hindi" tvg-category="Sports" group-title="SonyLIV Sports",SONY TEN 3
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2020592/TEN3SD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-ten-4-hd.sonyliv" tvg-name="SONY TEN 4 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_TEN_4_HD.png" tvg-language="Hindi" tvg-category="Sports" group-title="SonyLIV Sports",SONY TEN 4 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2020589/ten4hd/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-ten-4.sonyliv" tvg-name="SONY TEN 4" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_TEN_4.png" tvg-language="Telugu" tvg-category="Sports" group-title="SonyLIV Sports",SONY TEN 4
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2020437/ten4sd/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-ten-5-hd.sonyliv" tvg-name="SONY TEN 5 HD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_TEN_5_HD.png" tvg-language="Hindi" tvg-category="Sports" group-title="SonyLIV Sports",SONY TEN 5 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2020593/SONYSIXHD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="sony-ten-5.sonyliv" tvg-name="SONY TEN 5" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/SONY_TEN_5.png" tvg-language="English" tvg-category="Sports" group-title="SonyLIV Sports",SONY TEN 5
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2020594/SONYSIXSD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a
+
+#EXTINF:-1 tvg-id="bbc-earth.sonyliv" tvg-name="BBC EARTH" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/BBC_EARTH.png" tvg-language="English" tvg-category="Infotainment" group-title="SonyLIV Infotainment",BBC EARTH
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+https://dishmt.slivcdn.com/hls/live/2011907/SonyBBCEarthHD/master.m3u8?hdnea=exp=1793415364~acl=/*~id=70591761585713776909833909872429~hmac=60c00e1c6ad42ce24dbd6374597b23408cf101e563582513ad5618137b0ecc6a

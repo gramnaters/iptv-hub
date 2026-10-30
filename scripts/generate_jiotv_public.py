@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""JioTV playlist from the public catalog and the allinone cookie files."""
+"""
+JioTV playlist built directly from the premiumplugx shoebpl.php feed.
+
+Each record already carries everything: name/group/logo, mpd_url, the per-channel
+__hdnea__ cookie, and the ClearKey. No third-party cookie host (allinonereborn),
+no Geoplus catalog, no sports feed — one source.
+"""
 import os
 import re
 import sys
@@ -7,14 +13,13 @@ import time
 
 import requests
 
-CHANNELS_URL = "https://raw.githubusercontent.com/qwerty180506/json/refs/heads/main/Geoplus.json"
-COOKIE_URL = "https://allinonereborn2.online/jstrweb2/cookies.json"
-SPORTS_URL = "https://allinonereborn2.online/jtv-fetch/jstarcookie/cookie.json"
 REF_URL = "https://premiumplugx.com/gibt/shoebpl.php"
-UA = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
+DEFAULT_UA = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0"
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "playlists", "jiotv.m3u")
+
+KEY_RE = re.compile(r"(?:[0-9a-fA-F]{32}:[0-9a-fA-F]{32})(?:,[0-9a-fA-F]{32}:[0-9a-fA-F]{32})*")
 
 
 def get_json(url, retries=3):
@@ -31,144 +36,65 @@ def get_json(url, retries=3):
     raise last
 
 
-def normal_cookie(data):
-    if isinstance(data, str):
-        return data
-    if isinstance(data, list):
-        item = next((x for x in data if isinstance(x, dict) and x.get("cookie")), None)
-        return (item or {}).get("cookie") or ""
-    if isinstance(data, dict):
-        return data.get("cookie") or ""
-    return ""
-
-
-def sports_urls(data):
-    found = {}
-    if isinstance(data, list):
-        rows = data
-    elif isinstance(data, dict):
-        rows = list(data.get("successful_results") or []) + list(data.get("failed_results") or [])
-    else:
-        rows = []
-    for item in rows:
-        if not isinstance(item, dict):
-            continue
-        cid = str(item.get("channel_id") or "")
-        url = item.get("final_url") or (item.get("error_details") or {}).get("final_url") or ""
-        if not cid or not url:
-            continue
-        exp = re.search(r"exp=(\d+)", url)
-        if exp and int(exp.group(1)) <= time.time():
-            continue
-        found[cid] = re.sub(r"/output/", "/WDVLive/", url, count=1, flags=re.I)
-    return found
-
-
-def reference():
-    try:
-        data = get_json(REF_URL)
-    except requests.RequestException:
-        return {}
-    found = {}
-    if not isinstance(data, list):
-        return found
-    for item in data:
-        cid = str(item.get("id") or "").strip()
-        url = str(item.get("mpd_url") or "").split("?")[0]
-        if not cid or not url:
-            continue
-        cookie = str((item.get("headers") or {}).get("cookie") or "").strip()
-        key = str(item.get("clearkey") or "").strip()
-        if not re.fullmatch(r"(?:[0-9a-fA-F]{32}:[0-9a-fA-F]{32})(?:,[0-9a-fA-F]{32}:[0-9a-fA-F]{32})*", key):
-            key = ""
-        found[cid] = {"url": url, "cookie": cookie, "key": key}
-    return found
-
-
-def keys_of(channel):
-    pairs = []
-    if channel.get("keyId") and channel.get("key"):
-        pairs.append((channel["keyId"], channel["key"]))
-    for item in channel.get("keys") or []:
-        if isinstance(item, dict) and item.get("keyId") and item.get("key"):
-            pairs.append((item["keyId"], item["key"]))
-    if isinstance(channel.get("clearkey"), dict):
-        pairs.extend(channel["clearkey"].items())
-    clean = []
-    for kid, key in pairs:
-        if re.fullmatch(r"[0-9a-fA-F]{32}", str(kid)) and re.fullmatch(r"[0-9a-fA-F]{32}", str(key)):
-            clean.append(f"{kid}:{key}")
-    return ",".join(clean)
-
-
-def quote(value):
-    return str(value or "").replace('"', "'")
-
-
-def group_of(channel):
-    name = channel.get("category") or channel.get("group") or "Other"
-    if name == "Malyalam":
-        name = "Malayalam"
-    return f"JioTV | {name}"
+def quote(v):
+    return str(v or "").replace('"', "'")
 
 
 def main():
-    channels = get_json(CHANNELS_URL)
-    # wildcard cookie is a fallback only; the reference (shoebpl.php) carries
-    # per-channel cookies + clearkey, so a flaky cookie host must not crash us.
-    cookie = ""
-    try:
-        cookie = normal_cookie(get_json(COOKIE_URL))
-    except Exception as e:  # noqa: BLE001
-        print(f"wildcard cookie unavailable (relying on reference): {e}")
-    sports = {}
-    try:
-        sports = sports_urls(get_json(SPORTS_URL))
-    except Exception as e:  # noqa: BLE001
-        print(f"sports feed unavailable: {e}")
-    ref = reference()
-    if not isinstance(channels, list):
-        sys.exit("catalog missing")
+    data = get_json(REF_URL)
+    if not isinstance(data, list) or not data:
+        sys.exit("shoebpl feed empty")
+
+    now = time.time()
     lines = ["#EXTM3U"]
-    hosts = {"mblive": 0, "pllive": 0, "other": 0}
-    for ch in channels:
-        if not isinstance(ch, dict):
+    fresh = stale = 0
+    dash = hls = 0
+
+    for item in data:
+        if not isinstance(item, dict):
             continue
-        cid = str(ch.get("id") or "")
-        base = ch.get("url") or ""
-        alt = ref.get(cid)
-        final = sports.get(cid)
-        if alt and alt["url"]:
-            final = alt["url"] + (("?" + alt["cookie"]) if alt["cookie"] else "")
-        elif not final:
-            if not base:
-                continue
-            final = base + ("&" if "?" in base else "?") + cookie
-        if "jiotvpllive" in final:
-            hosts["pllive"] += 1
-        elif "jiotvmblive" in final:
-            hosts["mblive"] += 1
+        cid = str(item.get("id") or "").strip()
+        mpd = str(item.get("mpd_url") or "").strip()
+        cookie = str((item.get("headers") or {}).get("cookie") or "").strip()
+        key = str(item.get("clearkey") or "").strip()
+        ua = str(item.get("user_agent") or DEFAULT_UA).strip() or DEFAULT_UA
+        name = quote(item.get("name") or "JioTV")
+        logo = quote(item.get("logo") or "")
+        grp = quote(f"JioTV | {item.get('group') or 'Other'}")
+
+        if not cid or not mpd:
+            continue
+
+        # url: prefer the explicit cookie header; fall back to any embedded query
+        if cookie:
+            url = mpd.split("?")[0] + "?" + cookie
         else:
-            hosts["other"] += 1
-        name = quote(ch.get("name") or "JioTV")
-        logo = quote(ch.get("logo") or "")
-        group = quote(group_of(ch))
-        lines.append(
-            f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" group-title="{group}",{name}'
-        )
-        if ".mpd" in final.lower() or ch.get("type") == "dash":
+            url = mpd
+
+        exp = re.search(r"exp=(\d+)", cookie or url)
+        if exp and int(exp.group(1)) <= now:
+            stale += 1
+        else:
+            fresh += 1
+
+        is_mpd = ".mpd" in url.lower()
+        lines.append(f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" group-title="{grp}",{name}')
+        if is_mpd:
+            dash += 1
             lines.append("#KODIPROP:inputstream=inputstream.adaptive")
             lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-            key = (alt or {}).get("key") or keys_of(ch)
-            if key:
+            if KEY_RE.fullmatch(key):
                 lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
                 lines.append(f"#KODIPROP:inputstream.adaptive.license_key={key}")
-        lines.append(f"#EXTVLCOPT:http-user-agent={UA}")
-        lines.append(final)
+        else:
+            hls += 1
+        lines.append(f"#EXTVLCOPT:http-user-agent={ua}")
+        lines.append(url)
+
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
-    print(f"{sum(hosts.values())} channels {hosts} sports={len(sports)} ref={len(ref)} -> {OUT}")
+    print(f"{dash + hls} channels ({dash} dash / {hls} hls), {fresh} fresh / {stale} stale -> {OUT}")
 
 
 if __name__ == "__main__":

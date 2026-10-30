@@ -1,9 +1,25 @@
 #!/usr/bin/env python3
+"""
+Self-key VZY playlist generator (no upstream dependency).
+
+VZY (Dish TV) live channels are static ClearKey. The keys are stable, but the
+KID rotates occasionally — so this generator re-reads the CURRENT KID from each
+DASH manifest and matches the key by KID. If the KID changed (key rotated), the
+channel is emitted with an empty key and flagged, never an old key on a new KID.
+
+Layers:
+  * channel seed (name/slug/group/logo/type/kid/key) -> catalogs/vzy_seed.json
+  * KID  -> read live from each channel's DASH MPD
+  * KEY  -> static, matched by KID from the seed
+
+IP-safe (CloudFront manifests are not geo-gated), so it runs on GitHub Actions.
+"""
 import json
 import os
 import re
 import sys
 from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor
 
 if sys.stdout.encoding != "utf-8":
     try:
@@ -13,129 +29,96 @@ if sys.stdout.encoding != "utf-8":
 
 try:
     import requests
-    from Crypto.Cipher import AES
-    HAS_DEPS = True
+    HAS_REQ = True
 except ImportError:
-    HAS_DEPS = False
+    HAS_REQ = False
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CATALOG = os.path.join(ROOT, "catalogs", "vzy_catalog.json")
-STATUS = os.path.join(ROOT, "catalogs", "vzy_status.json")
+SEED = os.path.join(ROOT, "catalogs", "vzy_seed.json")
 OUT = os.path.join(ROOT, "playlists", "vzy.m3u")
+STATUS = os.path.join(ROOT, "catalogs", "vzy_status.json")
 
-BASE_URL = "https://vzyweb.42web.io"
-API_URL = f"{BASE_URL}/api.php"
-UA = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
-)
-GROUP_LOGO = (
-    "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/"
-    "entry_id/bab798478e714be3a5ae861fc04606f0/version/0"
-)
+CDN_BASE = "https://d2o8pibksxtln6.cloudfront.net/live/media"
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
+GROUP_LOGO = ("https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/"
+              "entry_id/bab798478e714be3a5ae861fc04606f0/version/0")
 
 
-def solve_challenge():
-    if not HAS_DEPS:
-        return None
-    session = requests.Session()
-    session.headers["User-Agent"] = UA
+def esc(s):
+    return (s or "").replace('"', " ").replace("\r", "").replace("\n", "").strip()
+
+
+def extract_kid(manifest):
+    m = re.search(r'(?:cenc:)?default_KID="([0-9a-fA-F-]{32,36})"', manifest)
+    return m.group(1).replace("-", "").lower() if m else ""
+
+
+def fetch_kid(slug):
+    """Return the current KID for a DRM channel, or '' on failure."""
+    url = f"{CDN_BASE}/{slug}/dash/{slug}.mpd"
     try:
-        resp = session.get(API_URL, timeout=15)
-        nums = re.findall(r'toNumbers\("([0-9a-fA-F]+)"\)', resp.text)
-        if len(nums) < 3:
-            return None
-        key, iv, ct = (bytes.fromhex(x) for x in nums[:3])
-        cookie_val = AES.new(key, AES.MODE_CBC, iv).decrypt(ct).hex()
-        session.headers["Cookie"] = f"__test={cookie_val}"
-        api_resp = session.get(f"{API_URL}?i=1", timeout=15)
-        if api_resp.status_code == 200:
-            data = api_resp.json()
-            if isinstance(data, list) and len(data) >= 10:
-                return data
-    except Exception as e:
-        print(f"VZY live fetch warning: {e}")
-    return None
-
-
-def slug(name):
-    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+        r = requests.get(url, headers={"User-Agent": UA}, timeout=15)
+        if r.status_code != 200:
+            return ""
+        return extract_kid(r.text)
+    except Exception:
+        return ""
 
 
 def main():
-    channels = []
-    source = "cached"
+    seed = json.load(open(SEED, encoding="utf-8"))
 
-    live_data = solve_challenge()
-    if live_data:
-        source = "live (https://vzyweb.42web.io/api.php)"
-        channels = []
-        for i, item in enumerate(live_data):
-            name = item.get("name") or "VZY Channel"
-            grp = item.get("group") or "Entertainment"
-            logo = item.get("logo") or GROUP_LOGO
-            url = item.get("url") or ""
-            kid = item.get("kid") or ""
-            key = item.get("key") or ""
-            cid = item.get("id") or slug(name) or str(i + 1)
-            full_key = f"{kid}:{key}" if kid and key else ""
+    # read live KIDs in parallel (DRM channels only)
+    slugs = [(s["slug"], s.get("kid", "").lower()) for s in seed
+             if s.get("type") == "dash" and s.get("slug")]
+    live_kid = {}
+    if HAS_REQ:
+        with ThreadPoolExecutor(16) as ex:
+            results = ex.map(lambda p: (p[0], fetch_kid(p[0])), slugs)
+            for slug, kid in results:
+                if kid:
+                    live_kid[slug] = kid
 
-            channels.append({
-                "id": str(cid),
-                "name": name,
-                "group": grp,
-                "logo": logo,
-                "url": url,
-                "key": full_key,
-            })
+    lines = ["#EXTM3U",
+             f"# VZY self-key | generated {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}",
+             f"# Total Channels: {len(seed)}", ""]
 
-        # Persist updated catalog
-        os.makedirs(os.path.dirname(CATALOG), exist_ok=True)
-        with open(CATALOG, "w", encoding="utf-8") as f:
-            json.dump(channels, f, indent=2, ensure_ascii=False)
-        print(f"VZY: Fetched {len(channels)} channels from live API and refreshed catalog.")
-    else:
-        # Fallback to existing catalog
-        if os.path.exists(CATALOG):
-            with open(CATALOG, "r", encoding="utf-8") as f:
-                channels = json.load(f)
-            print(f"VZY: Using cached catalog ({len(channels)} channels).")
+    drm = stale = missing = 0
+    for s in seed:
+        name = esc(s["name"])
+        slug = s.get("slug", "")
+        grp = esc(s.get("group"))
+        logo = esc(s.get("logo")) or GROUP_LOGO
+        typ = s.get("type", "hls")
+        kid = (s.get("kid") or "").lower()
+        key = (s.get("key") or "").lower()
+
+        if not slug:
+            continue
+
+        if typ == "dash":
+            url = f"{CDN_BASE}/{slug}/dash/{slug}.mpd"
+            cur_kid = live_kid.get(slug, kid)  # fall back to seed kid if fetch failed
+            # key validity: only attach key if the current KID is the one we have a key for
+            if key and cur_kid == kid:
+                drm += 1
+            elif key and cur_kid != kid:
+                stale += 1
+                key = ""  # KID rotated -> don't attach an old key
+            elif not key:
+                missing += 1
+            lines.append(f'#EXTINF:-1 tvg-name="{name}" tvg-logo="{logo}" '
+                         f'tvg-category="{grp}" group-title="VZY" type="dash",{name}')
+            if key:
+                lines.append("#KODIPROP:inputstream=inputstream.adaptive")
+                lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
+                lines.append("#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey")
+                lines.append(f"#KODIPROP:inputstream.adaptive.license_key={cur_kid}:{key}")
         else:
-            print(f"VZY Error: Missing catalog {CATALOG} and live fetch failed.")
-            return 1
-
-    stamp = datetime.now(timezone.utc).strftime("%d-%m-%Y %H:%M:%S UTC")
-    lines = [
-        "#EXTM3U",
-        f"# Generated: {stamp}",
-        f"# Total Channels: {len(channels)}",
-        f"# Source: {source}",
-        "",
-    ]
-
-    dash_count = 0
-    for ch in channels:
-        cid = str(ch.get("id") or "")
-        name = ch.get("name") or "VZY Channel"
-        grp = ch.get("group") or "VZY"
-        logo = ch.get("logo") or GROUP_LOGO
-        url = ch.get("url") or ""
-        key = ch.get("key") or ""
-
-        is_dash = ".mpd" in url.lower()
-        type_attr = ' type="dash"' if is_dash else ""
-
-        lines.append(
-            f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" '
-            f'tvg-category="{grp}" group-title="VZY" group-logo="{GROUP_LOGO}"{type_attr},{name}'
-        )
-
-        if is_dash and key:
-            dash_count += 1
-            lines.append("#KODIPROP:inputstream=inputstream.adaptive")
-            lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-            lines.append("#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey")
-            lines.append(f"#KODIPROP:inputstream.adaptive.license_key={key}")
+            url = f"{CDN_BASE}/{slug}/hls_fta/{slug}.m3u8"
+            lines.append(f'#EXTINF:-1 tvg-name="{name}" tvg-logo="{logo}" '
+                         f'tvg-category="{grp}" group-title="VZY",{name}')
 
         lines.append(f"#EXTVLCOPT:http-user-agent={UA}")
         lines.append(url)
@@ -147,14 +130,13 @@ def main():
 
     with open(STATUS, "w", encoding="utf-8") as f:
         json.dump({
-            "updated_at": stamp,
-            "total": len(channels),
-            "dash": dash_count,
-            "hls": len(channels) - dash_count,
-            "source": source
+            "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+            "total": len(seed), "drm": drm, "stale": stale, "missing": missing,
+            "live_kid": len(live_kid), "source": "self-key",
         }, f, indent=2)
 
-    print(f"VZY: Wrote {OUT} ({len(channels)} channels, {dash_count} DASH ClearKey, {len(channels)-dash_count} HLS)")
+    print(f"VZY: wrote {OUT} ({len(seed)} ch, {drm} DRM, {stale} stale, {missing} missing, "
+          f"{len(live_kid)} live KIDs)")
     return 0
 
 

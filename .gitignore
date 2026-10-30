@@ -15,6 +15,10 @@ playlists/jiotv_mobile.m3u
 playlists/jiotv_public.m3u
 local/
 
+# local token keepers / geo caches (secrets, never commit)
+keeper.py
+catalogs/geoplus.json
+
 # Python
 __pycache__/
 *.py[cod]

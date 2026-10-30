@@ -1,7 +1,7 @@
 #EXTM3U
-# Generated: 30-10-2026 01:04:38 UTC
+# Generated: 30-10-2026 07:12:06 UTC
 # Total Channels: 48
-# Source: live (https://vzyweb.42web.io/api.php)
+# Source: cached
 
 #EXTINF:-1 tvg-id="pictures-hd" tvg-name="&Pictures HD" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/75364a7b9f09477b9ee80016a6440b6b/version/0" tvg-category="Movies" group-title="VZY" group-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0" type="dash",&Pictures HD
 #KODIPROP:inputstream=inputstream.adaptive

@@ -80,7 +80,7 @@ LOCAL_OVERRIDES = [
 ]
 
 JIOTV_GROUP_PREFIX = "Jio TV+"
-PPX_ZEE5 = "https://premiumplugx.me/jee/zee5.php?m3u"
+PPX_ZEE5 = "https://premiumplug.fun/tee/zee5.php?m3u"
 
 EXTRA_FEEDS = {
     "Willow": {
@@ -187,6 +187,8 @@ def fetch_ppx():
     os.makedirs(PLAYLISTS_DIR, exist_ok=True)
     zee = fetch_content(PPX_ZEE5, timeout=40)
     if zee and zee.count("#EXTINF") >= 10:
+        # premiumplug.fun returns varied genre group-titles; normalize to one ZEE5 category
+        zee = re.sub(r'group-title="[^"]*"', 'group-title="ZEE5"', zee)
         with open(os.path.join(PLAYLISTS_DIR, "zee5.m3u"), "w", encoding="utf-8") as f:
             f.write(zee if zee.endswith("\n") else zee + "\n")
         print(f"ZEE5 {zee.count('#EXTINF')}")

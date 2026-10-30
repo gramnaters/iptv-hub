@@ -17,10 +17,18 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "playlists", "jiotv.m3u")
 
 
-def get_json(url):
-    r = requests.get(url, headers={"Cache-Control": "no-cache"}, timeout=40)
-    r.raise_for_status()
-    return r.json()
+def get_json(url, retries=3):
+    last = None
+    for attempt in range(retries):
+        try:
+            r = requests.get(url, headers={"Cache-Control": "no-cache"}, timeout=40)
+            r.raise_for_status()
+            return r.json()
+        except Exception as e:  # noqa: BLE001
+            last = e
+            if attempt < retries - 1:
+                time.sleep(2)
+    raise last
 
 
 def normal_cookie(data):
@@ -106,11 +114,21 @@ def group_of(channel):
 
 def main():
     channels = get_json(CHANNELS_URL)
-    cookie = normal_cookie(get_json(COOKIE_URL))
-    sports = sports_urls(get_json(SPORTS_URL))
+    # wildcard cookie is a fallback only; the reference (shoebpl.php) carries
+    # per-channel cookies + clearkey, so a flaky cookie host must not crash us.
+    cookie = ""
+    try:
+        cookie = normal_cookie(get_json(COOKIE_URL))
+    except Exception as e:  # noqa: BLE001
+        print(f"wildcard cookie unavailable (relying on reference): {e}")
+    sports = {}
+    try:
+        sports = sports_urls(get_json(SPORTS_URL))
+    except Exception as e:  # noqa: BLE001
+        print(f"sports feed unavailable: {e}")
     ref = reference()
-    if not isinstance(channels, list) or not cookie:
-        sys.exit("catalog or cookie missing")
+    if not isinstance(channels, list):
+        sys.exit("catalog missing")
     lines = ["#EXTM3U"]
     hosts = {"mblive": 0, "pllive": 0, "other": 0}
     for ch in channels:

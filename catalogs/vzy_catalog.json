@@ -11,7 +11,7 @@
     "id": "tv-hd",
     "name": "&Tv HD",
     "group": "Entertainment",
-    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/6ce923e690114400bcdc43ea7a3b27be/version/0",
+    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/f05baad90c574947a462902b8c80881c/version/1",
     "url": "https://d2o8pibksxtln6.cloudfront.net/live/media/And_Tv_HD/dash/And_Tv_HD.mpd",
     "key": "05a74e68a900428b88c258136db2e4b1:f13ca3ea2c086dcf742ea730c0f34cb0"
   },
@@ -19,7 +19,7 @@
     "id": "9x-jalwa",
     "name": "9X Jalwa",
     "group": "Entertainment",
-    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0",
+    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/8491c65655254b77b4add3e83423c855/version/0",
     "url": "https://d2o8pibksxtln6.cloudfront.net/live/media/9X_Jalwa/hls_fta/9X_Jalwa.m3u8",
     "key": ""
   },
@@ -235,7 +235,7 @@
     "id": "zee-bollywood",
     "name": "Zee Bollywood",
     "group": "Movies",
-    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/e05e21a01b244152819c56ff0d98e091/version/0",
+    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/e1de996d54864c78b8daf60d63974223/version/0",
     "url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Bollywood/dash/Zee_Bollywood.mpd",
     "key": "1896ce2ae47e49a1ad3764a6ca71b1f2:425287a4754eba5b959e7c05fc79f141"
   },
@@ -291,7 +291,7 @@
     "id": "zee-news",
     "name": "Zee News",
     "group": "News",
-    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/128fce7a4db546efa5ba4eae006e0816/version/0",
+    "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/087a098c826c480796c1e9ac0ade0d82/version/0",
     "url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_News/hls_fta/Zee_News.m3u8",
     "key": ""
   },

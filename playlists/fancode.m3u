@@ -1,30 +1,25 @@
 #EXTM3U
-#DATE:- 30-10-2026 19:44:43 IST
+#DATE:- 31-10-2026 00:58:25 IST
 # Category: fancode
-# Total Channels: 8
+# Total Channels: 7
 # Source: FanCode Self-Hosted Live Sports Events
 
-#EXTINF:-1 tvg-id="fancode.4249783" tvg-name="South Africa vs Australia" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/AUS-vs-SA-test_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",South Africa vs Australia
+#EXTINF:-1 tvg-id="fancode.139507" tvg-name="Practice 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Mexico_GP_FC_web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Practice 1
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249783_english_hls_97c5a4780073832_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/139507_english_hls_98b512e1da34819_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250334" tvg-name="Namibia vs Ireland" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Namibia-vs-Ireland_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Namibia vs Ireland
+#EXTINF:-1 tvg-id="fancode.4250495" tvg-name="Dubai vs Emirates Blues" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250495_53130_DUB_EMB_fc-web_1792412930095.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Dubai vs Emirates Blues
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250334_english_hls_dc1520bda59332_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250495_english_hls_68f22275454877_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250494" tvg-name="Abu Dhabi vs Ajman" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250494_53130_ABD_AJM_fc-web_1792412929370.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Abu Dhabi vs Ajman
+#EXTINF:-1 tvg-id="fancode.4250272" tvg-name="Al-Shabab FC vs Al-Ahli Saudi FC" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250272_53025_ASF_AAS_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Al-Shabab FC vs Al-Ahli Saudi FC
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250494_english_hls_db4edab47762333_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250272_english_hls_fac8dade1711476_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250271" tvg-name="Abha Club vs Al-Ittihad" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250271_53025_ABC_ITT_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Abha Club vs Al-Ittihad
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250271_english_hls_b3d40c593095862_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4250523" tvg-name="Quarter-Finals" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Hylo-Open-2026_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Quarter-Finals
+#EXTINF:-1 tvg-id="fancode.4250523" tvg-name="Quaterfinals" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Hylo-Open-2026_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Quaterfinals
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250523_english_hls_df9219e67c34239_1ta-di_h264/index.m3u8
@@ -34,12 +29,12 @@ https://dai-fancode.pages.dev/mumbai/4250523_english_hls_df9219e67c34239_1ta-di_
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4249646_english_hls_602e11646b22980_1ta-di_h264/index.m3u8
 
+#EXTINF:-1 tvg-id="fancode.4249632" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249632_english_hls_5043c1251292601_1ta-di_h264/index.m3u8
+
 #EXTINF:-1 tvg-id="fancode.4249639" tvg-name="Glaubandich Court" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Erste-Bank-Open_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Glaubandich Court
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4249639_english_hls_6794afdacb61694_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4249632" tvg-name="Mannarino vs Medvedev" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Daniil-Medvedev-vs-Adrian-Mannarino-web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Mannarino vs Medvedev
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249632_english_hls_5043c1251292601_1ta-di_h264/index.m3u8

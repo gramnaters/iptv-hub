@@ -23,7 +23,7 @@ EPG_URL = "https://avkb.short.gy/jioepg.xml.gz"
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 
-USER_JIOHOTSTAR_URL = os.environ.get("JHS_URL", "")
+USER_JIOHOTSTAR_URL = os.environ.get("JHS_URL", "https://jhs.gramnaters.workers.dev/playlist.m3u")
 
 PUBLIC_PLUG_API = ""
 

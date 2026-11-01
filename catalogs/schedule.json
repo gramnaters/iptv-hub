@@ -15,8 +15,8 @@
   "expires": null
  },
  "vzy": {
-  "last": 1793562310,
-  "updated": "2026-11-01 19:45 UTC",
+  "last": 1793574172,
+  "updated": "2026-11-01 23:02 UTC",
   "expires": null
  },
  "fancode": {
@@ -33,5 +33,10 @@
   "last": 1793546081,
   "updated": "2026-11-01 15:14 UTC",
   "expires": "2028-03-05 19:51 UTC"
+ },
+ "zee5live": {
+  "last": 1793574185,
+  "updated": "2026-11-01 23:03 UTC",
+  "expires": null
  }
 }

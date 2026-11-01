@@ -1,35 +1,10 @@
 #EXTM3U
-#DATE:- 02-11-2026 01:15:20 IST
+#DATE:- 02-11-2026 05:12:25 IST
 # Category: fancode
-# Total Channels: 6
+# Total Channels: 1
 # Source: FanCode Self-Hosted Live Sports Events
 
-#EXTINF:-1 tvg-id="fancode.4250203" tvg-name="West Indies A vs England Lions" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-Mini.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",West Indies A vs England Lions
+#EXTINF:-1 tvg-id="fancode.4249670" tvg-name="Queensland vs Victoria" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249670_53087_QUN_VCT_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Queensland vs Victoria
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250203_english_hls_91f4cd541682224_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.139511" tvg-name="Race" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Mexico_GP_FC_web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Race
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/139511_tamil_hls_326caee4ab94903_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4247675" tvg-name="Athletic Club vs Real Sociedad" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4247675_53004_ATH_RS_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Athletic Club vs Real Sociedad
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4247675_english_hls_ca07032c1738959_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4250499" tvg-name="Ajman vs Emirates Red" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250499_53130_AJM_EMR_fc-web_1792412929398.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Ajman vs Emirates Red
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250499_english_hls_64f93326f698395_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4247672" tvg-name="Elche CF vs Valencia CF" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4247672_53004_ELC_VAL_FC-Web.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Elche CF vs Valencia CF
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4247672_english_hls_ad27ff9c9a2029_1ta-di_h264/index.m3u8
-
-#EXTINF:-1 tvg-id="fancode.4250511" tvg-name="Day 4" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Golf_FC-Web_1792760641052.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Day 4
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250511_english_hls_91146ecc6c34862_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249670_english_hls_72230a09d473711_1ta-di_h264/index.m3u8

@@ -101,17 +101,32 @@ def fetch_channels() -> list[dict]:
     return out
 
 
+def _proxies() -> list[str]:
+    return [l.strip() for l in (os.environ.get("PROXY_LIST", "").splitlines())
+            if l.strip().startswith("http")]
+
+
 def single_playback(channel_id: str, guest: str, country: str = "IN") -> dict:
     p = {"channel_id": channel_id, "device_id": guest, "platform_name": "desktop_web",
          "translation": "en", "user_language": "en,hi", "country": country, "state": "",
          "app_version": "4.24.0", "check_parental_control": "false"}
-    r = requests.post(SP_URL, params=p,
-                      headers={"User-Agent": UA, "Accept": "application/json",
-                               "Content-Type": "application/json",
-                               "Origin": "https://www.zee5.com", "Referer": "https://www.zee5.com/"},
-                      json={"x-access-token": PLATFORM_TOKEN, "X-Z5-Guest-Token": guest},
-                      timeout=20)
-    return r.json()
+    proxies = _proxies()
+    # try direct first, then rotate through proxies (GitHub Actions IPs are often blocked)
+    for attempt in range(len(proxies) + 1):
+        px = None if attempt == 0 else {"http": proxies[attempt - 1], "https": proxies[attempt - 1]}
+        try:
+            r = requests.post(SP_URL, params=p,
+                              headers={"User-Agent": UA, "Accept": "application/json",
+                                       "Content-Type": "application/json",
+                                       "Origin": "https://www.zee5.com", "Referer": "https://www.zee5.com/"},
+                              json={"x-access-token": PLATFORM_TOKEN, "X-Z5-Guest-Token": guest},
+                              proxies=px, timeout=20)
+            d = r.json()
+            if "assetDetails" in d:
+                return d
+        except Exception:
+            continue
+    return {}
 
 
 def main() -> int:

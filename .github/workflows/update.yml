@@ -49,6 +49,7 @@ jobs:
           JHS_URL: ${{ secrets.JHS_URL }}
           PYTHONUNBUFFERED: "1"
           WVD_DIR: ${{ github.workspace }}/wvd
+          PROXY_LIST: ${{ secrets.PROXY_LIST }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

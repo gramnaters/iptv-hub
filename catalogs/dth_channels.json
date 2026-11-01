@@ -1,0 +1,1290 @@
+[
+ {
+  "name": "DD National",
+  "external_id": "HE_F_10010",
+  "asset_id": 9487068,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/DD_National/dash_fta/DD_National.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/DD_National/hls_fta/DD_National.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/11468608abb7448ab66caf84f916dd2e/version/0"
+ },
+ {
+  "name": "DD Bharti",
+  "external_id": "HE_F_10007",
+  "asset_id": 9487060,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/DD_Bharti/dash_fta/DD_Bharti.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/DD_Bharti/hls_fta/DD_Bharti.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/aa28f872001347398405b24f3bd4f634/version/0"
+ },
+ {
+  "name": "Sony Sports Ten 3 HD",
+  "external_id": "sonyliv_1000196525",
+  "asset_id": 8411803,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/30a3f24d87e5441289dd9ed401272a83/version/0"
+ },
+ {
+  "name": "Sony WAH",
+  "external_id": "sonyliv_1000196519",
+  "asset_id": 8411796,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/7dfb5e937e0642c59f24f811b16c6a91/version/0"
+ },
+ {
+  "name": "Sony MAX HD",
+  "external_id": "sonyliv_1000198052",
+  "asset_id": 8411795,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b7d40a38fad448499898b967f9bb9220/version/1"
+ },
+ {
+  "name": "Sony Sports Ten 2 HD",
+  "external_id": "sonyliv_1000196526",
+  "asset_id": 8411794,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/c68cbd5c840241048a3f13f8cd290007/version/0"
+ },
+ {
+  "name": "Sony MAX 2",
+  "external_id": "sonyliv_1000196522",
+  "asset_id": 8411793,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ce48c60964464456bffea885d2ed5148/version/0"
+ },
+ {
+  "name": "Sony BBC Earth HD",
+  "external_id": "sonyliv_1000198050",
+  "asset_id": 8411792,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/0cbb239fb33a4bcc93d445cd3d123d17/version/0"
+ },
+ {
+  "name": "Sony MAX",
+  "external_id": "sonyliv_1000196518",
+  "asset_id": 8411787,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/87b18f3c523244d480f993cbea867217/version/0"
+ },
+ {
+  "name": "Sony  Sports Ten 1 HD",
+  "external_id": "sonyliv_1000196527",
+  "asset_id": 8411789,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/19cf4cf436e0496dbdcd50277018d99f/version/2"
+ },
+ {
+  "name": "Sony Sports Ten 5 HD",
+  "external_id": "sonyliv_1000196528",
+  "asset_id": 8411788,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/fbfa7f645e634da0b12d92ea898662b9/version/0"
+ },
+ {
+  "name": "Zee Zest",
+  "external_id": "HE_E_10062",
+  "asset_id": 9650645,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Zest_SD/dash/Zee_Zest_SD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Zest_SD/hls/Zee_Zest_SD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/46166b75b21a44838615a80fd14d63de/version/0"
+ },
+ {
+  "name": "Zee Power",
+  "external_id": "HE_E_10064",
+  "asset_id": 9649339,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Power_SD/dash/Zee_Power_SD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Power_SD/hls/Zee_Power_SD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/85043a328c244a3c9d646cf9a92a68d6/version/0"
+ },
+ {
+  "name": "Zee Thirai",
+  "external_id": "HE_E_10009",
+  "asset_id": 9649000,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Thirai_SD/dash/Zee_Thirai_SD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Thirai_SD/hls/Zee_Thirai_SD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/e3b1d301227e44d89c929e4ddc2cdb11/version/0"
+ },
+ {
+  "name": "Zee Keralam HD",
+  "external_id": "HE_E_10092",
+  "asset_id": 9624895,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Keralam_HD/dash/Zee_Keralam_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Keralam_HD/hls/Zee_Keralam_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a1997ce0ea7f44bdb6405b8397adac4c/version/0"
+ },
+ {
+  "name": "Zee Bangla Sonar",
+  "external_id": "HE_E_10021",
+  "asset_id": 9624894,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_Bangla_Sonar/dash/ZEE_Bangla_Sonar.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_Bangla_Sonar/hls/ZEE_Bangla_Sonar.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5a37469b20ac47179678eac641e4bf74/version/0"
+ },
+ {
+  "name": "Zee Kannada HD",
+  "external_id": "HE_E_10091",
+  "asset_id": 9624893,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Kannada_HD/dash/Zee_Kannada_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Kannada_HD/hls/Zee_Kannada_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/92112f32b7a54549ba96569eaa6e8165/version/0"
+ },
+ {
+  "name": "Zee Tamil HD",
+  "external_id": "HE_E_10085",
+  "asset_id": 9624892,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Tamil_HD/dash/Zee_Tamil_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Tamil_HD/hls/Zee_Tamil_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5625eb2af89843a4916eabaced744850/version/0"
+ },
+ {
+  "name": "Zee Telugu HD",
+  "external_id": "HE_E_10077",
+  "asset_id": 9624891,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Telugu_HD/dash/Zee_Telugu_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Telugu_HD/hls/Zee_Telugu_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/490ee6b1a0da4e34bdac8eb3f42a3aa3/version/0"
+ },
+ {
+  "name": "ZEE PUNJABI",
+  "external_id": "HE_E_10020",
+  "asset_id": 9624890,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_PUNJABI/dash/ZEE_PUNJABI.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_PUNJABI/hls/ZEE_PUNJABI.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/8d22500566c744a692411819df8ac6c6/version/0"
+ },
+ {
+  "name": "Zee Cinemalu HD",
+  "external_id": "HE_E_10097",
+  "asset_id": 9624889,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Cinemalu_HD/dash/Zee_Cinemalu_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Cinemalu_HD/hls/Zee_Cinemalu_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/361f1009ebea41d8abf218c38d8ec082/version/0"
+ },
+ {
+  "name": "Zee Yuva",
+  "external_id": "HE_E_10006",
+  "asset_id": 9624888,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_YUVA/dash/ZEE_YUVA.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_YUVA/hls/ZEE_YUVA.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5e5e109a5ce948d9a3ea76162731f6de/version/0"
+ },
+ {
+  "name": "Zee Biskope",
+  "external_id": "HE_E_10022",
+  "asset_id": 9624887,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Biskope/dash/Zee_Biskope.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Biskope/hls/Zee_Biskope.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/097a839840ae4dd3acde3233b9a05a78/version/0"
+ },
+ {
+  "name": "Unite8 Sports 1 HD",
+  "external_id": "HE_E_10079",
+  "asset_id": 9624886,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Unite8_Sports_1_HD/dash/Unite8_Sports_1_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Unite8_Sports_1_HD/hls/Unite8_Sports_1_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/602ac5a891814807a0605e89f3fad99c/version/0"
+ },
+ {
+  "name": "Anmol Cinema 2",
+  "external_id": "HE_E_10043",
+  "asset_id": 9624885,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Anmol_Cinema_2/dash/Anmol_Cinema_2.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Anmol_Cinema_2/hls/Anmol_Cinema_2.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/2e4115940b99420aa9282714594bd367/version/0"
+ },
+ {
+  "name": "Unite8 Sports 2 HD",
+  "external_id": "HE_E_10078",
+  "asset_id": 9624884,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Unite8_Sports_2_HD/dash/Unite8_Sports_2_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Unite8_Sports_2_HD/hls/Unite8_Sports_2_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/0f43dd9b99264cdc8525a3a62243c878/version/0"
+ },
+ {
+  "name": "Big Magic",
+  "external_id": "HE_E_10013",
+  "asset_id": 9624883,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Big_Magic/dash/Big_Magic.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Big_Magic/hls/Big_Magic.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/058360fa3631483a8f1e19358974353c/version/0"
+ },
+ {
+  "name": "Zee Classic",
+  "external_id": "HE_E_10023",
+  "asset_id": 9624882,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Classic/dash/Zee_Classic.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Classic/hls/Zee_Classic.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/8c5b5173b5bc4b079f9c033044421301/version/0"
+ },
+ {
+  "name": "Sony AATH",
+  "external_id": "sonyliv_1000196520",
+  "asset_id": 9610120,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/fb2bab98945d433285b84dca2684ee6c/version/0"
+ },
+ {
+  "name": "Disney Junior Digital",
+  "external_id": "jiohotstar_1540075059",
+  "asset_id": 9592128,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/e342efb7c0a648f8acfff8a9d83104f9/version/0"
+ },
+ {
+  "name": "Super Hungama Digital",
+  "external_id": "jiohotstar_1540075047",
+  "asset_id": 9592127,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/3336290d70634b19b01743ecfff94930/version/0"
+ },
+ {
+  "name": "National Geographic Digital",
+  "external_id": "jiohotstar_1540075730",
+  "asset_id": 9592126,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/39e81eb22d064512bae0c16618a979f9/version/0"
+ },
+ {
+  "name": "Nick Digital",
+  "external_id": "jiohotstar_1540068253",
+  "asset_id": 9592125,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b1dfaf5a05404d73939ec93e24258c3c/version/0"
+ },
+ {
+  "name": "Nat Geo Wild Digital",
+  "external_id": "jiohotstar_1540075050",
+  "asset_id": 9592124,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/087d972dadab41758ed8255b36a59ab3/version/0"
+ },
+ {
+  "name": "Nick Jr Digital",
+  "external_id": "jiohotstar_1540075115",
+  "asset_id": 9592123,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ec782254f0c6464abeee540ec00075a1/version/0"
+ },
+ {
+  "name": "Disney International Digital",
+  "external_id": "jiohotstar_1540075056",
+  "asset_id": 9592122,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/1127079f5df54f1498b63a8e020f4bc3/version/0"
+ },
+ {
+  "name": "MTV Digital",
+  "external_id": "jiohotstar_1540075041",
+  "asset_id": 9592121,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0"
+ },
+ {
+  "name": "Disney Channel Digital",
+  "external_id": "jiohotstar_1540075053",
+  "asset_id": 9592120,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/e1996cd610854c589d4e42dc27f196bc/version/0"
+ },
+ {
+  "name": "Nick Plus Digital",
+  "external_id": "jiohotstar_1540074047",
+  "asset_id": 9592119,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/eedf6a3478c048738a5abbbedf5d95f5/version/0"
+ },
+ {
+  "name": "Animal Planet HD",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5010_1234567890AbcFebcd23aa27e4ac2466_6754567890AbcFebcdFFaa27e4ac2133",
+  "asset_id": 9536122,
+  "dash_url": "https://wbd.skandha.tv/APL_HD_World_India/APL_HD_World_India.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/APL_HD_World_India/APL_HD_World_India.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/1d46a9f447ef4fe2a1e12f767cdbe2b8/version/0"
+ },
+ {
+  "name": "Colors Digital",
+  "external_id": "jiohotstar_1540068292",
+  "asset_id": 9518154,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/cc5663bbd06940eb82ecbd62acc53100/version/2"
+ },
+ {
+  "name": "Sony Marathi",
+  "external_id": "sonyliv_1000196521",
+  "asset_id": 8411786,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/3f7c759999d041b0b9c983731cd18a03/version/0"
+ },
+ {
+  "name": "Colors Marathi HD",
+  "external_id": "1540068768",
+  "asset_id": 9499535,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/d82a71da0cc6440f831ec8a502ade02c/version/1"
+ },
+ {
+  "name": "TIMES NOW NAVBHARAT",
+  "external_id": "vzy_32",
+  "asset_id": 6792351,
+  "dash_url": null,
+  "hls_url": "https://dp8vjjam4foas.cloudfront.net/master.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a2f7d4358f7c4b4881d651256ae298e3/version/1"
+ },
+ {
+  "name": "Good News Today",
+  "external_id": "vzy_91329",
+  "asset_id": 7712516,
+  "dash_url": null,
+  "hls_url": "https://d21oc15hr8j9zd.cloudfront.net/livetv/clients/watcho/gnt_watcho_v1.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5ae1e5d1b7b240829357f99647862cac/version/0"
+ },
+ {
+  "name": "Russia Today",
+  "external_id": "vzy_75971",
+  "asset_id": 7712515,
+  "dash_url": null,
+  "hls_url": "https://wisewatchoott.wiseplayout.com/RT/master.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/c9528e5e527248b895a616f6f73b7602/version/0"
+ },
+ {
+  "name": "Balle Balle",
+  "external_id": "vzy_28321",
+  "asset_id": 6792366,
+  "dash_url": null,
+  "hls_url": "https://mcncdndigital.com/balleballetv/index.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/737209779b5d47dda71dcb985e789f37/version/1"
+ },
+ {
+  "name": "PITAARA",
+  "external_id": "vzy_96",
+  "asset_id": 6792365,
+  "dash_url": null,
+  "hls_url": "https://vg-pitaaratvlive.akamaized.net/ptnr-WatchO/title-PitaaraTV/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/vglive-sk-583798/playlist.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/83af9d9e23ed49b8a5add4fd5ed93f7e/version/0"
+ },
+ {
+  "name": "Divya",
+  "external_id": "vzy_31340",
+  "asset_id": 6792364,
+  "dash_url": null,
+  "hls_url": "https://vg-pitaaratvlive.akamaized.net/ptnr-WatchO/title-DivyaTV/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/vglive-sk-906482/playlist.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a5d74dfc9a164d589e4994dce2d76ce8/version/0"
+ },
+ {
+  "name": "India Today",
+  "external_id": "vzy_91324",
+  "asset_id": 6792363,
+  "dash_url": null,
+  "hls_url": "https://d21oc15hr8j9zd.cloudfront.net/livetv/clients/watcho/indiatoday_watcho_v2.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/fea75edb178d4cc0907937b418f5c928/version/1"
+ },
+ {
+  "name": "France 24",
+  "external_id": "vzy_75399",
+  "asset_id": 6792361,
+  "dash_url": null,
+  "hls_url": "https://live.france24.com/live/F24_EN_HI_HLS/playlist.m3u8?hdnts=exp=1753792351~acl=/live/F24_EN_HI_HLS/*~hmac=2626108ee2bc3901f079e2917916624428e791d394271b89b8e72a2054f39b2b&partner=watcho",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b664d99bec7848faa2fd2ec7a466be87/version/0"
+ },
+ {
+  "name": "Sai Leela",
+  "external_id": "vzy_31341",
+  "asset_id": 6792358,
+  "dash_url": null,
+  "hls_url": "https://server.thelegitpro.in/saileelatv/saileelatv/index.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/9d9749150a9c420c92e6ff9ae50b8cb0/version/2"
+ },
+ {
+  "name": "SATSANG TV",
+  "external_id": "vzy_55",
+  "asset_id": 6792356,
+  "dash_url": null,
+  "hls_url": "https://d2vfwvjxwtwq1t.cloudfront.net/out/v1/6b24239d5517495b986e7705490c6e65/index.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/341b8bdaf64841a89e79c18ed6ce0943/version/0"
+ },
+ {
+  "name": "Total Bhakti",
+  "external_id": "vzy_57",
+  "asset_id": 6792354,
+  "dash_url": null,
+  "hls_url": "https://d34z4embz0hjf6.cloudfront.net/out/v1/d55b3323a9f142638f897378f0b526fe/index.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ab76b027ff35434fa325d27f8cee1d0e/version/0"
+ },
+ {
+  "name": "SHUBH TV",
+  "external_id": "vzy_56",
+  "asset_id": 6792353,
+  "dash_url": null,
+  "hls_url": "https://d2g1vdc6ozl2o8.cloudfront.net/out/v1/0a0dc7d7911b4fddbb4dfc963fdd4b9e/index.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/3f3ac638335e4e3094b25213df38a7cb/version/0"
+ },
+ {
+  "name": "Colors Bangla HD",
+  "external_id": "jiohotstar_1540068268",
+  "asset_id": 8458423,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/33499619e55a4943bcdec51980a811e5/version/1"
+ },
+ {
+  "name": "Sony PIX HD",
+  "external_id": "sonyliv_1000198051",
+  "asset_id": 8411800,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/20c99366c3524430b4f96892afcdc2ec/version/0"
+ },
+ {
+  "name": "Sony PAL",
+  "external_id": "sonyliv_1000196514",
+  "asset_id": 8411798,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a9e140ed374446d9a2ccda52c648c657/version/0"
+ },
+ {
+  "name": "Sony SAB HD",
+  "external_id": "sonyliv_1000196517",
+  "asset_id": 8411791,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/d2c58aa81a9f4e26a55a4e7058a64a95/version/0"
+ },
+ {
+  "name": "Aaj Tak",
+  "external_id": "vzy_91327",
+  "asset_id": 7712518,
+  "dash_url": null,
+  "hls_url": "https://d21oc15hr8j9zd.cloudfront.net/livetv/clients/watcho/aajtak_watcho_v2.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/aa166ad00a3b4124a82ddac5bcfdf46b/version/5"
+ },
+ {
+  "name": "Sangeet Bangla",
+  "external_id": "HE_F_10044",
+  "asset_id": 9487053,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sangeet_Bangla/dash_fta/Sangeet_Bangla.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sangeet_Bangla/hls_fta/Sangeet_Bangla.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/e74d30b8d9434df38f9a39522b6cb5cc/version/0"
+ },
+ {
+  "name": "Zee Action",
+  "external_id": "HE_E_10027",
+  "asset_id": 9487052,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Action/dash/Zee_Action.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Action/hls/Zee_Action.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/8c10cdfd4e6b480e8e1b63fd2e96f58e/version/0"
+ },
+ {
+  "name": "Zee Anmol",
+  "external_id": "HE_E_10056",
+  "asset_id": 9487051,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Anmol/dash/Zee_Anmol.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Anmol/hls/Zee_Anmol.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/4ec3fd623663486c91b92d5b2c7cc9b8/version/0"
+ },
+ {
+  "name": "Discovery HD",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5008_1234567890AbcFebcd23aa27e4ac2464_6754567890AbcFebcdFFaa27e4ac2131",
+  "asset_id": 9450555,
+  "dash_url": "https://wbd.skandha.tv/DSC_HD_India/DSC_HD_India.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/DSC_HD_India/DSC_HD_India.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/9132b167651e469b86465f727e4e33f6/version/1"
+ },
+ {
+  "name": "Discovery Science",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5003_1234567890AbcFebcd23aa27e4ac2459_6754567890AbcFebcdFFaa27e4ac2126",
+  "asset_id": 9450554,
+  "dash_url": "https://wbd.skandha.tv/SC_India/SC_India.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/SC_India/SC_India.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/23c6830b052b4b8ab27e1a07a2ecbddc/version/0"
+ },
+ {
+  "name": "Discovery Kids",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5006_1234567890AbcFebcd23aa27e4ac2462_6754567890AbcFebcdFFaa27e4ac2129",
+  "asset_id": 9450552,
+  "dash_url": "https://wbd.skandha.tv/Kids/Kids.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/Kids/Kids.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/8178cb640d6a49b0af62beae981d4bc1/version/0"
+ },
+ {
+  "name": "Discovery Turbo",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5004_1234567890AbcFebcd23aa27e4ac2460_6754567890AbcFebcdFFaa27e4ac2127",
+  "asset_id": 9450551,
+  "dash_url": "https://wbd.skandha.tv/Turbo_India/Turbo_India.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/Turbo_India/Turbo_India.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b0d70175a8314155b8c2728d887895b0/version/0"
+ },
+ {
+  "name": "Discovery Tamil",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5007_1234567890AbcFebcd23aa27e4ac2463_6754567890AbcFebcdFFaa27e4ac2130",
+  "asset_id": 9450550,
+  "dash_url": "https://wbd.skandha.tv/DSC_TamilNadu/DSC_TamilNadu.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/DSC_TamilNadu/DSC_TamilNadu.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/2bd38f72056f46e587f07f1a97fda159/version/0"
+ },
+ {
+  "name": "TLC HD World India",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5009_1234567890AbcFebcd23aa27e4ac2465_6754567890AbcFebcdFFaa27e4ac2132",
+  "asset_id": 9450548,
+  "dash_url": "https://wbd.skandha.tv/TLC_HD_India/TLC_HD_India.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/TLC_HD_India/TLC_HD_India.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/c49c219bc47144c78ab151c380453229/version/0"
+ },
+ {
+  "name": "Cartoon Network HD+",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5016_1234567890AbcFebcd23aa27e4ac2472_6754567890AbcFebcdFFaa27e4ac2139",
+  "asset_id": 9450547,
+  "dash_url": "https://wbd.skandha.tv/Cartoon_Network_HD/Cartoon_Network_HD.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/Cartoon_Network_HD/Cartoon_Network_HD.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/aa7af16a520a45e08b0d7ddf1c09dd09/version/0"
+ },
+ {
+  "name": "Eurosport HD",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5015_1234567890AbcFebcd23aa27e4ac2471_6754567890AbcFebcdFFaa27e4ac2138",
+  "asset_id": 9450546,
+  "dash_url": "https://wbd.skandha.tv/EuroSport_HD/EuroSport_HD.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/EuroSport_HD/EuroSport_HD.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/6f676ff3e60346b188400b7f5bc23622/version/0"
+ },
+ {
+  "name": "Pogo",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5012_1234567890AbcFebcd23aa27e4ac2468_6754567890AbcFebcdFFaa27e4ac2135",
+  "asset_id": 9450545,
+  "dash_url": "https://wbd.skandha.tv/pogo/pogo.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/pogo/pogo.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/3f90d7e456f046f5bef1e34a43b44a55/version/0"
+ },
+ {
+  "name": "CNN International",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5017_1234567890AbcFebcd23aa27e4ac2473_6754567890AbcFebcdFFaa27e4ac2140",
+  "asset_id": 9450543,
+  "dash_url": "https://wbd.skandha.tv/CNN_Intl/CNN_Intl.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/CNN_Intl/CNN_Intl.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/e14bc68e8e7345c287be6f887350de20/version/0"
+ },
+ {
+  "name": "Investigation Discovery HD",
+  "external_id": "12ed56d780AbcFebcd23aa27e4ac5011_1234567890AbcFebcd23aa27e4ac2467_6754567890AbcFebcdFFaa27e4ac2134",
+  "asset_id": 9450542,
+  "dash_url": "https://wbd.skandha.tv/Investigation_Discovery_India_HD/Investigation_Discovery_India_HD.isml/.mpd",
+  "hls_url": "https://wbd.skandha.tv/Investigation_Discovery_India_HD/Investigation_Discovery_India_HD.isml/.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/4d65ac74fda342c49f2ffde4feac8df7/version/0"
+ },
+ {
+  "name": "Sangeet Bhojpuri",
+  "external_id": "HE_F_10054",
+  "asset_id": 9487059,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sangeet_Bhojpuri/dash_fta/Sangeet_Bhojpuri.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sangeet_Bhojpuri/hls_fta/Sangeet_Bhojpuri.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/c20b0706d3724797a5025370e33a114a/version/0"
+ },
+ {
+  "name": "Sansad TV HD",
+  "external_id": "HE_F_10090",
+  "asset_id": 9487058,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sansad_TV_HD/dash_fta/Sansad_TV_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sansad_TV_HD/hls_fta/Sansad_TV_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/36dc7534b90f4caf81a46bb8041658d3/version/0"
+ },
+ {
+  "name": "Zee Anmol Cinema",
+  "external_id": "HE_E_10041",
+  "asset_id": 9487057,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Anmol_Cinema/dash/Zee_Anmol_Cinema.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Anmol_Cinema/hls/Zee_Anmol_Cinema.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/6f681e49a0ff4f509291f5b07354604e/version/0"
+ },
+ {
+  "name": "Sansad TV SD",
+  "external_id": "HE_F_10084",
+  "asset_id": 9487056,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sansad_TV_SD/dash_fta/Sansad_TV_SD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sansad_TV_SD/hls_fta/Sansad_TV_SD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ca626f335d7647178e790a05cf1c9ffa/version/0"
+ },
+ {
+  "name": "Zee News",
+  "external_id": "HE_F_10029",
+  "asset_id": 9487055,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_News/dash_fta/Zee_News.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_News/hls_fta/Zee_News.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/f073cf9bc60e47b1adfbb3780b6489f7/version/0"
+ },
+ {
+  "name": "Music India",
+  "external_id": "HE_F_10053",
+  "asset_id": 9487063,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Music_India/dash_fta/Music_India.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Music_India/hls_fta/Music_India.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/01cb37aa951141d6b060debba12eeedd/version/0"
+ },
+ {
+  "name": "News Nation",
+  "external_id": "HE_F_10059",
+  "asset_id": 9487062,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/News_Nation/dash_fta/News_Nation.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/News_Nation/hls_fta/News_Nation.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/d69dfc0396864d8f8329566e4aa7dbc1/version/0"
+ },
+ {
+  "name": "9X Tashan",
+  "external_id": "HE_F_10089",
+  "asset_id": 9487073,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/9X_Tashan/dash_fta/9X_Tashan.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/9X_Tashan/hls_fta/9X_Tashan.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/565f3b6737684ac188976afd717e699f/version/0"
+ },
+ {
+  "name": "9XM",
+  "external_id": "HE_F_10019",
+  "asset_id": 9487071,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/9XM/dash_fta/9XM.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/9XM/hls_fta/9XM.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/f0344bd5ac39487a9433a8bd9ae2f639/version/1"
+ },
+ {
+  "name": "9X Jhakaas",
+  "external_id": "HE_F_10040",
+  "asset_id": 9487069,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/9X_Jhakaas/dash_fta/9X_Jhakaas.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/9X_Jhakaas/hls_fta/9X_Jhakaas.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5e1ed86ef02140058e971e6fd91e84da/version/0"
+ },
+ {
+  "name": "Times Now",
+  "external_id": "HE_E_10087",
+  "asset_id": 9487067,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Times_Now/dash/Times_Now.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Times_Now/hls/Times_Now.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/05b219f99fe34e7e9e0ee22fa6caebcd/version/3"
+ },
+ {
+  "name": "Zee 24 GHANTA",
+  "external_id": "HE_E_10047",
+  "asset_id": 9487065,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_24_Ghanta/dash/Zee_24_Ghanta.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_24_Ghanta/hls/Zee_24_Ghanta.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/dac2bbd4d26a4a15bdf51d7b9a5d4667/version/0"
+ },
+ {
+  "name": "Fakt Marathi",
+  "external_id": "HE_F_10060",
+  "asset_id": 9487064,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Fakt_Marathi/dash_fta/Fakt_Marathi.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Fakt_Marathi/hls_fta/Fakt_Marathi.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ae070314dd2c4cf7bba1fdc37bcfcebc/version/0"
+ },
+ {
+  "name": "Zing",
+  "external_id": "HE_E_10039",
+  "asset_id": 9487091,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zing/dash/Zing.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zing/hls/Zing.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/36bbb5a2facb42beb9db215c3637cd1f/version/0"
+ },
+ {
+  "name": "Zee Talkies HD",
+  "external_id": "HE_E_10098",
+  "asset_id": 9487089,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Talkies_HD/dash/Zee_Talkies_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Talkies_HD/hls/Zee_Talkies_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/53ed0200ec6d4be2b53428151f989dc8/version/0"
+ },
+ {
+  "name": "Zoom",
+  "external_id": "HE_E_10095",
+  "asset_id": 9487084,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zoom/dash/Zoom.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zoom/hls/Zoom.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/fbcb2aedbbe9401f8193fa30459457cb/version/0"
+ },
+ {
+  "name": "ZEE TV HD",
+  "external_id": "HE_E_10080",
+  "asset_id": 9487083,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_TV_HD/dash/ZEE_TV_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_TV_HD/hls/ZEE_TV_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/4eb5faad7faf47a7a1dc099261f83b2b/version/1"
+ },
+ {
+  "name": "Wion",
+  "external_id": "HE_E_10025",
+  "asset_id": 9487082,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Wion/dash/Wion.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Wion/hls/Wion.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/694b0febe0764881a4aeaf7ca6f400af/version/1"
+ },
+ {
+  "name": "ET Now",
+  "external_id": "HE_E_10058",
+  "asset_id": 9487081,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ET_Now/dash/ET_Now.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ET_Now/hls/ET_Now.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/2c7d7d4b79ba4ba3a595130b7e5165b5/version/0"
+ },
+ {
+  "name": "9X Jalwa",
+  "external_id": "HE_F_10011",
+  "asset_id": 9487075,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/9X_Jalwa/dash_fta/9X_Jalwa.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/9X_Jalwa/hls_fta/9X_Jalwa.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/e51bf7cf65a24ff5bb0a99b83030c1e6/version/0"
+ },
+ {
+  "name": "News18 Bangla ",
+  "external_id": "1580000178",
+  "asset_id": 9487649,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/c52fc2e02eda442ba5b96ced7f904ae8/version/1"
+ },
+ {
+  "name": "News18 Assam NE ",
+  "external_id": "1580000175",
+  "asset_id": 9487647,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/c14ba30d07b64630be171e2cf4a8de4c/version/0"
+ },
+ {
+  "name": "News18 Gujarati ",
+  "external_id": "1580000187",
+  "asset_id": 9487646,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/9270c10d625047aa9e9f5dd76ac18620/version/0"
+ },
+ {
+  "name": "Colors Rishtey",
+  "external_id": "1540068702",
+  "asset_id": 9487645,
+  "dash_url": "https://dw7qrjodgoy3w.cloudfront.net/live/media1/NEWS18_India/dash/NEWS18_India.mpd",
+  "hls_url": "https://dw7qrjodgoy3w.cloudfront.net/live/media1/NEWS18_India/hls/NEWS18_India.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5f98167830094d40903a5444dac512ec/version/0"
+ },
+ {
+  "name": "CNBC Bajar",
+  "external_id": "1580000196",
+  "asset_id": 9487641,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ed1dc2ebe5d841bb8cf16dbd16144006/version/0"
+ },
+ {
+  "name": "CNBC TV18",
+  "external_id": "1580000184",
+  "asset_id": 9487640,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/162906da4ee64acbb861912e3eb59a6e/version/0"
+ },
+ {
+  "name": "CNBC Awaaz",
+  "external_id": "1580000172",
+  "asset_id": 9487639,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/461d6e53a9eb4502b8e2028b107713ee/version/0"
+ },
+ {
+  "name": "CNN News18 ",
+  "external_id": "1580000181",
+  "asset_id": 9487638,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/abe4f18ea5f4437ba4ddaa805f565691/version/0"
+ },
+ {
+  "name": "&Tv HD",
+  "external_id": "HE_E_10086",
+  "asset_id": 9487113,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/And_Tv_HD/dash/And_Tv_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/And_Tv_HD/hls/And_Tv_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/f05baad90c574947a462902b8c80881c/version/1"
+ },
+ {
+  "name": "&Pictures HD",
+  "external_id": "HE_E_10100",
+  "asset_id": 9487112,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/And_Pictures_HD/dash/And_Pictures_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/And_Pictures_HD/hls/And_Pictures_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/c3531ebe94a54eda8fce94080d1dd849/version/0"
+ },
+ {
+  "name": "Zee Bollywood",
+  "external_id": "HE_E_10012",
+  "asset_id": 9487104,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Bollywood/dash/Zee_Bollywood.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Bollywood/hls/Zee_Bollywood.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a5b55fcd97344c6a9aee18773c14878f/version/0"
+ },
+ {
+  "name": "Zee Cinema HD",
+  "external_id": "HE_E_10081",
+  "asset_id": 9487096,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Cinema_HD/dash/Zee_Cinema_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Cinema_HD/hls/Zee_Cinema_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/807a1464ca03424aba70e04cc6bc8754/version/0"
+ },
+ {
+  "name": "Zee Sarthak",
+  "external_id": "HE_E_10048",
+  "asset_id": 9487093,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Sarthak/dash/Zee_Sarthak.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Sarthak/hls/Zee_Sarthak.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/18788fee07284f4d9ab884698f13a86c/version/0"
+ },
+ {
+  "name": "News18 India",
+  "external_id": "1580000151",
+  "asset_id": 9487656,
+  "dash_url": "https://dw7qrjodgoy3w.cloudfront.net/live/media1/NEWS18_India/dash/NEWS18_India.mpd",
+  "hls_url": "https://dw7qrjodgoy3w.cloudfront.net/live/media1/NEWS18_India/hls/NEWS18_India.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ccb62138d3dd4d7387e1a89bced19ac0/version/0"
+ },
+ {
+  "name": "News18 Rajasthan ",
+  "external_id": "1580000169",
+  "asset_id": 9487655,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/dbe3fcb969f447c59da15b03db5ac6bd/version/0"
+ },
+ {
+  "name": "News18 Tamil Nadu",
+  "external_id": "1580000217",
+  "asset_id": 9487654,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ce2a9a0b8c5e47cdaa49f935a82b8820/version/0"
+ },
+ {
+  "name": "Jalsha Movies ",
+  "external_id": "1540068274",
+  "asset_id": 9487653,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/6ec97e9d6f464e568c5752c256b9aa0c/version/0"
+ },
+ {
+  "name": "News18 Kannada",
+  "external_id": "1580000202",
+  "asset_id": 9487652,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b6c2bef4510e444593a78941927a2fc4/version/0"
+ },
+ {
+  "name": "News18 Punjab Haryana ",
+  "external_id": "1580000214",
+  "asset_id": 9487651,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0"
+ },
+ {
+  "name": "News18 JKLH ",
+  "external_id": "1580000160",
+  "asset_id": 9487650,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/101cf9865868423894b3017c2db37da8/version/0"
+ },
+ {
+  "name": "CNBC TV18 Prime",
+  "external_id": "jiohotstar_1580000250",
+  "asset_id": 9499021,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/063845883b9e427ea81a19d6ebd39682/version/0"
+ },
+ {
+  "name": "Colors Kannada Cinema",
+  "external_id": "jiohotstar_1540068328",
+  "asset_id": 9498981,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/4724a3ec041241e7a827169b0375a8e1/version/0"
+ },
+ {
+  "name": "Maa Movies HD",
+  "external_id": "jiohotstar_1540068286",
+  "asset_id": 9498980,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5b4aa7cef1434aa1bd759422c82294fa/version/0"
+ },
+ {
+  "name": "Asianet HD",
+  "external_id": "jiohotstar_1540068259",
+  "asset_id": 9498979,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a6949ec7cf5048c6a245d9d8e2112118/version/0"
+ },
+ {
+  "name": "Colors Kannada",
+  "external_id": "jiohotstar_1540068316",
+  "asset_id": 9498978,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/35d4268ae66541a39d47c09c227efa91/version/1"
+ },
+ {
+  "name": "Star Maa HD",
+  "external_id": "jiohotstar_1540068277",
+  "asset_id": 9498977,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/cde96604e2d144c999e3dd0fd8f078a3/version/0"
+ },
+ {
+  "name": "Colors Gujarati",
+  "external_id": "jiohotstar_1540068775",
+  "asset_id": 9498976,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/99413b04563b4fc08000dc8edf2ca418/version/1"
+ },
+ {
+  "name": "Colors Cineplex HD",
+  "external_id": "jiohotstar_1540068307",
+  "asset_id": 9498975,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/6d9048b8f79b43638906070aa10d7da4/version/0"
+ },
+ {
+  "name": "Star Gold",
+  "external_id": "jiohotstar_1540068304",
+  "asset_id": 9498974,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a96ff8e0fd2447629fab5ee311babbc7/version/0"
+ },
+ {
+  "name": "Asianet Movies HD",
+  "external_id": "jiohotstar_1540068262",
+  "asset_id": 9498973,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/1143c7223d064d2a896dda814126e420/version/0"
+ },
+ {
+  "name": "Star Jalsha HD",
+  "external_id": "jiohotstar_1540068265",
+  "asset_id": 9498972,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0"
+ },
+ {
+  "name": "Star Suvarna HD",
+  "external_id": "jiohotstar_1540068319",
+  "asset_id": 9498971,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/0498f90621464f45b58d8c6c30b0e6b5/version/0"
+ },
+ {
+  "name": "Colors Bangla Cinema",
+  "external_id": "jiohotstar_1540068271",
+  "asset_id": 9498970,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/8c249df8e6424a4f8aa1d021e87a8834/version/1"
+ },
+ {
+  "name": "Star Vijay HD",
+  "external_id": "jiohotstar_1540068331",
+  "asset_id": 9498969,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/8482bb7a8d134b94aa82ba518a05ca19/version/2"
+ },
+ {
+  "name": "Sonic digital",
+  "external_id": "jiohotstar_1540068791",
+  "asset_id": 9498968,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/da5c9c028b3e4d12aed2c39e40ea0fe2/version/2"
+ },
+ {
+  "name": "Colors Super",
+  "external_id": "jiohotstar_1540068720",
+  "asset_id": 9498967,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/577e5297c10a4f4bb7eff253279f99bf/version/0"
+ },
+ {
+  "name": "Star Bharat HD",
+  "external_id": "jiohotstar_1540068696",
+  "asset_id": 9498966,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/337228167c844d9bae193aa7f57f2929/version/10"
+ },
+ {
+  "name": "Colors Gujarati Cinema",
+  "external_id": "jiohotstar_1540068778",
+  "asset_id": 9498965,
+  "dash_url": null,
+  "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/2855a9a0a0da46e595d538d548c5f1e8/version/0"
+ },
+ {
+  "name": "Star Plus HD",
+  "external_id": "1540068289",
+  "asset_id": 9487663,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/69ecd4f760e04c47b28007aba87c01cb/version/7"
+ },
+ {
+  "name": "Star Utsav ",
+  "external_id": "1540068693",
+  "asset_id": 9487662,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/2aabbfff5f7b45728c9243ee07a685ef/version/1"
+ },
+ {
+  "name": "Star Pravah HD",
+  "external_id": "1540068310",
+  "asset_id": 9487661,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/55aff57dfe1e4fbebd693d8490ab3351/version/1"
+ },
+ {
+  "name": "News18 Odia ",
+  "external_id": "1580000211",
+  "asset_id": 9487660,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/3b536b7138784f16a0bf42a39d288094/version/0"
+ },
+ {
+  "name": "News18 UP Uttarakhand",
+  "external_id": "1580000154",
+  "asset_id": 9487659,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a5b8591ff5f84866a1b4307c0ae94769/version/0"
+ },
+ {
+  "name": "News18 Kerala",
+  "external_id": "1580000205",
+  "asset_id": 9487658,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/1dcdf105950c41c6818d859d15bd4578/version/0"
+ },
+ {
+  "name": "News18 Lokmat ",
+  "external_id": "1580000208",
+  "asset_id": 9487657,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/c10999ae3e404bc0828c944be1858b3c/version/0"
+ },
+ {
+  "name": "Star Kiran Digital",
+  "external_id": "jiohotstar_1540069651",
+  "asset_id": 9518151,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5ac6fa1601f54e8d95ee7929a1286fa1/version/1"
+ },
+ {
+  "name": "News18 Bihar/Jharkhand",
+  "external_id": "jiohotstar_1580000166",
+  "asset_id": 9518149,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b8863f76f9ad486cba180806a74c88dc/version/0"
+ },
+ {
+  "name": "Star Sports Khel Digital",
+  "external_id": "jiohotstar_1540073624",
+  "asset_id": 9515169,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/019f3e891e0e4f7b8c1d7738fe1d4243/version/2"
+ },
+ {
+  "name": "Star Sports Select 1 HD Digital",
+  "external_id": "jiohotstar_1540068723",
+  "asset_id": 9515168,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5753871a1d5048bb96eefa6d5eeaaa74/version/3"
+ },
+ {
+  "name": "Star Sports 2 Kannada Digital",
+  "external_id": "jiohotstar_1540068325",
+  "asset_id": 9515167,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b2d3b962a7da4641aa3bb827e6c2c2a3/version/2"
+ },
+ {
+  "name": "Star Sports Select 2 HD Digital",
+  "external_id": "jiohotstar_1540068726",
+  "asset_id": 9515166,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bae3cdaa35f245789f5a3079b9bd7f8f/version/2"
+ },
+ {
+  "name": "Star Sports 3 Digital",
+  "external_id": "jiohotstar_1540068301",
+  "asset_id": 9515165,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/857774dcd1ab4e73b2232c4fe83b2b8e/version/2"
+ },
+ {
+  "name": "Star Sports 2 Tamil HD Digital",
+  "external_id": "jiohotstar_1540068337",
+  "asset_id": 9515164,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/33cbe18526b045d88e8ea4aa2ad500f2/version/2"
+ },
+ {
+  "name": "Star Sports 2 Telugu HD Digital",
+  "external_id": "jiohotstar_1540068283",
+  "asset_id": 9515163,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/0450436fdeeb4f35921cbe58354177c3/version/2"
+ },
+ {
+  "name": "Star Sports 1 Telugu Digital",
+  "external_id": "jiohotstar_1540068280",
+  "asset_id": 9515162,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/d4d0afaf79f64ae8b63de4c9c3ab4a8f/version/1"
+ },
+ {
+  "name": "Star Sports 1 Hindi HD Digital",
+  "external_id": "jiohotstar_1540068295",
+  "asset_id": 9515161,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/cc375db47baa4f228dabc0f0d2ef2e3c/version/2"
+ },
+ {
+  "name": "Star Sports 2 HD Digital",
+  "external_id": "jiohotstar_1540068250",
+  "asset_id": 9515160,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/4796947ae1984eaa9e8f7ce772c446c4/version/0"
+ },
+ {
+  "name": "Star Sports 1 HD Digital",
+  "external_id": "jiohotstar_1540068247",
+  "asset_id": 9515159,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0"
+ },
+ {
+  "name": "Star Sports 1 Kannada Digital",
+  "external_id": "jiohotstar_1540068322",
+  "asset_id": 9515158,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/01efb6f742e14be5baab566f7415a0c9/version/2"
+ },
+ {
+  "name": "Star Sports 1 Tamil Digital",
+  "external_id": "jiohotstar_1540068334",
+  "asset_id": 9515157,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b4b02431420a420f921f0fcabf25c87e/version/2"
+ },
+ {
+  "name": "Star Sports 2 Hindi HD Digital",
+  "external_id": "jiohotstar_1540068298",
+  "asset_id": 9515156,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ec6e7577ced445f180793acefe66f12d/version/2"
+ },
+ {
+  "name": "Zee Bangla HD",
+  "external_id": "HE_E_10093",
+  "asset_id": 9504796,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Bangla_HD/dash/Zee_Bangla_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Bangla_HD/hls/Zee_Bangla_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/1828756c935c477bbf35f5d5d556fac8/version/0"
+ },
+ {
+  "name": "Zee Marathi HD",
+  "external_id": "HE_E_10096",
+  "asset_id": 9504795,
+  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Marathi_HD/dash/Zee_Marathi_HD.mpd",
+  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Marathi_HD/hls/Zee_Marathi_HD.m3u8",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5eaa9d415bbc4f78bf7ec9f37ca01e90/version/0"
+ },
+ {
+  "name": "SET HD",
+  "external_id": "sonyliv_1000196515",
+  "asset_id": 9525601,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/e4e7dcdea7734150ad7f5e6cb49cb11c/version/2"
+ },
+ {
+  "name": "Vijay Super Digital",
+  "external_id": "jiohotstar_1540068340",
+  "asset_id": 9518155,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/068ed595577443239e2002c2fe659737/version/0"
+ },
+ {
+  "name": "Asianet Plus Digital",
+  "external_id": "jiohotstar_1540068714",
+  "asset_id": 9518153,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0"
+ },
+ {
+  "name": "News18 Madhya Pradesh/Chhattisgarh",
+  "external_id": "jiohotstar_1580000157",
+  "asset_id": 9518152,
+  "dash_url": null,
+  "hls_url": null,
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/dbcb2cac90cb47f8a4ed1af0a3ac1088/version/0"
+ }
+]

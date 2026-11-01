@@ -16,6 +16,7 @@ LOGFILE = os.path.join(ROOT, "logs", "refresh.log")
 SOURCES = {
     "sony":    ("generate_sony.py",    "sonyliv.m3u", 6),
     "vzy":     ("generate_vzy.py",     "vzy.m3u",     1),
+    "zee5live":("generate_zee5_live.py", "zee5_live.m3u", 1),
     "fancode": ("generate_fancode.py", "fancode.m3u", 1),
     "sunnxt":  ("generate_sunnxt.py",  "sunnxt.m3u",  6),
     "free":    ("generate_free.py",    "free.m3u",    6),

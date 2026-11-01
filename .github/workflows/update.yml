@@ -25,12 +25,30 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-      - run: pip install requests pycryptodome
+      - run: pip install requests pycryptodome pywidevine
+      - name: unpack WVD devices (self-mint)
+        env:
+          WVD_B64: ${{ secrets.WVD_B64 }}
+        run: |
+          mkdir -p wvd
+          python - <<'PY'
+          import os, base64
+          raw = os.environ.get("WVD_B64", "").strip()
+          if not raw:
+              print("WVD_B64 secret empty -> self-mint sources will be skipped")
+              raise SystemExit(0)
+          for i, line in enumerate(raw.splitlines()):
+              line = line.strip()
+              if line:
+                  open(f"wvd/{i}.wvd", "wb").write(base64.b64decode(line))
+          print("unpacked", len(os.listdir("wvd")), "wvd devices")
+          PY
       - name: refresh due sources
         env:
           SLIV_URL: ${{ secrets.SLIV_URL }}
           JHS_URL: ${{ secrets.JHS_URL }}
           PYTHONUNBUFFERED: "1"
+          WVD_DIR: ${{ github.workspace }}/wvd
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

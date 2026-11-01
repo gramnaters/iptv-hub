@@ -27,8 +27,7 @@ if sys.stdout.encoding != "utf-8":
         pass
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_PARENT = os.path.dirname(ROOT)  # D:\JioTV
-sys.path.insert(0, os.path.join(_PARENT, "wv-extract"))
+sys.path.insert(0, os.path.join(ROOT, "wv-extract"))
 
 import requests  # noqa: E402
 

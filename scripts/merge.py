@@ -67,8 +67,8 @@ LOCAL_OVERRIDES = [
         "name": "ZEE5 Live (self-hosted)",
         "file": os.path.join(PLAYLISTS_DIR, "zee5_live.m3u"),
         "min_channels": 10,
-        "plug_groups": ["ZEE5"],
-        "group": "ZEE5",
+        "plug_groups": [],
+        "group": "ZEE5 Live",
     },
     {
         "name": "Free/other channels (self-hosted static catalog)",

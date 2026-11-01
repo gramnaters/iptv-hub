@@ -134,7 +134,7 @@ def main() -> int:
                 continue
             url = m.group(0)
             ok += 1
-            lines.append(f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" group-title="ZEE5",{name}')
+            lines.append(f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" group-title="ZEE5 Live",{name}')
             lines.append(f"#EXTVLCOPT:http-user-agent={UA}")
             lines.append(url)
             lines.append("")

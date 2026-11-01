@@ -1,25 +1,17 @@
 #!/usr/bin/env python3
 """
-Self-key VZY playlist generator (no upstream dependency).
+VZY playlist — fetch current ClearKey keys from the upstream VZY API.
 
-VZY (Dish TV) live channels are static ClearKey. The keys are stable, but the
-KID rotates occasionally — so this generator re-reads the CURRENT KID from each
-DASH manifest and matches the key by KID. If the KID changed (key rotated), the
-channel is emitted with an empty key and flagged, never an old key on a new KID.
-
-Layers:
-  * channel seed (name/slug/group/logo/type/kid/key) -> catalogs/vzy_seed.json
-  * KID  -> read live from each channel's DASH MPD
-  * KEY  -> static, matched by KID from the seed
-
-IP-safe (CloudFront manifests are not geo-gated), so it runs on GitHub Actions.
+The VZY live keys are static ClearKey but ROTATE occasionally, and the key itself
+cannot be derived from public data (it's the Dish/Nagra content key). So the only
+self-hostable path is to pull the current key table from the upstream API (which
+stays current) and fall back to a local seed if it's down.
 """
 import json
 import os
 import re
 import sys
 from datetime import datetime, timezone
-from concurrent.futures import ThreadPoolExecutor
 
 if sys.stdout.encoding != "utf-8":
     try:
@@ -29,114 +21,144 @@ if sys.stdout.encoding != "utf-8":
 
 try:
     import requests
-    HAS_REQ = True
+    from Crypto.Cipher import AES
+    HAS_DEPS = True
 except ImportError:
-    HAS_REQ = False
+    HAS_DEPS = False
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CATALOG = os.path.join(ROOT, "catalogs", "vzy_catalog.json")
 SEED = os.path.join(ROOT, "catalogs", "vzy_seed.json")
-OUT = os.path.join(ROOT, "playlists", "vzy.m3u")
 STATUS = os.path.join(ROOT, "catalogs", "vzy_status.json")
+OUT = os.path.join(ROOT, "playlists", "vzy.m3u")
 
-CDN_BASE = "https://d2o8pibksxtln6.cloudfront.net/live/media"
+UPSTREAMS = [
+    "https://vzyweb.42web.io/api.php",
+    "https://premiumplugx.web.id/api.php",
+]
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
 GROUP_LOGO = ("https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/"
               "entry_id/bab798478e714be3a5ae861fc04606f0/version/0")
 
 
-def esc(s):
-    return (s or "").replace('"', " ").replace("\r", "").replace("\n", "").strip()
-
-
-def extract_kid(manifest):
-    m = re.search(r'(?:cenc:)?default_KID="([0-9a-fA-F-]{32,36})"', manifest)
-    return m.group(1).replace("-", "").lower() if m else ""
-
-
-def fetch_kid(slug):
-    """Return the current KID for a DRM channel, or '' on failure."""
-    url = f"{CDN_BASE}/{slug}/dash/{slug}.mpd"
+def solve_challenge(url):
+    """Solve the InfinityFree AES cookie wall and return the channel list."""
+    if not HAS_DEPS:
+        return None
+    s = requests.Session()
+    s.headers["User-Agent"] = UA
+    s.verify = False
+    import urllib3
+    urllib3.disable_warnings()
     try:
-        r = requests.get(url, headers={"User-Agent": UA}, timeout=15)
-        if r.status_code != 200:
-            return ""
-        return extract_kid(r.text)
+        r = s.get(url, timeout=20)
+        nums = re.findall(r'toNumbers\("([0-9a-fA-F]{32})"\)', r.text)
+        if len(nums) < 3:
+            return None
+        key, iv, ct = (bytes.fromhex(x) for x in nums[:3])
+        cookie = AES.new(key, AES.MODE_CBC, iv).decrypt(ct).hex()
+        s.headers["Cookie"] = f"__test={cookie}"
+        r2 = s.get(url + "?i=1", timeout=20)
+        if r2.status_code == 200:
+            d = r2.json()
+            if isinstance(d, list) and len(d) >= 10:
+                return d
     except Exception:
-        return ""
+        pass
+    return None
+
+
+def slug(name):
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
 def main():
-    seed = json.load(open(SEED, encoding="utf-8"))
+    channels = None
+    source = "seed"
 
-    # read live KIDs in parallel (DRM channels only)
-    slugs = [(s["slug"], s.get("kid", "").lower()) for s in seed
-             if s.get("type") == "dash" and s.get("slug")]
-    live_kid = {}
-    if HAS_REQ:
-        with ThreadPoolExecutor(16) as ex:
-            results = ex.map(lambda p: (p[0], fetch_kid(p[0])), slugs)
-            for slug, kid in results:
-                if kid:
-                    live_kid[slug] = kid
+    for up in UPSTREAMS:
+        data = solve_challenge(up)
+        if data:
+            channels = data
+            source = up
+            break
 
-    lines = ["#EXTM3U",
-             f"# VZY self-key | generated {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}",
-             f"# Total Channels: {len(seed)}", ""]
-
-    drm = stale = missing = 0
-    for s in seed:
-        name = esc(s["name"])
-        slug = s.get("slug", "")
-        grp = esc(s.get("group"))
-        logo = esc(s.get("logo")) or GROUP_LOGO
-        typ = s.get("type", "hls")
-        kid = (s.get("kid") or "").lower()
-        key = (s.get("key") or "").lower()
-
-        if not slug:
-            continue
-
-        if typ == "dash":
-            url = f"{CDN_BASE}/{slug}/dash/{slug}.mpd"
-            cur_kid = live_kid.get(slug, kid)  # fall back to seed kid if fetch failed
-            # key validity: only attach key if the current KID is the one we have a key for
-            if key and cur_kid == kid:
-                drm += 1
-            elif key and cur_kid != kid:
-                stale += 1
-                key = ""  # KID rotated -> don't attach an old key
-            elif not key:
-                missing += 1
-            lines.append(f'#EXTINF:-1 tvg-name="{name}" tvg-logo="{logo}" '
-                         f'tvg-category="{grp}" group-title="VZY" type="dash",{name}')
-            if key:
-                lines.append("#KODIPROP:inputstream=inputstream.adaptive")
-                lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
-                lines.append("#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey")
-                lines.append(f"#KODIPROP:inputstream.adaptive.license_key={cur_kid}:{key}")
+    if channels is None:
+        # fallback to cached catalog / seed
+        if os.path.exists(CATALOG):
+            channels = json.load(open(CATALOG, encoding="utf-8"))
+            source = "cached catalog"
+        elif os.path.exists(SEED):
+            channels = json.load(open(SEED, encoding="utf-8"))
+            source = "seed"
         else:
-            url = f"{CDN_BASE}/{slug}/hls_fta/{slug}.m3u8"
-            lines.append(f'#EXTINF:-1 tvg-name="{name}" tvg-logo="{logo}" '
-                         f'tvg-category="{grp}" group-title="VZY",{name}')
+            print("VZY: no upstream and no seed available")
+            return 1
 
+    # normalize to the 7-field schema
+    rows = []
+    for i, item in enumerate(channels):
+        if not isinstance(item, dict):
+            continue
+        name = item.get("name") or "VZY Channel"
+        grp = item.get("group") or "Entertainment"
+        logo = item.get("logo") or GROUP_LOGO
+        url = item.get("url") or ""
+        kid = (item.get("kid") or "").lower()
+        key = (item.get("key") or "").lower()
+        typ = item.get("type") or ("dash" if ".mpd" in url.lower() else "hls")
+        cid = item.get("id") or slug(name) or str(i + 1)
+        if not url:
+            continue
+        rows.append({
+            "id": str(cid), "name": name, "group": grp, "logo": logo,
+            "url": url, "kid": kid, "key": key, "type": typ,
+        })
+
+    # persist catalog for fallback
+    os.makedirs(os.path.dirname(CATALOG), exist_ok=True)
+    json.dump(rows, open(CATALOG, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+    stamp = datetime.now(timezone.utc).strftime("%d-%m-%Y %H:%M:%S UTC")
+    lines = ["#EXTM3U",
+             f"# VZY | generated {stamp}",
+             f"# Total Channels: {len(rows)}", ""]
+
+    dash = 0
+    for c in rows:
+        name = c["name"]
+        grp = c["group"]
+        logo = c["logo"]
+        url = c["url"]
+        key = c["key"]
+        cid = c["id"]
+        is_dash = ".mpd" in url.lower()
+        type_attr = ' type="dash"' if is_dash else ""
+
+        lines.append(
+            f'#EXTINF:-1 tvg-id="{cid}" tvg-name="{name}" tvg-logo="{logo}" '
+            f'tvg-category="{grp}" group-title="VZY" group-logo="{GROUP_LOGO}"'
+            f'{type_attr},{name}'
+        )
+        if is_dash and key and c["kid"]:
+            dash += 1
+            lines.append("#KODIPROP:inputstream=inputstream.adaptive")
+            lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
+            lines.append("#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey")
+            lines.append(f"#KODIPROP:inputstream.adaptive.license_key={c['kid']}:{key}")
         lines.append(f"#EXTVLCOPT:http-user-agent={UA}")
         lines.append(url)
         lines.append("")
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines).rstrip() + "\n")
+    open(OUT, "w", encoding="utf-8").write("\n".join(lines).rstrip() + "\n")
 
-    with open(STATUS, "w", encoding="utf-8") as f:
-        json.dump({
-            "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-            "total": len(seed), "drm": drm, "stale": stale, "missing": missing,
-            "live_kid": len(live_kid), "source": "self-key",
-        }, f, indent=2)
+    json.dump({"updated_at": stamp, "total": len(rows), "dash": dash,
+               "hls": len(rows) - dash, "source": source},
+              open(STATUS, "w", encoding="utf-8"), indent=2)
 
-    print(f"VZY: wrote {OUT} ({len(seed)} ch, {drm} DRM, {stale} stale, {missing} missing, "
-          f"{len(live_kid)} live KIDs)")
+    print(f"VZY: {len(rows)} channels ({dash} DRM) from {source} -> {OUT}")
     return 0
 
 

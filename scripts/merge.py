@@ -81,6 +81,7 @@ LOCAL_OVERRIDES = [
 
 JIOTV_GROUP_PREFIX = "Jio TV+"
 PPX_ZEE5 = "https://premiumplug.fun/tee/zee5.php?m3u"
+PPX_JIOHOTSTAR = "https://plugxvipplaylist.lovable.app/api/playlist"
 
 EXTRA_FEEDS = {
     "Willow": {
@@ -196,6 +197,27 @@ def fetch_ppx():
         print("ZEE5 feed unavailable")
 
 
+def fetch_plugx_jiohotstar():
+    """Extract the JioHotstar group from the plugx VIP playlist (auto-refreshed upstream)."""
+    plugx = fetch_content(PPX_JIOHOTSTAR, timeout=60)
+    if not plugx:
+        return ""
+    lines = plugx.splitlines()
+    out = ["#EXTM3U"]
+    in_jhs = False
+    for l in lines:
+        if l.startswith("#EXTINF"):
+            in_jhs = 'group-title="JioHotstar"' in l
+            if in_jhs:
+                out.append(l)
+        elif in_jhs and l.startswith("#"):
+            out.append(l)
+        elif in_jhs and l.startswith("http"):
+            out.append(l)
+            in_jhs = False
+    return "\n".join(out) + "\n" if len(out) > 1 else ""
+
+
 def main():
     print(f"Master IPTV Auto-Updater starting at {get_current_ist()}")
     os.makedirs(PLAYLISTS_DIR, exist_ok=True)
@@ -206,10 +228,18 @@ def main():
     # -------------------------------------------------------------
     # -------------------------------------------------------------
     print("Fetching JioHotstar...")
-    jhs_text = fetch_content(USER_JIOHOTSTAR_URL) if USER_JIOHOTSTAR_URL else ""
-    if not jhs_text and os.path.exists(os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u")):
-        with open(os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u"), encoding="utf-8") as f:
-            jhs_text = f.read()
+    jhs_text = ""
+    # primary: plugx VIP playlist (auto-refreshed upstream, fresh hdntl token)
+    plugx_jhs = fetch_plugx_jiohotstar()
+    if plugx_jhs and plugx_jhs.count("#EXTINF") >= 10:
+        jhs_text = plugx_jhs
+        print("JioHotstar from plugx VIP playlist")
+    else:
+        # fallback: jhs worker -> local file
+        jhs_text = fetch_content(USER_JIOHOTSTAR_URL) if USER_JIOHOTSTAR_URL else ""
+        if not jhs_text and os.path.exists(os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u")):
+            with open(os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u"), encoding="utf-8") as f:
+                jhs_text = f.read()
     if jhs_text:
         jhs_blocks = [clean_watermarks_from_block(b) for b in extract_channel_blocks(jhs_text)]
         classify_jiohotstar(jhs_blocks, all_channels_by_group)

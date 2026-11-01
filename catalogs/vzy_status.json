@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-10-31 21:39 UTC",
+  "updated_at": "2026-11-01 01:14 UTC",
   "total": 48,
-  "drm": 34,
-  "stale": 0,
+  "drm": 0,
+  "stale": 34,
   "missing": 0,
   "live_kid": 34,
   "source": "self-key"

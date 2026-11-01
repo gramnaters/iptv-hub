@@ -1,9 +1,7 @@
 {
-  "updated_at": "2026-10-31 12:38 UTC",
+  "updated_at": "01-11-2026 19:01:05 UTC",
   "total": 48,
-  "drm": 34,
-  "stale": 0,
-  "missing": 0,
-  "live_kid": 34,
-  "source": "self-key"
+  "dash": 34,
+  "hls": 14,
+  "source": "https://vzyweb.42web.io/api.php"
 }

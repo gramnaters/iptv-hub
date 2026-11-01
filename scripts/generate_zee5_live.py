@@ -76,24 +76,34 @@ PLATFORM_TOKEN = refresh_platform_token()
 
 def fetch_channels() -> list[dict]:
     out = []
-    page = 1
-    while True:
-        r = requests.get(CHANNEL_API, params={"sort_by_field": "title", "page": str(page),
-                                              "page_size": "200", "genres": "", "languages": "",
-                                              "country": "IN", "translation": "en"},
-                         headers={"User-Agent": UA, "Accept": "application/json"}, timeout=20)
-        d = r.json()
-        items = d.get("items", [])
-        out.extend(items)
-        if page * 200 >= d.get("total", 0) or not items:
-            break
-        page += 1
+    seen = set()
+    for country in ("IN", "US", "GB", "AE", "AU", "SG", "CA", "NZ"):
+        page = 1
+        while True:
+            try:
+                r = requests.get(CHANNEL_API, params={"sort_by_field": "title", "page": str(page),
+                                                      "page_size": "200", "genres": "", "languages": "",
+                                                      "country": country, "translation": "en"},
+                                 headers={"User-Agent": UA, "Accept": "application/json"}, timeout=20)
+                d = r.json()
+                items = d.get("items", [])
+                for it in items:
+                    cid = it.get("id")
+                    if cid and cid not in seen:
+                        seen.add(cid)
+                        it["_country"] = country
+                        out.append(it)
+                if page * 200 >= d.get("total", 0) or not items:
+                    break
+                page += 1
+            except Exception:
+                break
     return out
 
 
-def single_playback(channel_id: str, guest: str) -> dict:
+def single_playback(channel_id: str, guest: str, country: str = "IN") -> dict:
     p = {"channel_id": channel_id, "device_id": guest, "platform_name": "desktop_web",
-         "translation": "en", "user_language": "en,hi", "country": "IN", "state": "",
+         "translation": "en", "user_language": "en,hi", "country": country, "state": "",
          "app_version": "4.24.0", "check_parental_control": "false"}
     r = requests.post(SP_URL, params=p,
                       headers={"User-Agent": UA, "Accept": "application/json",
@@ -119,14 +129,15 @@ def main() -> int:
         name = c["title"]
         cid = c["id"]
         biz = c.get("business_type", "")
+        country = c.get("_country", "IN")
         logo = ""  # leave logo empty; channel list has image fragments, not full urls
 
         if biz == "premium":
             premium += 1
-            continue  # covered by the Dish Nagra generator
+            continue  # covered by the Dish Nagra generator (India) / needs subscription (intl)
 
         try:
-            d = single_playback(cid, guest)
+            d = single_playback(cid, guest, country)
             s = json.dumps(d)
             m = re.search(r'https?://[^\s"\'\\]+?\.m3u8[^\s"\'\\]*', s)
             if not m:

@@ -47,6 +47,7 @@ jobs:
         env:
           SLIV_URL: ${{ secrets.SLIV_URL }}
           JHS_URL: ${{ secrets.JHS_URL }}
+          JHS_REFRESH_URL: ${{ secrets.JHS_REFRESH_URL }}
           PYTHONUNBUFFERED: "1"
           WVD_DIR: ${{ github.workspace }}/wvd
           PROXY_LIST: ${{ secrets.PROXY_LIST }}

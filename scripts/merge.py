@@ -5,6 +5,7 @@ import re
 import json
 import time
 import requests
+import token_refresh as tokens
 from datetime import datetime, timezone, timedelta
 
 if sys.stdout.encoding != 'utf-8':
@@ -89,6 +90,14 @@ LOCAL_OVERRIDES = [
 JIOTV_GROUP_PREFIX = "Jio TV+"
 PPX_ZEE5 = "https://premiumplug.fun/tee/zee5.php?m3u"
 PPX_JIOHOTSTAR = "https://plugxvipplaylist.lovable.app/api/playlist"
+
+# JioHotstar wildcard `hdntl` refresh, mirroring hot.php?status:
+#   configured_refresh_interval_hours = 20, cookie TTL = 24 h, lazy
+#   "refresh on next request" + external cron.
+JHS_REFRESH_URL = os.environ.get("JHS_REFRESH_URL") or "https://premiumplugx.com/htt/hot.php"
+JHS_STATE = os.path.join(CATALOGS_DIR, "jhs_state.json")
+JHS_REFRESH_HOURS = 20
+JHS_MARGIN = 45 * 60  # never publish a token with less than this left
 
 EXTRA_FEEDS = {
     "Willow": {
@@ -225,6 +234,54 @@ def fetch_plugx_jiohotstar():
     return "\n".join(out) + "\n" if len(out) > 1 else ""
 
 
+def fetch_jhs_refresh():
+    """Lazy refresh: pull a current wildcard hdntl set and normalise it.
+
+    hot.php serves one wildcard cookie (``acl=%2f*``) for all 146 channels and
+    re-mints it 20 h after issue.  We re-read it on the same schedule instead of
+    trusting whatever copy is already in the repo.
+    """
+    text = fetch_content(JHS_REFRESH_URL, timeout=60)
+    if not text or text.count("#EXTINF") < 10:
+        return ""
+    out = ["#EXTM3U"]
+    for block in extract_channel_blocks(text):
+        out.extend(set_block_group(clean_watermarks_from_block(block), "JioHotstar"))
+        out.append("")
+    return "\n".join(out) + "\n"
+
+
+def pick_jiohotstar():
+    """Return (source, playlist).  Never returns a token set that has expired."""
+    plugx = fetch_plugx_jiohotstar()
+    if plugx and plugx.count("#EXTINF") >= 10:
+        if tokens.is_fresh(plugx, JHS_MARGIN):
+            return "plugx-vip", plugx
+        print("JioHotstar: plugx VIP copy is expired")
+
+    worker = fetch_content(USER_JIOHOTSTAR_URL) if USER_JIOHOTSTAR_URL else ""
+    if worker and worker.count("#EXTINF") >= 10:
+        if tokens.is_fresh(worker, JHS_MARGIN):
+            return "worker", worker
+        print("JioHotstar: worker copy is expired -> refreshing")
+
+    # Upstream behaviour: re-mint "on next request" once the TTL is gone.
+    refreshed = fetch_jhs_refresh()
+    if refreshed and tokens.is_fresh(refreshed, JHS_MARGIN):
+        return "refresh", refreshed
+    if refreshed:
+        print("JioHotstar: refreshed copy is already expired")
+
+    # Last resort: the local file, only if its tokens are still valid.
+    local_path = os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u")
+    if os.path.exists(local_path):
+        with open(local_path, encoding="utf-8") as f:
+            local = f.read()
+        if tokens.is_fresh(local, JHS_MARGIN):
+            return "local", local
+    return "", ""
+
+
 def main():
     print(f"Master IPTV Auto-Updater starting at {get_current_ist()}")
     os.makedirs(PLAYLISTS_DIR, exist_ok=True)
@@ -235,24 +292,24 @@ def main():
     # -------------------------------------------------------------
     # -------------------------------------------------------------
     print("Fetching JioHotstar...")
-    jhs_text = ""
-    # primary: plugx VIP playlist (auto-refreshed upstream, fresh hdntl token)
-    plugx_jhs = fetch_plugx_jiohotstar()
-    if plugx_jhs and plugx_jhs.count("#EXTINF") >= 10:
-        jhs_text = plugx_jhs
-        print("JioHotstar from plugx VIP playlist")
-    else:
-        # fallback: jhs worker -> local file
-        jhs_text = fetch_content(USER_JIOHOTSTAR_URL) if USER_JIOHOTSTAR_URL else ""
-        if not jhs_text and os.path.exists(os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u")):
-            with open(os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u"), encoding="utf-8") as f:
-                jhs_text = f.read()
+    # Source order: plugx VIP -> worker -> lazy refresh -> local file.
+    # Every candidate is expiry-checked, so an expired copy is never published.
+    jhs_source, jhs_text = pick_jiohotstar()
     if jhs_text:
         jhs_blocks = [clean_watermarks_from_block(b) for b in extract_channel_blocks(jhs_text)]
         classify_jiohotstar(jhs_blocks, all_channels_by_group)
-        print(f"Loaded {len(jhs_blocks)} independent JioHotstar channels")
+        st = tokens.status(jhs_text, interval_hours=JHS_REFRESH_HOURS, margin=JHS_MARGIN)
+        st.update({
+            "fetched_at": int(time.time()),
+            "source": jhs_source,
+            "channels": len(jhs_blocks),
+            "refresh_mode": "lazy on next request + hourly Actions cron",
+        })
+        tokens.save_state(JHS_STATE, st)
+        print(f"Loaded {len(jhs_blocks)} JioHotstar channels from {jhs_source} "
+              f"(expires {st['token_expires']}, {st['expires_in_hours']} h left)")
     else:
-        print("Could not load independent JioHotstar, check worker status")
+        print("JioHotstar: no fresh hdntl token -> group dropped until refresh succeeds")
 
     # -------------------------------------------------------------
     # -------------------------------------------------------------

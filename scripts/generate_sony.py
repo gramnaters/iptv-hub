@@ -2,6 +2,7 @@
 import os
 import re
 import sys
+import time
 import requests
 from datetime import datetime, timezone, timedelta
 
@@ -58,7 +59,18 @@ TRAY_URLS = [
 ]
 
 
+def token_expiry(token):
+    m = re.search(r"(?:exp|Expires)=(\d{10})", token or "")
+    return int(m.group(1)) if m else 0
+
+
 def mint_direct_token():
+    """Mint a guest wildcard ``hdnea`` (``acl=/*``) from SonyLIV's own API.
+
+    The token is issued for a free-preview VOD but carries ``acl=/*``, so it
+    unlocks every linear channel.  This is the accountless equivalent of the
+    ``securetoken.sonyliv.com`` URL that the upstream generator embeds.
+    """
     try:
         r1 = requests.get(f"{API_BASE}/AGL/1.4/A/ENG/WEB/ALL/GETTOKEN", headers={"User-Agent": USER_AGENT}, timeout=15)
         jwt = r1.json().get("resultObj")
@@ -169,35 +181,42 @@ def fetch_live_events_native():
 
 def generate_playlist():
     print("Fetching SonyLIV linear playlist...")
-    linear_lines = []
-    try:
-        r = requests.get(SLIV_PLAYLIST, timeout=20) if SLIV_PLAYLIST else None
-        if r is None:
-            raise RuntimeError("SLIV_URL not set")
-        if r.status_code == 200 and r.text.count("#EXTINF") >= MIN_CHANNELS:
-            for line in r.text.splitlines():
-                if line.startswith("#EXTM3U") or line.startswith("# Total") or line.startswith("# Source") or line.startswith("#DATE"):
-                    continue
-                if line.startswith("#EXTINF"):
-                    line = re.sub(
-                        r'group-title="[^"]*"',
-                        f'group-title="{GROUP}" group-logo="{GROUP_LOGO}"',
-                        line,
-                    )
-                linear_lines.append(line)
-    except Exception as e:
-        print(f"Worker fetch error: {e}")
 
-    if not linear_lines:
-        print("Fetching direct Sony API wildcard token...")
-        token = mint_direct_token()
-        if token:
-            for cid, name, cat, lang, logo, path in CHANNELS:
-                extinf = f'#EXTINF:-1 tvg-id="{cid}.sonyliv" tvg-name="{name}" tvg-logo="{logo}" tvg-language="{lang}" tvg-category="{cat}" group-title="{GROUP}" group-logo="{GROUP_LOGO}",{name}'
-                linear_lines.append(extinf)
-                linear_lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
-                linear_lines.append(f"{CDN_BASE}/{path}/master.m3u8?{token}")
-                linear_lines.append("")
+    # --- Native mint first (fresh token every run, embedded in the playlist) ---
+    # This is the upstream pattern: the .m3u carries `master.m3u8?hdnea=...`
+    # and the file is regenerated before the token dies.  No worker dependency,
+    # no cached URL that can silently expire.
+    linear_lines = []
+    token = mint_direct_token()
+    exp = token_expiry(token)
+    if token and exp > time.time() + 900:
+        print(f"Native wildcard token minted (expires {datetime.fromtimestamp(exp, IST):%d-%m-%Y %H:%M:%S IST})")
+        for cid, name, cat, lang, logo, path in CHANNELS:
+            extinf = f'#EXTINF:-1 tvg-id="{cid}.sonyliv" tvg-name="{name}" tvg-logo="{logo}" tvg-language="{lang}" tvg-category="{cat}" group-title="{GROUP}" group-logo="{GROUP_LOGO}",{name}'
+            linear_lines.append(extinf)
+            linear_lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
+            linear_lines.append(f"#EXTVLCOPT:http-referrer={SONY_REFERER}")
+            linear_lines.append(f"{CDN_BASE}/{path}/master.m3u8?{token}")
+            linear_lines.append("")
+    else:
+        print("Native mint unavailable -> falling back to SLIV_URL worker")
+        try:
+            r = requests.get(SLIV_PLAYLIST, timeout=20) if SLIV_PLAYLIST else None
+            if r is None:
+                raise RuntimeError("SLIV_URL not set")
+            if r.status_code == 200 and r.text.count("#EXTINF") >= MIN_CHANNELS:
+                for line in r.text.splitlines():
+                    if line.startswith("#EXTM3U") or line.startswith("# Total") or line.startswith("# Source") or line.startswith("#DATE"):
+                        continue
+                    if line.startswith("#EXTINF"):
+                        line = re.sub(
+                            r'group-title="[^"]*"',
+                            f'group-title="{GROUP}" group-logo="{GROUP_LOGO}"',
+                            line,
+                        )
+                    linear_lines.append(line)
+        except Exception as e:
+            print(f"Worker fetch error: {e}")
 
     # Fetch dynamic live sports events natively
     print("Fetching active SonyLIV live sports events natively...")
@@ -226,16 +245,23 @@ def generate_playlist():
             event_lines.append("")
 
     now_ist = datetime.now(IST).strftime("%d-%m-%Y %H:%M:%S IST")
-    total_count = (len(linear_lines) // 3) + len(live_events)
+    linear_count = sum(1 for line in linear_lines if line.startswith("#EXTINF"))
+    total_count = linear_count + len(live_events)
 
-    lines = [
+    header = [
         "#EXTM3U",
         f"#DATE:- {now_ist}",
         "# Category: sonyliv",
         f"# Total Channels: {total_count}",
         f"# Source: SonyLIV Self-Hosted (Linear + Live Events)",
-        "",
-    ] + linear_lines + ([""] if event_lines else []) + event_lines
+    ]
+    if exp:
+        refresh_at = datetime.fromtimestamp(max(exp - 2 * 3600, time.time()), IST)
+        header.append(f"# Token-Expires:- {datetime.fromtimestamp(exp, IST):%d-%m-%Y %H:%M:%S IST}")
+        header.append(f"# Refresh-After:- {refresh_at:%d-%m-%Y %H:%M:%S IST}")
+    header.append("")
+
+    lines = header + linear_lines + ([""] if event_lines else []) + event_lines
 
     os.makedirs(os.path.dirname(OUTPUT_M3U), exist_ok=True)
     with open(OUTPUT_M3U, "w", encoding="utf-8") as f:

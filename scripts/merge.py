@@ -252,7 +252,21 @@ def fetch_jhs_refresh():
 
 
 def pick_jiohotstar():
-    """Return (source, playlist).  Never returns a token set that has expired."""
+    """Return (source, playlist).  Never returns a token set that has expired.
+
+    Preference order: our own self-minted copy (written this run by
+    generate_jiohotstar.py) -> plugx VIP -> jhs worker -> hot.php lazy refresh.
+    """
+    # 1) Our own self-minted copy.  generate_jiohotstar.py mints the wildcard
+    #    `hdntl` from our Hotstar account and embeds it in playlists/jiohotstar.m3u.
+    local_path = os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u")
+    if os.path.exists(local_path):
+        with open(local_path, encoding="utf-8") as f:
+            local = f.read()
+        if local.count("#EXTINF") >= 10 and tokens.is_fresh(local, JHS_MARGIN):
+            return "self", local
+        print("JioHotstar: local self-minted copy is missing/stale")
+
     plugx = fetch_plugx_jiohotstar()
     if plugx and plugx.count("#EXTINF") >= 10:
         if tokens.is_fresh(plugx, JHS_MARGIN):
@@ -272,13 +286,6 @@ def pick_jiohotstar():
     if refreshed:
         print("JioHotstar: refreshed copy is already expired")
 
-    # Last resort: the local file, only if its tokens are still valid.
-    local_path = os.path.join(PLAYLISTS_DIR, "jiohotstar.m3u")
-    if os.path.exists(local_path):
-        with open(local_path, encoding="utf-8") as f:
-            local = f.read()
-        if tokens.is_fresh(local, JHS_MARGIN):
-            return "local", local
     return "", ""
 
 

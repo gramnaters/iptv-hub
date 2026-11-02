@@ -15,6 +15,7 @@ LOGFILE = os.path.join(ROOT, "logs", "refresh.log")
 # name: (generator, playlist, max age in hours)
 SOURCES = {
     "sony":    ("generate_sony.py",    "sonyliv.m3u", 1),
+    "jiohotstar": ("generate_jiohotstar.py", "jiohotstar.m3u", 1),
     "vzy":     ("generate_vzy_selfmint.py", "vzy.m3u", 1),
     "zee5live":("generate_zee5_live.py", "zee5_live.m3u", 1),
     "fancode": ("generate_fancode.py", "fancode.m3u", 1),

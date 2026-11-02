@@ -201,13 +201,34 @@ def mint_hdntl(cj):
     return None
 
 
+def _fetch_worker_token():
+    try:
+        r = requests.get(f"{JHS_WORKER}/playlist.m3u", timeout=60)
+        if r.status_code != 200:
+            print(f"worker /playlist.m3u -> HTTP {r.status_code}")
+            return None
+        m = re.search(r"hdntl=([^;\s\"\\]+)", r.text)
+        return ("hdntl=" + m.group(1)) if m else None
+    except Exception as e:
+        print(f"worker fetch: {type(e).__name__}: {e}")
+        return None
+
+
 def get_token_from_worker():
-    """Force a fresh Browser-rendering mint on our Cloudflare worker and read
-    the resulting wildcard `hdntl` out of its playlist.  This is the cloud path
-    (no residential IP, no PC)."""
+    """Read the wildcard `hdntl` our Cloudflare worker mints via Browser
+    Rendering.  The worker's own hourly cron keeps it fresh; we only force a new
+    browser mint (rate-limited) when the cached token has gone stale."""
     if not JHS_MINT_SECRET:
         print("get_token_from_worker: JHS_MINT_SECRET not set")
         return None
+
+    token = _fetch_worker_token()
+    # Healthy margin?  The worker cron re-mints at ~20h, so a token with >12h
+    # left means the cron is alive and no browser launch is needed.
+    if token and token_expiry(token) > time.time() + 12 * 3600:
+        return token
+
+    print("worker token stale -> forcing a Browser mint")
     try:
         pr = requests.post(f"{JHS_WORKER}/mint",
                            headers={"Authorization": "Bearer " + JHS_MINT_SECRET},
@@ -215,25 +236,7 @@ def get_token_from_worker():
         print(f"worker /mint -> HTTP {pr.status_code}: {pr.text[:120]}")
     except Exception as e:
         print(f"worker mint trigger: {type(e).__name__}: {e}")
-    try:
-        r = requests.get(f"{JHS_WORKER}/playlist.m3u", timeout=60)
-        print(f"worker /playlist.m3u -> HTTP {r.status_code} ({len(r.text)} bytes)")
-        if r.status_code != 200:
-            return None
-        m = re.search(r"hdntl=([^;\s\"\\]+)", r.text)
-        if not m:
-            print("worker /playlist.m3u: no hdntl= token in body")
-            return None
-        token = "hdntl=" + m.group(1)
-        exp = token_expiry(token)
-        print(f"worker token exp={exp} (now={int(time.time())})")
-        if exp <= time.time() + 900:
-            print("worker token already/too-soon expiring")
-            return None
-        return token
-    except Exception as e:
-        print(f"worker fetch: {type(e).__name__}: {e}")
-        return None
+    return _fetch_worker_token()
 
 
 def _slug(url, i):

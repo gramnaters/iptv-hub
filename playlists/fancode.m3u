@@ -1,15 +1,50 @@
 #EXTM3U
-#DATE:- 02-11-2026 11:47:35 IST
+#DATE:- 02-11-2026 21:43:28 IST
 # Category: fancode
-# Total Channels: 2
+# Total Channels: 9
 # Source: FanCode Self-Hosted Live Sports Events
 
-#EXTINF:-1 tvg-id="fancode.4249670" tvg-name="Queensland vs Victoria" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249670_53087_QUN_VCT_FC-WEB.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Queensland vs Victoria
+#EXTINF:-1 tvg-id="fancode.4248729" tvg-name="Tractor vs PFC Neftchi" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248729_53053_TFC_NB_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Tractor vs PFC Neftchi
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249670_english_hls_72230a09d473711_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4248729_english_hls_3c976e05a48496_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250520" tvg-name="Oman vs Netherlands" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/ICC-CWC-League_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Oman vs Netherlands
+#EXTINF:-1 tvg-id="fancode.4248730" tvg-name="Al Wasl F.C. vs Air Force SC" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248730_53053_AWS_AFSC_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Al Wasl F.C. vs Air Force SC
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250520_english_hls_59af97507c90476_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4248730_english_hls_23b9c020c441811_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4248731" tvg-name="Al Sadd vs Al-Ahli Saudi FC" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248731_53053_SDD_AAS_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Al Sadd vs Al-Ahli Saudi FC
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4248731_english_hls_d22cb11ef167319_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4250548" tvg-name="Court 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Court 1
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250548_english_hls_dc9ffe730c203_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4250549" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250549_english_hls_cd610edfc088949_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4250547" tvg-name="Court 2" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Court 2
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250547_english_hls_86bc2823d575763_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4250628" tvg-name="Real Oviedo vs Las Palmas" tvg-logo="https://images.fancode.com/aig/match/v1793599278548/4250628_CASACARDS_APP.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Real Oviedo vs Las Palmas
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250628_english_hls_bf509611c745727_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4250500" tvg-name="Emirates Blues Vs Ajman" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250500_53130_EMB_AJM_fc-web_1792412930091.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Emirates Blues Vs Ajman
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250500_english_hls_c4ed8ba72c46666_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4248728" tvg-name="Pakhtakor Tashkent Vs Al Nassr Fc" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4248728_53053_PT_ANF_fc-web_1793182503341.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Pakhtakor Tashkent Vs Al Nassr Fc
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4248728_english_hls_74a916e7e810742_1ta-di_h264/index.m3u8

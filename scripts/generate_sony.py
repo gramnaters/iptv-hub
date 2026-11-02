@@ -22,6 +22,16 @@ API_BASE = "https://apiv2.sonyliv.com"
 CDN_BASE = "https://dishmt.slivcdn.com/hls/live"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
 SONY_REFERER = "https://www.sonyliv.com/"
+# SonyLIV's API geo-fences on the caller's IP.  GitHub Actions runners are
+# outside IN and get an empty resultObj, so the mint is tried direct first and
+# then rotated through the same Indian proxies the Zee5 generator uses.
+API_HEADERS = {
+    "User-Agent": USER_AGENT,
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-IN,en;q=0.9",
+    "Origin": "https://www.sonyliv.com",
+    "Referer": SONY_REFERER,
+}
 
 GROUP = "Sony LIV"
 EVENTS_GROUP = "Sonyliv events"
@@ -64,29 +74,66 @@ def token_expiry(token):
     return int(m.group(1)) if m else 0
 
 
+def _proxies():
+    return [l.strip() for l in (os.environ.get("PROXY_LIST", "").splitlines())
+            if l.strip().startswith("http")]
+
+
+def _mint_once(px):
+    """One GETTOKEN + VIDEOURL round trip.  Returns (token, reason)."""
+    label = "direct" if px is None else "proxy"
+    r1 = requests.get(f"{API_BASE}/AGL/1.4/A/ENG/WEB/ALL/GETTOKEN",
+                      headers=API_HEADERS, proxies=px, timeout=20)
+    if r1.status_code != 200:
+        return None, f"{label}: GETTOKEN HTTP {r1.status_code}"
+    try:
+        jwt = r1.json().get("resultObj")
+    except ValueError:
+        return None, f"{label}: GETTOKEN not JSON ({r1.text[:60]!r})"
+    if not jwt or not isinstance(jwt, str):
+        return None, f"{label}: GETTOKEN empty resultObj (geo-blocked?)"
+
+    r2 = requests.get(
+        f"{API_BASE}/AGL/1.5/A/ENG/WEB/IN/CONTENT/VIDEOURL/VOD/1000022678",
+        headers={**API_HEADERS, "security_token": jwt},
+        proxies=px, timeout=20,
+    )
+    if r2.status_code != 200:
+        return None, f"{label}: VIDEOURL HTTP {r2.status_code}"
+    try:
+        vurl = (r2.json().get("resultObj") or {}).get("videoURL") or ""
+    except ValueError:
+        return None, f"{label}: VIDEOURL not JSON ({r2.text[:60]!r})"
+    m = re.search(r"[?&](hdnea=[^&]+)", vurl)
+    if not m:
+        return None, f"{label}: no hdnea in videoURL"
+    token = m.group(1)
+    if token_expiry(token) <= time.time() + 900:
+        return None, f"{label}: minted token already expiring"
+    return token, label
+
+
 def mint_direct_token():
     """Mint a guest wildcard ``hdnea`` (``acl=/*``) from SonyLIV's own API.
 
     The token is issued for a free-preview VOD but carries ``acl=/*``, so it
-    unlocks every linear channel.  This is the accountless equivalent of the
-    ``securetoken.sonyliv.com`` URL that the upstream generator embeds.
+    unlocks every linear channel.  Direct first, then each configured Indian
+    proxy, because CI egress is geo-fenced out of the API.
     """
-    try:
-        r1 = requests.get(f"{API_BASE}/AGL/1.4/A/ENG/WEB/ALL/GETTOKEN", headers={"User-Agent": USER_AGENT}, timeout=15)
-        jwt = r1.json().get("resultObj")
-        if not jwt or not isinstance(jwt, str):
-            return None
-        r2 = requests.get(
-            f"{API_BASE}/AGL/1.5/A/ENG/WEB/IN/CONTENT/VIDEOURL/VOD/1000022678",
-            headers={"User-Agent": USER_AGENT, "security_token": jwt},
-            timeout=15,
-        )
-        vurl = (r2.json().get("resultObj") or {}).get("videoURL") or ""
-        m = re.search(r"[?&](hdnea=[^&]+)", vurl)
-        return m.group(1) if m else None
-    except Exception as e:
-        print(f"Direct mint error: {e}")
-        return None
+    proxies = _proxies()
+    attempts = [None] + [{"http": p, "https": p} for p in proxies]
+    reasons = []
+    for px in attempts:
+        try:
+            token, why = _mint_once(px)
+            if token:
+                print(f"Native mint via {why} ({len(proxies)} proxies configured)")
+                return token
+            reasons.append(why)
+        except Exception as e:
+            reasons.append(f"{'direct' if px is None else 'proxy'}: {type(e).__name__}: {e}")
+    print("Native mint failed: " + " | ".join(reasons[:6]))
+    return None
 
 
 def fetch_live_events_native():

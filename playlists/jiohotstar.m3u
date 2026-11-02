@@ -1,10 +1,7 @@
 #EXTM3U
-#DATE:- 03-11-2026 01:17:28 IST
+#DATE:- 03-11-2026 01:23:08 IST
 # Category: jiohotstar
 # Total Channels: 146
-# Source: JioHotstar Self-Hosted (own account, self-minted hdntl)
-# Token-Expires:- 04-11-2026 01:17:25 IST
-# Refresh-After:- 03-11-2026 23:17:25 IST
 
 #EXTINF:-1 tvg-id="hs_082c75fa2fec61647e9192140d488d30-JioHotstar-082c75fa2fec61647e9192140d488d30" tvg-name="STAR SPORTS 2 Hindi HD" tvg-logo="https://i.ibb.co/YBMBDWtd/SS2HD-HINDI.jpg" group-title="JioHotstar",STAR SPORTS 2 Hindi HD
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169
@@ -1482,3 +1479,4 @@ https://livetv.hotstar.com/mp1/gec-india-1540068775/2930525295884240a39922ad485e
 #EXTVLCOPT:http-cookie=hdntl=exp=1793735245~acl=%2f*~id=d53fff8d2c7b2f19c7df942b671187aa~data=hdntl~hmac=148ee2e1d845149731858732fa5c4bea4a5eb9f0da337269f8520fcf2884ca98
 #EXTHTTP:{"Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/","User-Agent":"Hotstar;in.startv.hotstar/25.02.24.8.11169","Cookie":"hdntl=exp=1793735245~acl=%2f*~id=d53fff8d2c7b2f19c7df942b671187aa~data=hdntl~hmac=148ee2e1d845149731858732fa5c4bea4a5eb9f0da337269f8520fcf2884ca98"}
 https://livetv.hotstar.com/mp2/gec-india-1540068778/894041da6b2144bfab552b7ee94271a5/index.mpd
+

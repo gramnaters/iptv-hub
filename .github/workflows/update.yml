@@ -49,6 +49,7 @@ jobs:
           JHS_URL: ${{ secrets.JHS_URL }}
           JHS_REFRESH_URL: ${{ secrets.JHS_REFRESH_URL }}
           HS_COOKIE: ${{ secrets.HS_COOKIE }}
+          JHS_MINT_SECRET: ${{ secrets.JHS_MINT_SECRET }}
           PYTHONUNBUFFERED: "1"
           WVD_DIR: ${{ github.workspace }}/wvd
           PROXY_LIST: ${{ secrets.PROXY_LIST }}

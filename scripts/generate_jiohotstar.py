@@ -73,6 +73,13 @@ DRM = {"hdcp_version": ["HDCP_V2_2"], "widevine_security_level": [],
 # Local-dev fallback so the script works on the dev box without a secret.
 LOCAL_COOKIE = os.path.join(os.path.dirname(ROOT_DIR), "hotstar_cookies_fresh.json")
 
+# Cloud self-mint source: our own Cloudflare worker mints the wildcard `hdntl`
+# via Cloudflare Browser Rendering (a real Chrome on the edge, which Akamai
+# accepts).  Hotstar's BFF 403s datacenter/proxy egress, so GitHub Actions
+# cannot mint directly; it calls this worker instead.  No PC required.
+JHS_WORKER = os.environ.get("JHS_WORKER", "https://jhs.gramnaters.workers.dev")
+JHS_MINT_SECRET = os.environ.get("JHS_MINT_SECRET", "")
+
 
 def load_cookie():
     raw = os.environ.get("HS_COOKIE", "").strip()
@@ -89,7 +96,7 @@ def load_cookie():
     if os.path.exists(LOCAL_COOKIE):
         with open(LOCAL_COOKIE, encoding="utf-8") as f:
             return json.load(f)
-    raise SystemExit("HS_COOKIE env missing and no local cookie file found")
+    return None
 
 
 def _proxies():
@@ -194,6 +201,34 @@ def mint_hdntl(cj):
     return None
 
 
+def get_token_from_worker():
+    """Force a fresh Browser-rendering mint on our Cloudflare worker and read
+    the resulting wildcard `hdntl` out of its playlist.  This is the cloud path
+    (no residential IP, no PC)."""
+    if not JHS_MINT_SECRET:
+        return None
+    try:
+        requests.post(f"{JHS_WORKER}/mint",
+                      headers={"Authorization": "Bearer " + JHS_MINT_SECRET},
+                      timeout=90)
+    except Exception as e:
+        print(f"worker mint trigger: {e}")
+    try:
+        r = requests.get(f"{JHS_WORKER}/playlist.m3u", timeout=60)
+        if r.status_code != 200:
+            return None
+        m = re.search(r"hdntl=([^;\s\"\\]+)", r.text)
+        if not m:
+            return None
+        token = "hdntl=" + m.group(1)
+        if token_expiry(token) <= time.time() + 900:
+            return None
+        return token
+    except Exception as e:
+        print(f"worker fetch: {e}")
+        return None
+
+
 def _slug(url, i):
     try:
         from urllib.parse import urlparse
@@ -204,7 +239,7 @@ def _slug(url, i):
         return "ch%d" % i
 
 
-def build_lines(cj, hdntl):
+def build_lines(hdntl):
     lines = []
     with open(CATALOG, encoding="utf-8") as f:
         items = json.load(f)
@@ -220,7 +255,7 @@ def build_lines(cj, hdntl):
 
         lines.append(f'#EXTINF:-1 tvg-id="{tid}" tvg-name="{name}" tvg-logo="{logo}" group-title="{GROUP}",{name}')
 
-        if typ == "mpd":
+        if typ in ("mpd", "dash"):
             lines.append("#KODIPROP:inputstream=inputstream.adaptive")
             lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
             lines.append("#KODIPROP:inputstream.adaptive.stream_headers="
@@ -242,15 +277,21 @@ def build_lines(cj, hdntl):
 
 
 def main():
-    print("Loading Hotstar session cookie...")
-    cj = load_cookie()
-    print("Minting hdntl...")
-    hdntl = mint_hdntl(cj)
+    # 1) Cloud worker (Browser Rendering) — self-mints without a residential IP.
+    hdntl = get_token_from_worker()
+    if hdntl:
+        print("Got fresh hdntl from cloud worker (Browser Rendering)")
+    else:
+        # 2) Direct BFF mint — only works from a residential IP (home/dev box).
+        print("Cloud worker unavailable -> trying direct BFF mint...")
+        cj = load_cookie()
+        hdntl = mint_hdntl(cj) if cj else None
+
     exp = token_expiry(hdntl)
     if not hdntl or exp <= time.time() + 900:
         # Hotstar's BFF is Akamai-bot-protected: datacenter/proxy egress gets a
-        # 403, so GitHub Actions cannot mint (only a residential IP can).  If an
-        # earlier home-machine run already left a fresh playlist, keep it.
+        # 403, and the worker may be down.  If an earlier run already left a
+        # fresh playlist, keep it rather than overwriting with a stale one.
         if os.path.exists(OUTPUT_M3U):
             with open(OUTPUT_M3U, encoding="utf-8") as f:
                 existing = f.read()
@@ -262,7 +303,7 @@ def main():
         return 1
 
     print(f"Fresh hdntl minted (expires {datetime.fromtimestamp(exp, IST):%d-%m-%Y %H:%M:%S IST})")
-    lines = build_lines(cj, hdntl)
+    lines = build_lines(hdntl)
     ch_count = sum(1 for l in lines if l.startswith("#EXTINF"))
 
     header = [

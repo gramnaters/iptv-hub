@@ -248,6 +248,16 @@ def main():
     hdntl = mint_hdntl(cj)
     exp = token_expiry(hdntl)
     if not hdntl or exp <= time.time() + 900:
+        # Hotstar's BFF is Akamai-bot-protected: datacenter/proxy egress gets a
+        # 403, so GitHub Actions cannot mint (only a residential IP can).  If an
+        # earlier home-machine run already left a fresh playlist, keep it.
+        if os.path.exists(OUTPUT_M3U):
+            with open(OUTPUT_M3U, encoding="utf-8") as f:
+                existing = f.read()
+            exps = [int(x) for x in re.findall(r"exp=(\d{10})", existing)]
+            if exps and min(exps) > time.time() + 1800:
+                print("No fresh hdntl minted here, but the existing playlist is still fresh -> leaving as-is")
+                return 0
         print("No fresh hdntl token -> nothing written")
         return 1
 

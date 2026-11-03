@@ -153,10 +153,10 @@
  },
  {
   "name": "ZEE PUNJABI",
-  "external_id": "HE_E_10020",
+  "external_id": "HE_E_11318",
   "asset_id": 9624890,
-  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_PUNJABI/dash/ZEE_PUNJABI.mpd",
-  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ZEE_PUNJABI/hls/ZEE_PUNJABI.m3u8",
+  "dash_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/ZEE_PUNJABI/dash/ZEE_PUNJABI.mpd",
+  "hls_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/ZEE_PUNJABI/hls/ZEE_PUNJABI.m3u8",
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/8d22500566c744a692411819df8ac6c6/version/0"
  },
  {

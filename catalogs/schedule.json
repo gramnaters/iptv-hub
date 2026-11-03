@@ -1,13 +1,13 @@
 {
  "jiotv": {
-  "last": 1793636016,
-  "updated": "2026-11-02 16:13 UTC",
-  "expires": "2026-11-02 19:10 UTC"
+  "last": 1793688994,
+  "updated": "2026-11-03 06:56 UTC",
+  "expires": "2026-11-03 10:35 UTC"
  },
  "sony": {
-  "last": 1793647104,
-  "updated": "2026-11-02 19:18 UTC",
-  "expires": "2026-11-03 07:18 UTC"
+  "last": 1793688785,
+  "updated": "2026-11-03 06:53 UTC",
+  "expires": "2026-11-03 18:53 UTC"
  },
  "zee5": {
   "last": 1793107728,
@@ -15,33 +15,33 @@
   "expires": null
  },
  "vzy": {
-  "last": 1793635867,
-  "updated": "2026-11-02 16:11 UTC",
+  "last": 1793688857,
+  "updated": "2026-11-03 06:54 UTC",
   "expires": null
  },
  "fancode": {
-  "last": 1793636008,
-  "updated": "2026-11-02 16:13 UTC",
+  "last": 1793688991,
+  "updated": "2026-11-03 06:56 UTC",
   "expires": null
  },
  "sunnxt": {
-  "last": 1793636009,
-  "updated": "2026-11-02 16:13 UTC",
+  "last": 1793688993,
+  "updated": "2026-11-03 06:56 UTC",
   "expires": null
  },
  "free": {
-  "last": 1793636010,
-  "updated": "2026-11-02 16:13 UTC",
+  "last": 1793688993,
+  "updated": "2026-11-03 06:56 UTC",
   "expires": "2028-03-05 19:51 UTC"
  },
  "zee5live": {
-  "last": 1793635996,
-  "updated": "2026-11-02 16:13 UTC",
-  "expires": "2026-11-02 16:36 UTC"
+  "last": 1793688984,
+  "updated": "2026-11-03 06:56 UTC",
+  "expires": "2026-11-03 07:19 UTC"
  },
  "jiohotstar": {
-  "last": 1793649420,
-  "updated": "2026-11-02 19:57 UTC",
-  "expires": "2026-11-03 19:47 UTC"
+  "last": 1793688788,
+  "updated": "2026-11-03 06:53 UTC",
+  "expires": "2026-11-03 19:58 UTC"
  }
 }

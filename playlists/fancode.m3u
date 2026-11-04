@@ -1,40 +1,40 @@
 #EXTM3U
-#DATE:- 04-11-2026 14:55:19 IST
+#DATE:- 04-11-2026 23:33:45 IST
 # Category: fancode
 # Total Channels: 9
 # Source: FanCode Self-Hosted Live Sports Events
 
-#EXTINF:-1 tvg-id="fancode.4250395" tvg-name="Hobart Hurricanes Women vs Melbourne Renegades Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250395_53125_HB-W_MR-W_fc-web_1793352702028.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Hobart Hurricanes Women vs Melbourne Renegades Women
+#EXTINF:-1 tvg-id="fancode.4250205" tvg-name="West Indies A vs England Lions" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Cricket_FC-Mini.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",West Indies A vs England Lions
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250395_english_hls_e4b3957daa9486_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250205_english_hls_244f9fb97051201_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250521" tvg-name="United Arab Emirates vs Oman" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/ICC-CWC-League_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",United Arab Emirates vs Oman
+#EXTINF:-1 tvg-id="fancode.4250505" tvg-name="Emirates Blues vs Dubai" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250478_53130_EMB_DUB_fc-web_1792412930104.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Emirates Blues vs Dubai
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250521_english_hls_67c3c2083472952_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250505_english_hls_9676cf97c769870_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250250" tvg-name="Bam Khatoon FC vs Naegohyang Women's FC" tvg-logo="https://images.fancode.com/aig/match/v1793533399050/4250250_CASACARDS_APP.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Bam Khatoon FC vs Naegohyang Women's FC
+#EXTINF:-1 tvg-id="fancode.4249001" tvg-name="Al Wahda vs Al Khaldiya SC" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249001_53057_ALW_ALK_fc-web_1789025065744.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Al Wahda vs Al Khaldiya SC
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250250_english_hls_d3bc5c7ed325175_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249001_english_hls_e3b5c6a4325945_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4249009" tvg-name="Melbourne Victory vs Persib Bandung" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249009_53057_MLV_PER_fc-web_1789025065711.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Melbourne Victory vs Persib Bandung
+#EXTINF:-1 tvg-id="fancode.4249002" tvg-name="Kuwait SC vs PFC Nasaf" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249002_53057_KSC_NAS_fc-web_1789025065843.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Kuwait SC vs PFC Nasaf
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4249009_english_hls_3cee20df9032217_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249002_english_hls_52264b15d375518_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250256" tvg-name="4.25 SC Women vs Ho Chi Minh City Women" tvg-logo="https://images.fancode.com/aig/match/v1793533399050/4250256_CASACARDS_APP.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",4.25 SC Women vs Ho Chi Minh City Women
+#EXTINF:-1 tvg-id="fancode.4249005" tvg-name="Al Rayyan vs Al-Nahda Club" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249005_53057_RAY_ALN_fc-web_1789025065846.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Al Rayyan vs Al-Nahda Club
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250256_english_hls_debc0d36fb68671_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4249005_english_hls_265fc86f9b27016_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="fancode.4250558" tvg-name="Court 3" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Court 3
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250558_english_hls_ce2c31320352771_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250557" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
+#EXTINF:-1 tvg-id="fancode.4250557" tvg-name="Michelsen vs Alcaraz" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Alex-Michelsen-vs-Carlos-Alcaraz_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Michelsen vs Alcaraz
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250557_english_hls_f271ef0bfa17291_1ta-di_h264/index.m3u8

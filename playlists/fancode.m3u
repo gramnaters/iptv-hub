@@ -1,20 +1,50 @@
 #EXTM3U
-#DATE:- 04-11-2026 02:37:20 IST
+#DATE:- 04-11-2026 14:55:19 IST
 # Category: fancode
-# Total Channels: 3
+# Total Channels: 9
 # Source: FanCode Self-Hosted Live Sports Events
 
-#EXTINF:-1 tvg-id="fancode.4250006" tvg-name="West Bromwich Albion F.C. vs Southampton F.C." tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250006_52993_WBA_SOU_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",West Bromwich Albion F.C. vs Southampton F.C.
+#EXTINF:-1 tvg-id="fancode.4250395" tvg-name="Hobart Hurricanes Women vs Melbourne Renegades Women" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4250395_53125_HB-W_MR-W_fc-web_1793352702028.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Hobart Hurricanes Women vs Melbourne Renegades Women
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250006_english_hls_fb6b33f21815004_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250395_english_hls_e4b3957daa9486_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250552" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
+#EXTINF:-1 tvg-id="fancode.4250521" tvg-name="United Arab Emirates vs Oman" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/ICC-CWC-League_Web-match-card.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",United Arab Emirates vs Oman
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250552_english_hls_0f67fd0f6498945_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250521_english_hls_67c3c2083472952_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250649" tvg-name="Court Central" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Court Central
+#EXTINF:-1 tvg-id="fancode.4250250" tvg-name="Bam Khatoon FC vs Naegohyang Women's FC" tvg-logo="https://images.fancode.com/aig/match/v1793533399050/4250250_CASACARDS_APP.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Bam Khatoon FC vs Naegohyang Women's FC
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250649_english_hls_8afb1495eb66255_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250250_english_hls_d3bc5c7ed325175_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4249009" tvg-name="Melbourne Victory vs Persib Bandung" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/4249009_53057_MLV_PER_fc-web_1789025065711.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Melbourne Victory vs Persib Bandung
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4249009_english_hls_3cee20df9032217_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4250256" tvg-name="4.25 SC Women vs Ho Chi Minh City Women" tvg-logo="https://images.fancode.com/aig/match/v1793533399050/4250256_CASACARDS_APP.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",4.25 SC Women vs Ho Chi Minh City Women
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250256_english_hls_debc0d36fb68671_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4250558" tvg-name="Court 3" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Court 3
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250558_english_hls_ce2c31320352771_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4250557" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250557_english_hls_f271ef0bfa17291_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4250556" tvg-name="Court 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Court 1
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250556_english_hls_29cd6c5f7087053_1ta-di_h264/index.m3u8
+
+#EXTINF:-1 tvg-id="fancode.4250555" tvg-name="Court 2" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Court 2
+#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
+#EXTVLCOPT:http-referrer=https://fancode.com/
+https://dai-fancode.pages.dev/mumbai/4250555_english_hls_2f6e1265bd94660_1ta-di_h264/index.m3u8

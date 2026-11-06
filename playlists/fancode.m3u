@@ -1,20 +1,15 @@
 #EXTM3U
-#DATE:- 06-11-2026 23:33:29 IST
+#DATE:- 07-11-2026 04:46:24 IST
 # Category: fancode
-# Total Channels: 3
+# Total Channels: 2
 # Source: FanCode Self-Hosted Live Sports Events
-
-#EXTINF:-1 tvg-id="fancode.4250564" tvg-name="Court 1" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Court 1
-#EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
-#EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250564_english_hls_bebd41166254849_1ta-di_h264/index.m3u8
 
 #EXTINF:-1 tvg-id="fancode.4250565" tvg-name="World Feed" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/Rolex-Paris-Masters_fc-web.jpg" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",World Feed
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
 https://dai-fancode.pages.dev/mumbai/4250565_english_hls_acd6c8cd9352595_1ta-di_h264/index.m3u8
 
-#EXTINF:-1 tvg-id="fancode.4250744" tvg-name="Eavion Eagles vs Paratus Jets" tvg-logo="https://images.fancode.com/aig/match/v1793950443609/4250744_CASACARDS_APP.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Eavion Eagles vs Paratus Jets
+#EXTINF:-1 tvg-id="fancode.4250598" tvg-name="Day 2" tvg-logo="https://www.fancode.com/skillup-uploads/cms-media/World-Wide-Technology-Championship_Web-match-card_1793992817308.png" tvg-language="English" group-title="FanCode" group-logo="https://www.google.com/s2/favicons?domain=fancode.com&sz=128",Day 2
 #EXTVLCOPT:http-user-agent=ReactNativeVideo/9.11.1 (Linux;Android 13) AndroidXMedia3/1.6.1
 #EXTVLCOPT:http-referrer=https://fancode.com/
-https://dai-fancode.pages.dev/mumbai/4250744_english_hls_81a1313bc412301_1ta-di_h264/index.m3u8
+https://dai-fancode.pages.dev/mumbai/4250598_english_hls_1a566b3e7984479_1ta-di_h264/index.m3u8

@@ -1,5 +1,5 @@
 #EXTM3U
-# VZY | self-minted 07-11-2026 20:55:59 UTC | 49 DRM (1 minted) + 112 FTA
+# VZY | self-minted 09-11-2026 06:41:23 UTC | 49 DRM (1 minted) + 112 FTA
 
 #EXTINF:-1 tvg-id="9487068" tvg-name="DD National" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/11468608abb7448ab66caf84f916dd2e/version/0" group-title="VZY",DD National
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
@@ -45,7 +45,7 @@ https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Telugu_HD/dash/Zee_Telugu_H
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=567871cd7fd743fea4b7e6411bb90de3:875bf834d27d7982199ba9d3cf77e9bb
+#KODIPROP:inputstream.adaptive.license_key=825394bc41b1427180c08cb524ee96d5:73629d2996cda77de6aadbed722cb4ba
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d1iwj24qiokrul.cloudfront.net/live/media/ZEE_PUNJABI/dash/ZEE_PUNJABI.mpd
 

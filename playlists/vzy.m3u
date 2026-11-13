@@ -1,5 +1,5 @@
 #EXTM3U
-# VZY | self-minted 13-11-2026 13:14:57 UTC | 49 DRM (33 minted, 16 unmintable skipped) + 112 FTA
+# VZY | self-minted 13-11-2026 13:18:20 UTC | 49 DRM (33 minted, 17 unmintable skipped) + 112 FTA
 
 #EXTINF:-1 tvg-id="9487068" tvg-name="DD National" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/11468608abb7448ab66caf84f916dd2e/version/0" group-title="VZY",DD National
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
@@ -160,10 +160,6 @@ https://vg-pitaaratvlive.akamaized.net/ptnr-WatchO/title-DivyaTV/v1/master/611d7
 #EXTINF:-1 tvg-id="6792363" tvg-name="India Today" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/fea75edb178d4cc0907937b418f5c928/version/1" group-title="VZY",India Today
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d21oc15hr8j9zd.cloudfront.net/livetv/clients/watcho/indiatoday_watcho_v2.m3u8
-
-#EXTINF:-1 tvg-id="6792361" tvg-name="France 24" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/b664d99bec7848faa2fd2ec7a466be87/version/0" group-title="VZY",France 24
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://live.france24.com/live/F24_EN_HI_HLS/playlist.m3u8?hdnts=exp=1753792351~acl=/live/F24_EN_HI_HLS/*~hmac=2626108ee2bc3901f079e2917916624428e791d394271b89b8e72a2054f39b2b&partner=watcho
 
 #EXTINF:-1 tvg-id="6792358" tvg-name="Sai Leela" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/9d9749150a9c420c92e6ff9ae50b8cb0/version/2" group-title="VZY",Sai Leela
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36

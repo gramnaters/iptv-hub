@@ -17,6 +17,7 @@ import json
 import os
 import re
 import sys
+import time
 import uuid
 from datetime import datetime, timezone
 
@@ -107,6 +108,12 @@ def slug(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
+def token_expired(url: str) -> bool:
+    """True when a URL carries an Akamai ``exp=`` stamp that is already in the past."""
+    m = re.search(r"exp(?:=|%3D)(\d{10})", url)
+    return bool(m) and int(m.group(1)) < time.time()
+
+
 def mpd_is_clear(url: str) -> bool:
     """True when an MPD carries no ContentProtection (playable without a key).
 
@@ -161,6 +168,11 @@ def main() -> int:
         else:
             fta += 1
             url = c["hls_url"] or c["dash_url"]
+            if url and token_expired(url):
+                # e.g. France 24 is baked into the catalog with a 2025 hdnts.
+                print(f"  [-] {name}: FTA url carries an expired token -> skipped")
+                skipped += 1
+                continue
 
         if not url:
             continue

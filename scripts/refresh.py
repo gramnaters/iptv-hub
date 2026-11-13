@@ -26,6 +26,12 @@ SOURCES = {
 MARGIN = 90 * 60
 EXP_RE = re.compile(r"(?:exp|Expires)(?:=|%3D)(\d{10})")
 
+# Generous per-source wall-clock caps. A hung generator used to abort the whole
+# run (subprocess timeout at 1800 s), which also skipped merge/push and blocked
+# every later source. Now a slow source only costs itself.
+DEFAULT_TIMEOUT = 900
+TIMEOUTS = {"zee5live": 1500, "jiohotstar": 1200, "vzy": 1200, "sony": 900}
+
 if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -60,15 +66,23 @@ def due(name, state, now):
     return ""
 
 
-def run(script):
-    p = subprocess.run([sys.executable, os.path.join("scripts", script)], cwd=ROOT,
-                       capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=1800)
-    for line in (p.stdout or "").strip().splitlines()[-20:]:
+def run(script, timeout=DEFAULT_TIMEOUT):
+    try:
+        p = subprocess.run([sys.executable, os.path.join("scripts", script)], cwd=ROOT,
+                           capture_output=True, text=True, encoding="utf-8", errors="replace",
+                           timeout=timeout)
+        out, err, rc = p.stdout, p.stderr, p.returncode
+    except subprocess.TimeoutExpired as e:
+        log(f"    ! {script}: timed out after {timeout}s (skipping this source)")
+        out = e.stdout or ""
+        err = e.stderr or ""
+        rc = 124
+    for line in (out or "").strip().splitlines()[-20:]:
         log("    " + line)
-    if p.returncode:
-        for line in (p.stderr or "").strip().splitlines()[-10:]:
+    if rc:
+        for line in (err or "").strip().splitlines()[-10:]:
             log("    ! " + line)
-    return p.returncode
+    return rc
 
 
 def git(*args):
@@ -107,7 +121,7 @@ def main():
         if not why:
             continue
         log(f"{name}: {why}")
-        if run(script):
+        if run(script, TIMEOUTS.get(name, DEFAULT_TIMEOUT)):
             failed.append(name)
             continue
         ran.append(name)
@@ -119,13 +133,17 @@ def main():
         }
 
     if ran or failed:
-        if run("merge.py"):
+        if run("merge.py", 600):
             failed.append("merge")
         with open(STATE, "w") as f:
             json.dump(state, f, indent=1)
         if not args.no_push and push():
             failed.append("push")
     log(f"ran: {ran or '-'} failed: {failed or '-'}")
+    # A failed source must not fail the job: the other sources refreshed and the
+    # playlists were still merged and pushed. Export failures as a warning only.
+    if "push" in failed:
+        print("::warning::playlist push failed after retries")
     return 0
 
 

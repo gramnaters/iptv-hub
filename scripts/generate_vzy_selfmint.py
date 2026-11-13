@@ -107,6 +107,24 @@ def slug(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
+def mpd_is_clear(url: str) -> bool:
+    """True when an MPD carries no ContentProtection (playable without a key).
+
+    Some channels are listed with a DRM manifest type but are actually served in
+    the clear. Publishing those without a license is correct; publishing a
+    protected one without a key only produces "Missing DRM License Key(s)".
+    """
+    try:
+        r = requests.get(url, headers={"User-Agent": UA}, timeout=20, stream=True)
+        if r.status_code >= 400:
+            return False
+        body = r.raw.read(262144, decode_content=True) or b""
+        r.close()
+        return b"ContentProtection" not in body
+    except Exception:  # noqa: BLE001
+        return False
+
+
 def main() -> int:
     channels = fetch_channels()
     os.makedirs(os.path.dirname(CHANNELS), exist_ok=True)
@@ -115,6 +133,7 @@ def main() -> int:
     minted = 0
     drm = 0
     fta = 0
+    skipped = 0
     lines = ["#EXTM3U", ""]
     stamp = datetime.now(timezone.utc).strftime("%d-%m-%Y %H:%M:%S UTC")
 
@@ -132,6 +151,12 @@ def main() -> int:
                     minted += 1
             except Exception as e:  # noqa: BLE001
                 print(f"  [!] {name}: {type(e).__name__}: {e}")
+            if not (kid and key) and not mpd_is_clear(c["dash_url"]):
+                # Protected but unmintable: dropping it is better than shipping a
+                # URL the player cannot decrypt ("Missing DRM License Key(s)").
+                skipped += 1
+                print(f"  [-] {name}: DRM, no key, manifest is protected -> skipped")
+                continue
             url = c["dash_url"]
         else:
             fta += 1
@@ -153,14 +178,15 @@ def main() -> int:
         lines.append(url)
         lines.append("")
 
-    header = [f"# VZY | self-minted {stamp} | {drm} DRM ({minted} minted) + {fta} FTA"]
+    header = [f"# VZY | self-minted {stamp} | {drm} DRM ({minted} minted, {skipped} unmintable skipped) + {fta} FTA"]
     lines[1:1] = header
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     open(OUT, "w", encoding="utf-8").write("\n".join(lines).rstrip() + "\n")
     json.dump({"updated_at": stamp, "total": len(channels), "drm": drm,
-               "minted": minted, "fta": fta},
+               "minted": minted, "skipped": skipped, "fta": fta},
               open(STATUS, "w", encoding="utf-8"), indent=2)
-    print(f"VZY: {len(channels)} channels ({drm} DRM, {minted} minted, {fta} FTA) -> {OUT}")
+    print(f"VZY: {len(channels)} channels ({drm} DRM, {minted} minted, "
+          f"{skipped} skipped, {fta} FTA) -> {OUT}")
     return 0
 
 

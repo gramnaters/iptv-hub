@@ -124,6 +124,10 @@ def _cert_bytes(cert) -> bytes | None:
 # core
 # --------------------------------------------------------------------------- #
 
+class _FatalLicenseError(WVError):
+    """The license server rejected the content itself, so no device will help."""
+
+
 def extract(
     pssh: str | bytes,
     license_url: str,
@@ -166,6 +170,13 @@ def extract(
                 headers=header_map,
                 timeout=timeout,
             )
+            if resp.status_code in (400, 401, 404, 410):
+                # Content/session-level rejection (unknown asset, foreign KID, bad
+                # authorisation): trying the other devices only wastes time.
+                raise _FatalLicenseError(
+                    f"{name}: license server HTTP {resp.status_code} "
+                    "(content rejected; aborting device rotation)"
+                )
             if resp.status_code not in (200, 201):
                 raise WVError(f"{name}: license server HTTP {resp.status_code}")
 
@@ -179,6 +190,8 @@ def extract(
                 cdm.close(session)
                 return keys
             last_err = f"{name}: no CONTENT keys in licence"
+        except _FatalLicenseError:
+            raise
         except Exception as e:  # noqa: BLE001 - try the next device
             last_err = f"{name}: {e}"
         finally:

@@ -2,7 +2,11 @@ name: refresh
 
 on:
   schedule:
-    - cron: '17 * * * *'
+    # ZEE5 `hdnts` tokens live ~50 min and are minted near the end of a ~12 min
+    # run, so an hourly cron left a ~10 min dead window every hour. Twice an
+    # hour keeps overlapping validity; the other sources stay gated by their own
+    # max-age check in refresh.py.
+    - cron: '7,37 * * * *'
   workflow_dispatch:
     inputs:
       only:

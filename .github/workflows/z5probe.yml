@@ -1,0 +1,49 @@
+name: z5probe
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests
+      - name: probe singlePlayback egress
+        env:
+          PROXY_LIST: ${{ secrets.PROXY_LIST }}
+        run: |
+          python - <<'PY'
+          import os, uuid, requests, json
+          UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+          SP = "https://spapi.zee5.com/singlePlayback/v2/getDetails/secure"
+          TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybV9jb2RlIjoiV2ViQCQhdDM4NzEy"
+                   "IiwiaXNzdWVkQXQiOiIyMDI1LTEwLTIyVDAzOjQ4OjA1LjAyOVoiLCJwcm9kdWN0X2NvZGUiOiJ6"
+                   "ZWU1QDk3NSIsInR0bCI6ODY0MDAwMDAsImlhdCI6MTc2MTEwNDg4NX0."
+                   "8HnOYX7GmvGGWWiPfYPlvJk55Bzmjd1qEQIx6ueOnCs")
+          guest = str(uuid.uuid4())
+          p = {"channel_id": "0-9-aajtak", "device_id": guest, "platform_name": "desktop_web",
+               "translation": "en", "user_language": "en,hi", "country": "IN", "state": "",
+               "app_version": "4.24.0", "check_parental_control": "false"}
+          h = {"User-Agent": UA, "Accept": "application/json", "Content-Type": "application/json",
+               "Origin": "https://www.zee5.com", "Referer": "https://www.zee5.com/"}
+          def attempt(px=None):
+              try:
+                  r = requests.post(SP, params=p, headers=h,
+                                    json={"x-access-token": TOKEN, "X-Z5-Guest-Token": guest},
+                                    proxies=px, timeout=20)
+                  ok = "assetDetails" in (r.json() if r.text.startswith("{") else {})
+                  print(f"  status={r.status_code} assetDetails={ok} body={r.text[:160]!r}")
+              except Exception as e:
+                  print(f"  {type(e).__name__}: {str(e)[:160]}")
+          print("== direct ==")
+          attempt()
+          pl = [l.strip() for l in os.environ.get("PROXY_LIST", "").splitlines() if l.strip().startswith("http")]
+          print(f"== proxies configured: {len(pl)} ==")
+          for i, px in enumerate(pl[:5]):
+              print(f"  [{i}] {px[:50]}")
+              attempt({"http": px, "https": px})
+          PY

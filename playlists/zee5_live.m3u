@@ -1,282 +1,186 @@
 #EXTM3U
-# ZEE5 live | self-host 13-11-2026 13:12:52 UTC | 70 free/FAST + 33 premium (Dish Nagra) + 14 failed
-
-#EXTINF:-1 tvg-id="0-9-aajtak" tvg-name="Aaj Tak" group-title="ZEE5 Live",Aaj Tak
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5ak-cmaflive.zee5.com/cmaf/live/2105503/AAJTAKHDNEWSELE/index.m3u8?hdnts=st=1794574059~exp=1794577059~acl=/cmaf/live/2105503/AAJTAKHDNEWSELE/*~id=def5fd47-4da9-456b-9f10-23c3ea0f7f0b~data=non-ssai_def5fd47-4da9-456b-9f10-23c3ea0f7f0b~hmac=1a5fa919b619c89b1ace5c88d93eb4740c57e002daf66ac62a59e2d6706d82d5&req_id=non-ssai_def5fd47-4da9-456b-9f10-23c3ea0f7f0b
-
-#EXTINF:-1 tvg-id="0-9-zeeanmolcinema" tvg-name="Anmol Cinema" group-title="ZEE5 Live",Anmol Cinema
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Anmol-Cinema-SD/master/master.m3u8?hdnts=st=1794574060~exp=1794577060~acl=/out/v1/ZEE5_Live_Channels/Zee-Anmol-Cinema-SD/master/*~id=5dc29a96-2bb7-4e8d-8bed-55c7f12aed7c~data=non-ssai_5dc29a96-2bb7-4e8d-8bed-55c7f12aed7c~hmac=a96fbb5a3359d7cab7d828d449f9a6fe9971a25648bcfeafee148d1f4439a313&req_id=non-ssai_5dc29a96-2bb7-4e8d-8bed-55c7f12aed7c
+# ZEE5 live | self-host 13-11-2026 13:28:08 UTC | 46 free/FAST + 33 premium (Dish Nagra) + 38 failed
 
 #EXTINF:-1 tvg-id="0-9-bigganga" tvg-name="Anmol Cinema 2" group-title="ZEE5 Live",Anmol Cinema 2
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Ganga-Zee-Anmol-Cinema-2-SD/master/master.m3u8?hdnts=st=1794574060~exp=1794577060~acl=/out/v1/ZEE5_Live_Channels/Zee-Ganga-Zee-Anmol-Cinema-2-SD/master/*~id=d3828c4d-a64e-4bf4-9153-b435fce34c6f~data=non-ssai_d3828c4d-a64e-4bf4-9153-b435fce34c6f~hmac=4a74d3b840a093d3c17ae6cd8cf3fbbe1210c6aa6a36170fcc7326400a1908c9&req_id=non-ssai_d3828c4d-a64e-4bf4-9153-b435fce34c6f
-
-#EXTINF:-1 tvg-id="0-9-zeeanmol" tvg-name="Anmol TV" group-title="ZEE5 Live",Anmol TV
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Anmol-SD/master/master.m3u8?hdnts=st=1794574062~exp=1794577062~acl=/out/v1/ZEE5_Live_Channels/Zee-Anmol-SD/master/*~id=6b34d57f-e721-44c9-b09c-4ab0f4ba2bad~data=non-ssai_6b34d57f-e721-44c9-b09c-4ab0f4ba2bad~hmac=adb97a49c049e1936cc3168e16c021d681d5ac6f334a31a640c03907770e68bd&req_id=non-ssai_6b34d57f-e721-44c9-b09c-4ab0f4ba2bad
-
-#EXTINF:-1 tvg-id="0-9-200" tvg-name="Asianet News" group-title="ZEE5 Live",Asianet News
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Asianet-News-HD/index/index.m3u8?hdnts=st=1794574061~exp=1794577061~acl=/out/v1/ZEE5_Live_Channels/Asianet-News-HD/index/*~id=300f8607-5302-400c-acf4-ba5278c9d892~data=non-ssai_300f8607-5302-400c-acf4-ba5278c9d892~hmac=66380eac90fb5b96f62f0a160b8f32b0cf41a6552d148d42b5d8894a460d465c&req_id=non-ssai_300f8607-5302-400c-acf4-ba5278c9d892
-
-#EXTINF:-1 tvg-id="0-9-bigmagic_1786965389" tvg-name="Big Magic" group-title="ZEE5 Live",Big Magic
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Big-Magic-SD/master/master.m3u8?hdnts=st=1794574064~exp=1794577064~acl=/out/v1/ZEE5_Live_Channels/Big-Magic-SD/master/*~id=5bec200c-a1b7-44d3-aa8b-4abe890c5f4b~data=non-ssai_5bec200c-a1b7-44d3-aa8b-4abe890c5f4b~hmac=c6a3b3563bf9dd0e95db23463b322af4d2665919dd2356fcc5ad688e5922b483&req_id=non-ssai_5bec200c-a1b7-44d3-aa8b-4abe890c5f4b
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Ganga-Zee-Anmol-Cinema-2-SD/master/master.m3u8?hdnts=st=1794574404~exp=1794577404~acl=/out/v1/ZEE5_Live_Channels/Zee-Ganga-Zee-Anmol-Cinema-2-SD/master/*~id=f56df454-9a5b-4267-aab1-a56fdfd8a899~data=non-ssai_f56df454-9a5b-4267-aab1-a56fdfd8a899~hmac=931a62a72adc1f13eb20c265781cc5ff6068046f07d12897ad90ba15f29b78bf&req_id=non-ssai_f56df454-9a5b-4267-aab1-a56fdfd8a899
 
 #EXTINF:-1 tvg-id="0-9-9z5938345" tvg-name="Dagdusheth Halwai Ganpati Mandir" group-title="ZEE5 Live",Dagdusheth Halwai Ganpati Mandir
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://cam.pc.cdn.bitgravity.com/cam/live/dagdusheth1/Zee_Media/playlist.m3u8?e=0&h=5f04be0dbe998cfe63128b888ae5d823?hdnts=st=1794574060~exp=1794577060~acl=/cam/live/dagdusheth1/Zee_Media/*~id=c3790c1c-6e6d-9a85-a2e0-519235dbeb9e~data=non-ssai_c3790c1c-6e6d-9a85-a2e0-519235dbeb9e~hmac=2d49e130007eaa1c60b310356993c1dba34441bf064727e912a850415898c3a7&req_id=non-ssai_c3790c1c-6e6d-9a85-a2e0-519235dbeb9e
+https://cam.pc.cdn.bitgravity.com/cam/live/dagdusheth1/Zee_Media/playlist.m3u8?e=0&h=5f04be0dbe998cfe63128b888ae5d823?hdnts=st=1794574423~exp=1794577423~acl=/cam/live/dagdusheth1/Zee_Media/*~id=60ded6c8-0c23-4dad-817d-49467ba45e15~data=non-ssai_60ded6c8-0c23-4dad-817d-49467ba45e15~hmac=de67cbcfb2a9d1b20287d6d1917f2c7efa889d00057c424843cfec54ab9a312f&req_id=non-ssai_60ded6c8-0c23-4dad-817d-49467ba45e15
 
 #EXTINF:-1 tvg-id="0-9-255" tvg-name="Good News Today" group-title="ZEE5 Live",Good News Today
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Good-News-Today-HD/index/index.m3u8?hdnts=st=1794574060~exp=1794577060~acl=/out/v1/ZEE5_Live_Channels/Good-News-Today-HD/index/*~id=6059d0db-2ec8-4fcf-9fee-a0068ca2e064~data=non-ssai_6059d0db-2ec8-4fcf-9fee-a0068ca2e064~hmac=494d11f5a5643f757e0693436c59ea71ebeb734dad3c931f724bda265b1b3b69&req_id=non-ssai_6059d0db-2ec8-4fcf-9fee-a0068ca2e064
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Good-News-Today-HD/index/index.m3u8?hdnts=st=1794574447~exp=1794577447~acl=/out/v1/ZEE5_Live_Channels/Good-News-Today-HD/index/*~id=56b4eba7-8d8e-46f9-bf12-954a05e2fb1f~data=non-ssai_56b4eba7-8d8e-46f9-bf12-954a05e2fb1f~hmac=c59ce3fcf27ad5e2b270657e2fb7369c6c6f2b1bc11f6b96fcba7bc4eacd2e4f&req_id=non-ssai_56b4eba7-8d8e-46f9-bf12-954a05e2fb1f
 
 #EXTINF:-1 tvg-id="0-9-indiatoday" tvg-name="India Today" group-title="ZEE5 Live",India Today
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/India-Today-HD/index/index.m3u8?hdnts=st=1794574061~exp=1794577061~acl=/out/v1/ZEE5_Live_Channels/India-Today-HD/index/*~id=a6ca322e-b423-4965-aba3-52d5cd383fb6~data=non-ssai_a6ca322e-b423-4965-aba3-52d5cd383fb6~hmac=4b99a6ad0bb1ad5ac708aaf143b141774cefbdf7d99627b5b4fcef7622e59a25&req_id=non-ssai_a6ca322e-b423-4965-aba3-52d5cd383fb6
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/India-Today-HD/index/index.m3u8?hdnts=st=1794574436~exp=1794577436~acl=/out/v1/ZEE5_Live_Channels/India-Today-HD/index/*~id=50c76e2f-bcf9-4f28-9558-a442fe53e16f~data=non-ssai_50c76e2f-bcf9-4f28-9558-a442fe53e16f~hmac=d6119339fe0c15577393d1b24492190b118d50b431147938ccbc0635ee336c21&req_id=non-ssai_50c76e2f-bcf9-4f28-9558-a442fe53e16f
 
 #EXTINF:-1 tvg-id="0-9-9z5938346" tvg-name="Iskcon Vrindavan" group-title="ZEE5 Live",Iskcon Vrindavan
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://cam.pc.cdn.bitgravity.com/cam/live/feed023/Zee_Media/playlist.m3u8?e=0&h=b01d178188e02c84ac3babca2f52ccfa?hdnts=st=1794574061~exp=1794577061~acl=/cam/live/feed023/Zee_Media/*~id=b034d690-86e8-444a-bb27-cdd104016bcb~data=non-ssai_b034d690-86e8-444a-bb27-cdd104016bcb~hmac=c55b71a0e998cf7d56eda5aa9964b412042711539b379c1b1c451945cff8c1ae&req_id=non-ssai_b034d690-86e8-444a-bb27-cdd104016bcb
+https://cam.pc.cdn.bitgravity.com/cam/live/feed023/Zee_Media/playlist.m3u8?e=0&h=b01d178188e02c84ac3babca2f52ccfa?hdnts=st=1794574409~exp=1794577409~acl=/cam/live/feed023/Zee_Media/*~id=96f98e6b-98d7-4073-81d8-5648ad555f0c~data=non-ssai_96f98e6b-98d7-4073-81d8-5648ad555f0c~hmac=4286456ef00a072773d26a69d918ae5accf5e4b57c41a26221ae0fa5bd92b974&req_id=non-ssai_96f98e6b-98d7-4073-81d8-5648ad555f0c
 
 #EXTINF:-1 tvg-id="0-9-9z5938349" tvg-name="Kashi Vishwanath" group-title="ZEE5 Live",Kashi Vishwanath
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://cam.pc.cdn.bitgravity.com/cam/live/Kashi_Vishwanath/Zee_Media/playlist.m3u8?e=0&h=f8fc672c5c1a5ac4230f5f4793d77b90?hdnts=st=1794574061~exp=1794577061~acl=/cam/live/Kashi_Vishwanath/Zee_Media/*~id=8f333164-ddab-42c4-9dc9-ec8595010ba2~data=non-ssai_8f333164-ddab-42c4-9dc9-ec8595010ba2~hmac=3d4e8e0892021c506babeaa716b2e9515da76f6216b7e9332ee92984754fa6cd&req_id=non-ssai_8f333164-ddab-42c4-9dc9-ec8595010ba2
-
-#EXTINF:-1 tvg-id="0-9-9z5938347" tvg-name="Ma Naina Devi" group-title="ZEE5 Live",Ma Naina Devi
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://cam.pc.cdn.bitgravity.com/cam/live/Nainadevi/Zee_Media/playlist.m3u8?e=0&h=0bc1a9085c61739d2e7f5c9696f0d580?hdnts=st=1794574061~exp=1794577061~acl=/cam/live/Nainadevi/Zee_Media/*~id=c49b7f3f-9990-483a-b796-0bc020bceeb6~data=non-ssai_c49b7f3f-9990-483a-b796-0bc020bceeb6~hmac=a0caa7e8df057796af3190da338741406a496f86cdb2b06cbbfd5634dc1502e1&req_id=non-ssai_c49b7f3f-9990-483a-b796-0bc020bceeb6
+https://cam.pc.cdn.bitgravity.com/cam/live/Kashi_Vishwanath/Zee_Media/playlist.m3u8?e=0&h=f8fc672c5c1a5ac4230f5f4793d77b90?hdnts=st=1794574435~exp=1794577435~acl=/cam/live/Kashi_Vishwanath/Zee_Media/*~id=122cb5fc-b543-98b9-ac33-561e6c021db5~data=non-ssai_122cb5fc-b543-98b9-ac33-561e6c021db5~hmac=01e23161b3cdda6f6b58628b31ede00fd5abcebe7ac488a3dc815f0b0edf961a&req_id=non-ssai_122cb5fc-b543-98b9-ac33-561e6c021db5
 
 #EXTINF:-1 tvg-id="0-9-9z5938351" tvg-name="Mahavir Mandir Patna" group-title="ZEE5 Live",Mahavir Mandir Patna
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://cam.pc.cdn.bitgravity.com/cam/live/PatnaHanuman/Zee_Media/playlist.m3u8?e=0&h=0ad4bfc5e187efbc0489c47db7c20b2f?hdnts=st=1794574062~exp=1794577062~acl=/cam/live/PatnaHanuman/Zee_Media/*~id=6d6c4dd0-0b7b-4fc6-841e-c589ebdab27b~data=non-ssai_6d6c4dd0-0b7b-4fc6-841e-c589ebdab27b~hmac=128b5aee46390b4ba3b81cc0c44d1c4d4e1fce71a2415d47640ac6898ba5f2b5&req_id=non-ssai_6d6c4dd0-0b7b-4fc6-841e-c589ebdab27b
+https://cam.pc.cdn.bitgravity.com/cam/live/PatnaHanuman/Zee_Media/playlist.m3u8?e=0&h=0ad4bfc5e187efbc0489c47db7c20b2f?hdnts=st=1794574454~exp=1794577454~acl=/cam/live/PatnaHanuman/Zee_Media/*~id=ad5e5f6f-0a47-4026-bb20-c5ed9522b47e~data=non-ssai_ad5e5f6f-0a47-4026-bb20-c5ed9522b47e~hmac=550106bdb93d184b55aa017606a2bc3072d4d37a991d8fa2a2e8e8c49c2a8019&req_id=non-ssai_ad5e5f6f-0a47-4026-bb20-c5ed9522b47e
 
 #EXTINF:-1 tvg-id="0-9-9z5942782" tvg-name="NDTV" group-title="ZEE5 Live",NDTV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/NDTV_24x7_HD/index/index.m3u8?hdnts=st=1794574062~exp=1794577062~acl=/out/v1/ZEE5_Live_Channels/NDTV_24x7_HD/index/*~id=295764e1-c3c3-4fec-bd8c-8782471b7b62~data=non-ssai_295764e1-c3c3-4fec-bd8c-8782471b7b62~hmac=6fdf07e2d6247491ec942101f614163b47d13edb5b12fb225556404b0b2ddbbf&req_id=non-ssai_295764e1-c3c3-4fec-bd8c-8782471b7b62
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/NDTV_24x7_HD/index/index.m3u8?hdnts=st=1794574470~exp=1794577470~acl=/out/v1/ZEE5_Live_Channels/NDTV_24x7_HD/index/*~id=840b4b89-a417-4c0c-902b-309cd3c5c62d~data=non-ssai_840b4b89-a417-4c0c-902b-309cd3c5c62d~hmac=f9b11709f113ce255370717e4b2b11a1018be804e4c9ca99afed9d770e3c8e6b&req_id=non-ssai_840b4b89-a417-4c0c-902b-309cd3c5c62d
 
 #EXTINF:-1 tvg-id="0-9-9z5942783" tvg-name="NDTV India" group-title="ZEE5 Live",NDTV India
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5ak-cmaflive.zee5.com/cmaf/live/2105525/NDTV-INDIA-HD/index.m3u8?hdnts=st=1794574062~exp=1794577062~acl=/cmaf/live/2105525/NDTV-INDIA-HD/*~id=ab88bb0b-cda7-4596-a058-896d18661ad3~data=non-ssai_ab88bb0b-cda7-4596-a058-896d18661ad3~hmac=e6ee2c205c6014a123ce1984b884f50d987e2b9504c12cb7a932fd2503913d99&req_id=non-ssai_ab88bb0b-cda7-4596-a058-896d18661ad3
+https://z5ak-cmaflive.zee5.com/cmaf/live/2105525/NDTV-INDIA-HD/index.m3u8?hdnts=st=1794574482~exp=1794577482~acl=/cmaf/live/2105525/NDTV-INDIA-HD/*~id=29a23afd-d09e-4ce9-955e-2350149b0e8a~data=non-ssai_29a23afd-d09e-4ce9-955e-2350149b0e8a~hmac=056be60b91f114685115efdb2a9dcb08133a4e45edac4c8e2ce8a31fd1754192&req_id=non-ssai_29a23afd-d09e-4ce9-955e-2350149b0e8a
 
 #EXTINF:-1 tvg-id="0-9-9z5942785" tvg-name="NDTV Marathi " group-title="ZEE5 Live",NDTV Marathi 
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5ak-cmaflive.zee5.com/cmaf/live/2105526/NDTV-MARATHI-HD/index.m3u8?hdnts=st=1794574062~exp=1794577062~acl=/cmaf/live/2105526/NDTV-MARATHI-HD/*~id=7a1668e5-d5ac-4071-97b0-8f4bf10c0d58~data=non-ssai_7a1668e5-d5ac-4071-97b0-8f4bf10c0d58~hmac=f188d05c0658bb8444fc9330620fba9ca3b5f23df3e19d8577230b4e92f0f7cb&req_id=non-ssai_7a1668e5-d5ac-4071-97b0-8f4bf10c0d58
-
-#EXTINF:-1 tvg-id="0-9-9z5942784" tvg-name="NDTV Profit" group-title="ZEE5 Live",NDTV Profit
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/NDTV_PROFIT_HD/index/index.m3u8?hdnts=st=1794574062~exp=1794577062~acl=/out/v1/ZEE5_Live_Channels/NDTV_PROFIT_HD/index/*~id=bae527d3-6135-449a-971f-b61246818757~data=non-ssai_bae527d3-6135-449a-971f-b61246818757~hmac=5369137e9ba72f76c527be89c03934bc9e4b4a4b17fddf7ec5e8fc25963b9e5b&req_id=non-ssai_bae527d3-6135-449a-971f-b61246818757
-
-#EXTINF:-1 tvg-id="0-9-261" tvg-name="News 9" group-title="ZEE5 Live",News 9
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-NEWS9/index/index.m3u8?hdnts=st=1794574063~exp=1794577063~acl=/out/v1/ZEE5_Live_Channels/TV9-NEWS9/index/*~id=2678ac80-414c-4c1c-96b1-2e9947a0eb4a~data=non-ssai_2678ac80-414c-4c1c-96b1-2e9947a0eb4a~hmac=ba6f92898ca76d24d3686a6622a48024067f0ced77d607866be0f22b932efa63&req_id=non-ssai_2678ac80-414c-4c1c-96b1-2e9947a0eb4a
+https://z5ak-cmaflive.zee5.com/cmaf/live/2105526/NDTV-MARATHI-HD/index.m3u8?hdnts=st=1794574487~exp=1794577487~acl=/cmaf/live/2105526/NDTV-MARATHI-HD/*~id=f43651eb-3486-4b52-a726-f69fac5862b6~data=non-ssai_f43651eb-3486-4b52-a726-f69fac5862b6~hmac=2b05ace06eb077b22e08248fea89909fe3361812146c90e90b758d13f361a04d&req_id=non-ssai_f43651eb-3486-4b52-a726-f69fac5862b6
 
 #EXTINF:-1 tvg-id="0-9-9z5946518" tvg-name="Patna Sahib" group-title="ZEE5 Live",Patna Sahib
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://cam.pc.cdn.bitgravity.com/cam/live/gurudwara_patnasahib/Zee_Media/playlist.m3u8?e=0&h=bb304d25e95fd8ce8b6be9684a241195?hdnts=st=1794574063~exp=1794577063~acl=/cam/live/gurudwara_patnasahib/Zee_Media/*~id=2f2756e9-433b-4d7a-992d-ad7995528ce0~data=non-ssai_2f2756e9-433b-4d7a-992d-ad7995528ce0~hmac=8be1ef69655ee511b490e3343e906e461d54d87942ffcc88654e11d02629266b&req_id=non-ssai_2f2756e9-433b-4d7a-992d-ad7995528ce0
-
-#EXTINF:-1 tvg-id="0-9-203" tvg-name="Polimer News" group-title="ZEE5 Live",Polimer News
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/POLIMER_TV_PLAYOUT/index/index.m3u8?hdnts=st=1794574063~exp=1794577063~acl=/out/v1/ZEE5_Live_Channels/POLIMER_TV_PLAYOUT/index/*~id=8b00f157-2983-42af-913e-dee9123c0f3b~data=non-ssai_8b00f157-2983-42af-913e-dee9123c0f3b~hmac=f1f4555efc118e2f835ad3a59d572dc0d325f095ce534620b4acf212b12243ba&req_id=non-ssai_8b00f157-2983-42af-913e-dee9123c0f3b
-
-#EXTINF:-1 tvg-id="0-9-9z5938343" tvg-name="Sai Baba, Shirdi" group-title="ZEE5 Live",Sai Baba, Shirdi
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://cam.pc.cdn.bitgravity.com/cam/live/feed008/Zee_Media/playlist.m3u8?e=0&h=1e076b716048330f3a02481fcee07265?hdnts=st=1794574063~exp=1794577063~acl=/cam/live/feed008/Zee_Media/*~id=3787b0dc-c68b-4a24-9808-49afd24b8754~data=non-ssai_3787b0dc-c68b-4a24-9808-49afd24b8754~hmac=9e513a7e38ba5914c58c69c987adbf79276cb6fa3b90246c35ef555c74e100ff&req_id=non-ssai_3787b0dc-c68b-4a24-9808-49afd24b8754
+https://cam.pc.cdn.bitgravity.com/cam/live/gurudwara_patnasahib/Zee_Media/playlist.m3u8?e=0&h=bb304d25e95fd8ce8b6be9684a241195?hdnts=st=1794574475~exp=1794577475~acl=/cam/live/gurudwara_patnasahib/Zee_Media/*~id=c2210663-c33d-431e-bf67-60feedf88625~data=non-ssai_c2210663-c33d-431e-bf67-60feedf88625~hmac=2c16526b172414a2e08cbc09661c051e4b36d9f118588eb5ea57c75d7396cfca&req_id=non-ssai_c2210663-c33d-431e-bf67-60feedf88625
 
 #EXTINF:-1 tvg-id="0-9-zeesalaam" tvg-name="Salaam TV" group-title="ZEE5 Live",Salaam TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Salaam-SD/master/master.m3u8?hdnts=st=1794574063~exp=1794577063~acl=/out/v1/ZEE5_Live_Channels/Zee-Salaam-SD/master/*~id=020dd3b6-7e11-41e3-a2a1-c89393535956~data=non-ssai_020dd3b6-7e11-41e3-a2a1-c89393535956~hmac=966cfb156d1a83c7dbc1ee969f8fd4925ef22c57a0eeadce7245f0c36fde2e92&req_id=non-ssai_020dd3b6-7e11-41e3-a2a1-c89393535956
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Salaam-SD/master/master.m3u8?hdnts=st=1794574489~exp=1794577489~acl=/out/v1/ZEE5_Live_Channels/Zee-Salaam-SD/master/*~id=21673d65-e778-4b38-993c-b9eff69de6f5~data=non-ssai_21673d65-e778-4b38-993c-b9eff69de6f5~hmac=3cd4006ae92b9de34eab8a32f403a27e1d52e19c01dfbe30aaa768e315e51993&req_id=non-ssai_21673d65-e778-4b38-993c-b9eff69de6f5
 
 #EXTINF:-1 tvg-id="0-9-9z5946519" tvg-name="Shree Naga Sai  Temple - Coimbatore" group-title="ZEE5 Live",Shree Naga Sai  Temple - Coimbatore
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://cam.pc.cdn.bitgravity.com/cam/live/feed88_1/Zee_Media/playlist.m3u8?e=0&h=89eb034d3f6cd8321c983dc3885eab18?hdnts=st=1794574063~exp=1794577063~acl=/cam/live/feed88_1/Zee_Media/*~id=eb43354c-eaac-4c53-bec2-0c7c17216a1d~data=non-ssai_eb43354c-eaac-4c53-bec2-0c7c17216a1d~hmac=850f12c6c5666f8eb856fbb3be6b2a0e690e82f88d4400036e4d00e01fa9e353&req_id=non-ssai_eb43354c-eaac-4c53-bec2-0c7c17216a1d
+https://cam.pc.cdn.bitgravity.com/cam/live/feed88_1/Zee_Media/playlist.m3u8?e=0&h=89eb034d3f6cd8321c983dc3885eab18?hdnts=st=1794574546~exp=1794577546~acl=/cam/live/feed88_1/Zee_Media/*~id=6662dfd5-f307-45ae-bdd4-63407622c062~data=non-ssai_6662dfd5-f307-45ae-bdd4-63407622c062~hmac=282efcef048b51b65a38be9ea826e8a7cffeea9369c92d9e7d8b9b91da9adf80&req_id=non-ssai_6662dfd5-f307-45ae-bdd4-63407622c062
 
 #EXTINF:-1 tvg-id="0-9-9z5938348" tvg-name="Somnath Temple" group-title="ZEE5 Live",Somnath Temple
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://cam.pc.cdn.bitgravity.com/cam/live/somnath1/Zee_Media/playlist.m3u8?e=0&h=a1d9787fc190186f1efe4ab43963c585?hdnts=st=1794574063~exp=1794577063~acl=/cam/live/somnath1/Zee_Media/*~id=d47f9663-be41-4b1a-96b9-c35506dc566e~data=non-ssai_d47f9663-be41-4b1a-96b9-c35506dc566e~hmac=15fade7d834ef9a5db2a0eb6b608418ea24273ff49d9fb3e75069f4ff2efde6d&req_id=non-ssai_d47f9663-be41-4b1a-96b9-c35506dc566e
+https://cam.pc.cdn.bitgravity.com/cam/live/somnath1/Zee_Media/playlist.m3u8?e=0&h=a1d9787fc190186f1efe4ab43963c585?hdnts=st=1794574538~exp=1794577538~acl=/cam/live/somnath1/Zee_Media/*~id=a334a500-3a82-4103-902c-8804fd8380ab~data=non-ssai_a334a500-3a82-4103-902c-8804fd8380ab~hmac=3a20ce775b0ef5def20b7731e094566b7569cb850e29997afc2b538ced1c4614&req_id=non-ssai_a334a500-3a82-4103-902c-8804fd8380ab
 
 #EXTINF:-1 tvg-id="0-9-201" tvg-name="Suvarna News" group-title="ZEE5 Live",Suvarna News
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Suvarna-News-HD/index/index.m3u8?hdnts=st=1794574063~exp=1794577063~acl=/out/v1/ZEE5_Live_Channels/Suvarna-News-HD/index/*~id=ce10ee1d-38c0-4bf0-b785-c7a702d4b582~data=non-ssai_ce10ee1d-38c0-4bf0-b785-c7a702d4b582~hmac=7c5a47148f4101d8197f8199f40f4dafc30d040cb48530bae57e17b4124f8486&req_id=non-ssai_ce10ee1d-38c0-4bf0-b785-c7a702d4b582
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Suvarna-News-HD/index/index.m3u8?hdnts=st=1794574557~exp=1794577557~acl=/out/v1/ZEE5_Live_Channels/Suvarna-News-HD/index/*~id=c1c4a680-a7da-4fb4-b58a-b5bc9cb91b9f~data=non-ssai_c1c4a680-a7da-4fb4-b58a-b5bc9cb91b9f~hmac=ddb75e5904aa809bf29c00d2600b70c246b8a5de1266f38714fc57383831ee83&req_id=non-ssai_c1c4a680-a7da-4fb4-b58a-b5bc9cb91b9f
 
 #EXTINF:-1 tvg-id="0-9-378" tvg-name="TV9 Bangla" group-title="ZEE5 Live",TV9 Bangla
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-BANGLA-HD/index/index.m3u8?hdnts=st=1794574064~exp=1794577064~acl=/out/v1/ZEE5_Live_Channels/TV9-BANGLA-HD/index/*~id=b00320f4-9c73-492f-b138-4a22ab17031e~data=non-ssai_b00320f4-9c73-492f-b138-4a22ab17031e~hmac=ca1fee5b662c412d72d4527c28a7a8996a024b708e948e5e55987c310b46ff9b&req_id=non-ssai_b00320f4-9c73-492f-b138-4a22ab17031e
-
-#EXTINF:-1 tvg-id="0-9-251" tvg-name="TV9 Bharatvarsh" group-title="ZEE5 Live",TV9 Bharatvarsh
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-BHARATVARSH-HD/index/index.m3u8?hdnts=st=1794574064~exp=1794577064~acl=/out/v1/ZEE5_Live_Channels/TV9-BHARATVARSH-HD/index/*~id=02ae2599-ff03-403b-be39-9f79c32290e1~data=non-ssai_02ae2599-ff03-403b-be39-9f79c32290e1~hmac=7d29ec1681354c6b5ffe2f32d3b14f0cc0eec833f99d669c0215fd3766991222&req_id=non-ssai_02ae2599-ff03-403b-be39-9f79c32290e1
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-BANGLA-HD/index/index.m3u8?hdnts=st=1794574569~exp=1794577569~acl=/out/v1/ZEE5_Live_Channels/TV9-BANGLA-HD/index/*~id=ce1d3eb7-04b8-4e47-82f9-6c3384d93862~data=non-ssai_ce1d3eb7-04b8-4e47-82f9-6c3384d93862~hmac=94034383bd3fad3a35ce7b555860dede7565107910efcad7a67d720b758356e1&req_id=non-ssai_ce1d3eb7-04b8-4e47-82f9-6c3384d93862
 
 #EXTINF:-1 tvg-id="0-9-260" tvg-name="TV9 Gujarati" group-title="ZEE5 Live",TV9 Gujarati
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-GUJARATI-HD/index/index.m3u8?hdnts=st=1794574064~exp=1794577064~acl=/out/v1/ZEE5_Live_Channels/TV9-GUJARATI-HD/index/*~id=25170834-859d-41c4-99f6-7ca857fb879f~data=non-ssai_25170834-859d-41c4-99f6-7ca857fb879f~hmac=7a473e9e17d21b7ae07b78c56fb893e937a5591a62963e47f89ee0f5d778da6c&req_id=non-ssai_25170834-859d-41c4-99f6-7ca857fb879f
-
-#EXTINF:-1 tvg-id="0-9-259" tvg-name="TV9 Kannada" group-title="ZEE5 Live",TV9 Kannada
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-KANNADA-HD/index/index.m3u8?hdnts=st=1794574064~exp=1794577064~acl=/out/v1/ZEE5_Live_Channels/TV9-KANNADA-HD/index/*~id=e942304a-6394-442d-b9be-08eadf3f80b4~data=non-ssai_e942304a-6394-442d-b9be-08eadf3f80b4~hmac=234a7529395bff2ae47f3c6d0cf4841100ea5635c9c51e10f77fbc7a64992e05&req_id=non-ssai_e942304a-6394-442d-b9be-08eadf3f80b4
-
-#EXTINF:-1 tvg-id="0-9-257" tvg-name="TV9 Marathi" group-title="ZEE5 Live",TV9 Marathi
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-MARATHI-HD/index/index.m3u8?hdnts=st=1794574064~exp=1794577064~acl=/out/v1/ZEE5_Live_Channels/TV9-MARATHI-HD/index/*~id=7d16a7d4-83c4-4332-b8f9-bf47d41bcac8~data=non-ssai_7d16a7d4-83c4-4332-b8f9-bf47d41bcac8~hmac=f8e9a6e3879da316f520b999191994ce89b58f0d03e3292df4acbc8fd109c951&req_id=non-ssai_7d16a7d4-83c4-4332-b8f9-bf47d41bcac8
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-GUJARATI-HD/index/index.m3u8?hdnts=st=1794574556~exp=1794577556~acl=/out/v1/ZEE5_Live_Channels/TV9-GUJARATI-HD/index/*~id=0ccb2cf9-c586-4262-a0e6-30f12286594b~data=non-ssai_0ccb2cf9-c586-4262-a0e6-30f12286594b~hmac=f54f811919985f529dacc8aedb4c6ef65d48f910de646e6ac87ed62bdf1479fa&req_id=non-ssai_0ccb2cf9-c586-4262-a0e6-30f12286594b
 
 #EXTINF:-1 tvg-id="0-9-258" tvg-name="TV9 Telugu" group-title="ZEE5 Live",TV9 Telugu
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-TELUGU-HD/index/index.m3u8?hdnts=st=1794574064~exp=1794577064~acl=/out/v1/ZEE5_Live_Channels/TV9-TELUGU-HD/index/*~id=751c7e18-cf6f-4517-8a38-65446dc1b556~data=non-ssai_751c7e18-cf6f-4517-8a38-65446dc1b556~hmac=c5da40c2af7e27bcd933c5e4c5f3b10cc31141d9cf751c1add3bf19b72c76b28&req_id=non-ssai_751c7e18-cf6f-4517-8a38-65446dc1b556
-
-#EXTINF:-1 tvg-id="0-9-wion" tvg-name="WION" group-title="ZEE5 Live",WION
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/WION-News-SD/master/master.m3u8?hdnts=st=1794574064~exp=1794577064~acl=/out/v1/ZEE5_Live_Channels/WION-News-SD/master/*~id=d3643e8b-d6e5-4778-b68d-18714097be70~data=non-ssai_d3643e8b-d6e5-4778-b68d-18714097be70~hmac=61fa64b253d146224b90877a1baa2d2c43e9826e449d4575c3425f15e7be5f88&req_id=non-ssai_d3643e8b-d6e5-4778-b68d-18714097be70
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/TV9-TELUGU-HD/index/index.m3u8?hdnts=st=1794574563~exp=1794577563~acl=/out/v1/ZEE5_Live_Channels/TV9-TELUGU-HD/index/*~id=090c62d4-7586-425e-a93f-55d858106fd5~data=non-ssai_090c62d4-7586-425e-a93f-55d858106fd5~hmac=24a2278c5c288bc2f2a73ce82a6fd9bccda344c0004a987e93fb1c7a5695ac55&req_id=non-ssai_090c62d4-7586-425e-a93f-55d858106fd5
 
 #EXTINF:-1 tvg-id="0-9-9z51095521" tvg-name="Z Athiradi" group-title="ZEE5 Live",Z Athiradi
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://zee5.cdn.runn.tv/zfast/stream/zeeathd/playlist.m3u8?hdnts=st=1794574065~exp=1794577065~acl=/zfast/stream/zeeathd/*~id=02a0a5b1-720c-41c2-a51a-1ecb8eaa286a~data=non-ssai_02a0a5b1-720c-41c2-a51a-1ecb8eaa286a~hmac=5fcfb1197990e6a2e18add06b5ab1b5519a8dc982810f37fc35f8553e680d977&req_id=non-ssai_02a0a5b1-720c-41c2-a51a-1ecb8eaa286a
-
-#EXTINF:-1 tvg-id="0-9-9z51072556" tvg-name="Z Comedy Nation" group-title="ZEE5 Live",Z Comedy Nation
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://zee5.cdn.runn.tv/zfast/stream/zeecom/playlist.m3u8?hdnts=st=1794574065~exp=1794577065~acl=/zfast/stream/zeecom/*~id=290bce99-ef86-4a84-bcad-e6e54f9dea06~data=non-ssai_290bce99-ef86-4a84-bcad-e6e54f9dea06~hmac=d0ae5507f35d312db1d35e0e9aa9a75d5694c6a6a6b935222fc6361507ee0876&req_id=non-ssai_290bce99-ef86-4a84-bcad-e6e54f9dea06
-
-#EXTINF:-1 tvg-id="0-9-9z51072892" tvg-name="Z Dil Se" group-title="ZEE5 Live",Z Dil Se
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://zee5.cdn.runn.tv/zfast/stream/zeedil/playlist.m3u8?hdnts=st=1794574065~exp=1794577065~acl=/zfast/stream/zeedil/*~id=8c7e9e35-c9de-4a0c-8afd-a83ef0771c7b~data=non-ssai_8c7e9e35-c9de-4a0c-8afd-a83ef0771c7b~hmac=7648eee4fcf90cf54a29531c54aede7ff7adbe50bf17aa214588d3aeb700a2c5&req_id=non-ssai_8c7e9e35-c9de-4a0c-8afd-a83ef0771c7b
+https://zee5.cdn.runn.tv/zfast/stream/zeeathd/playlist.m3u8?hdnts=st=1794574569~exp=1794577569~acl=/zfast/stream/zeeathd/*~id=2228ac4a-ce34-445a-8af8-3ebb6eaa709c~data=non-ssai_2228ac4a-ce34-445a-8af8-3ebb6eaa709c~hmac=3dbb60e9c7b1b38faead232930ed932db72704cb2d7f21fa0dfdcf94abbba7ac&req_id=non-ssai_2228ac4a-ce34-445a-8af8-3ebb6eaa709c
 
 #EXTINF:-1 tvg-id="0-9-9z51072893" tvg-name="Z Horror Nights" group-title="ZEE5 Live",Z Horror Nights
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://zee5.cdn.runn.tv/zfast/stream/zeehor/playlist.m3u8?hdnts=st=1794574065~exp=1794577065~acl=/zfast/stream/zeehor/*~id=0d0b54f1-6258-453a-9447-ea4ca950c264~data=non-ssai_0d0b54f1-6258-453a-9447-ea4ca950c264~hmac=a08a2231463c33b934aa0058456442568c5e77e0cb9c306cd01a3a857840ea27&req_id=non-ssai_0d0b54f1-6258-453a-9447-ea4ca950c264
+https://zee5.cdn.runn.tv/zfast/stream/zeehor/playlist.m3u8?hdnts=st=1794574610~exp=1794577610~acl=/zfast/stream/zeehor/*~id=c9af4aa1-1e12-41c3-8173-837d38585083~data=non-ssai_c9af4aa1-1e12-41c3-8173-837d38585083~hmac=7df604d1cd89294dbac0607b35c0772fbfaa6cd5f07a821af07bb724cbac9f5f&req_id=non-ssai_c9af4aa1-1e12-41c3-8173-837d38585083
 
 #EXTINF:-1 tvg-id="0-9-9z51095523" tvg-name="Z Prematho" group-title="ZEE5 Live",Z Prematho
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://zee5.cdn.runn.tv/zfast/stream/zeeprema/playlist.m3u8?hdnts=st=1794574065~exp=1794577065~acl=/zfast/stream/zeeprema/*~id=82ce98a5-f3f5-44ac-89ed-3551ed19232e~data=non-ssai_82ce98a5-f3f5-44ac-89ed-3551ed19232e~hmac=2779b8a5b6688b429900ffc9894b3f670a6a589a1a01b01ac42792cf6b1421a6&req_id=non-ssai_82ce98a5-f3f5-44ac-89ed-3551ed19232e
-
-#EXTINF:-1 tvg-id="0-9-24ghantatv" tvg-name="Zee 24 Ghanta" group-title="ZEE5 Live",Zee 24 Ghanta
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-24Ghanta-News-SD/master/master.m3u8?hdnts=st=1794574066~exp=1794577066~acl=/out/v1/ZEE5_Live_Channels/Zee-24Ghanta-News-SD/master/*~id=39aa5447-76b1-49d7-9e0e-ad493143d231~data=non-ssai_39aa5447-76b1-49d7-9e0e-ad493143d231~hmac=b4607f954cf031a7a6ad65fcdbeadb8d6aa81bbf417a4dc3d592835b90c625c5&req_id=non-ssai_39aa5447-76b1-49d7-9e0e-ad493143d231
+https://zee5.cdn.runn.tv/zfast/stream/zeeprema/playlist.m3u8?hdnts=st=1794574623~exp=1794577623~acl=/zfast/stream/zeeprema/*~id=d5b8aa45-dcb7-42a9-8735-067c6ec2ea89~data=non-ssai_d5b8aa45-dcb7-42a9-8735-067c6ec2ea89~hmac=273456cb4ea52782da8f175b939b21801170d3be7c0fda2da7116fe891375482&req_id=non-ssai_d5b8aa45-dcb7-42a9-8735-067c6ec2ea89
 
 #EXTINF:-1 tvg-id="0-9-zee24kalak" tvg-name="Zee 24 Kalak" group-title="ZEE5 Live",Zee 24 Kalak
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-24-Kalak-SD/master/master.m3u8?hdnts=st=1794574065~exp=1794577065~acl=/out/v1/ZEE5_Live_Channels/Zee-24-Kalak-SD/master/*~id=04fae5e4-df64-4004-9e0f-8eb2ae63b4ae~data=non-ssai_04fae5e4-df64-4004-9e0f-8eb2ae63b4ae~hmac=5a42ab0bb1b253220f4e919304d2c03ae6e3db7e1df3032a69fb5456515e5ce3&req_id=non-ssai_04fae5e4-df64-4004-9e0f-8eb2ae63b4ae
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-24-Kalak-SD/master/master.m3u8?hdnts=st=1794574668~exp=1794577668~acl=/out/v1/ZEE5_Live_Channels/Zee-24-Kalak-SD/master/*~id=d752f49a-dfb0-479c-bbf1-cd50aae7db1b~data=non-ssai_d752f49a-dfb0-479c-bbf1-cd50aae7db1b~hmac=640bf559920fdbd644ff6628076e204d4cd2863c65378d24707434e75d982ce0&req_id=non-ssai_d752f49a-dfb0-479c-bbf1-cd50aae7db1b
 
 #EXTINF:-1 tvg-id="0-9-zee24taas" tvg-name="Zee 24 Taas" group-title="ZEE5 Live",Zee 24 Taas
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-24Taas-News-SD/master/master.m3u8?hdnts=st=1794574065~exp=1794577065~acl=/out/v1/ZEE5_Live_Channels/Zee-24Taas-News-SD/master/*~id=ae0c9ac2-ff6d-41d8-872b-57caf9a1e287~data=non-ssai_ae0c9ac2-ff6d-41d8-872b-57caf9a1e287~hmac=3e6241b4e0ce1ec508ae12df06b5ecfe012cd71da4095997d6aae0c31315cf35&req_id=non-ssai_ae0c9ac2-ff6d-41d8-872b-57caf9a1e287
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-24Taas-News-SD/master/master.m3u8?hdnts=st=1794574628~exp=1794577628~acl=/out/v1/ZEE5_Live_Channels/Zee-24Taas-News-SD/master/*~id=166c718a-5881-45d5-83b5-4007f46144dc~data=non-ssai_166c718a-5881-45d5-83b5-4007f46144dc~hmac=48759ee775ce12ef0d83d2926b2965e1107d6b4cdcc286cd2fe3a6a14ad9b653&req_id=non-ssai_166c718a-5881-45d5-83b5-4007f46144dc
 
 #EXTINF:-1 tvg-id="0-9-zeeaction" tvg-name="Zee Action" group-title="ZEE5 Live",Zee Action
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Action-SD/master/master.m3u8?hdnts=st=1794574066~exp=1794577066~acl=/out/v1/ZEE5_Live_Channels/Zee-Action-SD/master/*~id=c00b5091-0478-4289-992b-1839beab0baf~data=non-ssai_c00b5091-0478-4289-992b-1839beab0baf~hmac=6aa6a293c756b6fe55aa4c6289d01a613d2f4860668caa5f5a85d018f21b0fb8&req_id=non-ssai_c00b5091-0478-4289-992b-1839beab0baf
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Action-SD/master/master.m3u8?hdnts=st=1794574643~exp=1794577643~acl=/out/v1/ZEE5_Live_Channels/Zee-Action-SD/master/*~id=870f0ac3-462c-4554-8f09-da56be57dd8f~data=non-ssai_870f0ac3-462c-4554-8f09-da56be57dd8f~hmac=35465249c2548f65724c7e399e76d952ec77cb21078599278f1434f7f74337e4&req_id=non-ssai_870f0ac3-462c-4554-8f09-da56be57dd8f
 
 #EXTINF:-1 tvg-id="0-9-zeehindustan" tvg-name="Zee Bharat" group-title="ZEE5 Live",Zee Bharat
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Bharat-News-SD/master/master.m3u8?hdnts=st=1794574066~exp=1794577066~acl=/out/v1/ZEE5_Live_Channels/Zee-Bharat-News-SD/master/*~id=f6cc0bb4-2200-40eb-8d5b-f148c1a1ddc1~data=non-ssai_f6cc0bb4-2200-40eb-8d5b-f148c1a1ddc1~hmac=b33894a54e7b04f9637f2edfa326f5ca09d337b74a320ed56a584206ddaa3f6a&req_id=non-ssai_f6cc0bb4-2200-40eb-8d5b-f148c1a1ddc1
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Bharat-News-SD/master/master.m3u8?hdnts=st=1794574647~exp=1794577647~acl=/out/v1/ZEE5_Live_Channels/Zee-Bharat-News-SD/master/*~id=ddd48bb0-40db-49bd-a354-3d1c6d40f47f~data=non-ssai_ddd48bb0-40db-49bd-a354-3d1c6d40f47f~hmac=6291ca8c42df561dcb5fc8db85a5da0be1b16a9f67da8a533d432ae6df487640&req_id=non-ssai_ddd48bb0-40db-49bd-a354-3d1c6d40f47f
 
 #EXTINF:-1 tvg-id="0-9-zeebiharjharkhand" tvg-name="Zee Bihar Jharkhand" group-title="ZEE5 Live",Zee Bihar Jharkhand
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Bihar-Jharkhand-SD/master/master.m3u8?hdnts=st=1794574066~exp=1794577066~acl=/out/v1/ZEE5_Live_Channels/Zee-Bihar-Jharkhand-SD/master/*~id=ae2688e8-0747-441a-8ec6-49647bf17f30~data=non-ssai_ae2688e8-0747-441a-8ec6-49647bf17f30~hmac=e446a8fee2ec690a9abf9a335a9c7305e0cc1fa5e90cf79eacb36f600e5b368f&req_id=non-ssai_ae2688e8-0747-441a-8ec6-49647bf17f30
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Bihar-Jharkhand-SD/master/master.m3u8?hdnts=st=1794574649~exp=1794577649~acl=/out/v1/ZEE5_Live_Channels/Zee-Bihar-Jharkhand-SD/master/*~id=81179b05-0410-41fc-979c-1b44491703a7~data=non-ssai_81179b05-0410-41fc-979c-1b44491703a7~hmac=24a9503eb569cf49437578c1a994996bee85232807e2343abc43fd4f297f1ec5&req_id=non-ssai_81179b05-0410-41fc-979c-1b44491703a7
 
 #EXTINF:-1 tvg-id="0-9-216" tvg-name="Zee Biskope" group-title="ZEE5 Live",Zee Biskope
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Biskope-SD/master/master.m3u8?hdnts=st=1794574066~exp=1794577066~acl=/out/v1/ZEE5_Live_Channels/Zee-Biskope-SD/master/*~id=6db4daef-bd8c-435c-9231-164b0f3e091c~data=non-ssai_6db4daef-bd8c-435c-9231-164b0f3e091c~hmac=835f1f483c15cc1afeb00d56b6eafab7075532922cc5c3d59a0766ee91df8a43&req_id=non-ssai_6db4daef-bd8c-435c-9231-164b0f3e091c
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Biskope-SD/master/master.m3u8?hdnts=st=1794574638~exp=1794577638~acl=/out/v1/ZEE5_Live_Channels/Zee-Biskope-SD/master/*~id=6bfe2250-8d70-4897-9bc4-ca9b2c8ef468~data=non-ssai_6bfe2250-8d70-4897-9bc4-ca9b2c8ef468~hmac=1348c6f2bdf0d8ea2d25ccd4524c15bab398b9ee512a34bdfeb43f8aba9bb8b6&req_id=non-ssai_6bfe2250-8d70-4897-9bc4-ca9b2c8ef468
 
 #EXTINF:-1 tvg-id="0-9-zeebusiness" tvg-name="Zee Business" group-title="ZEE5 Live",Zee Business
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Business-News-SD/master/master.m3u8?hdnts=st=1794574066~exp=1794577066~acl=/out/v1/ZEE5_Live_Channels/Zee-Business-News-SD/master/*~id=bd0a06a0-6418-49de-ba9a-290bc8886108~data=non-ssai_bd0a06a0-6418-49de-ba9a-290bc8886108~hmac=862dda34f92eb8bdf3d49fdd29a0a56b5d67f3ca3cc3f168a743acb53a1649cb&req_id=non-ssai_bd0a06a0-6418-49de-ba9a-290bc8886108
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Business-News-SD/master/master.m3u8?hdnts=st=1794574662~exp=1794577662~acl=/out/v1/ZEE5_Live_Channels/Zee-Business-News-SD/master/*~id=3f97e1ca-c27e-4c37-a83e-fa1ac481a088~data=non-ssai_3f97e1ca-c27e-4c37-a83e-fa1ac481a088~hmac=25f7a7f94e45d9957d8abb4b9f6a531c5a14962be9c0e0295314414f3480ef5d&req_id=non-ssai_3f97e1ca-c27e-4c37-a83e-fa1ac481a088
 
 #EXTINF:-1 tvg-id="0-9-9z51072553" tvg-name="Zee Cine Classic" group-title="ZEE5 Live",Zee Cine Classic
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://zee5.cdn.runn.tv/zfast/stream/zeecin/playlist.m3u8?hdnts=st=1794574066~exp=1794577066~acl=/zfast/stream/zeecin/*~id=1c82eacb-0c58-470c-947c-dcafb12e9c44~data=non-ssai_1c82eacb-0c58-470c-947c-dcafb12e9c44~hmac=ddc0c51839241e9bdef82af0defe0b959d8af80a767e137d8dec92c1e925b82e&req_id=non-ssai_1c82eacb-0c58-470c-947c-dcafb12e9c44
-
-#EXTINF:-1 tvg-id="0-9-zeekalinganews" tvg-name="Zee Delhi NCR Haryana" group-title="ZEE5 Live",Zee Delhi NCR Haryana
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-DelhiNCRHaryana-News-SD/master/master.m3u8?hdnts=st=1794574066~exp=1794577066~acl=/out/v1/ZEE5_Live_Channels/Zee-DelhiNCRHaryana-News-SD/master/*~id=893e50a0-df64-4d1d-b0c1-221876f7e891~data=non-ssai_893e50a0-df64-4d1d-b0c1-221876f7e891~hmac=fa7be16b7a2c8797e8dcd949e87090ff2888c1617e0ca0b2919698c676373a70&req_id=non-ssai_893e50a0-df64-4d1d-b0c1-221876f7e891
+https://zee5.cdn.runn.tv/zfast/stream/zeecin/playlist.m3u8?hdnts=st=1794574669~exp=1794577669~acl=/zfast/stream/zeecin/*~id=38405799-cf9a-4eec-b1b0-cfd9c0999276~data=non-ssai_38405799-cf9a-4eec-b1b0-cfd9c0999276~hmac=a6a149b2862d31afc7e2f9697aee3b3d844fe2b10e7e9e39a7b2495f86ddb405&req_id=non-ssai_38405799-cf9a-4eec-b1b0-cfd9c0999276
 
 #EXTINF:-1 tvg-id="0-9-zeemadhyapradeshchat" tvg-name="Zee Madhya Pradesh Chhattisgarh" group-title="ZEE5 Live",Zee Madhya Pradesh Chhattisgarh
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Madhya-Pradesh-Chhattisgarh-SD/master/master.m3u8?hdnts=st=1794574066~exp=1794577066~acl=/out/v1/ZEE5_Live_Channels/Zee-Madhya-Pradesh-Chhattisgarh-SD/master/*~id=1c19e018-51de-40ef-a7c8-b38e81acea74~data=non-ssai_1c19e018-51de-40ef-a7c8-b38e81acea74~hmac=c03919b9a2093f4bc7778fa17a387867e16f25f1dc692044319232c1c48ef852&req_id=non-ssai_1c19e018-51de-40ef-a7c8-b38e81acea74
-
-#EXTINF:-1 tvg-id="0-9-zeenews" tvg-name="Zee News" group-title="ZEE5 Live",Zee News
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5ak-cmaflive.zee5.com/cmaf/live/2105510/ZEENEWSELE/master.m3u8?hdnts=st=1794574067~exp=1794577067~acl=/cmaf/live/2105510/ZEENEWSELE/*~id=de28c7d0-ba95-4d8d-b376-dd21cb6274e7~data=non-ssai_de28c7d0-ba95-4d8d-b376-dd21cb6274e7~hmac=723b0f80b20db1a055bea49ceb463d3325dc58c8f167db1d9f313879c437f607&req_id=non-ssai_de28c7d0-ba95-4d8d-b376-dd21cb6274e7
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Madhya-Pradesh-Chhattisgarh-SD/master/master.m3u8?hdnts=st=1794574712~exp=1794577712~acl=/out/v1/ZEE5_Live_Channels/Zee-Madhya-Pradesh-Chhattisgarh-SD/master/*~id=14aab095-22ee-446e-8c96-03d641e074a6~data=non-ssai_14aab095-22ee-446e-8c96-03d641e074a6~hmac=3d7b090cc19809d0ea349267a8aac3cac21a2d11e8392f96966e1e3b18606310&req_id=non-ssai_14aab095-22ee-446e-8c96-03d641e074a6
 
 #EXTINF:-1 tvg-id="0-9-9z583537" tvg-name="Zee News Kannada" group-title="ZEE5 Live",Zee News Kannada
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-News-Kannada-SD/master/master.m3u8?hdnts=st=1794574067~exp=1794577067~acl=/out/v1/ZEE5_Live_Channels/Zee-News-Kannada-SD/master/*~id=6d756b5f-7667-4f6c-916c-1009d04f7617~data=non-ssai_6d756b5f-7667-4f6c-916c-1009d04f7617~hmac=e7ede4bce9ba29c792a21437ba54156de1441439f7f9918079647f4339d93dfe&req_id=non-ssai_6d756b5f-7667-4f6c-916c-1009d04f7617
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-News-Kannada-SD/master/master.m3u8?hdnts=st=1794574689~exp=1794577689~acl=/out/v1/ZEE5_Live_Channels/Zee-News-Kannada-SD/master/*~id=be88baa4-4c99-4404-86b1-a375c4712447~data=non-ssai_be88baa4-4c99-4404-86b1-a375c4712447~hmac=df982b67ddc1dd3dd654ec63243ccc441b7848d0e8ffbc5886a6fde671658103&req_id=non-ssai_be88baa4-4c99-4404-86b1-a375c4712447
 
 #EXTINF:-1 tvg-id="0-9-9z583538" tvg-name="Zee News Telugu" group-title="ZEE5 Live",Zee News Telugu
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-News-Telugu-SD/master/master.m3u8?hdnts=st=1794574067~exp=1794577067~acl=/out/v1/ZEE5_Live_Channels/Zee-News-Telugu-SD/master/*~id=398a855b-56fa-4942-8cf4-58a744855490~data=non-ssai_398a855b-56fa-4942-8cf4-58a744855490~hmac=2e3b93804205414e5275de729f83c5535e3621129369045718a05d4dbc2e3405&req_id=non-ssai_398a855b-56fa-4942-8cf4-58a744855490
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-News-Telugu-SD/master/master.m3u8?hdnts=st=1794574729~exp=1794577729~acl=/out/v1/ZEE5_Live_Channels/Zee-News-Telugu-SD/master/*~id=917add55-208a-4058-a1c2-8ed95e88e94f~data=non-ssai_917add55-208a-4058-a1c2-8ed95e88e94f~hmac=71e03573c6b4f45ccc22e0034705aeedcf3d2415980f1d84837fc217e1ce4a37&req_id=non-ssai_917add55-208a-4058-a1c2-8ed95e88e94f
 
 #EXTINF:-1 tvg-id="0-9-channel_265145625" tvg-name="Zee News Uttar Pradesh Uttrakhand" group-title="ZEE5 Live",Zee News Uttar Pradesh Uttrakhand
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-News-UttarPradesh-Uttrakhand-SD/master/master.m3u8?hdnts=st=1794574067~exp=1794577067~acl=/out/v1/ZEE5_Live_Channels/Zee-News-UttarPradesh-Uttrakhand-SD/master/*~id=70241664-c552-4903-8003-944cefa56229~data=non-ssai_70241664-c552-4903-8003-944cefa56229~hmac=0f70b5a11020a90a074bea9fe2f92f6969fb79c635b54b0a31fbf585b92c8503&req_id=non-ssai_70241664-c552-4903-8003-944cefa56229
-
-#EXTINF:-1 tvg-id="0-9-zeepunjabharyanahima" tvg-name="Zee Punjab Haryana Himachal Pradesh" group-title="ZEE5 Live",Zee Punjab Haryana Himachal Pradesh
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Punjab-Haryana-Himachal-Pradesh-SD/master/master.m3u8?hdnts=st=1794574067~exp=1794577067~acl=/out/v1/ZEE5_Live_Channels/Zee-Punjab-Haryana-Himachal-Pradesh-SD/master/*~id=e23b1f89-d829-448f-82d2-37747c294dec~data=non-ssai_e23b1f89-d829-448f-82d2-37747c294dec~hmac=b5e984b2905318f99d123122622575bf1dcd0c5f58a32d85377956c5ee65d853&req_id=non-ssai_e23b1f89-d829-448f-82d2-37747c294dec
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-News-UttarPradesh-Uttrakhand-SD/master/master.m3u8?hdnts=st=1794574679~exp=1794577679~acl=/out/v1/ZEE5_Live_Channels/Zee-News-UttarPradesh-Uttrakhand-SD/master/*~id=7517691c-9ea6-4baa-8ab5-df148949d10b~data=non-ssai_7517691c-9ea6-4baa-8ab5-df148949d10b~hmac=e457c3bb16004b13d6e335c431c4e98e9911b9c443a4145dfcffba2497baba10&req_id=non-ssai_7517691c-9ea6-4baa-8ab5-df148949d10b
 
 #EXTINF:-1 tvg-id="0-9-zeerajasthannews" tvg-name="Zee Rajasthan News" group-title="ZEE5 Live",Zee Rajasthan News
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Rajasthan-News-SD/master/master.m3u8?hdnts=st=1794574067~exp=1794577067~acl=/out/v1/ZEE5_Live_Channels/Zee-Rajasthan-News-SD/master/*~id=dda40404-7534-451f-86a1-21a0174c8eef~data=non-ssai_dda40404-7534-451f-86a1-21a0174c8eef~hmac=43475ec120256e1efd8a0c6b6a81711a5bacc920e9dedaa2d065be984d338225&req_id=non-ssai_dda40404-7534-451f-86a1-21a0174c8eef
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Rajasthan-News-SD/master/master.m3u8?hdnts=st=1794574710~exp=1794577710~acl=/out/v1/ZEE5_Live_Channels/Zee-Rajasthan-News-SD/master/*~id=a2d598a0-ee3e-4178-b654-a86433fdec3c~data=non-ssai_a2d598a0-ee3e-4178-b654-a86433fdec3c~hmac=1a86abd8be97a226483bcfac1db60958e964929b6523750880f9c48b00c5edc4&req_id=non-ssai_a2d598a0-ee3e-4178-b654-a86433fdec3c
 
 #EXTINF:-1 tvg-id="0-9-9z51072894" tvg-name="Zee South Flix" group-title="ZEE5 Live",Zee South Flix
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://zee5.cdn.runn.tv/zfast/stream/zeesfl/playlist.m3u8?hdnts=st=1794574067~exp=1794577067~acl=/zfast/stream/zeesfl/*~id=7be1c51e-77a5-41a6-baea-797feac13d51~data=non-ssai_7be1c51e-77a5-41a6-baea-797feac13d51~hmac=777a4faf4d69fdc82c4b4b67978b112c8b2ead140a8faceb63738f5a534242d4&req_id=non-ssai_7be1c51e-77a5-41a6-baea-797feac13d51
+https://zee5.cdn.runn.tv/zfast/stream/zeesfl/playlist.m3u8?hdnts=st=1794574766~exp=1794577766~acl=/zfast/stream/zeesfl/*~id=58c955f4-8d5d-4e44-ac14-9976ee0cbff8~data=non-ssai_58c955f4-8d5d-4e44-ac14-9976ee0cbff8~hmac=beddc69e5ec9c05f55ae3a7e653476bb42c1e021c1f832dde01ffed396b2a74b&req_id=non-ssai_58c955f4-8d5d-4e44-ac14-9976ee0cbff8
 
 #EXTINF:-1 tvg-id="0-9-161" tvg-name="Zee One German" group-title="ZEE5 Live",Zee One German
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://988fd7ad.wurl.com/v1/asiatvlimited_zeeone_1/ohlscdn_us/latest/main/hls/playlist.m3u8?hdnts=st=1794574067~exp=1794577067~acl=/v1/asiatvlimited_zeeone_1/ohlscdn_us/latest/main/hls/*~id=8599fb9e-102b-4b2d-bc87-abe3187d7935~data=non-ssai_8599fb9e-102b-4b2d-bc87-abe3187d7935~hmac=2ca6ae94a1805dee830d878f1888911ef77a06026b20969d74ca439bfbf58b8d&req_id=non-ssai_8599fb9e-102b-4b2d-bc87-abe3187d7935
+https://988fd7ad.wurl.com/v1/asiatvlimited_zeeone_1/ohlscdn_us/latest/main/hls/playlist.m3u8?hdnts=st=1794574764~exp=1794577764~acl=/v1/asiatvlimited_zeeone_1/ohlscdn_us/latest/main/hls/*~id=45106885-6a9a-4d00-942b-df05d42751f3~data=non-ssai_45106885-6a9a-4d00-942b-df05d42751f3~hmac=b0a8eb0cd6f40cd4e9a86e3c37e6057a75abf755519f43911d7b1f44368d678f&req_id=non-ssai_45106885-6a9a-4d00-942b-df05d42751f3
 
 #EXTINF:-1 tvg-id="0-9-9z5829362" tvg-name="Zee One French" group-title="ZEE5 Live",Zee One French
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://68c95fec.wurl.com/v1/asia_tv_limited_zeemagic_1/ohlscdn_us/latest/main/hls/playlist.m3u8?hdnts=st=1794574067~exp=1794577067~acl=/v1/asia_tv_limited_zeemagic_1/ohlscdn_us/latest/main/hls/*~id=2f8949e8-7626-4b42-9521-7f07d9609d4a~data=non-ssai_2f8949e8-7626-4b42-9521-7f07d9609d4a~hmac=269ce1d1d91c777440144493aea83bd8470d66965a2a9c436f9c06f14fe28b39&req_id=non-ssai_2f8949e8-7626-4b42-9521-7f07d9609d4a
+https://68c95fec.wurl.com/v1/asia_tv_limited_zeemagic_1/ohlscdn_us/latest/main/hls/playlist.m3u8?hdnts=st=1794574738~exp=1794577738~acl=/v1/asia_tv_limited_zeemagic_1/ohlscdn_us/latest/main/hls/*~id=4d2de744-cb90-4d19-885b-f7b3e339e0f1~data=non-ssai_4d2de744-cb90-4d19-885b-f7b3e339e0f1~hmac=8cb7958d6be9305367946cb8e3e0b1541a9c3676575f9122394b7b80c5044b61&req_id=non-ssai_4d2de744-cb90-4d19-885b-f7b3e339e0f1
 
 #EXTINF:-1 tvg-id="0-9-9z5825786" tvg-name="Zee One" group-title="ZEE5 Live",Zee One
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://4bc5d2b3.wurl.com/v1/asia_tv_limited_zeeworld_1/ohlscdn_us/latest/main/hls/playlist.m3u8?hdnts=st=1794574067~exp=1794577067~acl=/v1/asia_tv_limited_zeeworld_1/ohlscdn_us/latest/main/hls/*~id=94642a9e-366a-48a0-a249-8e0dd2a01ab4~data=non-ssai_94642a9e-366a-48a0-a249-8e0dd2a01ab4~hmac=84b13955d3ffd81f1a51b6d41a3ec192992720aaf76f225aa4bcba568fe61e0a&req_id=non-ssai_94642a9e-366a-48a0-a249-8e0dd2a01ab4
-
-#EXTINF:-1 tvg-id="0-9-9z5817234" tvg-name="Zee Alwan HD" group-title="ZEE5 Live",Zee Alwan HD
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://amg17931-zee-amg17931c2-z5-mena-9639.playouts.now.amagi.tv/master.m3u8?hdnts=st=1794574068~exp=1794577068~acl=/*~id=2dcc840b-da5a-4aed-8150-aebe47971c6d~data=non-ssai_2dcc840b-da5a-4aed-8150-aebe47971c6d~hmac=cfc22183c7a12066d2eebc97626fa62bcce3d5adffae455ca2a33272ff493b54&req_id=non-ssai_2dcc840b-da5a-4aed-8150-aebe47971c6d
+https://4bc5d2b3.wurl.com/v1/asia_tv_limited_zeeworld_1/ohlscdn_us/latest/main/hls/playlist.m3u8?hdnts=st=1794574758~exp=1794577758~acl=/v1/asia_tv_limited_zeeworld_1/ohlscdn_us/latest/main/hls/*~id=f36909be-9457-4bc7-be13-8a195c559583~data=non-ssai_f36909be-9457-4bc7-be13-8a195c559583~hmac=f612058642c96c9975e8f5618033b80c50e4b1e5e347b80f033af0fd5dfdc7ae&req_id=non-ssai_f36909be-9457-4bc7-be13-8a195c559583
 
 #EXTINF:-1 tvg-id="0-9-9z5817235" tvg-name="Zee Aflam HD" group-title="ZEE5 Live",Zee Aflam HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://amg17931-zee-amg17931c1-z5-mena-9642.playouts.now.amagi.tv/master.m3u8?hdnts=st=1794574068~exp=1794577068~acl=/*~id=4bced8cb-6a4f-435c-b9f8-84070f7215eb~data=non-ssai_4bced8cb-6a4f-435c-b9f8-84070f7215eb~hmac=26c8d060e5d607602017ab0db1a99c74f8403baf6be1fcafb5eef63bbfe6e3f7&req_id=non-ssai_4bced8cb-6a4f-435c-b9f8-84070f7215eb
-
-#EXTINF:-1 tvg-id="0-9-9z5910526" tvg-name="Tiny Pop" group-title="ZEE5 Live",Tiny Pop
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://amg01753-amg01753c1-amgplt0807.playout.now3.amagi.tv/playlist.m3u8?hdnts=st=1794574068~exp=1794577068~acl=/*~id=545259ea-43c4-48cb-91a8-19a24a6b45f2~data=non-ssai_545259ea-43c4-48cb-91a8-19a24a6b45f2~hmac=a443f358a6b0fb18378c7c3b06814409cba0e5df7a3e4575c8750b3039c76723&req_id=non-ssai_545259ea-43c4-48cb-91a8-19a24a6b45f2
-
-#EXTINF:-1 tvg-id="0-9-9z5910527" tvg-name="POP UP" group-title="ZEE5 Live",POP UP
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://amg01753-amg01753c14-amgplt0807.playout.now3.amagi.tv/playlist.m3u8?hdnts=st=1794574068~exp=1794577068~acl=/*~id=a41cf751-146f-487d-8f97-b8ba9a2466e7~data=non-ssai_a41cf751-146f-487d-8f97-b8ba9a2466e7~hmac=f0ae9c8555b70cdd087c7b99f7796f677e7b0b5f80e9173d15fc365db4fad268&req_id=non-ssai_a41cf751-146f-487d-8f97-b8ba9a2466e7
+https://amg17931-zee-amg17931c1-z5-mena-9642.playouts.now.amagi.tv/master.m3u8?hdnts=st=1794574760~exp=1794577760~acl=/*~id=9f05682d-379e-4815-8137-b838621f13ba~data=non-ssai_9f05682d-379e-4815-8137-b838621f13ba~hmac=c1b19ba210b0bb977ad35112a5580c59a87c31fba69ba27d7ed70e9898966fff&req_id=non-ssai_9f05682d-379e-4815-8137-b838621f13ba
 
 #EXTINF:-1 tvg-id="0-9-9z5910525" tvg-name="POP" group-title="ZEE5 Live",POP
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://amg01753-amg01753c9-amgplt0807.playout.now3.amagi.tv/playlist.m3u8?hdnts=st=1794574069~exp=1794577069~acl=/*~id=3ee48a88-ca0c-4c22-a2b1-92d0cb03fdd5~data=non-ssai_3ee48a88-ca0c-4c22-a2b1-92d0cb03fdd5~hmac=88ebf6826a470568419df40c2002b1caea01b23d3c7277ee5304f687da9680d0&req_id=non-ssai_3ee48a88-ca0c-4c22-a2b1-92d0cb03fdd5
+https://amg01753-amg01753c9-amgplt0807.playout.now3.amagi.tv/playlist.m3u8?hdnts=st=1794574845~exp=1794577845~acl=/*~id=a0137b57-a334-4c96-9095-b1d7d5a28a1c~data=non-ssai_a0137b57-a334-4c96-9095-b1d7d5a28a1c~hmac=2d4d15f5003bd0ddfdf5bea87e6a13d5945058fd04271a1848d93d7087d6cfa0&req_id=non-ssai_a0137b57-a334-4c96-9095-b1d7d5a28a1c
 
 #EXTINF:-1 tvg-id="0-9-9z5910523" tvg-name="Great! Mystery" group-title="ZEE5 Live",Great! Mystery
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://amg01753-amg01753c13-amgplt0807.playout.now3.amagi.tv/playlist.m3u8?hdnts=st=1794574069~exp=1794577069~acl=/*~id=a613ab27-a1ea-448b-a5a5-169be0550a36~data=non-ssai_a613ab27-a1ea-448b-a5a5-169be0550a36~hmac=2af7b97f15a6a76993a4bfeeb94f0dda4edc8912d07dd0b2010a9d64baa4a827&req_id=non-ssai_a613ab27-a1ea-448b-a5a5-169be0550a36
+https://amg01753-amg01753c13-amgplt0807.playout.now3.amagi.tv/playlist.m3u8?hdnts=st=1794574825~exp=1794577825~acl=/*~id=1177b5a1-07b4-419c-aced-cc29cf293968~data=non-ssai_1177b5a1-07b4-419c-aced-cc29cf293968~hmac=3d817bc4ac93ce4272e7cec43bdec2dcc5442b46842e54a97bf28f8dd1c45573&req_id=non-ssai_1177b5a1-07b4-419c-aced-cc29cf293968
 
 #EXTINF:-1 tvg-id="0-9-9z5910243" tvg-name="Great! Movies" group-title="ZEE5 Live",Great! Movies
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://amg01753-amg01753c3-amgplt0807.playout.now3.amagi.tv/playlist.m3u8?hdnts=st=1794574069~exp=1794577069~acl=/*~id=fa8fc764-fa45-4fcb-970b-db8357c02c18~data=non-ssai_fa8fc764-fa45-4fcb-970b-db8357c02c18~hmac=ef181c6c801a9edb1622d923739adea442a345c9fdd4634a1d5a863866ef3761&req_id=non-ssai_fa8fc764-fa45-4fcb-970b-db8357c02c18
+https://amg01753-amg01753c3-amgplt0807.playout.now3.amagi.tv/playlist.m3u8?hdnts=st=1794574867~exp=1794577867~acl=/*~id=8ef006a0-7a08-4f56-9fbe-3e647525c89d~data=non-ssai_8ef006a0-7a08-4f56-9fbe-3e647525c89d~hmac=427f960ae05ded8257ef2e70b0d09bbe9ff67e5459f502218b35ed5401fe522f&req_id=non-ssai_8ef006a0-7a08-4f56-9fbe-3e647525c89d
 
 #EXTINF:-1 tvg-id="0-9-9z5910524" tvg-name="Great! Christmas" group-title="ZEE5 Live",Great! Christmas
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://amg01753-amg01753c8-amgplt0807.playout.now3.amagi.tv/playlist.m3u8?hdnts=st=1794574069~exp=1794577069~acl=/*~id=4a6d3100-b2d8-42cf-aeff-b84512efa6e2~data=non-ssai_4a6d3100-b2d8-42cf-aeff-b84512efa6e2~hmac=e198d04ec1bd51069a8bad38a0667a4b93af291cba600443da595007a95f7de8&req_id=non-ssai_4a6d3100-b2d8-42cf-aeff-b84512efa6e2
+https://amg01753-amg01753c8-amgplt0807.playout.now3.amagi.tv/playlist.m3u8?hdnts=st=1794574851~exp=1794577851~acl=/*~id=a6d64a74-b7f9-4f81-9536-3154028aafb1~data=non-ssai_a6d64a74-b7f9-4f81-9536-3154028aafb1~hmac=cf92c13221b26adbba7c00d7603ff4a74c85d3d43b3f70f4dc59060b4256790f&req_id=non-ssai_a6d64a74-b7f9-4f81-9536-3154028aafb1
 
 #EXTINF:-1 tvg-id="0-9-channel_122044711" tvg-name="&TV HD" group-title="ZEE5 Live",&TV HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5ak-cmaflive.zee5.com/cmaf/live/2105504/AndTVHDELE/index.m3u8?hdnts=st=1794574069~exp=1794577069~acl=/cmaf/live/2105504/AndTVHDELE/*~id=c333a958-3978-47e5-b698-1b8a3ecafd43~data=non-ssai_c333a958-3978-47e5-b698-1b8a3ecafd43~hmac=041b353894fcbfef40b7fcd215aa949079292e21d2e8d77b38b91d38ca547b0b&req_id=non-ssai_c333a958-3978-47e5-b698-1b8a3ecafd43
-
-#EXTINF:-1 tvg-id="0-9-zeealwan" tvg-name="Zee Alwan" group-title="ZEE5 Live",Zee Alwan
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Z-Alwan-SD/master/master.m3u8?hdnts=st=1794574070~exp=1794577070~acl=/out/v1/ZEE5_Live_Channels/Z-Alwan-SD/master/*~id=6981191a-b776-4cfc-86d1-000360e3c525~data=non-ssai_6981191a-b776-4cfc-86d1-000360e3c525~hmac=34390cee803d7608cadf5cc3d6f4dac42672b5165337bf3a9d26e98a01545022&req_id=non-ssai_6981191a-b776-4cfc-86d1-000360e3c525
+https://z5ak-cmaflive.zee5.com/cmaf/live/2105504/AndTVHDELE/index.m3u8?hdnts=st=1794574848~exp=1794577848~acl=/cmaf/live/2105504/AndTVHDELE/*~id=8ec2556a-09c5-4e75-8e29-7b564c4b9ccb~data=non-ssai_8ec2556a-09c5-4e75-8e29-7b564c4b9ccb~hmac=4326b76db0d5c0da432f0d12c685365ef71b7900007cbb180f571ba1901a772e&req_id=non-ssai_8ec2556a-09c5-4e75-8e29-7b564c4b9ccb
 
 #EXTINF:-1 tvg-id="0-9-zeeaflam" tvg-name="Zee Aflam" group-title="ZEE5 Live",Zee Aflam
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Z-Aflam-SD/master/master.m3u8?hdnts=st=1794574070~exp=1794577070~acl=/out/v1/ZEE5_Live_Channels/Z-Aflam-SD/master/*~id=c592f845-d274-4214-af3f-15c0f97969ce~data=non-ssai_c592f845-d274-4214-af3f-15c0f97969ce~hmac=50fa6423c4a7468654671cb1e4bc59482b5c9cb177955e838d3b00e30d4f5ffe&req_id=non-ssai_c592f845-d274-4214-af3f-15c0f97969ce
+https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Z-Aflam-SD/master/master.m3u8?hdnts=st=1794574897~exp=1794577897~acl=/out/v1/ZEE5_Live_Channels/Z-Aflam-SD/master/*~id=af4a670e-44ed-4a6d-bfb8-4491c57a1b31~data=non-ssai_af4a670e-44ed-4a6d-bfb8-4491c57a1b31~hmac=da5ffdcc912e1d5783da5cef0dfcfdbe99c4c24dc4a57e1bc4321adef1a03cf9&req_id=non-ssai_af4a670e-44ed-4a6d-bfb8-4491c57a1b31
 
 #EXTINF:-1 tvg-id="0-9-9z5898964" tvg-name="Zee TV DE" group-title="ZEE5 Live",Zee TV DE
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
-https://f46c8694.wurl.com/v1/asia_tv_limited_zeetvhdukgermany_1/ohlscdn_us/latest/main/hls/playlist.m3u8?hdnts=st=1794574070~exp=1794577070~acl=/v1/asia_tv_limited_zeetvhdukgermany_1/ohlscdn_us/latest/main/hls/*~id=71af3282-7d13-422f-8424-cd33626f790e~data=non-ssai_71af3282-7d13-422f-8424-cd33626f790e~hmac=3c4aca386ad0abd11327f2dcc47b5fd508c738de718fdd1dd9f24ce2ff98de72&req_id=non-ssai_71af3282-7d13-422f-8424-cd33626f790e
+https://f46c8694.wurl.com/v1/asia_tv_limited_zeetvhdukgermany_1/ohlscdn_us/latest/main/hls/playlist.m3u8?hdnts=st=1794574926~exp=1794577926~acl=/v1/asia_tv_limited_zeetvhdukgermany_1/ohlscdn_us/latest/main/hls/*~id=0e0151c8-e188-455f-b938-0cdecee6b04e~data=non-ssai_0e0151c8-e188-455f-b938-0cdecee6b04e~hmac=4b6d7cee0769dcbefd58dbc6b0895f034f4a6916f2bdf42858924484ada364bd&req_id=non-ssai_0e0151c8-e188-455f-b938-0cdecee6b04e

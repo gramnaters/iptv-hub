@@ -77,7 +77,7 @@
   "asset_id": 8411789,
   "dash_url": null,
   "hls_url": null,
-  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/19cf4cf436e0496dbdcd50277018d99f/version/6"
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/19cf4cf436e0496dbdcd50277018d99f/version/7"
  },
  {
   "name": "Sony Sports Ten 5 HD",
@@ -99,7 +99,7 @@
   "name": "Zee Power",
   "external_id": "HE_E_11627",
   "asset_id": 9649339,
-  "dash_url": null,
+  "dash_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Power/dash/Zee_Power.mpd",
   "hls_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Power/hls/Zee_Power.m3u8",
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/85043a328c244a3c9d646cf9a92a68d6/version/0"
  },
@@ -497,7 +497,7 @@
  },
  {
   "name": "Zee Anmol",
-  "external_id": "HE_E_10056",
+  "external_id": "HE_E_11726",
   "asset_id": 9487051,
   "dash_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Anmol/dash/Zee_Anmol.mpd",
   "hls_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Anmol/hls/Zee_Anmol.m3u8",

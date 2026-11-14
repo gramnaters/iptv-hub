@@ -5,8 +5,8 @@
   "expires": "2026-11-07 22:30 UTC"
  },
  "sony": {
-  "last": 1794619381,
-  "updated": "2026-11-14 01:23 UTC",
+  "last": 1794642995,
+  "updated": "2026-11-14 07:56 UTC",
   "expires": null
  },
  "zee5": {
@@ -15,33 +15,33 @@
   "expires": null
  },
  "vzy": {
-  "last": 1794619437,
-  "updated": "2026-11-14 01:23 UTC",
+  "last": 1794643046,
+  "updated": "2026-11-14 07:57 UTC",
   "expires": null
  },
  "fancode": {
-  "last": 1794620116,
-  "updated": "2026-11-14 01:35 UTC",
+  "last": 1794643811,
+  "updated": "2026-11-14 08:10 UTC",
   "expires": null
  },
  "sunnxt": {
-  "last": 1794603204,
-  "updated": "2026-11-13 20:53 UTC",
+  "last": 1794643813,
+  "updated": "2026-11-14 08:10 UTC",
   "expires": null
  },
  "free": {
-  "last": 1794603204,
-  "updated": "2026-11-13 20:53 UTC",
+  "last": 1794643813,
+  "updated": "2026-11-14 08:10 UTC",
   "expires": "2028-03-05 19:51 UTC"
  },
  "zee5live": {
-  "last": 1794620108,
-  "updated": "2026-11-14 01:35 UTC",
-  "expires": "2026-11-14 01:50 UTC"
+  "last": 1794643801,
+  "updated": "2026-11-14 08:10 UTC",
+  "expires": "2026-11-14 08:23 UTC"
  },
  "jiohotstar": {
-  "last": 1794619385,
-  "updated": "2026-11-14 01:23 UTC",
+  "last": 1794642998,
+  "updated": "2026-11-14 07:56 UTC",
   "expires": "2026-11-14 14:35 UTC"
  }
 }

@@ -1,9 +1,9 @@
 {
-  "updated_at": "15-11-2026 06:06:39 UTC",
+  "updated_at": "15-11-2026 13:49:09 UTC",
   "total": 117,
-  "free": 55,
+  "free": 70,
   "premium": 33,
-  "failed": 29,
-  "direct": false,
-  "proxies": 8
+  "failed": 14,
+  "direct": true,
+  "proxies": 0
 }

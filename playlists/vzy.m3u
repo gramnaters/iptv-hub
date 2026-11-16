@@ -1,5 +1,5 @@
 #EXTM3U
-# VZY | self-minted 16-11-2026 05:55:24 UTC | 50 DRM (31 minted, 20 unmintable skipped) + 111 FTA
+# VZY | self-minted 16-11-2026 15:27:30 UTC | 50 DRM (28 minted, 23 unmintable skipped) + 111 FTA
 
 #EXTINF:-1 tvg-id="9487068" tvg-name="DD National" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/11468608abb7448ab66caf84f916dd2e/version/0" group-title="VZY",DD National
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
@@ -32,14 +32,6 @@ https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Power/dash/Zee_Power.mpd
 #KODIPROP:inputstream.adaptive.license_key=d2e244741c5949d9a3abe3564fded421:2e73e7a2bb9d78c3f311e8cdb9e0ad34
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Keralam_HD/dash/Zee_Keralam_HD.mpd
-
-#EXTINF:-1 tvg-id="9624894" tvg-name="Zee Bangla Sonar" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5a37469b20ac47179678eac641e4bf74/version/0" group-title="VZY",Zee Bangla Sonar
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=7d2ae45c9b5f4feab914281f496e8f95:6a6c110e264183698e35c5a6820dc27d
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Bangla_Cinema/dash/Zee_Bangla_Cinema.mpd
 
 #EXTINF:-1 tvg-id="9624893" tvg-name="Zee Kannada HD" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/92112f32b7a54549ba96569eaa6e8165/version/0" group-title="VZY",Zee Kannada HD
 #KODIPROP:inputstream=inputstream.adaptive
@@ -189,14 +181,6 @@ https://d1iwj24qiokrul.cloudfront.net/live/media/Sangeet_Bangla/hls_fta/Sangeet_
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Action/dash/Zee_Action.mpd
 
-#EXTINF:-1 tvg-id="9487051" tvg-name="Zee Anmol" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/4ec3fd623663486c91b92d5b2c7cc9b8/version/0" group-title="VZY",Zee Anmol
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=b98b494794214206a909d0a2d03f592e:2690c7d35346de3d34abe10ecbd5aefb
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Anmol/dash/Zee_Anmol.mpd
-
 #EXTINF:-1 tvg-id="9487059" tvg-name="Sangeet Bhojpuri" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/c20b0706d3724797a5025370e33a114a/version/0" group-title="VZY",Sangeet Bhojpuri
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d1iwj24qiokrul.cloudfront.net/live/media/Sangeet_Bhojpuri/hls_fta/Sangeet_Bhojpuri.m3u8
@@ -324,14 +308,6 @@ https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Bollywood/dash/Zee_Bollywoo
 #KODIPROP:inputstream.adaptive.license_key=8e2ceac4bfd9407db963df80922c879c:f2855b36eae9f7c0aa1bb57b88bc0477
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Cinema_HD/dash/Zee_Cinema_HD.mpd
-
-#EXTINF:-1 tvg-id="9487093" tvg-name="Zee Sarthak" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/18788fee07284f4d9ab884698f13a86c/version/0" group-title="VZY",Zee Sarthak
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=0b65ae41a3d34650b0d1f4a40342e3fe:df0866f3ab77c5b45218be232eebe749
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
-https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Sarthak/dash/Zee_Sarthak.mpd
 
 #EXTINF:-1 tvg-id="9499021" tvg-name="CNBC TV18 Prime" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/063845883b9e427ea81a19d6ebd39682/version/0" group-title="VZY",CNBC TV18 Prime
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36

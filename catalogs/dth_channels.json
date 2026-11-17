@@ -105,10 +105,10 @@
  },
  {
   "name": "Zee Thirai",
-  "external_id": "HE_E_10009",
+  "external_id": "HE_E_11728",
   "asset_id": 9649000,
-  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Thirai_SD/dash/Zee_Thirai_SD.mpd",
-  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Thirai_SD/hls/Zee_Thirai_SD.m3u8",
+  "dash_url": "httpS://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Thirai_SD/dash/Zee_Thirai_SD.mpd",
+  "hls_url": "httpS://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Thirai_SD/hls/Zee_Thirai_SD.m3u8",
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/e3b1d301227e44d89c929e4ddc2cdb11/version/0"
  },
  {
@@ -177,10 +177,10 @@
  },
  {
   "name": "Zee Biskope",
-  "external_id": "HE_E_10022",
+  "external_id": "HE_E_11727",
   "asset_id": 9624887,
-  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Biskope/dash/Zee_Biskope.mpd",
-  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zee_Biskope/hls/Zee_Biskope.m3u8",
+  "dash_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Biskope/dash/Zee_Biskope.mpd",
+  "hls_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Zee_Biskope/hls/Zee_Biskope.m3u8",
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/097a839840ae4dd3acde3233b9a05a78/version/0"
  },
  {
@@ -813,7 +813,7 @@
   "asset_id": 9487638,
   "dash_url": null,
   "hls_url": null,
-  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/abe4f18ea5f4437ba4ddaa805f565691/version/0"
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/abe4f18ea5f4437ba4ddaa805f565691/version/1"
  },
  {
   "name": "&Tv HD",
@@ -949,7 +949,7 @@
   "asset_id": 9498978,
   "dash_url": null,
   "hls_url": "https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play",
-  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/35d4268ae66541a39d47c09c227efa91/version/1"
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/35d4268ae66541a39d47c09c227efa91/version/2"
  },
  {
   "name": "Star Maa HD",

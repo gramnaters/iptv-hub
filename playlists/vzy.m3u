@@ -1,5 +1,5 @@
 #EXTM3U
-# VZY | self-minted 17-11-2026 07:32:38 UTC | 50 DRM (33 minted, 18 unmintable skipped) + 111 FTA
+# VZY | self-minted 17-11-2026 17:00:45 UTC | 50 DRM (33 minted, 18 unmintable skipped) + 111 FTA
 
 #EXTINF:-1 tvg-id="9487068" tvg-name="DD National" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/11468608abb7448ab66caf84f916dd2e/version/0" group-title="VZY",DD National
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
@@ -401,7 +401,7 @@ https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play
 
-#EXTINF:-1 tvg-id="9498969" tvg-name="Star Vijay HD" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/8482bb7a8d134b94aa82ba518a05ca19/version/2" group-title="VZY",Star Vijay HD
+#EXTINF:-1 tvg-id="9498969" tvg-name="Star Vijay HD" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/8482bb7a8d134b94aa82ba518a05ca19/version/3" group-title="VZY",Star Vijay HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play
 

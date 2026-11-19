@@ -61,7 +61,7 @@
   "asset_id": 8411792,
   "dash_url": null,
   "hls_url": null,
-  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/0cbb239fb33a4bcc93d445cd3d123d17/version/0"
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/0cbb239fb33a4bcc93d445cd3d123d17/version/1"
  },
  {
   "name": "Sony MAX",
@@ -461,7 +461,7 @@
   "asset_id": 8411800,
   "dash_url": null,
   "hls_url": null,
-  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/20c99366c3524430b4f96892afcdc2ec/version/0"
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/20c99366c3524430b4f96892afcdc2ec/version/1"
  },
  {
   "name": "Sony PAL",
@@ -469,7 +469,7 @@
   "asset_id": 8411798,
   "dash_url": null,
   "hls_url": null,
-  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a9e140ed374446d9a2ccda52c648c657/version/0"
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/a9e140ed374446d9a2ccda52c648c657/version/1"
  },
  {
   "name": "Sony SAB HD",
@@ -477,7 +477,7 @@
   "asset_id": 8411791,
   "dash_url": null,
   "hls_url": null,
-  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/d2c58aa81a9f4e26a55a4e7058a64a95/version/0"
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/d2c58aa81a9f4e26a55a4e7058a64a95/version/1"
  },
  {
   "name": "Aaj Tak",
@@ -608,11 +608,11 @@
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/c20b0706d3724797a5025370e33a114a/version/0"
  },
  {
-  "name": "Sansad TV HD",
-  "external_id": "HE_F_10090",
+  "name": "Sansad TV 2",
+  "external_id": "HE_F_11110",
   "asset_id": 9487058,
-  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sansad_TV_HD/dash_fta/Sansad_TV_HD.mpd",
-  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sansad_TV_HD/hls_fta/Sansad_TV_HD.m3u8",
+  "dash_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Sansad_TV_2_HD/dash_fta/Sansad_TV_2_HD.mpd",
+  "hls_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Sansad_TV_2_HD/hls_fta/Sansad_TV_2_HD.m3u8",
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/36dc7534b90f4caf81a46bb8041658d3/version/0"
  },
  {
@@ -624,11 +624,11 @@
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/6f681e49a0ff4f509291f5b07354604e/version/0"
  },
  {
-  "name": "Sansad TV SD",
-  "external_id": "HE_F_11110",
+  "name": "Sansad TV 1 ",
+  "external_id": "HE_F_11113",
   "asset_id": 9487056,
-  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Sansad_TV_SD/dash_fta/Sansad_TV_SD.mpd",
-  "hls_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Sansad_TV_SD/dash_fta/Sansad_TV_SD.mpd",
+  "dash_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Sansad_TV_HD/dash_fta/Sansad_TV_HD.mpd",
+  "hls_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Sansad_TV_HD/hls_fta/Sansad_TV_HD.m3u8",
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ca626f335d7647178e790a05cf1c9ffa/version/0"
  },
  {

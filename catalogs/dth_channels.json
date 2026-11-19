@@ -344,6 +344,14 @@
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/d82a71da0cc6440f831ec8a502ade02c/version/1"
  },
  {
+  "name": "Vasanth",
+  "external_id": "vzy_31342",
+  "asset_id": 6792349,
+  "dash_url": null,
+  "hls_url": "https://vasanth.pc.cdn.bitgravity.com/vasanth/secure/live/feed01/playlist.m3u8?e=0&h=e5e39ce2cacb245b7b89648e3227ce12",
+  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/cccd2198f50148f9b4254243d871e9d8/version/0"
+ },
+ {
   "name": "TIMES NOW NAVBHARAT",
   "external_id": "vzy_32",
   "asset_id": 6792351,
@@ -790,14 +798,6 @@
   "dash_url": null,
   "hls_url": null,
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/ed1dc2ebe5d841bb8cf16dbd16144006/version/0"
- },
- {
-  "name": "CNBC TV18",
-  "external_id": "1580000184",
-  "asset_id": 9487640,
-  "dash_url": null,
-  "hls_url": null,
-  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/162906da4ee64acbb861912e3eb59a6e/version/0"
  },
  {
   "name": "CNBC Awaaz",

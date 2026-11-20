@@ -89,6 +89,23 @@ def main():
             f'#EXTINF:-1 tvg-id="{c.get("id") or ""}" tvg-name="{name}" '
             f'tvg-logo="{logo}" group-title="{GROUP}",{name}'
         )
+        # DASH channels are ClearKey-protected. Without the #KODIPROP license
+        # directives the player sees the tracks but cannot decrypt them ->
+        # "None of the video tracks are playable by this device".
+        is_dash = ".mpd" in base.lower() or (c.get("manifest_type") or "").lower() in ("mpd", "dash")
+        if is_dash:
+            lines.append("#KODIPROP:inputstream=inputstream.adaptive")
+            lines.append("#KODIPROP:inputstream.adaptive.manifest_type=mpd")
+            lines.append("#KODIPROP:inputstream.adaptive.stream_headers="
+                         f"User-Agent={headers.get('User-Agent', UA)}"
+                         f"&Referer={headers.get('Referer','https://www.hotstar.com/')}"
+                         f"&Origin={headers.get('Origin','https://www.hotstar.com')}"
+                         f"&Cookie={cookie}")
+            ltype = str(c.get("license_type") or "").strip().lower()
+            lkey = str(c.get("license_key") or "").strip()
+            if ltype == "clearkey" and lkey:
+                lines.append("#KODIPROP:inputstream.adaptive.license_type=clearkey")
+                lines.append(f"#KODIPROP:inputstream.adaptive.license_key={lkey}")
         lines.append(f"#EXTVLCOPT:http-user-agent={headers.get('User-Agent', UA)}")
         lines.append(f"#EXTVLCOPT:http-referrer={headers.get('Referer','https://www.hotstar.com/')}")
         lines.append(f"#EXTVLCOPT:http-extra-headers=Origin: {headers.get('Origin','https://www.hotstar.com')}")

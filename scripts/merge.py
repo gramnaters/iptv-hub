@@ -79,16 +79,18 @@ LOCAL_OVERRIDES = [
         "group": None,  # keep the group-title carried by the file itself
     },
     {
-        "name": "JioTV",
-        "file": os.path.join(PLAYLISTS_DIR, "jiotv.m3u"),
+        "name": "JioTV STB",
+        "file": os.path.join(PLAYLISTS_DIR, "jiotv_mobile.m3u"),
         "min_channels": 100,
-        "plug_groups": None,  # None => skip every group starting with "Jio TV+"
-        "group": None,
+        "plug_groups": None,  # skip any "Jio TV+" groups from the public feed
+        "group": None,        # keep "JioTV STB | *" groups from the file
     },
 ]
 
 JIOTV_GROUP_PREFIX = "Jio TV+"
-PPX_ZEE5 = "https://premiumplug.fun/tee/zee5.php?m3u"
+# premiumplug.fun went dead (404). premiumplugx.org is the live replacement:
+# it mints a fresh ZEE5 hdnts token on every request (302 -> z5live-cf.zee5.com).
+PPX_ZEE5 = "https://premiumplugx.org/plugj/zee5.php?m3u"
 PPX_JIOHOTSTAR = "https://plugxvipplaylist.lovable.app/api/playlist"
 
 # JioHotstar wildcard `hdntl` refresh, mirroring hot.php?status:

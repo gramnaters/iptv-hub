@@ -15,13 +15,13 @@ LOGFILE = os.path.join(ROOT, "logs", "refresh.log")
 # name: (generator, playlist, max age in hours)
 SOURCES = {
     "sony":    ("generate_sony.py",    "sonyliv.m3u", 1),
-    "jiohotstar": ("generate_jiohotstar.py", "jiohotstar.m3u", 1),
+    "jiohotstar": ("generate_jiohotstar_plugx.py", "jiohotstar.m3u", 1),
     "vzy":     ("generate_vzy_selfmint.py", "vzy.m3u", 1),
     "zee5live":("generate_zee5_live.py", "zee5_live.m3u", 1),
     "fancode": ("generate_fancode.py", "fancode.m3u", 1),
     "sunnxt":  ("generate_sunnxt.py",  "sunnxt.m3u",  6),
     "free":    ("generate_free.py",    "free.m3u",    6),
-    "jiotv":   ("generate_jiotv_public.py", "jiotv.m3u", 1),
+    "jiotv":   ("generate_jiotv_public.py", "jiotv_mobile.m3u", 1),
 }
 MARGIN = 90 * 60
 EXP_RE = re.compile(r"(?:exp|Expires)(?:=|%3D)(\d{10})")

@@ -1,0 +1,11 @@
+#EXTM3U
+# PlugX playlist: Willow Live Events (id=7)
+# Generated: 2026-11-21 03:25:50 IST
+#EXTINF:-1 tvg-id="27731812" tvg-name="India tour of New Zealand 2026 - 1st Test - New Zealand vs India" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.04f62072-bc1e-42be-b0f9-2370ad69f513/9/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow Live Events",India tour of New Zealand 2026 - 1st Test - New Zealand vs India
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Premium Plugx
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=a478f5af8b826d44778571031c84e257:ceabaa285b51b50a60cf5240715a6f28
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://dash-ott.bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/roxefgx3by/out/v1/626d780fa151471cab6d83b9fcb731e8/cenc.mpd

@@ -1,0 +1,33 @@
+#EXTM3U
+# PlugX playlist: Sliv live Events (id=6)
+# Generated: 2026-11-21 03:25:50 IST
+#EXTINF:-1 tvg-id="35828831" tvg-name="1st Test - Day 3 - 21 Nov 2026 [HIN]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000029396/1795086043304996_NZvsIND_1st_Test_Day3_landscape_thumb.jpg" group-title="Sliv live Events",1st Test - Day 3 - 21 Nov 2026 [HIN]
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://liveakmt-p-md.slivcdn.com/hls/live/2119921/cricodi_2011/HIN/std_lrl-800300010.m3u8?hdnea=exp=1795254907~acl=/*~id=386dc5cf97531edffad8ec81b5bd100a-1795211707074~hmac=1db43493473b50ca6445624cc1f6c0bd04808ae7b752ecfa3a33f7b22d468834
+#EXTINF:-1 tvg-id="35828832" tvg-name="1st Test - Day 3 - 21 Nov 2026 [HIN DAI]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000029396/1795086043304996_NZvsIND_1st_Test_Day3_landscape_thumb.jpg" group-title="Sliv live Events",1st Test - Day 3 - 21 Nov 2026 [HIN DAI]
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://dai.google.com/ssai/event/eK4mtdNpTZODjbb_S6qZcQ/master.m3u8
+#EXTINF:-1 tvg-id="35828833" tvg-name="1st Test - Day 3 - 21 Nov 2026 [TEL]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000029396/1795086043304996_NZvsIND_1st_Test_Day3_landscape_thumb.jpg" group-title="Sliv live Events",1st Test - Day 3 - 21 Nov 2026 [TEL]
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://liveakmt-p-md.slivcdn.com/hls/live/2119941/cricodi_2011/TEL/std_lrl-800300010.m3u8?hdnea=exp=1795254907~acl=/*~id=386dc5cf97531edffad8ec81b5bd100a-1795211707074~hmac=1db43493473b50ca6445624cc1f6c0bd04808ae7b752ecfa3a33f7b22d468834
+#EXTINF:-1 tvg-id="35828834" tvg-name="1st Test - Day 3 - 21 Nov 2026 [TEL DAI]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000029396/1795086043304996_NZvsIND_1st_Test_Day3_landscape_thumb.jpg" group-title="Sliv live Events",1st Test - Day 3 - 21 Nov 2026 [TEL DAI]
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://dai.google.com/ssai/event/o8SXGLQ5TreQRVnCQUAKJQ/master.m3u8
+#EXTINF:-1 tvg-id="35828835" tvg-name="1st Test - Day 3 - 21 Nov 2026 [TAM]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000029396/1795086043304996_NZvsIND_1st_Test_Day3_landscape_thumb.jpg" group-title="Sliv live Events",1st Test - Day 3 - 21 Nov 2026 [TAM]
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://liveakmt-p-md.slivcdn.com/hls/live/2119951/cricodi_2011/TAM/std_lrl-800300010.m3u8?hdnea=exp=1795254907~acl=/*~id=386dc5cf97531edffad8ec81b5bd100a-1795211707074~hmac=1db43493473b50ca6445624cc1f6c0bd04808ae7b752ecfa3a33f7b22d468834
+#EXTINF:-1 tvg-id="35828836" tvg-name="1st Test - Day 3 - 21 Nov 2026 [TAM DAI]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000029396/1795086043304996_NZvsIND_1st_Test_Day3_landscape_thumb.jpg" group-title="Sliv live Events",1st Test - Day 3 - 21 Nov 2026 [TAM DAI]
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://dai.google.com/ssai/event/GdXyj0gmRmGkNncprYKFBQ/master.m3u8
+#EXTINF:-1 tvg-id="35828837" tvg-name="1st Test - Day 3 - 21 Nov 2026 [KAN]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000029396/1795086043304996_NZvsIND_1st_Test_Day3_landscape_thumb.jpg" group-title="Sliv live Events",1st Test - Day 3 - 21 Nov 2026 [KAN]
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://liveakmt-p-md.slivcdn.com/hls/live/2119782/cricodi_2011/KAN/std_lrl-800300010.m3u8?hdnea=exp=1795254907~acl=/*~id=386dc5cf97531edffad8ec81b5bd100a-1795211707074~hmac=1db43493473b50ca6445624cc1f6c0bd04808ae7b752ecfa3a33f7b22d468834
+#EXTINF:-1 tvg-id="35828838" tvg-name="1st Test - Day 3 - 21 Nov 2026 [KAN DAI]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000029396/1795086043304996_NZvsIND_1st_Test_Day3_landscape_thumb.jpg" group-title="Sliv live Events",1st Test - Day 3 - 21 Nov 2026 [KAN DAI]
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://dai.google.com/ssai/event/jrKIOZsGTju4MxXaWpgU3w/master.m3u8
+#EXTINF:-1 tvg-id="35828839" tvg-name="1st Test - Day 3 - 21 Nov 2026 [ENG]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000029396/1795086043304996_NZvsIND_1st_Test_Day3_landscape_thumb.jpg" group-title="Sliv live Events",1st Test - Day 3 - 21 Nov 2026 [ENG]
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://liveakmt-p-md.slivcdn.com/hls/live/2119931/cricodi_2011/ENG/std_lrl-800300010.m3u8?hdnea=exp=1795254907~acl=/*~id=386dc5cf97531edffad8ec81b5bd100a-1795211707074~hmac=1db43493473b50ca6445624cc1f6c0bd04808ae7b752ecfa3a33f7b22d468834
+#EXTINF:-1 tvg-id="35828840" tvg-name="1st Test - Day 3 - 21 Nov 2026 [ENG DAI]" tvg-logo="https://origin-staticv2.sonyliv.com/videoasset_images/manage_file/1000029396/1795086043304996_NZvsIND_1st_Test_Day3_landscape_thumb.jpg" group-title="Sliv live Events",1st Test - Day 3 - 21 Nov 2026 [ENG DAI]
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://dai.google.com/ssai/event/BGeiS6N2TkKrvT0V9rigmQ/master.m3u8

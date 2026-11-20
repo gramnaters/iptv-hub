@@ -1,0 +1,12 @@
+#EXTM3U
+# PlugX playlist: Tapmad Playlist (id=25)
+# Generated: 2026-11-21 03:25:51 IST
+#EXTINF:-1 tvg-id="31716614" tvg-name="New Zealand vs India" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1794553818540x302.jpg" group-title="Tapmad Playlist",New Zealand vs India
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://2nd.sm-monirul.top/@sm_iptv_bd/exp.php?id=19065&sm=.m3u8
+#EXTINF:-1 tvg-id="35520932" tvg-name="Troyes vs Le Havre" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1794900862540x302.jpg" group-title="Tapmad Playlist",Troyes vs Le Havre
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://2nd.sm-monirul.top/@sm_iptv_bd/exp.php?id=19968&sm=.m3u8
+#EXTINF:-1 tvg-id="35520933" tvg-name="Athletic vs Espanyol" tvg-logo="https://d34080pnh6e62j.cloudfront.net/images/channels/ChannelFeaturedAppthumb/1795172134540x302.jpg" group-title="Tapmad Playlist",Athletic vs Espanyol
+#EXTVLCOPT:http-user-agent=Premium Plugx
+https://2nd.sm-monirul.top/@sm_iptv_bd/exp.php?id=20240&sm=.m3u8

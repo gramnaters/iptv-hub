@@ -1,0 +1,91 @@
+#EXTM3U
+# PlugX playlist: Sonyliv (id=3)
+# Generated: 2026-11-21 03:25:50 IST
+#EXTINF:-1 tvg-id="147764" tvg-name="SET HD" tvg-logo="" group-title="Sonyliv",SET HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011671/SETHD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147765" tvg-name="Sony SAB HD" tvg-logo="" group-title="Sonyliv",Sony SAB HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011749/SABHD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147766" tvg-name="Sony Marathi" tvg-logo="" group-title="Sonyliv",Sony Marathi
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011740/SonyMarathi/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147767" tvg-name="Sony Pal" tvg-logo="" group-title="Sonyliv",Sony Pal
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011741/SonyPalSD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147768" tvg-name="Sony Aath" tvg-logo="" group-title="Sonyliv",Sony Aath
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011641/SonyAathSD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147769" tvg-name="Sony Yay" tvg-logo="" group-title="Sonyliv",Sony Yay
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011746/SonyYaySD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147770" tvg-name="Sony MAX HD" tvg-logo="" group-title="Sonyliv",Sony MAX HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011670/SonyMaxhd/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147771" tvg-name="Sony MAX" tvg-logo="" group-title="Sonyliv",Sony MAX
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011745/SonyMaxSD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147772" tvg-name="Sony MAX 2" tvg-logo="" group-title="Sonyliv",Sony MAX 2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011908/MAX2/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147773" tvg-name="Sony WAH" tvg-logo="" group-title="Sonyliv",Sony WAH
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011906/SonyWah/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147774" tvg-name="Sony PIX HD" tvg-logo="" group-title="Sonyliv",Sony PIX HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011748/PIXHD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147775" tvg-name="Sony Ten 1 HD" tvg-logo="" group-title="Sonyliv",Sony Ten 1 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011747/TEN1HD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147776" tvg-name="Sony Ten 1" tvg-logo="" group-title="Sonyliv",Sony Ten 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011739/TEN1SD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147777" tvg-name="Sony Ten 2 HD" tvg-logo="" group-title="Sonyliv",Sony Ten 2 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2020434/TEN2HD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147778" tvg-name="Sony Ten 2" tvg-logo="" group-title="Sonyliv",Sony Ten 2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2020590/TEN2SD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147779" tvg-name="Sony Ten 3 HD" tvg-logo="" group-title="Sonyliv",Sony Ten 3 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2020591/TEN3HD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147780" tvg-name="Sony Ten 3" tvg-logo="" group-title="Sonyliv",Sony Ten 3
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2020592/TEN3SD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147781" tvg-name="Sony Ten 4 HD" tvg-logo="" group-title="Sonyliv",Sony Ten 4 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2020589/ten4hd/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147782" tvg-name="Sony Ten 4" tvg-logo="" group-title="Sonyliv",Sony Ten 4
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2020437/ten4sd/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147784" tvg-name="Sony Ten 5 HD" tvg-logo="" group-title="Sonyliv",Sony Ten 5 HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2020593/SONYSIXHD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147785" tvg-name="Sony Ten 5" tvg-logo="" group-title="Sonyliv",Sony Ten 5
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2020594/SONYSIXSD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+#EXTINF:-1 tvg-id="147786" tvg-name="BBC Earth HD" tvg-logo="" group-title="Sonyliv",BBC Earth HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-cookie=hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5
+https://dishmt.slivcdn.com/hls/live/2011907/SonyBBCEarthHD/master.m3u8?hdnea=exp=1795243429~acl=/*~id=52765604368813419096827113992414~hmac=18ee8f425510983c0ac1aa424ccbd905cc690fb5f1ce0fc1a70e5d04945e7de5

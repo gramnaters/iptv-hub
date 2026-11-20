@@ -1,10 +1,10 @@
 {
  "channels": 146,
  "configured_refresh_interval_hours": 20,
- "expires_in_hours": 15.73,
- "fetched_at": 1795210068,
+ "expires_in_hours": 15.66,
+ "fetched_at": 1795210320,
  "live": 438,
- "next_refresh": "21 Nov 2026, 10:57:48 PM IST",
+ "next_refresh": "21 Nov 2026, 11:02:00 PM IST",
  "refresh_mode": "lazy on next request + hourly Actions cron",
  "source": "self",
  "stale": false,

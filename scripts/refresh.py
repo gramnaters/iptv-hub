@@ -17,7 +17,6 @@ SOURCES = {
     "sony":    ("generate_sony.py",    "sonyliv.m3u", 1),
     "jiohotstar": ("generate_jiohotstar_plugx.py", "jiohotstar.m3u", 1),
     "vzy":     ("generate_vzy_selfmint.py", "vzy.m3u", 1),
-    "zee5live":("generate_zee5_live.py", "zee5_live.m3u", 1),
     "fancode": ("generate_fancode.py", "fancode.m3u", 1),
     "sunnxt":  ("generate_sunnxt.py",  "sunnxt.m3u",  6),
     "free":    ("generate_free.py",    "free.m3u",    6),
@@ -30,7 +29,7 @@ EXP_RE = re.compile(r"(?:exp|Expires)(?:=|%3D)(\d{10})")
 # run (subprocess timeout at 1800 s), which also skipped merge/push and blocked
 # every later source. Now a slow source only costs itself.
 DEFAULT_TIMEOUT = 900
-TIMEOUTS = {"zee5live": 1500, "jiohotstar": 1200, "vzy": 1200, "sony": 900}
+TIMEOUTS = {"jiohotstar": 1200, "vzy": 1200, "sony": 900}
 
 if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")

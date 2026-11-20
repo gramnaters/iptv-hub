@@ -1,5 +1,5 @@
 #EXTM3U
-# VZY | self-minted 20-11-2026 02:31:11 UTC | 50 DRM (0 minted, 51 unmintable skipped) + 111 FTA
+# VZY | self-minted 20-11-2026 10:22:38 UTC | 50 DRM (0 minted, 51 unmintable skipped) + 111 FTA
 
 #EXTINF:-1 tvg-id="9487068" tvg-name="DD National" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/11468608abb7448ab66caf84f916dd2e/version/0" group-title="VZY",DD National
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
@@ -145,7 +145,7 @@ https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play
 
-#EXTINF:-1 tvg-id="9498972" tvg-name="Star Jalsha HD" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/bab798478e714be3a5ae861fc04606f0/version/0" group-title="VZY",Star Jalsha HD
+#EXTINF:-1 tvg-id="9498972" tvg-name="Star Jalsha HD" tvg-logo="https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/43bf1d4b8fa342818237630fffc10427/version/0" group-title="VZY",Star Jalsha HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 https://play.hbomax.com/series/urn:hbo:series:GXYpPIADnhsPCwgEAAArH?camp=Generic-HBOMAXtion=play
 

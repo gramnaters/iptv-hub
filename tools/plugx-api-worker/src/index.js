@@ -117,21 +117,57 @@ function emitChannel(out, c, group) {
   out.push(url);
 }
 
+// Normalise a category label to the clean name the app shows.
+function cleanGroup(name, source) {
+  let g = String(name || "").trim().replace(/\s+/g, " ");
+  if (!g || /^(other|others|unknown|unspecified)$/i.test(g)) g = "Other";
+  // "Dangal Play | Dangal Play" / "WOW KIDZ" inside its own source -> just the source label
+  if (source && g.toLowerCase() === source.toLowerCase()) g = source;
+  return g;
+}
+const num = v => { const n = Number(v); return Number.isFinite(n) ? n : 1e9; };
+
 function buildM3U(data, filterId, origin) {
-  const cats = Object.fromEntries((data.categories || []).map(c => [c.id, c.name]));
-  const pls = Object.fromEntries((data.playlists || []).map(p => [p.id, p.name]));
+  const cats = new Map((data.categories || []).map(c => [c.id, c]));
+  const pls = new Map((data.playlists || []).map(p => [p.id, p]));
   const out = [`#EXTM3U x-tvg-url="${EPG}" url-tvg="${EPG}" refresh="300" plugx-worker="plugx-api"`];
   const now = Math.floor(Date.now() / 1000);
+
+  // Arrange exactly like the app: source playlists -> their categories (by
+  // sort_order) -> channels (by channel_number). Groups are contiguous and
+  // cleanly named, so OTT Navigator shows them in the same order as the app.
+  const playlists = [...pls.values()]
+    .filter(p => filterId == null ? p.id !== 16 : p.id === filterId) // Opplex opt-in only
+    .sort((a, b) => num(a.sort_order) - num(b.sort_order) || num(a.id) - num(b.id));
+
   let n = 0;
-  for (const c of data.channels || []) {
-    if (filterId != null && c.playlist_id !== filterId) continue;
-    if (filterId == null && c.playlist_id === 16) continue; // Opplex 14k low-value rows: opt-in only
-    const exp = /(?:exp|Expires)[=%3D]*(\d{10})/i.exec(c.stream_url || "") || /(?:exp|Expires)[=%3D]*(\d{10})/i.exec(JSON.stringify(c.headers || {}));
-    if (exp && Number(exp[1]) <= now) continue; // drop expired tokens
-    const cat = cats[c.category_id] || "Other";
-    const group = filterId == null ? `${pls[c.playlist_id] || "PlugX"} | ${cat}` : cat;
-    emitChannel(out, c, group);
-    n++;
+  for (const p of playlists) {
+    const source = p.name;
+    const channels = (data.channels || []).filter(c => c.playlist_id === p.id);
+    // filter expired + bucket by category
+    const buckets = new Map();
+    for (const c of channels) {
+      const exp = /(?:exp|Expires)[=%3D]*(\d{10})/i.exec(c.stream_url || "") ||
+                  /(?:exp|Expires)[=%3D]*(\d{10})/i.exec(JSON.stringify(c.headers || {}));
+      if (exp && Number(exp[1]) <= now) continue;
+      const cid = c.category_id;
+      if (!buckets.has(cid)) buckets.set(cid, []);
+      buckets.get(cid).push(c);
+    }
+    const orderedCats = [...buckets.entries()].sort((a, b) =>
+      num((cats.get(a[0]) || {}).sort_order) - num((cats.get(b[0]) || {}).sort_order) ||
+      String((cats.get(a[0]) || {}).name).localeCompare(String((cats.get(b[0]) || {}).name)));
+
+    for (const [cid, chans] of orderedCats) {
+      const catName = cleanGroup((cats.get(cid) || {}).name, source);
+      // Individual playlist -> bare category name (app style). Master -> source
+      // prefix, except when the category IS the source (avoid "X | X").
+      const group = filterId == null
+        ? (catName === source ? source : `${source} | ${catName}`)
+        : catName;
+      chans.sort((a, b) => num(a.channel_number) - num(b.channel_number) || String(a.name).localeCompare(String(b.name)));
+      for (const c of chans) { emitChannel(out, c, group); n++; }
+    }
   }
   return { body: out.join("\n") + "\n", count: n };
 }

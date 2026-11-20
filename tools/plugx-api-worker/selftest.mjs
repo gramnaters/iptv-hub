@@ -18,6 +18,12 @@ let body = await r.text();
 ok("all.m3u has channels", body.includes("#EXTINF") && body.includes("group-title="), `ch=${r.headers.get("x-plugx-channels")}`);
 ok("all.m3u grouped by playlist", body.includes("JioHotstar |") && body.includes("JIOSTB+ |"));
 ok("all.m3u has EPG", body.includes("x-tvg-url"));
+// clean grouping: no doubled source names, no Unknown/Others noise, groups contiguous
+ok("no doubled source groups", !body.includes("Dangal Play | Dangal Play") && !body.includes("WOW KIDZ | WOW KIDZ"));
+ok("no Unknown/Others groups", !body.includes("| Unknown") && !body.includes("| Others"));
+const groups = [...new Set([...body.matchAll(/group-title="([^"]+)"/g)].map(m => m[1]))];
+const firstIdx = groups.map(g => body.indexOf(`group-title="${g}"`));
+ok("groups are contiguous", firstIdx.every((v, i) => i === 0 || v > firstIdx[i - 1]), `groups=${groups.length}`);
 
 r = await req("/jiostb.m3u");
 body = await r.text();

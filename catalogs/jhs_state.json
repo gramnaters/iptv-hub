@@ -1,14 +1,14 @@
 {
  "channels": 146,
  "configured_refresh_interval_hours": 20,
- "expires_in_hours": 5.02,
- "fetched_at": 1795248623,
+ "expires_in_hours": 16.85,
+ "fetched_at": 1795278078,
  "live": 529,
- "next_refresh": "22 Nov 2026, 09:40:23 AM IST",
+ "next_refresh": "22 Nov 2026, 05:51:18 PM IST",
  "refresh_mode": "lazy on next request + hourly Actions cron",
  "source": "self",
  "stale": false,
- "token_expires": "21 Nov 2026, 06:41:22 PM IST",
- "token_expires_epoch": 1795266682,
+ "token_expires": "22 Nov 2026, 02:42:14 PM IST",
+ "token_expires_epoch": 1795338734,
  "tokens": 529
 }

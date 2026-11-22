@@ -1,5 +1,5 @@
 #EXTM3U
-#DATE:- 22-11-2026 03:20:46 IST
+#DATE:- 22-11-2026 07:31:11 IST
 # Category: willow
 # Total Channels: 1
 
@@ -8,5 +8,5 @@
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=9a79865ad099bcc92fc555a1014310a6:0f79fed08b0fa0db9c08989d40f7ba73
-https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/fkipghexfw/out/v1/b9c7bdeeb3324a67829355fbadde5f64/cenc.mpd
+https://a96aivottlinear-a.akamaihd.net/OTTB/iad-nitro/live/clients/dash/enc/fkipghexfw/out/v1/b9c7bdeeb3324a67829355fbadde5f64/cenc.mpd
 

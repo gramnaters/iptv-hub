@@ -1,12 +1,19 @@
 #EXTM3U
-#DATE:- 25-11-2026 10:51:05 IST
+#DATE:- 25-11-2026 21:28:24 IST
 # Category: willow
-# Total Channels: 1
+# Total Channels: 2
 
-#EXTINF:-1 tvg-id="B0HMNQS3S4" tvg-name="Womens Big Bash League 2026 - 33rd Match - Melbourne Renegades Women vs Brisbane Heat Women" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.5b1a12ba-bd8a-405b-9844-70742776da84/3/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow",Womens Big Bash League 2026 - 33rd Match - Melbourne Renegades Women vs Brisbane Heat Women
+#EXTINF:-1 tvg-id="B0HQPR4M9Q" tvg-name="Bangladesh tour of South Africa 2026 - 2nd Test - South Africa vs Bangladesh" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.97eae418-93c7-40e2-b2d6-6a81327b83bc/5/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow",Bangladesh tour of South Africa 2026 - 2nd Test - South Africa vs Bangladesh
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=26c4fabdcc5a260a6e451538cfb05b78:92f785e2cf78b827cc1505bce8326fac
-https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/ioxreblomi/out/v1/329ac4fd4e8a41b88926b48b4b887e36/cenc.mpd
+#KODIPROP:inputstream.adaptive.license_key=1b2d04c3583cb8cd35fdf091453a9927:9584b37353992c00415eac1ae42cb3df
+https://dash-ott.bia-cf.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/fhmmqyl8ck/out/v1/34dd0d9326ac481e816ff0573f59be3b/cenc.mpd
+
+#EXTINF:-1 tvg-id="B0HS3T4G9K" tvg-name="International League T20 2026 - 6th Match - Dubai Capitals vs Desert Vipers" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.b852ad1b-829e-4346-8fe4-67afa7b2b0a7/2/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow",International League T20 2026 - 6th Match - Dubai Capitals vs Desert Vipers
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=d7070587c4a7d8db325db4540da4777c:c474bc272c73fdce1298511ac95bfdce
+https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/zfivwvynvc/out/v1/3f9cead02b3a4945bb6b6654938b7ba3/cenc.mpd
 

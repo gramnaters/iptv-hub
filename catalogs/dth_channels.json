@@ -680,14 +680,6 @@
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/5e1ed86ef02140058e971e6fd91e84da/version/0"
  },
  {
-  "name": "Times Now",
-  "external_id": "HE_E_10087",
-  "asset_id": 9487067,
-  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Times_Now/dash/Times_Now.mpd",
-  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Times_Now/hls/Times_Now.m3u8",
-  "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/05b219f99fe34e7e9e0ee22fa6caebcd/version/3"
- },
- {
   "name": "Zee 24 GHANTA",
   "external_id": "HE_E_11622",
   "asset_id": 9487065,
@@ -721,10 +713,10 @@
  },
  {
   "name": "Zoom",
-  "external_id": "HE_E_10095",
+  "external_id": "HE_E_11522",
   "asset_id": 9487084,
-  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zoom/dash/Zoom.mpd",
-  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/Zoom/hls/Zoom.m3u8",
+  "dash_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Zoom/dash/Zoom.mpd",
+  "hls_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/Zoom/hls/Zoom.m3u8",
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/fbcb2aedbbe9401f8193fa30459457cb/version/0"
  },
  {
@@ -745,10 +737,10 @@
  },
  {
   "name": "ET Now",
-  "external_id": "HE_E_10058",
+  "external_id": "HE_E_11730",
   "asset_id": 9487081,
-  "dash_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ET_Now/dash/ET_Now.mpd",
-  "hls_url": "https://d2o8pibksxtln6.cloudfront.net/live/media/ET_Now/hls/ET_Now.m3u8",
+  "dash_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/ET_Now/dash/ET_Now.mpd",
+  "hls_url": "https://d1iwj24qiokrul.cloudfront.net/live/media/ET_Now/hls/ET_Now.m3u8",
   "logo": "https://imagesv2.dsp1.ott.kaltura.com/Service.svc/GetImage/p/5093/entry_id/2c7d7d4b79ba4ba3a595130b7e5165b5/version/0"
  },
  {

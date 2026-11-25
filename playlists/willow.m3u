@@ -1,5 +1,12 @@
 #EXTM3U
-#DATE:- 25-11-2026 04:12:44 IST
+#DATE:- 25-11-2026 10:51:05 IST
 # Category: willow
-# Total Channels: 0
+# Total Channels: 1
+
+#EXTINF:-1 tvg-id="B0HMNQS3S4" tvg-name="Womens Big Bash League 2026 - 33rd Match - Melbourne Renegades Women vs Brisbane Heat Women" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.5b1a12ba-bd8a-405b-9844-70742776da84/3/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow",Womens Big Bash League 2026 - 33rd Match - Melbourne Renegades Women vs Brisbane Heat Women
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=26c4fabdcc5a260a6e451538cfb05b78:92f785e2cf78b827cc1505bce8326fac
+https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/ioxreblomi/out/v1/329ac4fd4e8a41b88926b48b4b887e36/cenc.mpd
 

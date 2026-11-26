@@ -1,19 +1,19 @@
 #EXTM3U
-#DATE:- 26-11-2026 13:35:03 IST
+#DATE:- 26-11-2026 23:51:56 IST
 # Category: willow
 # Total Channels: 2
 
-#EXTINF:-1 tvg-id="B0HN5TK1Q2" tvg-name="Womens Big Bash League 2026 - 34th Match - Sydney Thunder Women vs Adelaide Strikers Women" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.c2944926-df27-4eab-a989-41d34998cdec/3/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow",Womens Big Bash League 2026 - 34th Match - Sydney Thunder Women vs Adelaide Strikers Women
+#EXTINF:-1 tvg-id="B0HQTF8G33" tvg-name="ACC Mens Asia Cup Rising Stars 2026 - 1st Semi-Final - Sri Lanka A vs India A" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.7e40d3e7-4438-4ed4-bd7a-fa6405891d29/2/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow",ACC Mens Asia Cup Rising Stars 2026 - 1st Semi-Final - Sri Lanka A vs India A
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=3f5ea90db87fe08afdd98d45ed35b738:bb6170ee6b9e08576c32f534ee44c3e2
-https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/v2yxukjfq7/out/v1/d093cf88ecf4409bb4826370dd3a6ae1/cenc.mpd
+#KODIPROP:inputstream.adaptive.license_key=b84dc7acdbb36852e3c2f308621ef492:749e3c330bfd249d934532075081f432
+https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/lhoxwxtsh6/out/v1/45d03b6c3a334a1b90f2d4d37b9bb201/cenc.mpd
 
-#EXTINF:-1 tvg-id="B0HMKWT91B" tvg-name="Womens Big Bash League 2026 - 35th Match - Sydney Sixers Women vs Melbourne Stars Women" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.09e078a8-cd93-4ee2-8f3f-8ca0b46247ac/2/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow",Womens Big Bash League 2026 - 35th Match - Sydney Sixers Women vs Melbourne Stars Women
+#EXTINF:-1 tvg-id="B0HQ5G59P2" tvg-name="International League T20 2026 - 7th Match - Abu Dhabi Knight Riders vs Mi Emirates" tvg-logo="https://m.media-amazon.com/images/S/le-target-images-prod/amzn1.dv.gti.e9e3590a-0e47-4330-a056-6cd8ccb593df/2/BOXART-16X9/en-US._UR1920,1080_.jpeg" group-title="Willow",International League T20 2026 - 7th Match - Abu Dhabi Knight Riders vs Mi Emirates
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=41901192b980eddd911c8cd7e5c516df:fabf22ee583ee08d1638dc18578d5174
-https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/teiohs2xmz/out/v1/3369f17367944191984b7d95012548e8/cenc.mpd
+#KODIPROP:inputstream.adaptive.license_key=d36396587a3e395dd49822bfb8876a30:85bfdc16276e3c741b94203dc14cf744
+https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/nkhxmu8uyd/out/v1/55d2a00aa7234f7aa9910b17ff528780/cenc.mpd
 
